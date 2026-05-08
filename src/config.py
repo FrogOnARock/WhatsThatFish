@@ -95,7 +95,7 @@ def _get_logger(name: str):
 
     # Set file handler for output of logging
     file_handler = logging.FileHandler(logging_path)
-    file_handler.setLevel(logging.DEBUG)
+    file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(logging.Formatter(formatting))
 
     # Set console handler for output of logging

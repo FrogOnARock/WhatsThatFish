@@ -140,6 +140,30 @@ class InatCaptureContext(Base):
         Index("ix_inat_capture_context_is_underwater", "is_underwater"),
     )
 
+class InatClipContext(Base):
+    """Underwater vs above-water classification for iNaturalist images.
+
+    iNat fish observations include underwater dive shots, fishing-deck photos,
+    aquarium shots, market photos, and lab specimens. For a dive-companion
+    classifier we want to filter to underwater captures only.
+
+    Previously we had leveraged a heuristic to determine what was underwater and abovewater.
+    We now leverage a CLIP model to no-shot predict whether an image is one of the above classes
+    the outputs of that are stored here.
+    """
+    __tablename__ = "inat_clip_context"
+
+    photo_uuid: Mapped[str] = mapped_column(
+        String(36),
+        ForeignKey("inat_filtered_observations.photo_uuid"),
+        primary_key=True,
+    )
+    is_underwater: Mapped[int | None] = mapped_column(Integer)
+
+    __table_args__ = (
+        Index("ix_inat_clip_context_is_underwater", "is_underwater"),
+    )
+
 
 class InatImageQuality(Base):
     """UIQM quality scores for iNaturalist images.
