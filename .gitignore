@@ -20,4 +20,4 @@ uv.lock
 .claude/
 /src/preprocessing/images/
 /src/preprocessing/notebooks/images.txt
-
+/src/data/

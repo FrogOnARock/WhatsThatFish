@@ -576,11 +576,12 @@ class TestContextRunnerTracking:
         mock_tracker.load.return_value = {"uuid-already-done"}
 
         runner = self._make_runner(gcs_config, mock_tracker)
-        runner._select_all_uploads = MagicMock(
-            return_value={"uuid-already-done", "uuid-new"}
-        )
+        # _select_all_uploads now returns photo_ids from SuccessfulUploads
+        runner._select_all_uploads = MagicMock(return_value={"111", "222"})
+        # _select_files receives photo_ids and returns rows with photo_uuid
         runner._select_files = MagicMock(return_value=[
-            {"photo_uuid": "uuid-new", "filename": "new.jpg"},
+            {"photo_uuid": "uuid-already-done", "filename": "111.jpg"},
+            {"photo_uuid": "uuid-new", "filename": "222.jpg"},
         ])
 
         mock_storage = AsyncMock()
@@ -668,7 +669,9 @@ class TestScoreRunnerTracking:
         mock_tracker.load.return_value = {"uuid-done"}
 
         runner = self._make_runner(gcs_config, "inat", mock_tracker)
-        runner._select_all_uploads = MagicMock(return_value={"111", "222"})
+        # _select_all_uploads now returns photo_uuids from InatCaptureContext (is_underwater in [1,2])
+        runner._select_all_uploads = MagicMock(return_value={"uuid-done", "uuid-new"})
+        # _select_files receives photo_uuids and returns rows filtered by photo_uuid
         runner._select_files = MagicMock(return_value=[
             {"photo_uuid": "uuid-done", "filename": "111.jpg", "photo_id": 111},
             {"photo_uuid": "uuid-new", "filename": "222.jpg", "photo_id": 222},

@@ -22,8 +22,6 @@ class AnnotationConverter:
     def __init__(self,
                  session_factory: sessionmaker):
         self._session_factory = session_factory
-        self._train_path = Path(__file__).parents[1] / "data" / "yolo" / "train"
-        self._test_path = Path(__file__).parents[1] / "data" / "yolo" / "test"
         self.config = get_model_config().yolo
 
     @db_retry
@@ -113,8 +111,8 @@ class AnnotationConverter:
             df = pl.DataFrame(rows, schema=["file_name", "annotation"])
 
 
-        train_path = self.config.data_paths["obj_training_set"]
-        test_path = self.config.data_paths["obj_test_set"]
+        train_path = self.config.data_paths["obj_training_labels"]
+        test_path = self.config.data_paths["obj_val_labels"]
 
         if not os.path.exists(train_path):
             Path.mkdir(Path(train_path), exist_ok=True)
