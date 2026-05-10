@@ -148,4 +148,4 @@ class PreProcessingFactory:
 
 
 if __name__ == '__main__':
-    asyncio.run(PreProcessingFactory(type=Dataset.CONTEXT_CLIP).run())
+    asyncio.run(PreProcessingFactory(type=Dataset.SCORING).run())

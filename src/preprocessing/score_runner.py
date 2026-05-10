@@ -413,7 +413,7 @@ class ScoreRunner:
             if dataset == "inat":
                 logger.debug("[ScoreRunner/inat] Querying InatCaptureContext for underwater images (is_underwater in [1, 2])")
                 ids = session.execute(
-                    select(InatCaptureContext.photo_uuid).where(InatCaptureContext.is_underwater.in_([1, 2]))
+                    select(InatClipContext.photo_uuid).where(InatClipContext.is_underwater == 1)
                 ).scalars().all()
             else:
                 logger.debug(f"[ScoreRunner/{dataset}] Querying SuccessfulUploads for source='{dataset}'")

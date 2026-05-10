@@ -12,6 +12,7 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql.schema import UniqueConstraint
 from .base import Base
+from typing import Any
 
 
 class InatTaxa(Base):
@@ -226,7 +227,7 @@ class LilaYolo(Base):
     __tablename__ = "lila_yolo"
 
     file_name: Mapped[str] = mapped_column(String(255), primary_key=True)
-    annotation: Mapped[dict[str, float]] = mapped_column(JSONB)
+    annotation: Mapped[dict[str, Any]] = mapped_column(JSONB)
 
     __table_args__ = (
         Index("ix_lila_yolo_file_name", "file_name"),
@@ -246,4 +247,5 @@ class SuccessfulUploads(Base):
         UniqueConstraint("identifier", "source", name="uq_identifier_source"),
         Index("ix_successful_uploads_source", "source"),
     )
+
 
