@@ -36,7 +36,7 @@ class InatTaxa(Base):
 
 
 class InatFilteredObservations(Base):
-    """Pre-filtered iNaturalist photo records for model training.
+    """Pre-filtered iNaturalist photo records for models training.
 
     Populated by lazy-scanning local parquets (taxa, observations, photos),
     filtering to in-scope taxa (Actinopterygii + Chondrichthyes),
@@ -149,7 +149,7 @@ class InatClipContext(Base):
     classifier we want to filter to underwater captures only.
 
     Previously we had leveraged a heuristic to determine what was underwater and abovewater.
-    We now leverage a CLIP model to no-shot predict whether an image is one of the above classes
+    We now leverage a CLIP models to no-shot predict whether an image is one of the above classes
     the outputs of that are stored here.
     """
     __tablename__ = "inat_clip_context"

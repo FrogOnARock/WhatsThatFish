@@ -1,6 +1,6 @@
 import io
 import os
-from torch.utils.data import Dataset, DataLoader, WeightedRandomSampler
+from torch.utils.data import Dataset
 from sqlalchemy import select
 from PIL import Image
 from google.cloud import storage
@@ -9,6 +9,7 @@ import torch
 from ..database.models import LilaImageQuality, LilaYolo
 from ..config import get_config
 from ..database.config import get_session_factory
+from ..retry import transfer_retry
 
 
 class ObjectDetectionDataset(Dataset):
@@ -24,7 +25,7 @@ class ObjectDetectionDataset(Dataset):
         self.transform = transforms
 
         self.data = self.session_factory.execute(
-            select(LilaImageQuality.file_name, LilaYolo.annotation)
+            select(LilaImageQuality.file_name, LilaImageQuality.uiqm, LilaYolo.annotation)
             .join(LilaYolo, LilaImageQuality.file_name == LilaYolo.file_name)
             .where(LilaYolo.annotation[0]["is_train"].as_boolean() == self.split)
         ).all()
@@ -34,6 +35,7 @@ class ObjectDetectionDataset(Dataset):
         return len(self.data)
 
 
+    @transfer_retry
     def __getitem__(self, idx):
 
         if self._gcs_bucket is None:
@@ -54,7 +56,7 @@ class ObjectDetectionDataset(Dataset):
 
         label_tensor = torch.zeros((0, 5), dtype=torch.float32) if not labels else torch.tensor(labels, dtype=torch.float32)
 
-        filename = self.data.file_name
+        filename = record.file_name
         blob = self._gcs_bucket.blob(self.gcs_prefix + filename)
         image = blob.download_as_bytes()
         image_tensor = self.transform(Image.open(io.BytesIO(image)))
