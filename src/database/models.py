@@ -194,6 +194,42 @@ class InatImageQuality(Base):
         Index("ix_inat_image_quality_uiqm", "uiqm"),
     )
 
+class InatClassificationDataset(Base):
+    """
+    The final table containing all taxons with at least 1500 above water observations.
+    The observations have been ranked by UIQM with a max sample count per taxon of 300.
+    These observations are clustered and then entered into this table where they will be leveraged
+    in the CV Classification.
+    Species, genus, subfamily integers all added for top-3 classification.
+    """
+
+    __tablename__ = 'inat_classification_dataset'
+
+    photo_uuid: Mapped[str] = mapped_column(
+        String(36),
+        ForeignKey("inat_filtered_observations.photo_uuid"),
+        primary_key=True,
+    )
+    uiqm: Mapped[float | None] = mapped_column(Float)
+    latitude: Mapped[float | None] = mapped_column(Float)
+    longitude: Mapped[float | None] = mapped_column(Float)
+    taxon_id: Mapped[int | None] = mapped_column(Integer)
+    uiqm_rank: Mapped[int | None] = mapped_column(Integer)
+    filename: Mapped[str | None] = mapped_column(String)
+    is_underwater: Mapped[int | None] = mapped_column(Integer)
+    ancestry: Mapped[str | None] = mapped_column(String)
+    species: Mapped[int | None] = mapped_column(Integer)
+    genus: Mapped[int | None] = mapped_column(Integer)
+    subfamily: Mapped[int | None] = mapped_column(Integer)
+    cluster: Mapped[int | None] = mapped_column(Integer)
+
+    __table_args__ = (
+        Index("ix_inat_classification_dataset_cluster", "cluster"),
+        Index("ix_inat_classification_dataset_uiqm", "uiqm"),
+    )
+
+
+
 
 class LilaImageQuality(Base):
     """UIQM quality scores for LILA images.

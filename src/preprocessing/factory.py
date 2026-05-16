@@ -7,6 +7,7 @@ from .clip_context import ClipModel
 from .score_runner import ScoreRunner, ContextRunner
 from .annotation_conversion import AnnotationConverter
 from .score_runner import ScoringProgressTracker
+from .prepare_inat import InatPreparation
 from dataclasses import dataclass
 from ..database.models import InatCaptureContext, InatImageQuality, LilaImageQuality, InatClipContext
 from ..database import get_session_factory
@@ -25,6 +26,7 @@ class Dataset(str, Enum):
     ANN_CONV = "annotation"
     CONTEXT_ORIG = "context_orig"
     CONTEXT_CLIP = "context_clip"
+    CLASS_PREP = "classification_preparation"
 
 class PreProcessingFactory:
     def __init__(self,
@@ -106,6 +108,11 @@ class PreProcessingFactory:
             session_factory=self.session_factory
         )
 
+    def _load_classification_ds_runner(self):
+        return InatPreparation(
+            session_factory = self.session_factory
+        )
+
     async def run(self):
         logger.info(f"PreProcessingFactory.run() starting — type={self.type}")
 
@@ -121,6 +128,9 @@ class PreProcessingFactory:
 
             logger.info("Step 4/4: Annotation conversion")
             self._load_annotation_runner().run()
+
+            logger.info("Step 5/5: Classification DS Preparation")
+            self._load_classification_ds_runner().run()
 
         elif self.type == "scoring":
             logger.info("Step 1/2: iNat UIQM scoring")
@@ -141,6 +151,10 @@ class PreProcessingFactory:
             logger.info("Step 1/1: iNat capture context scoring")
             await self._load_context_runner(dataset="inat", source="inat_context").run()
 
+        elif self.type == "classification_preparation":
+            logger.info("Step 1/1: Classification DS Preparation")
+            self._load_classification_ds_runner().run()
+
         else:
             raise ValueError(f"Unknown pipeline type: {self.type!r}")
 
@@ -148,4 +162,4 @@ class PreProcessingFactory:
 
 
 if __name__ == '__main__':
-    asyncio.run(PreProcessingFactory(type=Dataset.SCORING).run())
+    asyncio.run(PreProcessingFactory(type=Dataset.CLASS_PREP).run())

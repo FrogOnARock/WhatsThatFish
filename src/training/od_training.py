@@ -30,10 +30,10 @@ def train_fn(config):
 
 
 PARAM_SPACE = {
-    "lr0": tune.loguniform(1e-4, 1e-1),
-    "box": tune.uniform(5.0, 10.0),
-    "cls": tune.uniform(0.3, 1.5),
-    "weight_decay": tune.loguniform(1e-5, 1e-2),
+    "lr0": tune.loguniform(5e-5, 5e-2),
+    "box": tune.uniform(6.0, 9.0),
+    "cls": tune.uniform(0.9, 1.3),
+    "weight_decay": tune.loguniform(5e-6, 5e-3),
 }
 
 
@@ -53,7 +53,7 @@ def tune_model():
             tune_config=tune.TuneConfig(
                 metric="metrics/mAP50(B)",
                 mode="max",
-                num_samples=10,
+                num_samples=6,
             ),
             param_space=PARAM_SPACE,
         )

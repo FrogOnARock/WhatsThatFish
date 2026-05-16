@@ -39,7 +39,7 @@ class ODDataLoader(DataLoader):
         pass  # Ultralytics calls this between epochs; standard DataLoader re-iterates naturally
 
 
-def od_dataloader(mode: str, batch_size: int = 8, max_samples: int = None):
+def od_dataloader(mode: str, batch_size: int = 16, max_samples: int = None):
     base_transform = [
         v2.Resize([640, 640]),
         v2.ToImage(),
@@ -70,7 +70,7 @@ def od_dataloader(mode: str, batch_size: int = 8, max_samples: int = None):
         num_workers=8,
         pin_memory=True,
         worker_init_fn=init_gcs_worker,
-        prefetch_factor=4
+        prefetch_factor=2
     )
     dataloader.reset = lambda: None
     return dataloader

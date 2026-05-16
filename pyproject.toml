@@ -36,7 +36,7 @@ dependencies = [
     "ray[tune]>=2.55.1",
     "wandb>=0.26.1",
     "cuml-cu13==26.4",
-    "scikit-learn>=1.8.0",
+    "hdbscan>=0.8.43",
 ]
 
 [tool.setuptools.packages.find]
