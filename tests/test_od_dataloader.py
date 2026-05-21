@@ -12,7 +12,7 @@ import numpy as np
 import pytest
 import torch
 from PIL import Image
-from torchvision import transforms
+from torchvision.transforms import v2
 
 from whatsthatfish.src.models.od_dataloader import object_detection_collate
 from whatsthatfish.src.models.od_dataset import ObjectDetectionDataset
@@ -38,6 +38,11 @@ def _label_tensor(*rows) -> torch.Tensor:
     return torch.tensor(list(rows), dtype=torch.float32)
 
 
+def _batch_item(label_rows=(), fname="test.jpg"):
+    """Build a single (image, labels, filename) batch item."""
+    return (_image_tensor(), _label_tensor(*label_rows), fname)
+
+
 # ── Fake DB row ────────────────────────────────────────────────────────────────
 
 def _fake_row(file_name: str, uiqm: float, annotations: list[dict]):
@@ -55,47 +60,60 @@ def _fake_row(file_name: str, uiqm: float, annotations: list[dict]):
 class TestCollate:
 
     def test_image_stack_shape(self):
-        batch = [(_image_tensor(), _label_tensor()) for _ in range(4)]
-        imgs, _ = object_detection_collate(batch)
-        assert imgs.shape == (4, 3, 64, 64)
+        batch = [_batch_item() for _ in range(4)]
+        result = object_detection_collate(batch)
+        assert result["img"].shape == (4, 3, 64, 64)
 
-    def test_batch_index_prepended(self):
+    def test_batch_idx_assigned_per_image(self):
         batch = [
-            (_image_tensor(), _label_tensor([0, 0.5, 0.5, 0.2, 0.2])),
-            (_image_tensor(), _label_tensor([0, 0.3, 0.3, 0.1, 0.1])),
+            _batch_item(([0, 0.5, 0.5, 0.2, 0.2],), "a.jpg"),
+            _batch_item(([0, 0.3, 0.3, 0.1, 0.1],), "b.jpg"),
         ]
-        _, labels = object_detection_collate(batch)
-        assert labels[0, 0] == 0.0
-        assert labels[1, 0] == 1.0
+        result = object_detection_collate(batch)
+        assert result["batch_idx"][0].item() == 0.0
+        assert result["batch_idx"][1].item() == 1.0
 
-    def test_label_shape_is_n_by_6(self):
+    def test_bboxes_and_cls_shape(self):
         batch = [
-            (_image_tensor(), _label_tensor([0, 0.5, 0.5, 0.2, 0.2], [0, 0.1, 0.1, 0.05, 0.05])),
-            (_image_tensor(), _label_tensor([0, 0.3, 0.3, 0.1, 0.1])),
+            _batch_item(([0, 0.5, 0.5, 0.2, 0.2], [0, 0.1, 0.1, 0.05, 0.05]), "a.jpg"),
+            _batch_item(([0, 0.3, 0.3, 0.1, 0.1],), "b.jpg"),
         ]
-        _, labels = object_detection_collate(batch)
-        assert labels.shape == (3, 6)
+        result = object_detection_collate(batch)
+        assert result["bboxes"].shape == (3, 4)
+        assert result["cls"].shape == (3, 1)
 
     def test_all_negative_batch_returns_empty(self):
-        batch = [(_image_tensor(), _label_tensor()) for _ in range(4)]
-        _, labels = object_detection_collate(batch)
-        assert labels.shape == (0, 6)
+        batch = [_batch_item() for _ in range(4)]
+        result = object_detection_collate(batch)
+        assert result["bboxes"].shape == (0, 4)
+        assert result["cls"].shape == (0, 1)
+        assert result["batch_idx"].shape == (0,)
 
     def test_mixed_positive_negative_batch(self):
         batch = [
-            (_image_tensor(), _label_tensor([0, 0.5, 0.5, 0.2, 0.2])),
-            (_image_tensor(), _label_tensor()),
-            (_image_tensor(), _label_tensor([0, 0.3, 0.3, 0.1, 0.1])),
+            _batch_item(([0, 0.5, 0.5, 0.2, 0.2],), "a.jpg"),
+            _batch_item((), "b.jpg"),
+            _batch_item(([0, 0.3, 0.3, 0.1, 0.1],), "c.jpg"),
         ]
-        _, labels = object_detection_collate(batch)
-        assert labels.shape == (2, 6)
-        assert set(labels[:, 0].tolist()) == {0.0, 2.0}
+        result = object_detection_collate(batch)
+        assert result["bboxes"].shape == (2, 4)
+        assert set(result["batch_idx"].tolist()) == {0.0, 2.0}
 
-    def test_label_values_preserved(self):
+    def test_bbox_values_preserved(self):
         row = [0.0, 0.5, 0.5, 0.2, 0.2]
-        batch = [(_image_tensor(), _label_tensor(row))]
-        _, labels = object_detection_collate(batch)
-        assert torch.allclose(labels[0, 1:], torch.tensor(row, dtype=torch.float32))
+        batch = [_batch_item((row,), "a.jpg")]
+        result = object_detection_collate(batch)
+        assert torch.allclose(result["bboxes"][0], torch.tensor(row[1:], dtype=torch.float32))
+
+    def test_im_file_list_matches_batch(self):
+        batch = [_batch_item(fname=f"f{i}.jpg") for i in range(3)]
+        result = object_detection_collate(batch)
+        assert result["im_file"] == ["f0.jpg", "f1.jpg", "f2.jpg"]
+
+    def test_result_keys_are_complete(self):
+        batch = [_batch_item()]
+        result = object_detection_collate(batch)
+        assert {"img", "batch_idx", "cls", "bboxes", "im_file", "ori_shape", "ratio_pad"}.issubset(result.keys())
 
 
 # ════════════════════════════════════════════════════════════════════════════════
@@ -111,7 +129,12 @@ FAKE_ROWS = [
     _fake_row("fish_002.jpg", 0.6, FISH_ANN),
 ]
 
-_transform = transforms.Compose([transforms.Resize((64, 64)), transforms.ToTensor()])
+# v2 joint transform: accepts (PIL, BoundingBoxes) and returns (Tensor, BoundingBoxes)
+_transform = v2.Compose([
+    v2.Resize((64, 64)),
+    v2.ToImage(),
+    v2.ToDtype(torch.float32, scale=True),
+])
 
 
 @pytest.fixture
@@ -124,7 +147,7 @@ def dataset():
 
     mock_gcs_config = MagicMock()
     mock_gcs_config.bucket = "whats-that-fish"
-    mock_gcs_config.prefixes.get.return_value = "object_detection/"
+    mock_gcs_config.prefixes.get.return_value = "object_detection"
     mock_config = MagicMock()
     mock_config.gcs = mock_gcs_config
 
@@ -135,52 +158,58 @@ def dataset():
     return ds
 
 
+def _mock_bucket_for(image_bytes: bytes) -> MagicMock:
+    mock_blob = MagicMock()
+    mock_blob.download_as_bytes.return_value = image_bytes
+    mock_bucket = MagicMock()
+    mock_bucket.blob.return_value = mock_blob
+    return mock_bucket
+
+
 class TestObjectDetectionDataset:
 
     def test_len(self, dataset):
         assert len(dataset) == 3
 
+    def test_getitem_returns_three_values(self, dataset):
+        mock_bucket = _mock_bucket_for(_make_image_bytes())
+        with patch("whatsthatfish.src.models.od_dataset._bucket", mock_bucket):
+            result = dataset[0]
+        assert len(result) == 3
+
     def test_getitem_image_shape(self, dataset):
-        mock_blob = MagicMock()
-        mock_blob.download_as_bytes.return_value = _make_image_bytes()
-        mock_bucket = MagicMock()
-        mock_bucket.blob.return_value = mock_blob
-
-        with patch("whatsthatfish.src.models.od_dataset.storage") as mock_storage:
-            mock_storage.Client.from_service_account_json.return_value.bucket.return_value = mock_bucket
-            with patch.dict("os.environ", {"GCS_SECRET": "/fake/path.json"}):
-                img, _ = dataset[0]
-
+        mock_bucket = _mock_bucket_for(_make_image_bytes())
+        with patch("whatsthatfish.src.models.od_dataset._bucket", mock_bucket):
+            img, _, _ = dataset[0]
         assert img.shape == (3, 64, 64)
         assert img.dtype == torch.float32
 
     def test_getitem_positive_label_shape(self, dataset):
-        mock_blob = MagicMock()
-        mock_blob.download_as_bytes.return_value = _make_image_bytes()
-        mock_bucket = MagicMock()
-        mock_bucket.blob.return_value = mock_blob
-
-        with patch("whatsthatfish.src.models.od_dataset.storage") as mock_storage:
-            mock_storage.Client.from_service_account_json.return_value.bucket.return_value = mock_bucket
-            with patch.dict("os.environ", {"GCS_SECRET": "/fake/path.json"}):
-                _, labels = dataset[0]
-
+        mock_bucket = _mock_bucket_for(_make_image_bytes())
+        with patch("whatsthatfish.src.models.od_dataset._bucket", mock_bucket):
+            _, labels, _ = dataset[0]
         assert labels.shape == (1, 5)
         assert labels.dtype == torch.float32
 
     def test_getitem_negative_label_is_empty(self, dataset):
-        mock_blob = MagicMock()
-        mock_blob.download_as_bytes.return_value = _make_image_bytes()
-        mock_bucket = MagicMock()
-        mock_bucket.blob.return_value = mock_blob
-
-        with patch("whatsthatfish.src.models.od_dataset.storage") as mock_storage:
-            mock_storage.Client.from_service_account_json.return_value.bucket.return_value = mock_bucket
-            with patch.dict("os.environ", {"GCS_SECRET": "/fake/path.json"}):
-                _, labels = dataset[1]
-
+        mock_bucket = _mock_bucket_for(_make_image_bytes())
+        with patch("whatsthatfish.src.models.od_dataset._bucket", mock_bucket):
+            _, labels, _ = dataset[1]
         assert labels.shape == (0, 5)
+
+    def test_getitem_filename_returned(self, dataset):
+        mock_bucket = _mock_bucket_for(_make_image_bytes())
+        with patch("whatsthatfish.src.models.od_dataset._bucket", mock_bucket):
+            _, _, fname = dataset[0]
+        assert fname == "fish_001.jpg"
 
     def test_uiqm_weights_length_matches_dataset(self, dataset):
         weights = [row.uiqm for row in dataset.data]
         assert len(weights) == len(dataset)
+
+    def test_image_values_normalized_to_unit_range(self, dataset):
+        mock_bucket = _mock_bucket_for(_make_image_bytes())
+        with patch("whatsthatfish.src.models.od_dataset._bucket", mock_bucket):
+            img, _, _ = dataset[0]
+        assert img.min().item() >= 0.0
+        assert img.max().item() <= 1.0

@@ -8,10 +8,11 @@ from ..models.od_dataloader import CustomDetectionTrainer
 from dotenv import load_dotenv
 from ray import tune
 
+
 CONFIG_PATH = str(Path(__file__).parent.parent / "config" / "class_config.yaml")
 TRAIN_CONFIG_PATH = str(Path(__file__).parent.parent / "config" / "train_config.yaml")
 WEIGHTS_PATH = str(Path(__file__).parent.parent.parent / "yolo11l.pt")
-RESTORE_PATH = None
+RESTORE_PATH = "/home/frogonarock/ray_results/train_fn_2026-05-17_19-52-35"
 
 load_dotenv()
 def train_fn(config):
@@ -57,7 +58,7 @@ def tune_model():
             tune_config=tune.TuneConfig(
                 metric="metrics/mAP50(B)",
                 mode="max",
-                num_samples=10,
+                num_samples=8,
             ),
             param_space=PARAM_SPACE,
         )
@@ -66,13 +67,28 @@ def tune_model():
     return results
 
 
-if __name__ == '__main__':
-    #
-    parameter_results = tune_model()
-    print(parameter_results.get_best_result(metric="metrics/mAP50(B)", mode="max").config)
+def train_final():
+    import shutil
+    CustomDetectionTrainer.max_samples = None
+    model = YOLO(model=WEIGHTS_PATH)
+    model.train(
+        cfg=TRAIN_CONFIG_PATH,
+        data=CONFIG_PATH,
+        trainer=CustomDetectionTrainer,
+        verbose=True,
+    )
+    best_pt = Path(model.trainer.best)
+    dest = Path(__file__).parent.parent.parent / "weights" / "od_best.pt"
+    dest.parent.mkdir(exist_ok=True)
+    shutil.copy(best_pt, dest)
+    print(f"Saved best weights → {dest}")
 
-    # model = YOLO("yolo11l.pt")
-    # results = model.train(cfg=TRAIN_CONFIG_PATH, data="./src/config/class_config.yaml", trainer=CustomDetectionTrainer, epochs=50, imgsz=640)
+
+if __name__ == '__main__':
+    # parameter_results = tune_model()
+    # best_config = parameter_results.get_best_result(metric="metrics/mAP50(B)", mode="max").config
+    # print("Best config:", best_config)
+    train_final()
 
 
 

@@ -10,7 +10,7 @@ import pytest
 import torch
 from PIL import Image
 
-from whatsthatfish.src.preprocessing.five_channel_conversion import AddMultiChannel
+from whatsthatfish.src.transforms.five_channel_conversion import AddMultiChannel
 
 
 # ── Fixtures ───────────────────────────────────────────────────────────────────

@@ -9,9 +9,17 @@ import torch
 from torchvision.tv_tensors import BoundingBoxes, BoundingBoxFormat
 
 from ..database.models import LilaImageQuality, LilaYolo
-from ..config import get_config, _bucket
+from ..config import get_config
 from ..database.config import get_session_factory
 from ..retry import transfer_retry
+from google.cloud import storage
+
+_bucket = None
+def init_gcs_worker(worker_id):
+    global _bucket
+    config = get_config().gcs
+    client = storage.Client.from_service_account_json(os.environ.get("GCS_SECRET"))
+    _bucket = client.bucket(config.bucket)
 
 
 class ObjectDetectionDataset(Dataset):

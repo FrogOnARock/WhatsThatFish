@@ -4,7 +4,6 @@ from pathlib import Path
 import logging
 import os
 import sys
-from google.cloud import storage
 
 
 
@@ -109,10 +108,4 @@ def _get_logger(name: str):
 
     return logger
 
-_bucket = None
-def init_gcs_worker(worker_id):
-    global _bucket
-    config = get_config().gcs
-    client = storage.Client.from_service_account_json(os.environ.get("GCS_SECRET"))
-    _bucket = client.bucket(config.bucket)
 

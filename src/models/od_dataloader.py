@@ -3,12 +3,10 @@ from copy import copy
 import torch
 from torch.utils.data import DataLoader
 from torch.utils.data import WeightedRandomSampler
-from torchvision import transforms
 from torchvision.transforms import v2
 from ultralytics.models.yolo.detect import DetectionTrainer, DetectionValidator
 
-from .od_dataset import ObjectDetectionDataset
-from ..config import init_gcs_worker
+from .od_dataset import ObjectDetectionDataset, init_gcs_worker
 
 
 def object_detection_collate(original_batch):

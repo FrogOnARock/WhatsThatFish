@@ -8,7 +8,7 @@ No infrastructure required — all tests use in-memory numpy fixtures.
 import numpy as np
 import pytest
 
-from whatsthatfish.src.preprocessing.lcn_gradient_map import (
+from whatsthatfish.src.transforms.lcn_gradient_map import (
     gradient_map,
     local_contrast_normalization,
 )
