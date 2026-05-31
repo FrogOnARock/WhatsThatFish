@@ -1,0 +1,53 @@
+2026-05-24 17:14:22,352 - INFO - PreProcessingFactory initialised — type=Dataset.CLASS_PREP, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-24 17:14:22,352 - INFO - PreProcessingFactory.run() starting — type=Dataset.CLASS_PREP
+2026-05-24 17:14:22,352 - INFO - Step 1/1: Classification DS Preparation
+2026-05-24 17:14:51,725 - INFO - PreProcessingFactory initialised — type=Dataset.CLASS_PREP, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-24 17:14:51,726 - INFO - PreProcessingFactory.run() starting — type=Dataset.CLASS_PREP
+2026-05-24 17:14:51,726 - INFO - Step 1/1: Classification DS Preparation
+2026-05-24 17:16:00,978 - INFO - PreProcessingFactory.run() complete — type=Dataset.CLASS_PREP
+2026-05-24 17:19:34,195 - INFO - PreProcessingFactory initialised — type=Dataset.CLASS_PREP, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-24 17:19:34,195 - INFO - PreProcessingFactory.run() starting — type=Dataset.CLASS_PREP
+2026-05-24 17:19:34,195 - INFO - Step 1/1: Classification DS Preparation
+2026-05-24 17:20:41,420 - INFO - PreProcessingFactory.run() complete — type=Dataset.CLASS_PREP
+2026-05-30 16:43:17,511 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.INAT, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-30 16:43:17,511 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-05-30 16:43:17,511 - INFO - Step 1/2: iNat UIQM scoring
+2026-05-30 16:43:17,511 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-05-30 16:43:42,595 - INFO - Step 2/2: LILA UIQM scoring
+2026-05-30 16:43:42,595 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-05-30 16:43:45,815 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-05-30 16:45:55,847 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_CLIP, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-30 16:45:55,847 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_CLIP
+2026-05-30 16:45:55,847 - INFO - Step 1/1: iNat CLIP context scoring
+2026-05-30 16:45:55,848 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-05-30 17:47:03,002 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_CLIP, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-30 17:47:03,002 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_CLIP
+2026-05-30 17:47:03,002 - INFO - Step 1/1: iNat CLIP context scoring
+2026-05-30 17:47:03,002 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-05-30 17:54:48,309 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_CLIP, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-30 17:54:48,310 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_CLIP
+2026-05-30 17:54:48,310 - INFO - Step 1/1: iNat CLIP context scoring
+2026-05-30 17:54:48,310 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-05-30 18:02:22,278 - INFO - PreProcessingFactory.run() complete — type=Dataset.CONTEXT_CLIP
+2026-05-30 18:05:14,614 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.INAT, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-30 18:05:14,614 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-05-30 18:05:14,614 - INFO - Step 1/2: iNat UIQM scoring
+2026-05-30 18:05:14,614 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-05-30 19:10:06,583 - INFO - Step 2/2: LILA UIQM scoring
+2026-05-30 19:10:06,583 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-05-30 19:10:07,859 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-05-30 19:56:28,231 - INFO - PreProcessingFactory initialised — type=Dataset.CLASS_PREP, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-30 19:56:28,231 - INFO - PreProcessingFactory.run() starting — type=Dataset.CLASS_PREP
+2026-05-30 19:56:28,231 - INFO - Step 1/2: Classification DS Preparation
+2026-05-30 20:00:52,806 - INFO - PreProcessingFactory initialised — type=Dataset.CLASS_PREP, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-30 20:00:52,806 - INFO - PreProcessingFactory.run() starting — type=Dataset.CLASS_PREP
+2026-05-30 20:00:52,806 - INFO - Step 1/2: Classification DS Preparation
+2026-05-30 20:02:14,374 - INFO - PreProcessingFactory initialised — type=Dataset.CLASS_PREP, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-30 20:02:14,374 - INFO - PreProcessingFactory.run() starting — type=Dataset.CLASS_PREP
+2026-05-30 20:02:14,374 - INFO - Step 1/2: Classification DS Preparation
+2026-05-30 20:03:55,584 - INFO - Step 2/2: Zero Indexed Classification
+2026-05-30 20:06:05,983 - INFO - PreProcessingFactory initialised — type=Dataset.CLASS_PREP, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-05-30 20:06:05,984 - INFO - PreProcessingFactory.run() starting — type=Dataset.CLASS_PREP
+2026-05-30 20:06:05,984 - INFO - Step 1/2: Classification DS Preparation
+2026-05-30 20:07:43,485 - INFO - Step 2/2: Zero Indexed Classification
+2026-05-30 20:08:07,860 - INFO - PreProcessingFactory.run() complete — type=Dataset.CLASS_PREP

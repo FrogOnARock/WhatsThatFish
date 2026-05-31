@@ -9,7 +9,7 @@ import pytest
 import torch
 import torch.nn as nn
 
-from whatsthatfish.src.models.c_custom_resnet import BasicBlock, CustomResnet
+from whatsthatfish.models.c_custom_resnet import BasicBlock, CustomResnet
 
 
 # ════════════════════════════════════════════════════════════════════════════════

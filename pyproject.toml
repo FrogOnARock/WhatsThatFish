@@ -40,7 +40,7 @@ dependencies = [
 ]
 
 [tool.setuptools.packages.find]
-where = [".."]
+where = ["src"]
 include = ["whatsthatfish*"]
 
 [tool.pytest.ini_options]
@@ -49,3 +49,13 @@ testpaths = ["tests"]
 
 [tool.uv.sources]
 clip = { git = "https://github.com/openai/CLIP.git" }
+
+[dependency-groups]
+dev = [
+    "jupyter>=1.1.1",
+]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+

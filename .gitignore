@@ -12,7 +12,7 @@ wheels/
 # Env variables
 .env
 /src/config
-/data
+data/
 uv.lock
 /logs
 /src/notebooks
@@ -22,3 +22,5 @@ uv.lock
 /src/preprocessing/notebooks/images.txt
 /src/data/
 /runs
+**/runs/*/*/weights/
+**/data/

@@ -1,0 +1,28 @@
+# ── LC1 fine-tuning config ────────────────────────────────────────────────────
+# Fine-tuning od_best.pt on iNat pseudo-labelled data (UIQM top-ranked, fish only).
+# lr0/box/weight_decay are swept by Ray Tune — values here apply to train_final only.
+# cls and dfl are fixed (not tuned): pseudo-labels don't warrant tight edge distributions.
+
+# ── Data ─────────────────────────────────────────────────────────────────────
+imgsz: 640
+
+# ── Training schedule ────────────────────────────────────────────────────────
+epochs: 50
+batch: 16
+patience: 20
+optimizer: SGD
+lr0: 5e-4
+lrf: 0.01
+momentum: 0.937
+weight_decay: 5e-4
+warmup_epochs: 1
+warmup_momentum: 0.8
+warmup_bias_lr: 0.01
+
+# ── Loss ─────────────────────────────────────────────────────────────────────
+box: 7.0
+cls: 0.4
+dfl: 1.0
+
+# ── Transfer learning ────────────────────────────────────────────────────────
+freeze: 5

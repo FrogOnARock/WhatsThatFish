@@ -1,0 +1,1525 @@
+2026-05-23 17:44:53,933 - INFO - Loaded 3,673,783 completed transfers from DB
+2026-05-23 17:44:53,933 - INFO - Total completed transfers: 3,673,783
+2026-05-23 17:44:54,844 - INFO - Dataset: 3,676,182 total photos, 3,673,783 already transferred, 2,399 remaining
+2026-05-23 17:44:54,988 - INFO - Starting transfer of 2,399 photos with concurrency=50
+2026-05-23 17:44:55,429 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/197319514/medium.jpg'
+2026-05-23 17:44:55,430 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216819/medium.jpg'
+2026-05-23 17:44:55,431 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/214816124/medium.jpg'
+2026-05-23 17:44:55,439 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/192724527/medium.jpg'
+2026-05-23 17:44:55,441 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/166516404/medium.jpg'
+2026-05-23 17:44:57,042 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546477367/medium.jpg'
+2026-05-23 17:44:58,145 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542769015/medium.jpg'
+2026-05-23 17:45:01,592 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741479/medium.jpg'
+2026-05-23 17:45:02,010 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161538/medium.jpg'
+2026-05-23 17:45:02,192 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549377421/medium.jpg'
+2026-05-23 17:45:03,372 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/166516385/medium.jpg'
+2026-05-23 17:45:03,447 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216611/medium.jpg'
+2026-05-23 17:45:03,448 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217185/medium.jpg'
+2026-05-23 17:45:03,448 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217265/medium.jpg'
+2026-05-23 17:45:03,504 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/197319543/medium.jpg'
+2026-05-23 17:45:04,484 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563050450/medium.jpg'
+2026-05-23 17:45:04,609 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563054651/medium.jpg'
+2026-05-23 17:45:04,902 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546458459/medium.jpg'
+2026-05-23 17:45:05,172 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546495613/medium.jpg'
+2026-05-23 17:45:17,567 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741311/medium.jpg'
+2026-05-23 17:45:17,845 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389207895/medium.jpg'
+2026-05-23 17:45:17,847 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208369/medium.jpg'
+2026-05-23 17:45:17,912 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161464/medium.jpg'
+2026-05-23 17:45:17,927 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389207853/medium.jpg'
+2026-05-23 17:45:18,068 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208046/medium.jpg'
+2026-05-23 17:45:20,353 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549402841/medium.jpg'
+2026-05-23 17:45:25,095 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/583677476/medium.jpg'
+2026-05-23 17:45:42,880 - WARNING - Error transferring photo 66676757: 
+2026-05-23 17:45:45,269 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548348136/medium.jpg'
+2026-05-23 17:45:45,667 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548348161/medium.jpg'
+2026-05-23 17:45:53,879 - WARNING - Error transferring photo 150679480: 
+2026-05-23 17:45:54,417 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549402476/medium.jpg'
+2026-05-23 17:45:54,879 - WARNING - Error transferring photo 611383433: 
+2026-05-23 17:45:57,999 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563054676/medium.jpg'
+2026-05-23 17:45:58,092 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563055923/medium.jpg'
+2026-05-23 17:46:00,867 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546471179/medium.jpg'
+2026-05-23 17:46:00,879 - WARNING - Error transferring photo 60516791: 
+2026-05-23 17:46:05,880 - WARNING - Error transferring photo 573311844: 
+2026-05-23 17:46:10,879 - WARNING - Error transferring photo 260189064: 
+2026-05-23 17:46:12,116 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548343435/medium.jpg'
+2026-05-23 17:46:13,286 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741444/medium.jpg'
+2026-05-23 17:46:13,570 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161825/medium.jpg'
+2026-05-23 17:46:13,795 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549376562/medium.jpg'
+2026-05-23 17:46:13,880 - WARNING - Error transferring photo 72178486: 
+2026-05-23 17:46:13,881 - WARNING - Error transferring photo 607284189: 
+2026-05-23 17:46:13,881 - WARNING - Error transferring photo 30651910: 
+2026-05-23 17:46:14,085 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549421805/medium.jpg'
+2026-05-23 17:46:14,586 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/166516435/medium.jpg'
+2026-05-23 17:46:14,586 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/192724588/medium.jpg'
+2026-05-23 17:46:14,937 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/197319531/medium.jpg'
+2026-05-23 17:46:16,881 - WARNING - Error transferring photo 242033986: 
+2026-05-23 17:46:18,673 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216792/medium.jpg'
+2026-05-23 17:46:18,880 - WARNING - Error transferring photo 301634261: 
+2026-05-23 17:46:19,879 - WARNING - Error transferring photo 182453475: 
+2026-05-23 17:46:20,443 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542770106/medium.jpg'
+2026-05-23 17:46:20,880 - WARNING - Error transferring photo 302961623: 
+2026-05-23 17:46:20,881 - WARNING - Error transferring photo 157406909: 
+2026-05-23 17:46:21,879 - WARNING - Error transferring photo 573312099: 
+2026-05-23 17:46:22,880 - WARNING - Error transferring photo 241978465: 
+2026-05-23 17:46:23,880 - WARNING - Error transferring photo 400003626: 
+2026-05-23 17:46:24,880 - WARNING - Error transferring photo 602620174: 
+2026-05-23 17:46:25,879 - WARNING - Error transferring photo 170432800: 
+2026-05-23 17:46:27,880 - WARNING - Error transferring photo 150571562: 
+2026-05-23 17:46:27,880 - WARNING - Error transferring photo 324532731: 
+2026-05-23 17:46:27,881 - WARNING - Error transferring photo 242041866: 
+2026-05-23 17:46:29,961 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741370/medium.jpg'
+2026-05-23 17:46:30,115 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288858198/medium.jpg'
+2026-05-23 17:46:30,123 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288858173/medium.jpg'
+2026-05-23 17:46:32,879 - WARNING - Error transferring photo 59445549: 
+2026-05-23 17:46:34,879 - WARNING - Error transferring photo 573559988: 
+2026-05-23 17:46:35,136 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549421953/medium.jpg'
+2026-05-23 17:46:35,880 - WARNING - Error transferring photo 22132519: 
+2026-05-23 17:46:35,880 - WARNING - Error transferring photo 22132656: 
+2026-05-23 17:46:35,881 - WARNING - Error transferring photo 590685895: 
+2026-05-23 17:46:36,880 - WARNING - Error transferring photo 384936845: 
+2026-05-23 17:46:37,880 - WARNING - Error transferring photo 489465645: 
+2026-05-23 17:46:37,880 - WARNING - Error transferring photo 631606766: 
+2026-05-23 17:46:37,952 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217245/medium.jpg'
+2026-05-23 17:46:38,879 - WARNING - Error transferring photo 617008662: 
+2026-05-23 17:46:38,880 - WARNING - Error transferring photo 400003767: 
+2026-05-23 17:46:38,880 - WARNING - Error transferring photo 150350219: 
+2026-05-23 17:46:39,883 - WARNING - Error transferring photo 344040559: 
+2026-05-23 17:46:39,884 - WARNING - Error transferring photo 150690718: 
+2026-05-23 17:46:40,145 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546457271/medium.jpg'
+2026-05-23 17:46:40,454 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546477227/medium.jpg'
+2026-05-23 17:46:40,455 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546478929/medium.jpg'
+2026-05-23 17:46:40,641 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542768466/medium.jpg'
+2026-05-23 17:46:42,807 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548340137/medium.jpg'
+2026-05-23 17:46:42,880 - WARNING - Error transferring photo 233307743: 
+2026-05-23 17:46:43,231 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/209254163/medium.jpg'
+2026-05-23 17:46:43,880 - WARNING - Error transferring photo 233307371: 
+2026-05-23 17:46:43,889 - WARNING - Error transferring photo 394487102: 
+2026-05-23 17:46:44,880 - WARNING - Error transferring photo 292210818: 
+2026-05-23 17:46:44,922 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389207685/medium.jpg'
+2026-05-23 17:46:48,880 - WARNING - Error transferring photo 309885595: 
+2026-05-23 17:46:48,881 - WARNING - Error transferring photo 150588171: 
+2026-05-23 17:46:49,880 - WARNING - Error transferring photo 388720505: 
+2026-05-23 17:46:50,879 - WARNING - Error transferring photo 310543022: 
+2026-05-23 17:46:52,880 - WARNING - Error transferring photo 63704548: 
+2026-05-23 17:46:52,960 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217218/medium.jpg'
+2026-05-23 17:46:53,046 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216946/medium.jpg'
+2026-05-23 17:46:53,721 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546471435/medium.jpg'
+2026-05-23 18:19:06,802 - INFO - Loaded 3,673,783 completed transfers from DB
+2026-05-23 18:19:06,805 - INFO - Replayed 881 WAL entries
+2026-05-23 18:19:06,805 - INFO - Total completed transfers: 3,674,664
+2026-05-23 18:19:07,745 - INFO - Dataset: 4,034,913 total photos, 3,674,664 already transferred, 360,249 remaining
+2026-05-23 18:19:07,905 - INFO - Starting transfer of 360,249 photos with concurrency=50
+2026-05-23 18:19:11,835 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217185/medium.jpg'
+2026-05-23 18:19:11,837 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208369/medium.jpg'
+2026-05-23 18:19:11,859 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546495613/medium.jpg'
+2026-05-23 18:19:11,859 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389207853/medium.jpg'
+2026-05-23 18:19:11,860 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542769015/medium.jpg'
+2026-05-23 18:19:11,860 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549402841/medium.jpg'
+2026-05-23 18:19:11,862 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/166516404/medium.jpg'
+2026-05-23 18:19:11,863 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217265/medium.jpg'
+2026-05-23 18:19:11,863 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563054651/medium.jpg'
+2026-05-23 18:19:11,863 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161464/medium.jpg'
+2026-05-23 18:19:11,865 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741479/medium.jpg'
+2026-05-23 18:19:11,865 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389207895/medium.jpg'
+2026-05-23 18:19:11,865 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549377421/medium.jpg'
+2026-05-23 18:19:11,866 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/197319514/medium.jpg'
+2026-05-23 18:19:11,866 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/197319543/medium.jpg'
+2026-05-23 18:19:11,867 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546477367/medium.jpg'
+2026-05-23 18:19:11,869 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563050450/medium.jpg'
+2026-05-23 18:19:11,869 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216819/medium.jpg'
+2026-05-23 18:19:11,870 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/192724527/medium.jpg'
+2026-05-23 18:19:11,871 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/214816124/medium.jpg'
+2026-05-23 18:19:11,871 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216611/medium.jpg'
+2026-05-23 18:19:11,872 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/166516385/medium.jpg'
+2026-05-23 18:19:11,875 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161538/medium.jpg'
+2026-05-23 18:19:11,875 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208046/medium.jpg'
+2026-05-23 18:19:11,876 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741311/medium.jpg'
+2026-05-23 18:19:11,879 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546458459/medium.jpg'
+2026-05-23 18:19:11,884 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/583677476/medium.jpg'
+2026-05-23 18:19:11,911 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548348161/medium.jpg'
+2026-05-23 18:19:11,920 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548348136/medium.jpg'
+2026-05-23 18:19:11,925 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563055923/medium.jpg'
+2026-05-23 18:19:12,020 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549402476/medium.jpg'
+2026-05-23 18:19:12,020 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546471179/medium.jpg'
+2026-05-23 18:19:12,021 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548343435/medium.jpg'
+2026-05-23 18:19:12,022 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563054676/medium.jpg'
+2026-05-23 18:19:12,215 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741444/medium.jpg'
+2026-05-23 18:19:12,234 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161825/medium.jpg'
+2026-05-23 18:19:12,545 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549421805/medium.jpg'
+2026-05-23 18:19:12,923 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549376562/medium.jpg'
+2026-05-23 18:19:13,000 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/166516435/medium.jpg'
+2026-05-23 18:19:13,572 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/192724588/medium.jpg'
+2026-05-23 18:19:13,657 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/197319531/medium.jpg'
+2026-05-23 18:19:14,397 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216792/medium.jpg'
+2026-05-23 18:20:08,749 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542770106/medium.jpg'
+2026-05-23 18:20:12,880 - WARNING - Error transferring photo 611383433: 
+2026-05-23 18:20:12,881 - WARNING - Error transferring photo 388720505: 
+2026-05-23 18:20:13,881 - WARNING - Error transferring photo 292210818: 
+2026-05-23 18:20:13,881 - WARNING - Error transferring photo 384936845: 
+2026-05-23 18:20:13,882 - WARNING - Error transferring photo 150679480: 
+2026-05-23 18:20:14,880 - WARNING - Error transferring photo 489465645: 
+2026-05-23 18:20:14,881 - WARNING - Error transferring photo 302961623: 
+2026-05-23 18:20:14,881 - WARNING - Error transferring photo 617008662: 
+2026-05-23 18:20:15,341 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741370/medium.jpg'
+2026-05-23 18:20:15,510 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288858173/medium.jpg'
+2026-05-23 18:20:15,865 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288858198/medium.jpg'
+2026-05-23 18:20:15,881 - WARNING - Error transferring photo 150571562: 
+2026-05-23 18:20:15,881 - WARNING - Error transferring photo 66676757: 
+2026-05-23 18:20:16,332 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549421953/medium.jpg'
+2026-05-23 18:20:16,880 - WARNING - Error transferring photo 260189064: 
+2026-05-23 18:20:17,880 - WARNING - Error transferring photo 590685895: 
+2026-05-23 18:20:17,881 - WARNING - Error transferring photo 364782181: 
+2026-05-23 18:20:17,881 - WARNING - Error transferring photo 182453475: 
+2026-05-23 18:20:18,567 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546457271/medium.jpg'
+2026-05-23 18:20:18,569 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217245/medium.jpg'
+2026-05-23 18:20:18,902 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546478929/medium.jpg'
+2026-05-23 18:20:18,957 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546477227/medium.jpg'
+2026-05-23 18:20:19,320 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542768466/medium.jpg'
+2026-05-23 18:20:19,880 - WARNING - Error transferring photo 53848851: 
+2026-05-23 18:20:20,880 - WARNING - Error transferring photo 30651910: 
+2026-05-23 18:20:20,881 - WARNING - Error transferring photo 22132656: 
+2026-05-23 18:20:20,881 - WARNING - Error transferring photo 22132519: 
+2026-05-23 18:20:20,881 - WARNING - Error transferring photo 157406909: 
+2026-05-23 18:20:21,880 - WARNING - Error transferring photo 170432800: 
+2026-05-23 18:20:21,880 - WARNING - Error transferring photo 324532731: 
+2026-05-23 18:20:22,331 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548340137/medium.jpg'
+2026-05-23 18:20:22,428 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/209254163/medium.jpg'
+2026-05-23 18:20:23,880 - WARNING - Error transferring photo 182441054: 
+2026-05-23 18:20:23,880 - WARNING - Error transferring photo 150588171: 
+2026-05-23 18:20:23,881 - WARNING - Error transferring photo 301634261: 
+2026-05-23 18:20:23,881 - WARNING - Error transferring photo 607284189: 
+2026-05-23 18:20:24,917 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389207685/medium.jpg'
+2026-05-23 18:20:25,880 - WARNING - Error transferring photo 394487102: 
+2026-05-23 18:20:26,880 - WARNING - Error transferring photo 241978465: 
+2026-05-23 18:20:26,880 - WARNING - Error transferring photo 150690718: 
+2026-05-23 18:20:27,879 - WARNING - Error transferring photo 573312099: 
+2026-05-23 18:20:27,880 - WARNING - Error transferring photo 170433325: 
+2026-05-23 18:20:28,378 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216946/medium.jpg'
+2026-05-23 18:20:28,881 - WARNING - Error transferring photo 150350219: 
+2026-05-23 18:20:28,881 - WARNING - Error transferring photo 63704548: 
+2026-05-23 18:20:28,916 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217218/medium.jpg'
+2026-05-23 18:20:29,880 - WARNING - Error transferring photo 72178486: 
+2026-05-23 18:20:29,880 - WARNING - Error transferring photo 602620174: 
+2026-05-23 18:20:30,880 - WARNING - Error transferring photo 344040559: 
+2026-05-23 18:20:30,881 - WARNING - Error transferring photo 631606766: 
+2026-05-23 18:20:31,435 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546471435/medium.jpg'
+2026-05-23 18:20:32,880 - WARNING - Error transferring photo 242041866: 
+2026-05-23 18:20:33,880 - WARNING - Error transferring photo 400003626: 
+2026-05-23 18:20:33,880 - WARNING - Error transferring photo 400003767: 
+2026-05-23 18:20:33,881 - WARNING - Error transferring photo 242033986: 
+2026-05-23 18:20:34,880 - WARNING - Error transferring photo 588198982: 
+2026-05-23 18:20:34,880 - WARNING - Error transferring photo 210243820: 
+2026-05-23 18:20:35,880 - WARNING - Error transferring photo 281543148: 
+2026-05-23 18:20:35,881 - WARNING - Error transferring photo 573559988: 
+2026-05-23 18:20:35,982 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548341568/medium.jpg'
+2026-05-23 18:20:36,880 - WARNING - Error transferring photo 417140435: 
+2026-05-23 18:20:36,881 - WARNING - Error transferring photo 233307743: 
+2026-05-23 18:20:36,881 - WARNING - Error transferring photo 59445549: 
+2026-05-23 18:20:36,882 - WARNING - Error transferring photo 233307371: 
+2026-05-23 18:20:37,055 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/565872617/medium.jpg'
+2026-05-23 18:20:39,592 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/192724386/medium.jpg'
+2026-05-23 18:20:40,257 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216541/medium.jpg'
+2026-05-23 18:20:40,850 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563050423/medium.jpg'
+2026-05-23 18:20:40,881 - WARNING - Error transferring photo 213740748: 
+2026-05-23 18:20:41,880 - WARNING - Error transferring photo 216810467: 
+2026-05-23 18:20:41,977 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546500846/medium.jpg'
+2026-05-23 18:20:45,280 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548343092/medium.jpg'
+2026-05-23 18:20:45,880 - WARNING - Error transferring photo 445994947: 
+2026-05-23 18:20:46,345 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161506/medium.jpg'
+2026-05-23 18:20:46,585 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/166516419/medium.jpg'
+2026-05-23 18:20:47,396 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546490009/medium.jpg'
+2026-05-23 18:20:47,973 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542766078/medium.jpg'
+2026-05-23 18:20:48,940 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/3484734/medium.JPG'
+2026-05-23 18:20:49,879 - WARNING - Error transferring photo 444445967: 
+2026-05-23 18:20:54,685 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/209254132/medium.jpg'
+2026-05-23 18:20:55,255 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/209254064/medium.jpg'
+2026-05-23 18:20:55,880 - WARNING - Error transferring photo 102578966: 
+2026-05-23 18:20:56,880 - WARNING - Error transferring photo 209581043: 
+2026-05-23 18:20:56,990 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208979/medium.jpg'
+2026-05-23 18:20:57,071 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549421999/medium.jpg'
+2026-05-23 18:20:58,322 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/192724490/medium.jpg'
+2026-05-23 18:20:58,718 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563054630/medium.jpg'
+2026-05-23 18:20:58,805 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563054587/medium.jpg'
+2026-05-23 18:20:58,850 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216898/medium.jpg'
+2026-05-23 18:20:59,380 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546471343/medium.jpg'
+2026-05-23 18:20:59,880 - WARNING - Error transferring photo 227584806: 
+2026-05-23 18:20:59,881 - WARNING - Error transferring photo 183412943: 
+2026-05-23 18:21:01,880 - WARNING - Error transferring photo 625381691: 
+2026-05-23 18:21:02,880 - WARNING - Error transferring photo 535860207: 
+2026-05-23 18:21:02,881 - WARNING - Error transferring photo 107110644: 
+2026-05-23 18:21:03,742 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548346404/medium.jpg'
+2026-05-23 18:21:03,986 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548343117/medium.jpg'
+2026-05-23 18:21:04,177 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548338643/medium.jpg'
+2026-05-23 18:21:06,514 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389207753/medium.jpg'
+2026-05-23 18:21:07,880 - WARNING - Error transferring photo 423980130: 
+2026-05-23 18:21:08,879 - WARNING - Error transferring photo 65009109: 
+2026-05-23 18:21:09,880 - WARNING - Error transferring photo 150350564: 
+2026-05-23 18:21:10,879 - WARNING - Error transferring photo 629318667: 
+2026-05-23 18:21:11,304 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549398410/medium.jpg'
+2026-05-23 18:21:11,803 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/192724450/medium.jpg'
+2026-05-23 18:21:14,880 - WARNING - Error transferring photo 210243590: 
+2026-05-23 18:21:15,115 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217162/medium.jpg'
+2026-05-23 18:21:15,155 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546479084/medium.jpg'
+2026-05-23 18:21:15,578 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546488847/medium.jpg'
+2026-05-23 18:21:15,880 - WARNING - Error transferring photo 182579448: 
+2026-05-23 18:21:16,277 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542770846/medium.jpg'
+2026-05-23 18:21:16,880 - WARNING - Error transferring photo 541638078: 
+2026-05-23 18:21:18,880 - WARNING - Error transferring photo 397137780: 
+2026-05-23 18:21:21,880 - WARNING - Error transferring photo 391262629: 
+2026-05-23 18:21:25,833 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548347534/medium.jpg'
+2026-05-23 18:21:25,880 - WARNING - Error transferring photo 2812933: 
+2026-05-23 18:21:26,478 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/581923448/medium.jpg'
+2026-05-23 18:21:26,880 - WARNING - Error transferring photo 294978360: 
+2026-05-23 18:21:27,880 - WARNING - Error transferring photo 610905594: 
+2026-05-23 18:21:29,664 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/964786/medium.jpg'
+2026-05-23 18:21:29,990 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741522/medium.jpg'
+2026-05-23 18:21:30,092 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741326/medium.jpg'
+2026-05-23 18:21:30,299 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741340/medium.jpg'
+2026-05-23 18:21:30,388 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741300/medium.jpg'
+2026-05-23 18:21:30,434 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389207818/medium.jpg'
+2026-05-23 18:21:30,863 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549391443/medium.jpg'
+2026-05-23 18:21:30,880 - WARNING - Error transferring photo 246823743: 
+2026-05-23 18:21:30,880 - WARNING - Error transferring photo 354587370: 
+2026-05-23 18:21:31,162 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549391158/medium.jpg'
+2026-05-23 18:21:31,880 - WARNING - Error transferring photo 439626609: 
+2026-05-23 18:21:32,880 - WARNING - Error transferring photo 217082951: 
+2026-05-23 18:21:34,879 - WARNING - Error transferring photo 233307301: 
+2026-05-23 18:21:34,880 - WARNING - Error transferring photo 65009234: 
+2026-05-23 18:21:36,728 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217088/medium.jpg'
+2026-05-23 18:21:36,880 - WARNING - Error transferring photo 585135554: 
+2026-05-23 18:21:38,050 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563054311/medium.jpg'
+2026-05-23 18:21:38,881 - WARNING - Error transferring photo 445066566: 
+2026-05-23 18:21:38,881 - WARNING - Error transferring photo 150591125: 
+2026-05-23 18:21:39,644 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546481649/medium.jpg'
+2026-05-23 18:21:39,880 - WARNING - Error transferring photo 150587908: 
+2026-05-23 18:21:40,880 - WARNING - Error transferring photo 234712739: 
+2026-05-23 18:21:42,021 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548343415/medium.jpg'
+2026-05-23 18:21:42,128 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/155768906/medium.jpg'
+2026-05-23 18:21:42,880 - WARNING - Error transferring photo 150575673: 
+2026-05-23 18:21:42,880 - WARNING - Error transferring photo 203769853: 
+2026-05-23 18:21:44,880 - WARNING - Error transferring photo 622458164: 
+2026-05-23 18:21:46,859 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549377787/medium.jpg'
+2026-05-23 18:21:46,881 - WARNING - Error transferring photo 233308065: 
+2026-05-23 18:21:46,881 - WARNING - Error transferring photo 397132904: 
+2026-05-23 18:21:47,442 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549422113/medium.jpg'
+2026-05-23 18:21:47,804 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/214816106/medium.jpg'
+2026-05-23 18:21:49,880 - WARNING - Error transferring photo 210242154: 
+2026-05-23 18:21:49,880 - WARNING - Error transferring photo 150586506: 
+2026-05-23 18:21:56,066 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542769588/medium.jpg'
+2026-05-23 18:21:56,880 - WARNING - Error transferring photo 70699012: 
+2026-05-23 18:21:57,879 - WARNING - Error transferring photo 573563165: 
+2026-05-23 18:21:57,879 - WARNING - Error transferring photo 296601126: 
+2026-05-23 18:21:59,880 - WARNING - Error transferring photo 150670220: 
+2026-05-23 18:22:00,631 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548343396/medium.jpg'
+2026-05-23 18:22:00,655 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/155768926/medium.jpg'
+2026-05-23 18:22:00,656 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/241200/medium.jpeg'
+2026-05-23 18:22:00,880 - WARNING - Error transferring photo 242024334: 
+2026-05-23 18:22:01,880 - WARNING - Error transferring photo 605205453: 
+2026-05-23 18:22:01,880 - WARNING - Error transferring photo 297487662: 
+2026-05-23 18:22:06,709 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216993/medium.jpg'
+2026-05-23 18:22:06,789 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/192724555/medium.jpg'
+2026-05-23 18:22:06,880 - WARNING - Error transferring photo 128352884: 
+2026-05-23 18:22:06,949 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/583677500/medium.jpg'
+2026-05-23 18:22:07,343 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216438/medium.jpg'
+2026-05-23 18:22:09,879 - WARNING - Error transferring photo 241978753: 
+2026-05-23 18:22:12,882 - WARNING - Error transferring photo 16954435: 
+2026-05-23 18:22:14,880 - WARNING - Error transferring photo 148110997: 
+2026-05-23 18:22:16,879 - WARNING - Error transferring photo 476477836: 
+2026-05-23 18:22:17,880 - WARNING - Error transferring photo 259974336: 
+2026-05-23 18:22:19,880 - WARNING - Error transferring photo 441238983: 
+2026-05-23 18:22:22,880 - WARNING - Error transferring photo 350007389: 
+2026-05-23 18:22:22,881 - WARNING - Error transferring photo 631608120: 
+2026-05-23 18:22:24,880 - WARNING - Error transferring photo 581567314: 
+2026-05-23 18:22:24,880 - WARNING - Error transferring photo 150694757: 
+2026-05-23 18:22:24,880 - WARNING - Error transferring photo 541517850: 
+2026-05-23 18:22:25,880 - WARNING - Error transferring photo 573697931: 
+2026-05-23 18:22:25,880 - WARNING - Error transferring photo 425151138: 
+2026-05-23 18:22:26,879 - WARNING - Error transferring photo 359064965: 
+2026-05-23 18:22:27,079 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741557/medium.jpg'
+2026-05-23 18:22:28,879 - WARNING - Error transferring photo 406213418: 
+2026-05-23 18:22:29,193 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549378321/medium.jpg'
+2026-05-23 18:22:29,211 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549404842/medium.jpg'
+2026-05-23 18:22:29,903 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/197319503/medium.jpg'
+2026-05-23 18:22:30,843 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216568/medium.jpg'
+2026-05-23 18:22:32,880 - WARNING - Error transferring photo 59414608: 
+2026-05-23 18:22:34,491 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563054393/medium.jpg'
+2026-05-23 18:22:34,765 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563054610/medium.jpg'
+2026-05-23 18:22:34,826 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563050571/medium.jpg'
+2026-05-23 18:22:34,952 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/3484753/medium.JPG'
+2026-05-23 18:22:37,879 - WARNING - Error transferring photo 324173302: 
+2026-05-23 18:22:38,880 - WARNING - Error transferring photo 182504933: 
+2026-05-23 18:22:39,880 - WARNING - Error transferring photo 176521134: 
+2026-05-23 18:22:40,880 - WARNING - Error transferring photo 408266901: 
+2026-05-23 18:22:40,880 - WARNING - Error transferring photo 511225987: 
+2026-05-23 18:22:41,098 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/209254030/medium.jpg'
+2026-05-23 18:22:41,880 - WARNING - Error transferring photo 150572271: 
+2026-05-23 18:22:41,881 - WARNING - Error transferring photo 220898929: 
+2026-05-23 18:22:41,881 - WARNING - Error transferring photo 364783368: 
+2026-05-23 18:22:42,879 - WARNING - Error transferring photo 58911660: 
+2026-05-23 18:22:42,880 - WARNING - Error transferring photo 59437452: 
+2026-05-23 18:22:43,791 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741356/medium.jpg'
+2026-05-23 18:22:43,859 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288858141/medium.jpg'
+2026-05-23 18:22:43,880 - WARNING - Error transferring photo 224770376: 
+2026-05-23 18:22:44,389 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208403/medium.jpg'
+2026-05-23 18:22:44,391 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208331/medium.jpg'
+2026-05-23 18:22:44,395 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161759/medium.jpg'
+2026-05-23 18:22:44,780 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208824/medium.jpg'
+2026-05-23 18:22:45,832 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549402351/medium.jpg'
+2026-05-23 18:22:45,879 - WARNING - Error transferring photo 150690271: 
+2026-05-23 18:22:45,899 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549399956/medium.jpg'
+2026-05-23 18:22:46,879 - WARNING - Error transferring photo 112490811: 
+2026-05-23 18:22:46,880 - WARNING - Error transferring photo 611385983: 
+2026-05-23 18:22:46,880 - WARNING - Error transferring photo 150371504: 
+2026-05-23 18:22:48,602 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550217133/medium.jpg'
+2026-05-23 18:22:48,880 - WARNING - Error transferring photo 297503684: 
+2026-05-23 18:22:48,881 - WARNING - Error transferring photo 227615872: 
+2026-05-23 18:22:50,879 - WARNING - Error transferring photo 611385080: 
+2026-05-23 18:22:51,880 - WARNING - Error transferring photo 409165591: 
+2026-05-23 18:22:51,950 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542768941/medium.jpg'
+2026-05-23 18:22:52,719 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542768494/medium.jpg'
+2026-05-23 18:22:52,880 - WARNING - Error transferring photo 359064771: 
+2026-05-23 18:22:53,879 - WARNING - Error transferring photo 359065192: 
+2026-05-23 18:22:55,880 - WARNING - Error transferring photo 229461679: 
+2026-05-23 18:22:56,880 - WARNING - Error transferring photo 594860545: 
+2026-05-23 18:22:57,234 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548341213/medium.jpg'
+2026-05-23 18:22:57,350 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548348905/medium.jpg'
+2026-05-23 18:22:57,351 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548339336/medium.jpg'
+2026-05-23 18:23:00,880 - WARNING - Error transferring photo 400292627: 
+2026-05-23 18:23:01,395 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161718/medium.jpg'
+2026-05-23 18:23:01,879 - WARNING - Error transferring photo 177010255: 
+2026-05-23 18:23:02,880 - WARNING - Error transferring photo 247439692: 
+2026-05-23 18:23:03,740 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/214816092/medium.jpg'
+2026-05-23 18:23:03,880 - WARNING - Error transferring photo 166508850: 
+2026-05-23 18:23:06,880 - WARNING - Error transferring photo 105755959: 
+2026-05-23 18:23:07,864 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546489034/medium.jpg'
+2026-05-23 18:23:07,880 - WARNING - Error transferring photo 526962759: 
+2026-05-23 18:23:08,879 - WARNING - Error transferring photo 281501815: 
+2026-05-23 18:23:09,880 - WARNING - Error transferring photo 150583174: 
+2026-05-23 18:23:10,880 - WARNING - Error transferring photo 228569346: 
+2026-05-23 18:23:11,880 - WARNING - Error transferring photo 549495305: 
+2026-05-23 18:23:12,547 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/564112529/medium.jpg'
+2026-05-23 18:23:12,844 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/564112457/medium.jpg'
+2026-05-23 18:23:13,880 - WARNING - Error transferring photo 150681253: 
+2026-05-23 18:23:17,879 - WARNING - Error transferring photo 59448242: 
+2026-05-23 18:23:20,880 - WARNING - Error transferring photo 528772793: 
+2026-05-23 18:23:22,880 - WARNING - Error transferring photo 91494353: 
+2026-05-23 18:23:23,454 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548349283/medium.jpg'
+2026-05-23 18:23:24,112 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548346299/medium.jpg'
+2026-05-23 18:23:24,675 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/718561/medium.jpg'
+2026-05-23 18:23:24,733 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741460/medium.jpg'
+2026-05-23 18:23:24,881 - WARNING - Error transferring photo 150690363: 
+2026-05-23 18:23:25,344 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161585/medium.jpg'
+2026-05-23 18:23:33,880 - WARNING - Error transferring photo 242041840: 
+2026-05-23 18:23:34,423 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549391791/medium.jpg'
+2026-05-23 18:23:36,880 - WARNING - Error transferring photo 215571262: 
+2026-05-23 18:23:37,880 - WARNING - Error transferring photo 602718704: 
+2026-05-23 18:23:38,880 - WARNING - Error transferring photo 246823796: 
+2026-05-23 18:23:38,880 - WARNING - Error transferring photo 72184544: 
+2026-05-23 18:23:38,880 - WARNING - Error transferring photo 359065187: 
+2026-05-23 18:23:39,880 - WARNING - Error transferring photo 150586607: 
+2026-05-23 18:23:41,880 - WARNING - Error transferring photo 290418300: 
+2026-05-23 18:23:42,489 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216856/medium.jpg'
+2026-05-23 18:23:42,880 - WARNING - Error transferring photo 295369136: 
+2026-05-23 18:23:42,880 - WARNING - Error transferring photo 359065146: 
+2026-05-23 18:23:43,172 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563055635/medium.jpg'
+2026-05-23 18:23:46,880 - WARNING - Error transferring photo 60517498: 
+2026-05-23 18:23:47,880 - WARNING - Error transferring photo 111463182: 
+2026-05-23 18:23:47,880 - WARNING - Error transferring photo 309876795: 
+2026-05-23 18:23:48,880 - WARNING - Error transferring photo 150692197: 
+2026-05-23 18:23:50,879 - WARNING - Error transferring photo 626860385: 
+2026-05-23 18:23:51,879 - WARNING - Error transferring photo 423112933: 
+2026-05-23 18:23:52,879 - WARNING - Error transferring photo 140744873: 
+2026-05-23 18:23:54,879 - WARNING - Error transferring photo 166017628: 
+2026-05-23 18:23:54,880 - WARNING - Error transferring photo 247943091: 
+2026-05-23 18:23:55,880 - WARNING - Error transferring photo 224567719: 
+2026-05-23 18:23:56,880 - WARNING - Error transferring photo 514422103: 
+2026-05-23 18:23:57,255 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/22337441/medium.jpg'
+2026-05-23 18:23:58,016 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741392/medium.jpg'
+2026-05-23 18:23:58,271 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161619/medium.jpg'
+2026-05-23 18:23:58,403 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208862/medium.jpg'
+2026-05-23 18:23:58,880 - WARNING - Error transferring photo 571732527: 
+2026-05-23 18:23:59,880 - WARNING - Error transferring photo 441627311: 
+2026-05-23 18:24:00,382 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549405534/medium.jpg'
+2026-05-23 18:24:00,424 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549376505/medium.jpg'
+2026-05-23 18:24:00,880 - WARNING - Error transferring photo 295372356: 
+2026-05-23 18:24:00,880 - WARNING - Error transferring photo 163411030: 
+2026-05-23 18:24:02,880 - WARNING - Error transferring photo 505558712: 
+2026-05-23 18:24:03,368 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216721/medium.jpg'
+2026-05-23 18:24:03,880 - WARNING - Error transferring photo 176113904: 
+2026-05-23 18:24:05,881 - WARNING - Error transferring photo 177485102: 
+2026-05-23 18:24:06,782 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546497893/medium.jpg'
+2026-05-23 18:24:06,879 - WARNING - Error transferring photo 269262258: 
+2026-05-23 18:24:07,879 - WARNING - Error transferring photo 594879778: 
+2026-05-23 18:24:07,948 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542770027/medium.jpg'
+2026-05-23 18:24:08,879 - WARNING - Error transferring photo 91341754: 
+2026-05-23 18:24:08,879 - WARNING - Error transferring photo 591841801: 
+2026-05-23 18:24:08,880 - WARNING - Error transferring photo 165934863: 
+2026-05-23 18:24:08,880 - WARNING - Error transferring photo 177008928: 
+2026-05-23 18:24:08,880 - WARNING - Error transferring photo 489295077: 
+2026-05-23 18:24:08,880 - WARNING - Error transferring photo 182702452: 
+2026-05-23 18:24:09,880 - WARNING - Error transferring photo 59437574: 
+2026-05-23 18:24:11,880 - WARNING - Error transferring photo 240445425: 
+2026-05-23 18:24:12,879 - WARNING - Error transferring photo 150679384: 
+2026-05-23 18:24:12,879 - WARNING - Error transferring photo 309391762: 
+2026-05-23 18:24:13,861 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/209254100/medium.jpg'
+2026-05-23 18:24:13,873 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/209253982/medium.jpg'
+2026-05-23 18:24:13,879 - WARNING - Error transferring photo 625381797: 
+2026-05-23 18:24:13,879 - WARNING - Error transferring photo 183579762: 
+2026-05-23 18:24:13,879 - WARNING - Error transferring photo 213737120: 
+2026-05-23 18:24:14,879 - WARNING - Error transferring photo 602620199: 
+2026-05-23 18:24:14,880 - WARNING - Error transferring photo 233306911: 
+2026-05-23 18:24:15,880 - WARNING - Error transferring photo 549495441: 
+2026-05-23 18:24:16,970 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741538/medium.jpg'
+2026-05-23 18:24:17,880 - WARNING - Error transferring photo 565705632: 
+2026-05-23 18:24:18,296 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549405472/medium.jpg'
+2026-05-23 18:24:18,880 - WARNING - Error transferring photo 71565670: 
+2026-05-23 18:24:19,881 - WARNING - Error transferring photo 362981333: 
+2026-05-23 18:24:19,881 - WARNING - Error transferring photo 359180413: 
+2026-05-23 18:24:19,881 - WARNING - Error transferring photo 572204374: 
+2026-05-23 18:24:21,629 - INFO - Progress: 1,000 processed (633 OK, 367 failed) | 3,675,297/4,034,913 total complete
+2026-05-23 18:24:21,981 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563054337/medium.jpg'
+2026-05-23 18:24:23,572 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546562705/medium.jpg'
+2026-05-23 18:24:23,879 - WARNING - Error transferring photo 426538556: 
+2026-05-23 18:24:24,880 - WARNING - Error transferring photo 63703061: 
+2026-05-23 18:24:27,302 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/22338599/medium.jpg'
+2026-05-23 18:24:27,567 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161417/medium.jpg'
+2026-05-23 18:24:27,880 - WARNING - Error transferring photo 185125445: 
+2026-05-23 18:24:27,881 - WARNING - Error transferring photo 269348908: 
+2026-05-23 18:24:28,098 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/192724414/medium.jpg'
+2026-05-23 18:24:28,879 - WARNING - Error transferring photo 74172410: 
+2026-05-23 18:24:29,880 - WARNING - Error transferring photo 281501693: 
+2026-05-23 18:24:29,881 - WARNING - Error transferring photo 622168391: 
+2026-05-23 18:24:29,881 - WARNING - Error transferring photo 610908877: 
+2026-05-23 18:24:30,864 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/563055659/medium.jpg'
+2026-05-23 18:24:31,880 - WARNING - Error transferring photo 526956729: 
+2026-05-23 18:24:32,880 - WARNING - Error transferring photo 480843826: 
+2026-05-23 18:24:33,880 - WARNING - Error transferring photo 310704422: 
+2026-05-23 18:24:33,991 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/113719570/medium.jpg'
+2026-05-23 18:24:34,880 - WARNING - Error transferring photo 551978204: 
+2026-05-23 18:24:34,880 - WARNING - Error transferring photo 150575081: 
+2026-05-23 18:24:35,879 - WARNING - Error transferring photo 116870990: 
+2026-05-23 18:24:38,880 - WARNING - Error transferring photo 237390225: 
+2026-05-23 18:24:40,880 - WARNING - Error transferring photo 268010986: 
+2026-05-23 18:24:41,879 - WARNING - Error transferring photo 66678267: 
+2026-05-23 18:24:43,659 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/155768868/medium.jpg'
+2026-05-23 18:24:43,880 - WARNING - Error transferring photo 215571638: 
+2026-05-23 18:24:44,880 - WARNING - Error transferring photo 562934054: 
+2026-05-23 18:24:44,933 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548458157/medium.jpg'
+2026-05-23 18:24:45,711 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741502/medium.jpg'
+2026-05-23 18:24:45,803 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389207931/medium.jpg'
+2026-05-23 18:24:45,893 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389209036/medium.jpg'
+2026-05-23 18:24:45,906 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389209083/medium.jpg'
+2026-05-23 18:24:46,011 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/565872583/medium.jpg'
+2026-05-23 18:24:46,181 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/214816137/medium.jpg'
+2026-05-23 18:24:46,301 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216695/medium.jpg'
+2026-05-23 18:24:46,420 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216596/medium.jpg'
+2026-05-23 18:24:46,854 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/59328133/medium.jpg'
+2026-05-23 18:24:46,880 - WARNING - Error transferring photo 246466980: 
+2026-05-23 18:24:47,026 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/145723880/medium.jpeg'
+2026-05-23 18:24:47,880 - WARNING - Error transferring photo 150571999: 
+2026-05-23 18:24:48,880 - WARNING - Error transferring photo 555172289: 
+2026-05-23 18:24:49,880 - WARNING - Error transferring photo 576259274: 
+2026-05-23 18:24:49,880 - WARNING - Error transferring photo 300364607: 
+2026-05-23 18:24:50,109 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/155768959/medium.jpg'
+2026-05-23 18:24:50,879 - WARNING - Error transferring photo 199584596: 
+2026-05-23 18:24:50,880 - WARNING - Error transferring photo 426200843: 
+2026-05-23 18:24:52,222 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/288741284/medium.jpg'
+2026-05-23 18:24:52,519 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389161667/medium.jpg'
+2026-05-23 18:24:53,879 - WARNING - Error transferring photo 565708675: 
+2026-05-23 18:24:53,879 - WARNING - Error transferring photo 590685873: 
+2026-05-23 18:24:54,158 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549400561/medium.jpg'
+2026-05-23 18:24:54,158 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549422036/medium.jpg'
+2026-05-23 18:24:55,880 - WARNING - Error transferring photo 164680621: 
+2026-05-23 18:24:56,880 - WARNING - Error transferring photo 150693749: 
+2026-05-23 18:24:56,880 - WARNING - Error transferring photo 38978285: 
+2026-05-23 18:24:56,881 - WARNING - Error transferring photo 602620168: 
+2026-05-23 18:24:57,111 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/550216644/medium.jpg'
+2026-05-23 18:24:57,880 - WARNING - Error transferring photo 481156121: 
+2026-05-23 18:24:58,314 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546483342/medium.jpg'
+2026-05-23 18:24:58,880 - WARNING - Error transferring photo 481193549: 
+2026-05-23 18:24:59,324 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/59439865/medium.jpg'
+2026-05-23 18:24:59,881 - WARNING - Error transferring photo 150670155: 
+2026-05-23 18:25:00,880 - WARNING - Error transferring photo 221071268: 
+2026-05-23 18:25:01,879 - WARNING - Error transferring photo 341529938: 
+2026-05-23 18:25:02,880 - WARNING - Error transferring photo 569307123: 
+2026-05-23 18:25:02,880 - WARNING - Error transferring photo 150679809: 
+2026-05-23 18:25:03,880 - WARNING - Error transferring photo 247943202: 
+2026-05-23 18:25:05,880 - WARNING - Error transferring photo 401961132: 
+2026-05-23 18:25:06,880 - WARNING - Error transferring photo 163411622: 
+2026-05-23 18:25:06,880 - WARNING - Error transferring photo 541632937: 
+2026-05-23 18:25:06,881 - WARNING - Error transferring photo 210240948: 
+2026-05-23 18:25:08,880 - WARNING - Error transferring photo 228836624: 
+2026-05-23 18:25:09,880 - WARNING - Error transferring photo 359064914: 
+2026-05-23 18:25:11,879 - WARNING - Error transferring photo 246466656: 
+2026-05-23 18:25:11,880 - WARNING - Error transferring photo 223720747: 
+2026-05-23 18:25:11,880 - WARNING - Error transferring photo 623194557: 
+2026-05-23 18:25:12,879 - WARNING - Error transferring photo 221102362: 
+2026-05-23 18:25:12,880 - WARNING - Error transferring photo 462004038: 
+2026-05-23 18:25:12,891 - WARNING - Error transferring photo 391568383: 
+2026-05-23 18:25:12,892 - WARNING - Error transferring photo 190245935: 
+2026-05-23 18:25:14,106 - INFO - Compacted 3,675,664 entries to DB
+2026-05-23 18:25:18,880 - WARNING - Error transferring photo 344172547: 
+2026-05-23 18:25:19,880 - WARNING - Error transferring photo 297490875: 
+2026-05-23 18:25:22,880 - WARNING - Error transferring photo 480845798: 
+2026-05-23 18:25:23,880 - WARNING - Error transferring photo 619155757: 
+2026-05-23 18:25:24,880 - WARNING - Error transferring photo 409165507: 
+2026-05-23 18:25:24,881 - WARNING - Error transferring photo 221070999: 
+2026-05-23 18:25:25,880 - WARNING - Error transferring photo 505560231: 
+2026-05-23 18:25:27,880 - WARNING - Error transferring photo 565708692: 
+2026-05-23 18:25:28,881 - WARNING - Error transferring photo 565705586: 
+2026-05-23 18:25:29,880 - WARNING - Error transferring photo 505558350: 
+2026-05-23 18:25:29,881 - WARNING - Error transferring photo 116696339: 
+2026-05-23 18:25:29,881 - WARNING - Error transferring photo 562280145: 
+2026-05-23 18:25:29,882 - WARNING - Error transferring photo 625381783: 
+2026-05-23 18:25:32,880 - WARNING - Error transferring photo 240397966: 
+2026-05-23 18:25:34,880 - WARNING - Error transferring photo 241867881: 
+2026-05-23 18:25:35,880 - WARNING - Error transferring photo 53849049: 
+2026-05-23 18:25:35,881 - WARNING - Error transferring photo 580547154: 
+2026-05-23 18:25:37,601 - INFO - Progress: 2,000 processed (1,536 OK, 464 failed) | 3,676,200/4,034,913 total complete
+2026-05-23 18:25:37,880 - WARNING - Error transferring photo 229450308: 
+2026-05-23 18:25:37,881 - WARNING - Error transferring photo 177484769: 
+2026-05-23 18:25:37,881 - WARNING - Error transferring photo 163411158: 
+2026-05-23 18:25:38,879 - WARNING - Error transferring photo 176755829: 
+2026-05-23 18:25:38,880 - WARNING - Error transferring photo 150582218: 
+2026-05-23 18:25:38,880 - WARNING - Error transferring photo 309391059: 
+2026-05-23 18:25:39,880 - WARNING - Error transferring photo 150583249: 
+2026-05-23 18:25:39,880 - WARNING - Error transferring photo 150680812: 
+2026-05-23 18:25:49,569 - INFO - Compacted 3,676,664 entries to DB
+2026-05-23 18:26:00,878 - INFO - Progress: 3,000 processed (2,528 OK, 472 failed) | 3,677,192/4,034,913 total complete
+2026-05-23 18:26:11,704 - INFO - Compacted 3,677,664 entries to DB
+2026-05-23 18:26:23,934 - INFO - Progress: 4,000 processed (3,528 OK, 472 failed) | 3,678,192/4,034,913 total complete
+2026-05-23 18:26:35,553 - INFO - Compacted 3,678,664 entries to DB
+2026-05-23 18:26:47,472 - INFO - Progress: 5,000 processed (4,528 OK, 472 failed) | 3,679,192/4,034,913 total complete
+2026-05-23 18:26:57,819 - INFO - Compacted 3,679,664 entries to DB
+2026-05-23 18:27:09,536 - INFO - Progress: 6,000 processed (5,528 OK, 472 failed) | 3,680,192/4,034,913 total complete
+2026-05-23 18:27:20,148 - INFO - Compacted 3,680,664 entries to DB
+2026-05-23 18:27:31,733 - INFO - Progress: 7,000 processed (6,528 OK, 472 failed) | 3,681,192/4,034,913 total complete
+2026-05-23 18:27:42,539 - INFO - Compacted 3,681,664 entries to DB
+2026-05-23 18:27:54,687 - INFO - Progress: 8,000 processed (7,528 OK, 472 failed) | 3,682,192/4,034,913 total complete
+2026-05-23 18:28:04,740 - INFO - Compacted 3,682,664 entries to DB
+2026-05-23 18:28:16,141 - INFO - Progress: 9,000 processed (8,528 OK, 472 failed) | 3,683,192/4,034,913 total complete
+2026-05-23 18:28:26,395 - INFO - Compacted 3,683,664 entries to DB
+2026-05-23 18:28:38,854 - INFO - Progress: 10,000 processed (9,528 OK, 472 failed) | 3,684,192/4,034,913 total complete
+2026-05-23 18:28:49,815 - INFO - Compacted 3,684,664 entries to DB
+2026-05-23 18:29:01,558 - INFO - Progress: 11,000 processed (10,528 OK, 472 failed) | 3,685,192/4,034,913 total complete
+2026-05-23 18:29:08,045 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/353493146/medium.jpeg'
+2026-05-23 18:29:10,880 - WARNING - Error transferring photo 11422583: 
+2026-05-23 18:29:12,159 - INFO - Compacted 3,685,664 entries to DB
+2026-05-23 18:29:23,702 - INFO - Progress: 12,000 processed (11,526 OK, 474 failed) | 3,686,190/4,034,913 total complete
+2026-05-23 18:29:35,101 - INFO - Compacted 3,686,664 entries to DB
+2026-05-23 18:29:46,495 - INFO - Progress: 13,000 processed (12,526 OK, 474 failed) | 3,687,190/4,034,913 total complete
+2026-05-23 18:29:57,154 - INFO - Compacted 3,687,664 entries to DB
+2026-05-23 18:30:08,502 - INFO - Progress: 14,000 processed (13,526 OK, 474 failed) | 3,688,190/4,034,913 total complete
+2026-05-23 18:30:19,804 - INFO - Compacted 3,688,664 entries to DB
+2026-05-23 18:30:31,524 - INFO - Progress: 15,000 processed (14,526 OK, 474 failed) | 3,689,190/4,034,913 total complete
+2026-05-23 18:30:41,912 - INFO - Compacted 3,689,664 entries to DB
+2026-05-23 18:30:53,202 - INFO - Progress: 16,000 processed (15,526 OK, 474 failed) | 3,690,190/4,034,913 total complete
+2026-05-23 18:31:03,445 - INFO - Compacted 3,690,664 entries to DB
+2026-05-23 18:31:15,193 - INFO - Progress: 17,000 processed (16,526 OK, 474 failed) | 3,691,190/4,034,913 total complete
+2026-05-23 18:31:26,236 - INFO - Compacted 3,691,664 entries to DB
+2026-05-23 18:31:37,296 - INFO - Progress: 18,000 processed (17,526 OK, 474 failed) | 3,692,190/4,034,913 total complete
+2026-05-23 18:31:48,642 - INFO - Compacted 3,692,664 entries to DB
+2026-05-23 18:32:00,033 - INFO - Progress: 19,000 processed (18,526 OK, 474 failed) | 3,693,190/4,034,913 total complete
+2026-05-23 18:32:10,938 - INFO - Compacted 3,693,664 entries to DB
+2026-05-23 18:32:22,655 - INFO - Progress: 20,000 processed (19,526 OK, 474 failed) | 3,694,190/4,034,913 total complete
+2026-05-23 18:32:33,746 - INFO - Compacted 3,694,664 entries to DB
+2026-05-23 18:32:45,400 - INFO - Progress: 21,000 processed (20,526 OK, 474 failed) | 3,695,190/4,034,913 total complete
+2026-05-23 18:32:56,808 - INFO - Compacted 3,695,664 entries to DB
+2026-05-23 18:33:09,163 - INFO - Progress: 22,000 processed (21,526 OK, 474 failed) | 3,696,190/4,034,913 total complete
+2026-05-23 18:33:19,778 - INFO - Compacted 3,696,664 entries to DB
+2026-05-23 18:33:31,218 - INFO - Progress: 23,000 processed (22,526 OK, 474 failed) | 3,697,190/4,034,913 total complete
+2026-05-23 18:33:42,001 - INFO - Compacted 3,697,664 entries to DB
+2026-05-23 18:33:53,389 - INFO - Progress: 24,000 processed (23,526 OK, 474 failed) | 3,698,190/4,034,913 total complete
+2026-05-23 18:34:04,315 - INFO - Compacted 3,698,664 entries to DB
+2026-05-23 18:34:16,441 - INFO - Progress: 25,000 processed (24,526 OK, 474 failed) | 3,699,190/4,034,913 total complete
+2026-05-23 18:34:18,175 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/410585470/medium.jpeg'
+2026-05-23 18:34:27,062 - INFO - Compacted 3,699,664 entries to DB
+2026-05-23 18:34:39,012 - INFO - Progress: 26,000 processed (25,525 OK, 475 failed) | 3,700,189/4,034,913 total complete
+2026-05-23 18:34:49,451 - INFO - Compacted 3,700,664 entries to DB
+2026-05-23 18:35:01,229 - INFO - Progress: 27,000 processed (26,525 OK, 475 failed) | 3,701,189/4,034,913 total complete
+2026-05-23 18:35:12,836 - INFO - Compacted 3,701,664 entries to DB
+2026-05-23 18:35:24,759 - INFO - Progress: 28,000 processed (27,525 OK, 475 failed) | 3,702,189/4,034,913 total complete
+2026-05-23 18:35:35,623 - INFO - Compacted 3,702,664 entries to DB
+2026-05-23 18:35:47,078 - INFO - Progress: 29,000 processed (28,525 OK, 475 failed) | 3,703,189/4,034,913 total complete
+2026-05-23 18:35:57,844 - INFO - Compacted 3,703,664 entries to DB
+2026-05-23 18:36:10,265 - INFO - Progress: 30,000 processed (29,525 OK, 475 failed) | 3,704,189/4,034,913 total complete
+2026-05-23 18:36:21,396 - INFO - Compacted 3,704,664 entries to DB
+2026-05-23 18:36:33,373 - INFO - Progress: 31,000 processed (30,525 OK, 475 failed) | 3,705,189/4,034,913 total complete
+2026-05-23 18:36:44,684 - INFO - Compacted 3,705,664 entries to DB
+2026-05-23 18:36:56,766 - INFO - Progress: 32,000 processed (31,525 OK, 475 failed) | 3,706,189/4,034,913 total complete
+2026-05-23 18:37:08,045 - INFO - Compacted 3,706,664 entries to DB
+2026-05-23 18:37:19,282 - INFO - Progress: 33,000 processed (32,525 OK, 475 failed) | 3,707,189/4,034,913 total complete
+2026-05-23 18:37:30,047 - INFO - Compacted 3,707,664 entries to DB
+2026-05-23 18:37:41,622 - INFO - Progress: 34,000 processed (33,525 OK, 475 failed) | 3,708,189/4,034,913 total complete
+2026-05-23 18:37:52,051 - INFO - Compacted 3,708,664 entries to DB
+2026-05-23 18:38:03,735 - INFO - Progress: 35,000 processed (34,525 OK, 475 failed) | 3,709,189/4,034,913 total complete
+2026-05-23 18:38:15,304 - INFO - Compacted 3,709,664 entries to DB
+2026-05-23 18:38:26,774 - INFO - Progress: 36,000 processed (35,525 OK, 475 failed) | 3,710,189/4,034,913 total complete
+2026-05-23 18:38:37,287 - INFO - Compacted 3,710,664 entries to DB
+2026-05-23 18:38:49,705 - INFO - Progress: 37,000 processed (36,525 OK, 475 failed) | 3,711,189/4,034,913 total complete
+2026-05-23 18:38:57,880 - WARNING - Error transferring photo 36121299: 
+2026-05-23 18:39:00,825 - INFO - Compacted 3,711,664 entries to DB
+2026-05-23 18:39:12,441 - INFO - Progress: 38,000 processed (37,524 OK, 476 failed) | 3,712,188/4,034,913 total complete
+2026-05-23 18:39:23,587 - INFO - Compacted 3,712,664 entries to DB
+2026-05-23 18:39:34,789 - INFO - Progress: 39,000 processed (38,524 OK, 476 failed) | 3,713,188/4,034,913 total complete
+2026-05-23 18:39:45,855 - INFO - Compacted 3,713,664 entries to DB
+2026-05-23 18:39:57,424 - INFO - Progress: 40,000 processed (39,524 OK, 476 failed) | 3,714,188/4,034,913 total complete
+2026-05-23 18:40:07,805 - INFO - Compacted 3,714,664 entries to DB
+2026-05-23 18:40:19,123 - INFO - Progress: 41,000 processed (40,524 OK, 476 failed) | 3,715,188/4,034,913 total complete
+2026-05-23 18:40:29,140 - INFO - Compacted 3,715,664 entries to DB
+2026-05-23 18:40:41,628 - INFO - Progress: 42,000 processed (41,524 OK, 476 failed) | 3,716,188/4,034,913 total complete
+2026-05-23 18:40:53,124 - INFO - Compacted 3,716,664 entries to DB
+2026-05-23 18:41:05,283 - INFO - Progress: 43,000 processed (42,524 OK, 476 failed) | 3,717,188/4,034,913 total complete
+2026-05-23 18:41:16,280 - INFO - Compacted 3,717,664 entries to DB
+2026-05-23 18:41:27,742 - INFO - Progress: 44,000 processed (43,524 OK, 476 failed) | 3,718,188/4,034,913 total complete
+2026-05-23 18:41:38,228 - INFO - Compacted 3,718,664 entries to DB
+2026-05-23 18:41:49,951 - INFO - Progress: 45,000 processed (44,524 OK, 476 failed) | 3,719,188/4,034,913 total complete
+2026-05-23 18:41:54,586 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/350259951/medium.jpg'
+2026-05-23 18:42:00,978 - INFO - Compacted 3,719,664 entries to DB
+2026-05-23 18:42:12,759 - INFO - Progress: 46,000 processed (45,523 OK, 477 failed) | 3,720,187/4,034,913 total complete
+2026-05-23 18:42:23,607 - INFO - Compacted 3,720,664 entries to DB
+2026-05-23 18:42:35,556 - INFO - Progress: 47,000 processed (46,523 OK, 477 failed) | 3,721,187/4,034,913 total complete
+2026-05-23 18:42:47,055 - INFO - Compacted 3,721,664 entries to DB
+2026-05-23 18:42:59,422 - INFO - Progress: 48,000 processed (47,523 OK, 477 failed) | 3,722,187/4,034,913 total complete
+2026-05-23 18:43:10,195 - INFO - Compacted 3,722,664 entries to DB
+2026-05-23 18:43:21,453 - INFO - Progress: 49,000 processed (48,523 OK, 477 failed) | 3,723,187/4,034,913 total complete
+2026-05-23 18:43:33,302 - INFO - Compacted 3,723,664 entries to DB
+2026-05-23 18:43:45,732 - INFO - Progress: 50,000 processed (49,523 OK, 477 failed) | 3,724,187/4,034,913 total complete
+2026-05-23 18:43:56,660 - INFO - Compacted 3,724,664 entries to DB
+2026-05-23 18:44:08,627 - INFO - Progress: 51,000 processed (50,523 OK, 477 failed) | 3,725,187/4,034,913 total complete
+2026-05-23 18:44:20,521 - INFO - Compacted 3,725,664 entries to DB
+2026-05-23 18:44:32,917 - INFO - Progress: 52,000 processed (51,523 OK, 477 failed) | 3,726,187/4,034,913 total complete
+2026-05-23 18:44:44,266 - INFO - Compacted 3,726,664 entries to DB
+2026-05-23 18:44:56,365 - INFO - Progress: 53,000 processed (52,523 OK, 477 failed) | 3,727,187/4,034,913 total complete
+2026-05-23 18:45:01,879 - WARNING - Error transferring photo 20604240: 
+2026-05-23 18:45:07,336 - INFO - Compacted 3,727,664 entries to DB
+2026-05-23 18:45:19,752 - INFO - Progress: 54,000 processed (53,522 OK, 478 failed) | 3,728,186/4,034,913 total complete
+2026-05-23 18:45:29,447 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/348682696/medium.jpg'
+2026-05-23 18:45:30,076 - INFO - Compacted 3,728,664 entries to DB
+2026-05-23 18:45:41,916 - INFO - Progress: 55,000 processed (54,521 OK, 479 failed) | 3,729,185/4,034,913 total complete
+2026-05-23 18:45:52,920 - INFO - Compacted 3,729,664 entries to DB
+2026-05-23 18:46:04,616 - INFO - Progress: 56,000 processed (55,521 OK, 479 failed) | 3,730,185/4,034,913 total complete
+2026-05-23 18:46:04,880 - WARNING - Error transferring photo 540233694: 
+2026-05-23 18:46:14,921 - INFO - Compacted 3,730,664 entries to DB
+2026-05-23 18:46:26,428 - INFO - Progress: 57,000 processed (56,520 OK, 480 failed) | 3,731,184/4,034,913 total complete
+2026-05-23 18:46:38,537 - INFO - Compacted 3,731,664 entries to DB
+2026-05-23 18:46:49,915 - INFO - Progress: 58,000 processed (57,520 OK, 480 failed) | 3,732,184/4,034,913 total complete
+2026-05-23 18:47:00,577 - INFO - Compacted 3,732,664 entries to DB
+2026-05-23 18:47:12,264 - INFO - Progress: 59,000 processed (58,520 OK, 480 failed) | 3,733,184/4,034,913 total complete
+2026-05-23 18:47:22,823 - INFO - Compacted 3,733,664 entries to DB
+2026-05-23 18:47:34,468 - INFO - Progress: 60,000 processed (59,520 OK, 480 failed) | 3,734,184/4,034,913 total complete
+2026-05-23 18:47:45,752 - INFO - Compacted 3,734,664 entries to DB
+2026-05-23 18:47:58,156 - INFO - Progress: 61,000 processed (60,520 OK, 480 failed) | 3,735,184/4,034,913 total complete
+2026-05-23 18:48:08,551 - INFO - Compacted 3,735,664 entries to DB
+2026-05-23 18:48:20,137 - INFO - Progress: 62,000 processed (61,520 OK, 480 failed) | 3,736,184/4,034,913 total complete
+2026-05-23 18:48:32,148 - INFO - Compacted 3,736,664 entries to DB
+2026-05-23 18:48:44,030 - INFO - Progress: 63,000 processed (62,520 OK, 480 failed) | 3,737,184/4,034,913 total complete
+2026-05-23 18:48:55,413 - INFO - Compacted 3,737,664 entries to DB
+2026-05-23 18:49:07,300 - INFO - Progress: 64,000 processed (63,520 OK, 480 failed) | 3,738,184/4,034,913 total complete
+2026-05-23 18:49:17,863 - INFO - Compacted 3,738,664 entries to DB
+2026-05-23 18:49:29,557 - INFO - Progress: 65,000 processed (64,520 OK, 480 failed) | 3,739,184/4,034,913 total complete
+2026-05-23 18:49:40,401 - INFO - Compacted 3,739,664 entries to DB
+2026-05-23 18:49:52,096 - INFO - Progress: 66,000 processed (65,520 OK, 480 failed) | 3,740,184/4,034,913 total complete
+2026-05-23 18:50:02,815 - INFO - Compacted 3,740,664 entries to DB
+2026-05-23 18:50:14,773 - INFO - Progress: 67,000 processed (66,520 OK, 480 failed) | 3,741,184/4,034,913 total complete
+2026-05-23 18:50:25,969 - INFO - Compacted 3,741,664 entries to DB
+2026-05-23 18:50:38,219 - INFO - Progress: 68,000 processed (67,520 OK, 480 failed) | 3,742,184/4,034,913 total complete
+2026-05-23 18:50:49,011 - INFO - Compacted 3,742,664 entries to DB
+2026-05-23 18:51:00,183 - INFO - Progress: 69,000 processed (68,520 OK, 480 failed) | 3,743,184/4,034,913 total complete
+2026-05-23 18:51:11,143 - INFO - Compacted 3,743,664 entries to DB
+2026-05-23 18:51:23,248 - INFO - Progress: 70,000 processed (69,520 OK, 480 failed) | 3,744,184/4,034,913 total complete
+2026-05-23 18:51:34,636 - INFO - Compacted 3,744,664 entries to DB
+2026-05-23 18:51:48,103 - INFO - Progress: 71,000 processed (70,520 OK, 480 failed) | 3,745,184/4,034,913 total complete
+2026-05-23 18:51:59,093 - INFO - Compacted 3,745,664 entries to DB
+2026-05-23 18:52:11,194 - INFO - Progress: 72,000 processed (71,520 OK, 480 failed) | 3,746,184/4,034,913 total complete
+2026-05-23 18:52:22,927 - INFO - Compacted 3,746,664 entries to DB
+2026-05-23 18:52:34,881 - INFO - Progress: 73,000 processed (72,520 OK, 480 failed) | 3,747,184/4,034,913 total complete
+2026-05-23 18:52:46,158 - INFO - Compacted 3,747,664 entries to DB
+2026-05-23 18:52:57,970 - INFO - Progress: 74,000 processed (73,520 OK, 480 failed) | 3,748,184/4,034,913 total complete
+2026-05-23 18:53:09,818 - INFO - Compacted 3,748,664 entries to DB
+2026-05-23 18:53:22,020 - INFO - Progress: 75,000 processed (74,520 OK, 480 failed) | 3,749,184/4,034,913 total complete
+2026-05-23 18:53:29,883 - WARNING - Error transferring photo 226333840: 
+2026-05-23 18:53:33,158 - INFO - Compacted 3,749,664 entries to DB
+2026-05-23 18:53:45,649 - INFO - Progress: 76,000 processed (75,519 OK, 481 failed) | 3,750,183/4,034,913 total complete
+2026-05-23 18:53:56,515 - INFO - Compacted 3,750,664 entries to DB
+2026-05-23 18:54:08,549 - INFO - Progress: 77,000 processed (76,519 OK, 481 failed) | 3,751,183/4,034,913 total complete
+2026-05-23 18:54:20,710 - INFO - Compacted 3,751,664 entries to DB
+2026-05-23 18:54:32,700 - INFO - Progress: 78,000 processed (77,519 OK, 481 failed) | 3,752,183/4,034,913 total complete
+2026-05-23 18:54:43,606 - INFO - Compacted 3,752,664 entries to DB
+2026-05-23 18:54:55,288 - INFO - Progress: 79,000 processed (78,519 OK, 481 failed) | 3,753,183/4,034,913 total complete
+2026-05-23 18:55:06,088 - INFO - Compacted 3,753,664 entries to DB
+2026-05-23 18:55:18,927 - INFO - Progress: 80,000 processed (79,519 OK, 481 failed) | 3,754,183/4,034,913 total complete
+2026-05-23 18:55:30,626 - INFO - Compacted 3,754,664 entries to DB
+2026-05-23 18:55:42,427 - INFO - Progress: 81,000 processed (80,519 OK, 481 failed) | 3,755,183/4,034,913 total complete
+2026-05-23 18:55:53,372 - INFO - Compacted 3,755,664 entries to DB
+2026-05-23 18:56:05,347 - INFO - Progress: 82,000 processed (81,519 OK, 481 failed) | 3,756,183/4,034,913 total complete
+2026-05-23 18:56:16,658 - INFO - Compacted 3,756,664 entries to DB
+2026-05-23 18:56:29,296 - INFO - Progress: 83,000 processed (82,519 OK, 481 failed) | 3,757,183/4,034,913 total complete
+2026-05-23 18:56:40,831 - INFO - Compacted 3,757,664 entries to DB
+2026-05-23 18:56:52,574 - INFO - Progress: 84,000 processed (83,519 OK, 481 failed) | 3,758,183/4,034,913 total complete
+2026-05-23 18:57:03,469 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/410566394/medium.jpeg'
+2026-05-23 18:57:04,120 - INFO - Compacted 3,758,664 entries to DB
+2026-05-23 18:57:05,275 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/410585080/medium.jpeg'
+2026-05-23 18:57:16,117 - INFO - Progress: 85,000 processed (84,517 OK, 483 failed) | 3,759,181/4,034,913 total complete
+2026-05-23 18:57:27,261 - INFO - Compacted 3,759,664 entries to DB
+2026-05-23 18:57:39,452 - INFO - Progress: 86,000 processed (85,517 OK, 483 failed) | 3,760,181/4,034,913 total complete
+2026-05-23 18:57:50,232 - INFO - Compacted 3,760,664 entries to DB
+2026-05-23 18:58:01,936 - INFO - Progress: 87,000 processed (86,517 OK, 483 failed) | 3,761,181/4,034,913 total complete
+2026-05-23 18:58:13,559 - INFO - Compacted 3,761,664 entries to DB
+2026-05-23 18:58:25,541 - INFO - Progress: 88,000 processed (87,517 OK, 483 failed) | 3,762,181/4,034,913 total complete
+2026-05-23 18:58:36,525 - INFO - Compacted 3,762,664 entries to DB
+2026-05-23 18:58:48,056 - INFO - Progress: 89,000 processed (88,517 OK, 483 failed) | 3,763,181/4,034,913 total complete
+2026-05-23 18:58:59,191 - INFO - Compacted 3,763,664 entries to DB
+2026-05-23 18:59:11,085 - INFO - Progress: 90,000 processed (89,517 OK, 483 failed) | 3,764,181/4,034,913 total complete
+2026-05-23 18:59:22,430 - INFO - Compacted 3,764,664 entries to DB
+2026-05-23 18:59:34,856 - INFO - Progress: 91,000 processed (90,517 OK, 483 failed) | 3,765,181/4,034,913 total complete
+2026-05-23 18:59:45,731 - INFO - Compacted 3,765,664 entries to DB
+2026-05-23 18:59:58,136 - INFO - Progress: 92,000 processed (91,517 OK, 483 failed) | 3,766,181/4,034,913 total complete
+2026-05-23 19:00:08,900 - INFO - Compacted 3,766,664 entries to DB
+2026-05-23 19:00:20,532 - INFO - Progress: 93,000 processed (92,517 OK, 483 failed) | 3,767,181/4,034,913 total complete
+2026-05-23 19:00:31,572 - INFO - Compacted 3,767,664 entries to DB
+2026-05-23 19:00:43,679 - INFO - Progress: 94,000 processed (93,517 OK, 483 failed) | 3,768,181/4,034,913 total complete
+2026-05-23 19:00:54,079 - INFO - Compacted 3,768,664 entries to DB
+2026-05-23 19:01:05,490 - INFO - Progress: 95,000 processed (94,517 OK, 483 failed) | 3,769,181/4,034,913 total complete
+2026-05-23 19:01:16,380 - INFO - Compacted 3,769,664 entries to DB
+2026-05-23 19:01:18,699 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/334719508/medium.jpg'
+2026-05-23 19:01:28,224 - INFO - Progress: 96,000 processed (95,516 OK, 484 failed) | 3,770,180/4,034,913 total complete
+2026-05-23 19:01:39,187 - INFO - Compacted 3,770,664 entries to DB
+2026-05-23 19:01:46,674 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/414101634/medium.jpeg'
+2026-05-23 19:01:50,552 - INFO - Progress: 97,000 processed (96,515 OK, 485 failed) | 3,771,179/4,034,913 total complete
+2026-05-23 19:02:01,326 - INFO - Compacted 3,771,664 entries to DB
+2026-05-23 19:02:12,722 - INFO - Progress: 98,000 processed (97,515 OK, 485 failed) | 3,772,179/4,034,913 total complete
+2026-05-23 19:02:23,321 - INFO - Compacted 3,772,664 entries to DB
+2026-05-23 19:02:35,367 - INFO - Progress: 99,000 processed (98,515 OK, 485 failed) | 3,773,179/4,034,913 total complete
+2026-05-23 19:02:46,330 - INFO - Compacted 3,773,664 entries to DB
+2026-05-23 19:02:58,187 - INFO - Progress: 100,000 processed (99,515 OK, 485 failed) | 3,774,179/4,034,913 total complete
+2026-05-23 19:03:09,226 - INFO - Compacted 3,774,664 entries to DB
+2026-05-23 19:03:20,810 - INFO - Progress: 101,000 processed (100,515 OK, 485 failed) | 3,775,179/4,034,913 total complete
+2026-05-23 19:03:32,067 - INFO - Compacted 3,775,664 entries to DB
+2026-05-23 19:03:43,661 - INFO - Progress: 102,000 processed (101,515 OK, 485 failed) | 3,776,179/4,034,913 total complete
+2026-05-23 19:03:55,172 - INFO - Compacted 3,776,664 entries to DB
+2026-05-23 19:04:06,794 - INFO - Progress: 103,000 processed (102,515 OK, 485 failed) | 3,777,179/4,034,913 total complete
+2026-05-23 19:04:18,519 - INFO - Compacted 3,777,664 entries to DB
+2026-05-23 19:04:30,324 - INFO - Progress: 104,000 processed (103,515 OK, 485 failed) | 3,778,179/4,034,913 total complete
+2026-05-23 19:04:41,360 - INFO - Compacted 3,778,664 entries to DB
+2026-05-23 19:04:53,098 - INFO - Progress: 105,000 processed (104,515 OK, 485 failed) | 3,779,179/4,034,913 total complete
+2026-05-23 19:05:03,618 - INFO - Compacted 3,779,664 entries to DB
+2026-05-23 19:05:13,861 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/188787086/medium.jpeg'
+2026-05-23 19:05:15,241 - INFO - Progress: 106,000 processed (105,514 OK, 486 failed) | 3,780,178/4,034,913 total complete
+2026-05-23 19:05:26,258 - INFO - Compacted 3,780,664 entries to DB
+2026-05-23 19:05:37,523 - INFO - Progress: 107,000 processed (106,514 OK, 486 failed) | 3,781,178/4,034,913 total complete
+2026-05-23 19:05:45,073 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/180502251/medium.jpeg'
+2026-05-23 19:05:48,715 - INFO - Compacted 3,781,664 entries to DB
+2026-05-23 19:05:51,690 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/350980073/medium.jpeg'
+2026-05-23 19:06:00,353 - INFO - Progress: 108,000 processed (107,512 OK, 488 failed) | 3,782,176/4,034,913 total complete
+2026-05-23 19:06:10,907 - INFO - Compacted 3,782,664 entries to DB
+2026-05-23 19:06:23,209 - INFO - Progress: 109,000 processed (108,512 OK, 488 failed) | 3,783,176/4,034,913 total complete
+2026-05-23 19:06:33,851 - INFO - Compacted 3,783,664 entries to DB
+2026-05-23 19:06:45,099 - INFO - Progress: 110,000 processed (109,512 OK, 488 failed) | 3,784,176/4,034,913 total complete
+2026-05-23 19:06:56,329 - INFO - Compacted 3,784,664 entries to DB
+2026-05-23 19:07:08,649 - INFO - Progress: 111,000 processed (110,512 OK, 488 failed) | 3,785,176/4,034,913 total complete
+2026-05-23 19:07:20,385 - INFO - Compacted 3,785,664 entries to DB
+2026-05-23 19:07:32,420 - INFO - Progress: 112,000 processed (111,512 OK, 488 failed) | 3,786,176/4,034,913 total complete
+2026-05-23 19:07:43,580 - INFO - Compacted 3,786,664 entries to DB
+2026-05-23 19:07:55,357 - INFO - Progress: 113,000 processed (112,512 OK, 488 failed) | 3,787,176/4,034,913 total complete
+2026-05-23 19:08:06,838 - INFO - Compacted 3,787,664 entries to DB
+2026-05-23 19:08:18,439 - INFO - Progress: 114,000 processed (113,512 OK, 488 failed) | 3,788,176/4,034,913 total complete
+2026-05-23 19:08:29,518 - INFO - Compacted 3,788,664 entries to DB
+2026-05-23 19:08:41,294 - INFO - Progress: 115,000 processed (114,512 OK, 488 failed) | 3,789,176/4,034,913 total complete
+2026-05-23 19:08:53,099 - INFO - Compacted 3,789,664 entries to DB
+2026-05-23 19:09:04,167 - INFO - Progress: 116,000 processed (115,512 OK, 488 failed) | 3,790,176/4,034,913 total complete
+2026-05-23 19:09:15,133 - INFO - Compacted 3,790,664 entries to DB
+2026-05-23 19:09:26,818 - INFO - Progress: 117,000 processed (116,512 OK, 488 failed) | 3,791,176/4,034,913 total complete
+2026-05-23 19:09:37,849 - INFO - Compacted 3,791,664 entries to DB
+2026-05-23 19:09:49,330 - INFO - Progress: 118,000 processed (117,512 OK, 488 failed) | 3,792,176/4,034,913 total complete
+2026-05-23 19:10:00,204 - INFO - Compacted 3,792,664 entries to DB
+2026-05-23 19:10:11,712 - INFO - Progress: 119,000 processed (118,512 OK, 488 failed) | 3,793,176/4,034,913 total complete
+2026-05-23 19:10:22,280 - INFO - Compacted 3,793,664 entries to DB
+2026-05-23 19:10:33,451 - INFO - Progress: 120,000 processed (119,512 OK, 488 failed) | 3,794,176/4,034,913 total complete
+2026-05-23 19:10:44,563 - INFO - Compacted 3,794,664 entries to DB
+2026-05-23 19:10:56,309 - INFO - Progress: 121,000 processed (120,512 OK, 488 failed) | 3,795,176/4,034,913 total complete
+2026-05-23 19:11:06,588 - INFO - Compacted 3,795,664 entries to DB
+2026-05-23 19:11:14,404 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/456448500/medium.jpg'
+2026-05-23 19:11:16,996 - INFO - Progress: 122,000 processed (121,511 OK, 489 failed) | 3,796,175/4,034,913 total complete
+2026-05-23 19:11:27,465 - INFO - Compacted 3,796,664 entries to DB
+2026-05-23 19:11:38,401 - INFO - Progress: 123,000 processed (122,511 OK, 489 failed) | 3,797,175/4,034,913 total complete
+2026-05-23 19:11:49,654 - INFO - Compacted 3,797,664 entries to DB
+2026-05-23 19:12:00,936 - INFO - Progress: 124,000 processed (123,511 OK, 489 failed) | 3,798,175/4,034,913 total complete
+2026-05-23 19:12:11,373 - INFO - Compacted 3,798,664 entries to DB
+2026-05-23 19:12:22,401 - INFO - Progress: 125,000 processed (124,511 OK, 489 failed) | 3,799,175/4,034,913 total complete
+2026-05-23 19:12:33,341 - INFO - Compacted 3,799,664 entries to DB
+2026-05-23 19:12:44,862 - INFO - Progress: 126,000 processed (125,511 OK, 489 failed) | 3,800,175/4,034,913 total complete
+2026-05-23 19:12:56,352 - INFO - Compacted 3,800,664 entries to DB
+2026-05-23 19:13:07,334 - INFO - Progress: 127,000 processed (126,511 OK, 489 failed) | 3,801,175/4,034,913 total complete
+2026-05-23 19:13:18,575 - INFO - Compacted 3,801,664 entries to DB
+2026-05-23 19:13:30,156 - INFO - Progress: 128,000 processed (127,511 OK, 489 failed) | 3,802,175/4,034,913 total complete
+2026-05-23 19:13:40,561 - INFO - Compacted 3,802,664 entries to DB
+2026-05-23 19:13:45,203 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/340060230/medium.jpeg'
+2026-05-23 19:13:51,263 - INFO - Progress: 129,000 processed (128,510 OK, 490 failed) | 3,803,174/4,034,913 total complete
+2026-05-23 19:14:01,721 - INFO - Compacted 3,803,664 entries to DB
+2026-05-23 19:14:12,101 - INFO - Progress: 130,000 processed (129,510 OK, 490 failed) | 3,804,174/4,034,913 total complete
+2026-05-23 19:14:22,788 - INFO - Compacted 3,804,664 entries to DB
+2026-05-23 19:14:33,482 - INFO - Progress: 131,000 processed (130,510 OK, 490 failed) | 3,805,174/4,034,913 total complete
+2026-05-23 19:14:44,356 - INFO - Compacted 3,805,664 entries to DB
+2026-05-23 19:14:55,339 - INFO - Progress: 132,000 processed (131,510 OK, 490 failed) | 3,806,174/4,034,913 total complete
+2026-05-23 19:15:06,266 - INFO - Compacted 3,806,664 entries to DB
+2026-05-23 19:15:17,181 - INFO - Progress: 133,000 processed (132,510 OK, 490 failed) | 3,807,174/4,034,913 total complete
+2026-05-23 19:15:28,357 - INFO - Compacted 3,807,664 entries to DB
+2026-05-23 19:15:39,684 - INFO - Progress: 134,000 processed (133,510 OK, 490 failed) | 3,808,174/4,034,913 total complete
+2026-05-23 19:15:50,795 - INFO - Compacted 3,808,664 entries to DB
+2026-05-23 19:16:01,902 - INFO - Progress: 135,000 processed (134,510 OK, 490 failed) | 3,809,174/4,034,913 total complete
+2026-05-23 19:16:12,248 - INFO - Compacted 3,809,664 entries to DB
+2026-05-23 19:16:23,854 - INFO - Progress: 136,000 processed (135,510 OK, 490 failed) | 3,810,174/4,034,913 total complete
+2026-05-23 19:16:33,976 - INFO - Compacted 3,810,664 entries to DB
+2026-05-23 19:16:43,930 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/456870491/medium.jpg'
+2026-05-23 19:16:44,771 - INFO - Progress: 137,000 processed (136,509 OK, 491 failed) | 3,811,173/4,034,913 total complete
+2026-05-23 19:16:55,064 - INFO - Compacted 3,811,664 entries to DB
+2026-05-23 19:17:06,504 - INFO - Progress: 138,000 processed (137,509 OK, 491 failed) | 3,812,173/4,034,913 total complete
+2026-05-23 19:17:17,212 - INFO - Compacted 3,812,664 entries to DB
+2026-05-23 19:17:28,620 - INFO - Progress: 139,000 processed (138,509 OK, 491 failed) | 3,813,173/4,034,913 total complete
+2026-05-23 19:17:39,146 - INFO - Compacted 3,813,664 entries to DB
+2026-05-23 19:17:50,344 - INFO - Progress: 140,000 processed (139,509 OK, 491 failed) | 3,814,173/4,034,913 total complete
+2026-05-23 19:18:01,076 - INFO - Compacted 3,814,664 entries to DB
+2026-05-23 19:18:12,186 - INFO - Progress: 141,000 processed (140,509 OK, 491 failed) | 3,815,173/4,034,913 total complete
+2026-05-23 19:18:22,672 - INFO - Compacted 3,815,664 entries to DB
+2026-05-23 19:18:33,624 - INFO - Progress: 142,000 processed (141,509 OK, 491 failed) | 3,816,173/4,034,913 total complete
+2026-05-23 19:18:44,311 - INFO - Compacted 3,816,664 entries to DB
+2026-05-23 19:18:55,594 - INFO - Progress: 143,000 processed (142,509 OK, 491 failed) | 3,817,173/4,034,913 total complete
+2026-05-23 19:19:06,421 - INFO - Compacted 3,817,664 entries to DB
+2026-05-23 19:19:17,126 - INFO - Progress: 144,000 processed (143,509 OK, 491 failed) | 3,818,173/4,034,913 total complete
+2026-05-23 19:19:27,150 - INFO - Compacted 3,818,664 entries to DB
+2026-05-23 19:19:38,330 - INFO - Progress: 145,000 processed (144,509 OK, 491 failed) | 3,819,173/4,034,913 total complete
+2026-05-23 19:19:49,487 - INFO - Compacted 3,819,664 entries to DB
+2026-05-23 19:20:00,743 - INFO - Progress: 146,000 processed (145,509 OK, 491 failed) | 3,820,173/4,034,913 total complete
+2026-05-23 19:20:11,289 - INFO - Compacted 3,820,664 entries to DB
+2026-05-23 19:20:21,995 - INFO - Progress: 147,000 processed (146,509 OK, 491 failed) | 3,821,173/4,034,913 total complete
+2026-05-23 19:20:33,856 - INFO - Compacted 3,821,664 entries to DB
+2026-05-23 19:20:47,265 - INFO - Progress: 148,000 processed (147,509 OK, 491 failed) | 3,822,173/4,034,913 total complete
+2026-05-23 19:20:58,908 - INFO - Compacted 3,822,664 entries to DB
+2026-05-23 19:21:09,766 - INFO - Progress: 149,000 processed (148,509 OK, 491 failed) | 3,823,173/4,034,913 total complete
+2026-05-23 19:21:20,946 - INFO - Compacted 3,823,664 entries to DB
+2026-05-23 19:21:32,305 - INFO - Progress: 150,000 processed (149,509 OK, 491 failed) | 3,824,173/4,034,913 total complete
+2026-05-23 19:21:43,841 - INFO - Compacted 3,824,664 entries to DB
+2026-05-23 19:21:46,164 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/350471927/medium.jpg'
+2026-05-23 19:21:55,410 - INFO - Progress: 151,000 processed (150,508 OK, 492 failed) | 3,825,172/4,034,913 total complete
+2026-05-23 19:22:06,176 - INFO - Compacted 3,825,664 entries to DB
+2026-05-23 19:22:18,139 - INFO - Progress: 152,000 processed (151,508 OK, 492 failed) | 3,826,172/4,034,913 total complete
+2026-05-23 19:22:29,170 - INFO - Compacted 3,826,664 entries to DB
+2026-05-23 19:22:40,859 - INFO - Progress: 153,000 processed (152,508 OK, 492 failed) | 3,827,172/4,034,913 total complete
+2026-05-23 19:22:51,369 - INFO - Compacted 3,827,664 entries to DB
+2026-05-23 19:23:01,993 - INFO - Progress: 154,000 processed (153,508 OK, 492 failed) | 3,828,172/4,034,913 total complete
+2026-05-23 19:23:13,880 - INFO - Compacted 3,828,664 entries to DB
+2026-05-23 19:23:24,799 - INFO - Progress: 155,000 processed (154,508 OK, 492 failed) | 3,829,172/4,034,913 total complete
+2026-05-23 19:23:35,500 - INFO - Compacted 3,829,664 entries to DB
+2026-05-23 19:23:43,415 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/334719399/medium.jpg'
+2026-05-23 19:23:46,844 - INFO - Progress: 156,000 processed (155,507 OK, 493 failed) | 3,830,171/4,034,913 total complete
+2026-05-23 19:23:57,866 - INFO - Compacted 3,830,664 entries to DB
+2026-05-23 19:24:08,990 - INFO - Progress: 157,000 processed (156,507 OK, 493 failed) | 3,831,171/4,034,913 total complete
+2026-05-23 19:24:19,912 - INFO - Compacted 3,831,664 entries to DB
+2026-05-23 19:24:31,033 - INFO - Progress: 158,000 processed (157,507 OK, 493 failed) | 3,832,171/4,034,913 total complete
+2026-05-23 19:24:41,948 - INFO - Compacted 3,832,664 entries to DB
+2026-05-23 19:24:52,918 - INFO - Progress: 159,000 processed (158,507 OK, 493 failed) | 3,833,171/4,034,913 total complete
+2026-05-23 19:25:04,270 - INFO - Compacted 3,833,664 entries to DB
+2026-05-23 19:25:15,346 - INFO - Progress: 160,000 processed (159,507 OK, 493 failed) | 3,834,171/4,034,913 total complete
+2026-05-23 19:25:26,663 - INFO - Compacted 3,834,664 entries to DB
+2026-05-23 19:25:37,508 - INFO - Progress: 161,000 processed (160,507 OK, 493 failed) | 3,835,171/4,034,913 total complete
+2026-05-23 19:25:48,453 - INFO - Compacted 3,835,664 entries to DB
+2026-05-23 19:25:59,174 - INFO - Progress: 162,000 processed (161,507 OK, 493 failed) | 3,836,171/4,034,913 total complete
+2026-05-23 19:26:10,713 - INFO - Compacted 3,836,664 entries to DB
+2026-05-23 19:26:22,587 - INFO - Progress: 163,000 processed (162,507 OK, 493 failed) | 3,837,171/4,034,913 total complete
+2026-05-23 19:26:33,670 - INFO - Compacted 3,837,664 entries to DB
+2026-05-23 19:26:45,358 - INFO - Progress: 164,000 processed (163,507 OK, 493 failed) | 3,838,171/4,034,913 total complete
+2026-05-23 19:26:57,338 - INFO - Compacted 3,838,664 entries to DB
+2026-05-23 19:27:09,023 - INFO - Progress: 165,000 processed (164,507 OK, 493 failed) | 3,839,171/4,034,913 total complete
+2026-05-23 19:27:09,964 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/350260938/medium.jpg'
+2026-05-23 19:27:22,284 - INFO - Compacted 3,839,664 entries to DB
+2026-05-23 19:27:34,613 - INFO - Progress: 166,000 processed (165,506 OK, 494 failed) | 3,840,170/4,034,913 total complete
+2026-05-23 19:27:47,058 - INFO - Compacted 3,840,664 entries to DB
+2026-05-23 19:27:58,976 - INFO - Progress: 167,000 processed (166,506 OK, 494 failed) | 3,841,170/4,034,913 total complete
+2026-05-23 19:28:11,092 - INFO - Compacted 3,841,664 entries to DB
+2026-05-23 19:28:23,727 - INFO - Progress: 168,000 processed (167,506 OK, 494 failed) | 3,842,170/4,034,913 total complete
+2026-05-23 19:28:34,921 - INFO - Compacted 3,842,664 entries to DB
+2026-05-23 19:28:47,033 - INFO - Progress: 169,000 processed (168,506 OK, 494 failed) | 3,843,170/4,034,913 total complete
+2026-05-23 19:28:58,313 - INFO - Compacted 3,843,664 entries to DB
+2026-05-23 19:29:09,888 - INFO - Progress: 170,000 processed (169,506 OK, 494 failed) | 3,844,170/4,034,913 total complete
+2026-05-23 19:29:21,683 - INFO - Compacted 3,844,664 entries to DB
+2026-05-23 19:29:33,526 - INFO - Progress: 171,000 processed (170,506 OK, 494 failed) | 3,845,170/4,034,913 total complete
+2026-05-23 19:29:46,281 - INFO - Compacted 3,845,664 entries to DB
+2026-05-23 19:29:58,938 - INFO - Progress: 172,000 processed (171,506 OK, 494 failed) | 3,846,170/4,034,913 total complete
+2026-05-23 19:30:09,880 - WARNING - Error transferring photo 239269151: 
+2026-05-23 19:30:10,838 - INFO - Compacted 3,846,664 entries to DB
+2026-05-23 19:30:22,495 - INFO - Progress: 173,000 processed (172,505 OK, 495 failed) | 3,847,169/4,034,913 total complete
+2026-05-23 19:30:34,107 - INFO - Compacted 3,847,664 entries to DB
+2026-05-23 19:30:45,209 - INFO - Progress: 174,000 processed (173,505 OK, 495 failed) | 3,848,169/4,034,913 total complete
+2026-05-23 19:30:53,644 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/340262483/medium.jpeg'
+2026-05-23 19:30:56,565 - INFO - Compacted 3,848,664 entries to DB
+2026-05-23 19:30:57,056 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/340262901/medium.jpeg'
+2026-05-23 19:31:08,452 - INFO - Progress: 175,000 processed (174,503 OK, 497 failed) | 3,849,167/4,034,913 total complete
+2026-05-23 19:31:20,857 - INFO - Compacted 3,849,664 entries to DB
+2026-05-23 19:31:33,053 - INFO - Progress: 176,000 processed (175,503 OK, 497 failed) | 3,850,167/4,034,913 total complete
+2026-05-23 19:31:44,729 - INFO - Compacted 3,850,664 entries to DB
+2026-05-23 19:31:56,174 - INFO - Progress: 177,000 processed (176,503 OK, 497 failed) | 3,851,167/4,034,913 total complete
+2026-05-23 19:32:08,411 - INFO - Compacted 3,851,664 entries to DB
+2026-05-23 19:32:20,289 - INFO - Progress: 178,000 processed (177,503 OK, 497 failed) | 3,852,167/4,034,913 total complete
+2026-05-23 19:32:32,101 - INFO - Compacted 3,852,664 entries to DB
+2026-05-23 19:32:43,276 - INFO - Progress: 179,000 processed (178,503 OK, 497 failed) | 3,853,167/4,034,913 total complete
+2026-05-23 19:32:55,851 - INFO - Compacted 3,853,664 entries to DB
+2026-05-23 19:33:07,848 - INFO - Progress: 180,000 processed (179,503 OK, 497 failed) | 3,854,167/4,034,913 total complete
+2026-05-23 19:33:19,501 - INFO - Compacted 3,854,664 entries to DB
+2026-05-23 19:33:22,520 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/350471949/medium.jpg'
+2026-05-23 19:33:31,010 - INFO - Progress: 181,000 processed (180,502 OK, 498 failed) | 3,855,166/4,034,913 total complete
+2026-05-23 19:33:41,997 - INFO - Compacted 3,855,664 entries to DB
+2026-05-23 19:33:53,414 - INFO - Progress: 182,000 processed (181,502 OK, 498 failed) | 3,856,166/4,034,913 total complete
+2026-05-23 19:34:05,479 - INFO - Compacted 3,856,664 entries to DB
+2026-05-23 19:34:18,190 - INFO - Progress: 183,000 processed (182,502 OK, 498 failed) | 3,857,166/4,034,913 total complete
+2026-05-23 19:34:29,896 - INFO - Compacted 3,857,664 entries to DB
+2026-05-23 19:34:41,730 - INFO - Progress: 184,000 processed (183,502 OK, 498 failed) | 3,858,166/4,034,913 total complete
+2026-05-23 19:34:53,571 - INFO - Compacted 3,858,664 entries to DB
+2026-05-23 19:35:05,125 - INFO - Progress: 185,000 processed (184,502 OK, 498 failed) | 3,859,166/4,034,913 total complete
+2026-05-23 19:35:16,782 - INFO - Compacted 3,859,664 entries to DB
+2026-05-23 19:35:29,259 - INFO - Progress: 186,000 processed (185,502 OK, 498 failed) | 3,860,166/4,034,913 total complete
+2026-05-23 19:35:40,887 - INFO - Compacted 3,860,664 entries to DB
+2026-05-23 19:35:53,673 - INFO - Progress: 187,000 processed (186,502 OK, 498 failed) | 3,861,166/4,034,913 total complete
+2026-05-23 19:35:59,593 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/414165196/medium.jpeg'
+2026-05-23 19:36:06,640 - INFO - Compacted 3,861,664 entries to DB
+2026-05-23 19:36:19,013 - INFO - Progress: 188,000 processed (187,501 OK, 499 failed) | 3,862,165/4,034,913 total complete
+2026-05-23 19:36:31,137 - INFO - Compacted 3,862,664 entries to DB
+2026-05-23 19:36:43,357 - INFO - Progress: 189,000 processed (188,501 OK, 499 failed) | 3,863,165/4,034,913 total complete
+2026-05-23 19:36:57,496 - INFO - Compacted 3,863,664 entries to DB
+2026-05-23 19:37:09,378 - INFO - Progress: 190,000 processed (189,501 OK, 499 failed) | 3,864,165/4,034,913 total complete
+2026-05-23 19:37:10,880 - WARNING - Error transferring photo 270415713: 
+2026-05-23 19:37:21,811 - INFO - Compacted 3,864,664 entries to DB
+2026-05-23 19:37:33,355 - INFO - Progress: 191,000 processed (190,500 OK, 500 failed) | 3,865,164/4,034,913 total complete
+2026-05-23 19:37:45,418 - INFO - Compacted 3,865,664 entries to DB
+2026-05-23 19:37:58,078 - INFO - Progress: 192,000 processed (191,500 OK, 500 failed) | 3,866,164/4,034,913 total complete
+2026-05-23 19:38:11,238 - INFO - Compacted 3,866,664 entries to DB
+2026-05-23 19:38:24,970 - INFO - Progress: 193,000 processed (192,500 OK, 500 failed) | 3,867,164/4,034,913 total complete
+2026-05-23 19:38:39,629 - INFO - Compacted 3,867,664 entries to DB
+2026-05-23 19:38:56,079 - INFO - Progress: 194,000 processed (193,500 OK, 500 failed) | 3,868,164/4,034,913 total complete
+2026-05-23 19:39:09,979 - INFO - Compacted 3,868,664 entries to DB
+2026-05-23 19:39:22,688 - INFO - Progress: 195,000 processed (194,500 OK, 500 failed) | 3,869,164/4,034,913 total complete
+2026-05-23 19:39:35,123 - INFO - Compacted 3,869,664 entries to DB
+2026-05-23 19:39:47,434 - INFO - Progress: 196,000 processed (195,500 OK, 500 failed) | 3,870,164/4,034,913 total complete
+2026-05-23 19:40:02,122 - INFO - Compacted 3,870,664 entries to DB
+2026-05-23 19:40:16,255 - INFO - Progress: 197,000 processed (196,500 OK, 500 failed) | 3,871,164/4,034,913 total complete
+2026-05-23 19:40:30,330 - INFO - Compacted 3,871,664 entries to DB
+2026-05-23 19:40:44,351 - INFO - Progress: 198,000 processed (197,500 OK, 500 failed) | 3,872,164/4,034,913 total complete
+2026-05-23 19:40:59,354 - INFO - Compacted 3,872,664 entries to DB
+2026-05-23 19:41:13,259 - INFO - Progress: 199,000 processed (198,500 OK, 500 failed) | 3,873,164/4,034,913 total complete
+2026-05-23 19:41:26,225 - INFO - Compacted 3,873,664 entries to DB
+2026-05-23 19:41:39,018 - INFO - Progress: 200,000 processed (199,500 OK, 500 failed) | 3,874,164/4,034,913 total complete
+2026-05-23 19:41:53,346 - INFO - Compacted 3,874,664 entries to DB
+2026-05-23 19:42:06,121 - INFO - Progress: 201,000 processed (200,500 OK, 500 failed) | 3,875,164/4,034,913 total complete
+2026-05-23 19:42:18,323 - INFO - Compacted 3,875,664 entries to DB
+2026-05-23 19:42:31,053 - INFO - Progress: 202,000 processed (201,500 OK, 500 failed) | 3,876,164/4,034,913 total complete
+2026-05-23 19:42:31,968 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/414101771/medium.jpeg'
+2026-05-23 19:42:43,672 - INFO - Compacted 3,876,664 entries to DB
+2026-05-23 19:42:57,175 - INFO - Progress: 203,000 processed (202,499 OK, 501 failed) | 3,877,163/4,034,913 total complete
+2026-05-23 19:43:11,836 - INFO - Compacted 3,877,664 entries to DB
+2026-05-23 19:43:26,250 - INFO - Progress: 204,000 processed (203,499 OK, 501 failed) | 3,878,163/4,034,913 total complete
+2026-05-23 19:43:40,707 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/340262919/medium.jpeg'
+2026-05-23 19:43:42,820 - INFO - Compacted 3,878,664 entries to DB
+2026-05-23 19:44:00,148 - INFO - Progress: 205,000 processed (204,498 OK, 502 failed) | 3,879,162/4,034,913 total complete
+2026-05-23 19:44:14,674 - INFO - Compacted 3,879,664 entries to DB
+2026-05-23 19:44:28,761 - INFO - Progress: 206,000 processed (205,498 OK, 502 failed) | 3,880,162/4,034,913 total complete
+2026-05-23 19:44:42,046 - INFO - Compacted 3,880,664 entries to DB
+2026-05-23 19:44:57,809 - INFO - Progress: 207,000 processed (206,498 OK, 502 failed) | 3,881,162/4,034,913 total complete
+2026-05-23 19:45:13,984 - INFO - Compacted 3,881,664 entries to DB
+2026-05-23 19:45:29,282 - INFO - Progress: 208,000 processed (207,498 OK, 502 failed) | 3,882,162/4,034,913 total complete
+2026-05-23 19:45:44,872 - INFO - Compacted 3,882,664 entries to DB
+2026-05-23 19:45:59,061 - INFO - Progress: 209,000 processed (208,498 OK, 502 failed) | 3,883,162/4,034,913 total complete
+2026-05-23 19:46:13,215 - INFO - Compacted 3,883,664 entries to DB
+2026-05-23 19:46:28,487 - INFO - Progress: 210,000 processed (209,498 OK, 502 failed) | 3,884,162/4,034,913 total complete
+2026-05-23 19:46:42,975 - INFO - Compacted 3,884,664 entries to DB
+2026-05-23 19:46:55,658 - INFO - Progress: 211,000 processed (210,498 OK, 502 failed) | 3,885,162/4,034,913 total complete
+2026-05-23 19:47:09,826 - INFO - Compacted 3,885,664 entries to DB
+2026-05-23 19:47:24,832 - INFO - Progress: 212,000 processed (211,498 OK, 502 failed) | 3,886,162/4,034,913 total complete
+2026-05-23 19:47:41,074 - INFO - Compacted 3,886,664 entries to DB
+2026-05-23 19:47:54,016 - INFO - Progress: 213,000 processed (212,498 OK, 502 failed) | 3,887,162/4,034,913 total complete
+2026-05-23 19:48:07,645 - INFO - Compacted 3,887,664 entries to DB
+2026-05-23 19:48:20,682 - INFO - Progress: 214,000 processed (213,498 OK, 502 failed) | 3,888,162/4,034,913 total complete
+2026-05-23 19:48:34,540 - INFO - Compacted 3,888,664 entries to DB
+2026-05-23 19:48:48,604 - INFO - Progress: 215,000 processed (214,498 OK, 502 failed) | 3,889,162/4,034,913 total complete
+2026-05-23 19:49:02,639 - INFO - Compacted 3,889,664 entries to DB
+2026-05-23 19:49:11,653 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/334719287/medium.jpg'
+2026-05-23 19:49:15,911 - INFO - Progress: 216,000 processed (215,497 OK, 503 failed) | 3,890,161/4,034,913 total complete
+2026-05-23 19:49:30,078 - INFO - Compacted 3,890,664 entries to DB
+2026-05-23 19:49:43,757 - INFO - Progress: 217,000 processed (216,497 OK, 503 failed) | 3,891,161/4,034,913 total complete
+2026-05-23 19:50:00,201 - INFO - Compacted 3,891,664 entries to DB
+2026-05-23 19:50:16,707 - INFO - Progress: 218,000 processed (217,497 OK, 503 failed) | 3,892,161/4,034,913 total complete
+2026-05-23 19:50:31,131 - INFO - Compacted 3,892,664 entries to DB
+2026-05-23 19:50:44,245 - INFO - Progress: 219,000 processed (218,497 OK, 503 failed) | 3,893,161/4,034,913 total complete
+2026-05-23 19:50:56,837 - INFO - Compacted 3,893,664 entries to DB
+2026-05-23 19:51:09,961 - INFO - Progress: 220,000 processed (219,497 OK, 503 failed) | 3,894,161/4,034,913 total complete
+2026-05-23 19:51:22,800 - INFO - Compacted 3,894,664 entries to DB
+2026-05-23 19:51:36,075 - INFO - Progress: 221,000 processed (220,497 OK, 503 failed) | 3,895,161/4,034,913 total complete
+2026-05-23 19:51:49,444 - INFO - Compacted 3,895,664 entries to DB
+2026-05-23 19:52:03,505 - INFO - Progress: 222,000 processed (221,497 OK, 503 failed) | 3,896,161/4,034,913 total complete
+2026-05-23 19:52:16,526 - INFO - Compacted 3,896,664 entries to DB
+2026-05-23 19:52:28,062 - INFO - Progress: 223,000 processed (222,497 OK, 503 failed) | 3,897,161/4,034,913 total complete
+2026-05-23 19:52:41,663 - INFO - Compacted 3,897,664 entries to DB
+2026-05-23 19:52:53,651 - INFO - Progress: 224,000 processed (223,497 OK, 503 failed) | 3,898,161/4,034,913 total complete
+2026-05-23 19:53:04,939 - INFO - Compacted 3,898,664 entries to DB
+2026-05-23 19:53:17,171 - INFO - Progress: 225,000 processed (224,497 OK, 503 failed) | 3,899,161/4,034,913 total complete
+2026-05-23 19:53:28,979 - INFO - Compacted 3,899,664 entries to DB
+2026-05-23 19:53:40,210 - INFO - Progress: 226,000 processed (225,497 OK, 503 failed) | 3,900,161/4,034,913 total complete
+2026-05-23 19:53:51,370 - INFO - Compacted 3,900,664 entries to DB
+2026-05-23 19:54:03,194 - INFO - Progress: 227,000 processed (226,497 OK, 503 failed) | 3,901,161/4,034,913 total complete
+2026-05-23 19:54:15,028 - INFO - Compacted 3,901,664 entries to DB
+2026-05-23 19:54:18,490 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/350979721/medium.jpeg'
+2026-05-23 19:54:25,724 - INFO - Progress: 228,000 processed (227,496 OK, 504 failed) | 3,902,160/4,034,913 total complete
+2026-05-23 19:54:37,650 - INFO - Compacted 3,902,664 entries to DB
+2026-05-23 19:54:48,722 - INFO - Progress: 229,000 processed (228,496 OK, 504 failed) | 3,903,160/4,034,913 total complete
+2026-05-23 19:55:00,258 - INFO - Compacted 3,903,664 entries to DB
+2026-05-23 19:55:10,923 - INFO - Progress: 230,000 processed (229,496 OK, 504 failed) | 3,904,160/4,034,913 total complete
+2026-05-23 19:55:22,978 - INFO - Compacted 3,904,664 entries to DB
+2026-05-23 19:55:34,455 - INFO - Progress: 231,000 processed (230,496 OK, 504 failed) | 3,905,160/4,034,913 total complete
+2026-05-23 19:55:45,803 - INFO - Compacted 3,905,664 entries to DB
+2026-05-23 19:55:57,129 - INFO - Progress: 232,000 processed (231,496 OK, 504 failed) | 3,906,160/4,034,913 total complete
+2026-05-23 19:56:09,011 - INFO - Compacted 3,906,664 entries to DB
+2026-05-23 19:56:19,992 - INFO - Progress: 233,000 processed (232,496 OK, 504 failed) | 3,907,160/4,034,913 total complete
+2026-05-23 19:56:31,453 - INFO - Compacted 3,907,664 entries to DB
+2026-05-23 19:56:41,775 - INFO - Progress: 234,000 processed (233,496 OK, 504 failed) | 3,908,160/4,034,913 total complete
+2026-05-23 19:56:53,365 - INFO - Compacted 3,908,664 entries to DB
+2026-05-23 19:57:04,808 - INFO - Progress: 235,000 processed (234,496 OK, 504 failed) | 3,909,160/4,034,913 total complete
+2026-05-23 19:57:17,258 - INFO - Compacted 3,909,664 entries to DB
+2026-05-23 19:57:27,972 - INFO - Progress: 236,000 processed (235,496 OK, 504 failed) | 3,910,160/4,034,913 total complete
+2026-05-23 19:57:39,256 - INFO - Compacted 3,910,664 entries to DB
+2026-05-23 19:57:50,830 - INFO - Progress: 237,000 processed (236,496 OK, 504 failed) | 3,911,160/4,034,913 total complete
+2026-05-23 19:58:02,104 - INFO - Compacted 3,911,664 entries to DB
+2026-05-23 19:58:12,786 - INFO - Progress: 238,000 processed (237,496 OK, 504 failed) | 3,912,160/4,034,913 total complete
+2026-05-23 19:58:23,489 - INFO - Compacted 3,912,664 entries to DB
+2026-05-23 19:58:33,990 - INFO - Progress: 239,000 processed (238,496 OK, 504 failed) | 3,913,160/4,034,913 total complete
+2026-05-23 19:58:45,369 - INFO - Compacted 3,913,664 entries to DB
+2026-05-23 19:58:56,349 - INFO - Progress: 240,000 processed (239,496 OK, 504 failed) | 3,914,160/4,034,913 total complete
+2026-05-23 19:59:06,930 - INFO - Compacted 3,914,664 entries to DB
+2026-05-23 19:59:17,289 - INFO - Progress: 241,000 processed (240,496 OK, 504 failed) | 3,915,160/4,034,913 total complete
+2026-05-23 19:59:27,997 - INFO - Compacted 3,915,664 entries to DB
+2026-05-23 19:59:38,951 - INFO - Progress: 242,000 processed (241,496 OK, 504 failed) | 3,916,160/4,034,913 total complete
+2026-05-23 19:59:49,611 - INFO - Compacted 3,916,664 entries to DB
+2026-05-23 20:00:00,264 - INFO - Progress: 243,000 processed (242,496 OK, 504 failed) | 3,917,160/4,034,913 total complete
+2026-05-23 20:00:10,345 - INFO - Compacted 3,917,664 entries to DB
+2026-05-23 20:00:20,464 - INFO - Progress: 244,000 processed (243,496 OK, 504 failed) | 3,918,160/4,034,913 total complete
+2026-05-23 20:00:30,697 - INFO - Compacted 3,918,664 entries to DB
+2026-05-23 20:00:41,307 - INFO - Progress: 245,000 processed (244,496 OK, 504 failed) | 3,919,160/4,034,913 total complete
+2026-05-23 20:00:52,737 - INFO - Compacted 3,919,664 entries to DB
+2026-05-23 20:01:03,482 - INFO - Progress: 246,000 processed (245,496 OK, 504 failed) | 3,920,160/4,034,913 total complete
+2026-05-23 20:01:14,545 - INFO - Compacted 3,920,664 entries to DB
+2026-05-23 20:01:25,151 - INFO - Progress: 247,000 processed (246,496 OK, 504 failed) | 3,921,160/4,034,913 total complete
+2026-05-23 20:01:35,947 - INFO - Compacted 3,921,664 entries to DB
+2026-05-23 20:01:46,566 - INFO - Progress: 248,000 processed (247,496 OK, 504 failed) | 3,922,160/4,034,913 total complete
+2026-05-23 20:01:57,376 - INFO - Compacted 3,922,664 entries to DB
+2026-05-23 20:02:07,592 - INFO - Progress: 249,000 processed (248,496 OK, 504 failed) | 3,923,160/4,034,913 total complete
+2026-05-23 20:02:19,166 - INFO - Compacted 3,923,664 entries to DB
+2026-05-23 20:02:29,032 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/410585751/medium.jpeg'
+2026-05-23 20:02:29,928 - INFO - Progress: 250,000 processed (249,495 OK, 505 failed) | 3,924,159/4,034,913 total complete
+2026-05-23 20:02:40,590 - INFO - Compacted 3,924,664 entries to DB
+2026-05-23 20:02:51,401 - INFO - Progress: 251,000 processed (250,495 OK, 505 failed) | 3,925,159/4,034,913 total complete
+2026-05-23 20:03:02,008 - INFO - Compacted 3,925,664 entries to DB
+2026-05-23 20:03:12,434 - INFO - Progress: 252,000 processed (251,495 OK, 505 failed) | 3,926,159/4,034,913 total complete
+2026-05-23 20:03:23,015 - INFO - Compacted 3,926,664 entries to DB
+2026-05-23 20:03:33,633 - INFO - Progress: 253,000 processed (252,495 OK, 505 failed) | 3,927,159/4,034,913 total complete
+2026-05-23 20:03:44,901 - INFO - Compacted 3,927,664 entries to DB
+2026-05-23 20:03:55,573 - INFO - Progress: 254,000 processed (253,495 OK, 505 failed) | 3,928,159/4,034,913 total complete
+2026-05-23 20:04:06,363 - INFO - Compacted 3,928,664 entries to DB
+2026-05-23 20:04:17,070 - INFO - Progress: 255,000 processed (254,495 OK, 505 failed) | 3,929,159/4,034,913 total complete
+2026-05-23 20:04:28,472 - INFO - Compacted 3,929,664 entries to DB
+2026-05-23 20:04:39,255 - INFO - Progress: 256,000 processed (255,495 OK, 505 failed) | 3,930,159/4,034,913 total complete
+2026-05-23 20:04:50,285 - INFO - Compacted 3,930,664 entries to DB
+2026-05-23 20:05:00,501 - INFO - Progress: 257,000 processed (256,495 OK, 505 failed) | 3,931,159/4,034,913 total complete
+2026-05-23 20:05:11,220 - INFO - Compacted 3,931,664 entries to DB
+2026-05-23 20:05:21,306 - INFO - Progress: 258,000 processed (257,495 OK, 505 failed) | 3,932,159/4,034,913 total complete
+2026-05-23 20:05:31,944 - INFO - Compacted 3,932,664 entries to DB
+2026-05-23 20:05:42,742 - INFO - Progress: 259,000 processed (258,495 OK, 505 failed) | 3,933,159/4,034,913 total complete
+2026-05-23 20:05:53,902 - INFO - Compacted 3,933,664 entries to DB
+2026-05-23 20:06:04,127 - INFO - Progress: 260,000 processed (259,495 OK, 505 failed) | 3,934,159/4,034,913 total complete
+2026-05-23 20:06:14,730 - INFO - Compacted 3,934,664 entries to DB
+2026-05-23 20:06:26,533 - INFO - Progress: 261,000 processed (260,495 OK, 505 failed) | 3,935,159/4,034,913 total complete
+2026-05-23 20:06:38,278 - INFO - Compacted 3,935,664 entries to DB
+2026-05-23 20:06:42,322 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/414101703/medium.jpeg'
+2026-05-23 20:06:48,994 - INFO - Progress: 262,000 processed (261,494 OK, 506 failed) | 3,936,158/4,034,913 total complete
+2026-05-23 20:07:01,073 - INFO - Compacted 3,936,664 entries to DB
+2026-05-23 20:07:11,586 - INFO - Progress: 263,000 processed (262,494 OK, 506 failed) | 3,937,158/4,034,913 total complete
+2026-05-23 20:07:22,380 - INFO - Compacted 3,937,664 entries to DB
+2026-05-23 20:07:33,988 - INFO - Progress: 264,000 processed (263,494 OK, 506 failed) | 3,938,158/4,034,913 total complete
+2026-05-23 20:07:45,382 - INFO - Compacted 3,938,664 entries to DB
+2026-05-23 20:07:55,957 - INFO - Progress: 265,000 processed (264,494 OK, 506 failed) | 3,939,158/4,034,913 total complete
+2026-05-23 20:08:06,796 - INFO - Compacted 3,939,664 entries to DB
+2026-05-23 20:08:17,259 - INFO - Progress: 266,000 processed (265,494 OK, 506 failed) | 3,940,158/4,034,913 total complete
+2026-05-23 20:08:28,264 - INFO - Compacted 3,940,664 entries to DB
+2026-05-23 20:08:40,557 - INFO - Progress: 267,000 processed (266,494 OK, 506 failed) | 3,941,158/4,034,913 total complete
+2026-05-23 20:08:52,290 - INFO - Compacted 3,941,664 entries to DB
+2026-05-23 20:09:02,804 - INFO - Progress: 268,000 processed (267,494 OK, 506 failed) | 3,942,158/4,034,913 total complete
+2026-05-23 20:09:14,336 - INFO - Compacted 3,942,664 entries to DB
+2026-05-23 20:09:25,381 - INFO - Progress: 269,000 processed (268,494 OK, 506 failed) | 3,943,158/4,034,913 total complete
+2026-05-23 20:09:37,639 - INFO - Compacted 3,943,664 entries to DB
+2026-05-23 20:09:47,633 - INFO - Progress: 270,000 processed (269,494 OK, 506 failed) | 3,944,158/4,034,913 total complete
+2026-05-23 20:09:58,394 - INFO - Compacted 3,944,664 entries to DB
+2026-05-23 20:10:09,139 - INFO - Progress: 271,000 processed (270,494 OK, 506 failed) | 3,945,158/4,034,913 total complete
+2026-05-23 20:10:20,405 - INFO - Compacted 3,945,664 entries to DB
+2026-05-23 20:10:31,566 - INFO - Progress: 272,000 processed (271,494 OK, 506 failed) | 3,946,158/4,034,913 total complete
+2026-05-23 20:10:42,515 - INFO - Compacted 3,946,664 entries to DB
+2026-05-23 20:10:52,463 - INFO - Progress: 273,000 processed (272,494 OK, 506 failed) | 3,947,158/4,034,913 total complete
+2026-05-23 20:11:03,749 - INFO - Compacted 3,947,664 entries to DB
+2026-05-23 20:11:15,242 - INFO - Progress: 274,000 processed (273,494 OK, 506 failed) | 3,948,158/4,034,913 total complete
+2026-05-23 20:11:21,880 - WARNING - Error transferring photo 576192939: 
+2026-05-23 20:11:26,289 - INFO - Compacted 3,948,664 entries to DB
+2026-05-23 20:11:29,064 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/351756458/medium.jpg'
+2026-05-23 20:11:36,899 - INFO - Progress: 275,000 processed (274,492 OK, 508 failed) | 3,949,156/4,034,913 total complete
+2026-05-23 20:11:48,345 - INFO - Compacted 3,949,664 entries to DB
+2026-05-23 20:11:58,839 - INFO - Progress: 276,000 processed (275,492 OK, 508 failed) | 3,950,156/4,034,913 total complete
+2026-05-23 20:12:09,805 - INFO - Compacted 3,950,664 entries to DB
+2026-05-23 20:12:20,822 - INFO - Progress: 277,000 processed (276,492 OK, 508 failed) | 3,951,156/4,034,913 total complete
+2026-05-23 20:12:31,805 - INFO - Compacted 3,951,664 entries to DB
+2026-05-23 20:12:42,855 - INFO - Progress: 278,000 processed (277,492 OK, 508 failed) | 3,952,156/4,034,913 total complete
+2026-05-23 20:12:53,519 - INFO - Compacted 3,952,664 entries to DB
+2026-05-23 20:13:04,195 - INFO - Progress: 279,000 processed (278,492 OK, 508 failed) | 3,953,156/4,034,913 total complete
+2026-05-23 20:13:15,274 - INFO - Compacted 3,953,664 entries to DB
+2026-05-23 20:13:26,521 - INFO - Progress: 280,000 processed (279,492 OK, 508 failed) | 3,954,156/4,034,913 total complete
+2026-05-23 20:13:38,270 - INFO - Compacted 3,954,664 entries to DB
+2026-05-23 20:13:48,923 - INFO - Progress: 281,000 processed (280,492 OK, 508 failed) | 3,955,156/4,034,913 total complete
+2026-05-23 20:13:59,080 - INFO - Compacted 3,955,664 entries to DB
+2026-05-23 20:14:09,716 - INFO - Progress: 282,000 processed (281,492 OK, 508 failed) | 3,956,156/4,034,913 total complete
+2026-05-23 20:14:20,643 - INFO - Compacted 3,956,664 entries to DB
+2026-05-23 20:14:21,305 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/332593314/medium.jpg'
+2026-05-23 20:14:31,401 - INFO - Progress: 283,000 processed (282,491 OK, 509 failed) | 3,957,155/4,034,913 total complete
+2026-05-23 20:14:43,244 - INFO - Compacted 3,957,664 entries to DB
+2026-05-23 20:14:53,296 - INFO - Progress: 284,000 processed (283,491 OK, 509 failed) | 3,958,155/4,034,913 total complete
+2026-05-23 20:15:04,733 - INFO - Compacted 3,958,664 entries to DB
+2026-05-23 20:15:08,663 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/350260914/medium.jpg'
+2026-05-23 20:15:15,175 - INFO - Progress: 285,000 processed (284,490 OK, 510 failed) | 3,959,154/4,034,913 total complete
+2026-05-23 20:15:27,542 - INFO - Compacted 3,959,664 entries to DB
+2026-05-23 20:15:38,745 - INFO - Progress: 286,000 processed (285,490 OK, 510 failed) | 3,960,154/4,034,913 total complete
+2026-05-23 20:15:50,094 - INFO - Compacted 3,960,664 entries to DB
+2026-05-23 20:16:00,817 - INFO - Progress: 287,000 processed (286,490 OK, 510 failed) | 3,961,154/4,034,913 total complete
+2026-05-23 20:16:11,914 - INFO - Compacted 3,961,664 entries to DB
+2026-05-23 20:16:22,846 - INFO - Progress: 288,000 processed (287,490 OK, 510 failed) | 3,962,154/4,034,913 total complete
+2026-05-23 20:16:33,466 - INFO - Compacted 3,962,664 entries to DB
+2026-05-23 20:16:44,321 - INFO - Progress: 289,000 processed (288,490 OK, 510 failed) | 3,963,154/4,034,913 total complete
+2026-05-23 20:16:55,257 - INFO - Compacted 3,963,664 entries to DB
+2026-05-23 20:17:07,150 - INFO - Progress: 290,000 processed (289,490 OK, 510 failed) | 3,964,154/4,034,913 total complete
+2026-05-23 20:17:18,934 - INFO - Compacted 3,964,664 entries to DB
+2026-05-23 20:17:29,905 - INFO - Progress: 291,000 processed (290,490 OK, 510 failed) | 3,965,154/4,034,913 total complete
+2026-05-23 20:17:41,749 - INFO - Compacted 3,965,664 entries to DB
+2026-05-23 20:17:52,600 - INFO - Progress: 292,000 processed (291,490 OK, 510 failed) | 3,966,154/4,034,913 total complete
+2026-05-23 20:18:04,175 - INFO - Compacted 3,966,664 entries to DB
+2026-05-23 20:18:15,653 - INFO - Progress: 293,000 processed (292,490 OK, 510 failed) | 3,967,154/4,034,913 total complete
+2026-05-23 20:18:27,100 - INFO - Compacted 3,967,664 entries to DB
+2026-05-23 20:18:38,218 - INFO - Progress: 294,000 processed (293,490 OK, 510 failed) | 3,968,154/4,034,913 total complete
+2026-05-23 20:18:49,472 - INFO - Compacted 3,968,664 entries to DB
+2026-05-23 20:19:00,337 - INFO - Progress: 295,000 processed (294,490 OK, 510 failed) | 3,969,154/4,034,913 total complete
+2026-05-23 20:19:11,689 - INFO - Compacted 3,969,664 entries to DB
+2026-05-23 20:19:22,057 - INFO - Progress: 296,000 processed (295,490 OK, 510 failed) | 3,970,154/4,034,913 total complete
+2026-05-23 20:19:33,375 - INFO - Compacted 3,970,664 entries to DB
+2026-05-23 20:19:45,099 - INFO - Progress: 297,000 processed (296,490 OK, 510 failed) | 3,971,154/4,034,913 total complete
+2026-05-23 20:19:55,949 - INFO - Compacted 3,971,664 entries to DB
+2026-05-23 20:20:06,856 - INFO - Progress: 298,000 processed (297,490 OK, 510 failed) | 3,972,154/4,034,913 total complete
+2026-05-23 20:20:17,949 - INFO - Compacted 3,972,664 entries to DB
+2026-05-23 20:20:28,527 - INFO - Progress: 299,000 processed (298,490 OK, 510 failed) | 3,973,154/4,034,913 total complete
+2026-05-23 20:20:39,863 - INFO - Compacted 3,973,664 entries to DB
+2026-05-23 20:20:50,176 - INFO - Progress: 300,000 processed (299,490 OK, 510 failed) | 3,974,154/4,034,913 total complete
+2026-05-23 20:21:01,719 - INFO - Compacted 3,974,664 entries to DB
+2026-05-23 20:21:07,189 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/188776116/medium.jpeg'
+2026-05-23 20:21:12,405 - INFO - Progress: 301,000 processed (300,489 OK, 511 failed) | 3,975,153/4,034,913 total complete
+2026-05-23 20:21:23,256 - INFO - Compacted 3,975,664 entries to DB
+2026-05-23 20:21:24,816 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/456446065/medium.jpg'
+2026-05-23 20:21:34,078 - INFO - Progress: 302,000 processed (301,488 OK, 512 failed) | 3,976,152/4,034,913 total complete
+2026-05-23 20:21:45,771 - INFO - Compacted 3,976,664 entries to DB
+2026-05-23 20:21:56,028 - INFO - Progress: 303,000 processed (302,488 OK, 512 failed) | 3,977,152/4,034,913 total complete
+2026-05-23 20:22:02,704 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/351367509/medium.jpg'
+2026-05-23 20:22:07,361 - INFO - Compacted 3,977,664 entries to DB
+2026-05-23 20:22:19,006 - INFO - Progress: 304,000 processed (303,487 OK, 513 failed) | 3,978,151/4,034,913 total complete
+2026-05-23 20:22:31,014 - INFO - Compacted 3,978,664 entries to DB
+2026-05-23 20:22:42,720 - INFO - Progress: 305,000 processed (304,487 OK, 513 failed) | 3,979,151/4,034,913 total complete
+2026-05-23 20:22:44,918 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/334719456/medium.jpg'
+2026-05-23 20:22:54,248 - INFO - Compacted 3,979,664 entries to DB
+2026-05-23 20:23:05,473 - INFO - Progress: 306,000 processed (305,486 OK, 514 failed) | 3,980,150/4,034,913 total complete
+2026-05-23 20:23:17,035 - INFO - Compacted 3,980,664 entries to DB
+2026-05-23 20:23:28,185 - INFO - Progress: 307,000 processed (306,486 OK, 514 failed) | 3,981,150/4,034,913 total complete
+2026-05-23 20:23:40,383 - INFO - Compacted 3,981,664 entries to DB
+2026-05-23 20:23:51,635 - INFO - Progress: 308,000 processed (307,486 OK, 514 failed) | 3,982,150/4,034,913 total complete
+2026-05-23 20:24:02,890 - INFO - Compacted 3,982,664 entries to DB
+2026-05-23 20:24:13,823 - INFO - Progress: 309,000 processed (308,486 OK, 514 failed) | 3,983,150/4,034,913 total complete
+2026-05-23 20:24:25,656 - INFO - Compacted 3,983,664 entries to DB
+2026-05-23 20:24:36,652 - INFO - Progress: 310,000 processed (309,486 OK, 514 failed) | 3,984,150/4,034,913 total complete
+2026-05-23 20:24:48,901 - INFO - Compacted 3,984,664 entries to DB
+2026-05-23 20:24:59,987 - INFO - Progress: 311,000 processed (310,486 OK, 514 failed) | 3,985,150/4,034,913 total complete
+2026-05-23 20:25:11,720 - INFO - Compacted 3,985,664 entries to DB
+2026-05-23 20:25:23,548 - INFO - Progress: 312,000 processed (311,486 OK, 514 failed) | 3,986,150/4,034,913 total complete
+2026-05-23 20:25:36,129 - INFO - Compacted 3,986,664 entries to DB
+2026-05-23 20:25:48,729 - INFO - Progress: 313,000 processed (312,486 OK, 514 failed) | 3,987,150/4,034,913 total complete
+2026-05-23 20:25:59,871 - INFO - Compacted 3,987,664 entries to DB
+2026-05-23 20:26:11,002 - INFO - Progress: 314,000 processed (313,486 OK, 514 failed) | 3,988,150/4,034,913 total complete
+2026-05-23 20:26:23,213 - INFO - Compacted 3,988,664 entries to DB
+2026-05-23 20:26:34,154 - INFO - Progress: 315,000 processed (314,486 OK, 514 failed) | 3,989,150/4,034,913 total complete
+2026-05-23 20:26:46,104 - INFO - Compacted 3,989,664 entries to DB
+2026-05-23 20:26:56,586 - INFO - Progress: 316,000 processed (315,486 OK, 514 failed) | 3,990,150/4,034,913 total complete
+2026-05-23 20:27:08,552 - INFO - Compacted 3,990,664 entries to DB
+2026-05-23 20:27:19,888 - INFO - Progress: 317,000 processed (316,486 OK, 514 failed) | 3,991,150/4,034,913 total complete
+2026-05-23 20:27:31,613 - INFO - Compacted 3,991,664 entries to DB
+2026-05-23 20:27:42,446 - INFO - Progress: 318,000 processed (317,486 OK, 514 failed) | 3,992,150/4,034,913 total complete
+2026-05-23 20:27:54,135 - INFO - Compacted 3,992,664 entries to DB
+2026-05-23 20:28:05,083 - INFO - Progress: 319,000 processed (318,486 OK, 514 failed) | 3,993,150/4,034,913 total complete
+2026-05-23 20:28:17,562 - INFO - Compacted 3,993,664 entries to DB
+2026-05-23 20:28:28,686 - INFO - Progress: 320,000 processed (319,486 OK, 514 failed) | 3,994,150/4,034,913 total complete
+2026-05-23 20:28:40,419 - INFO - Compacted 3,994,664 entries to DB
+2026-05-23 20:28:52,181 - INFO - Progress: 321,000 processed (320,486 OK, 514 failed) | 3,995,150/4,034,913 total complete
+2026-05-23 20:28:59,879 - WARNING - Error transferring photo 36053536: 
+2026-05-23 20:29:04,403 - INFO - Compacted 3,995,664 entries to DB
+2026-05-23 20:29:15,474 - INFO - Progress: 322,000 processed (321,485 OK, 515 failed) | 3,996,149/4,034,913 total complete
+2026-05-23 20:29:27,557 - INFO - Compacted 3,996,664 entries to DB
+2026-05-23 20:29:37,945 - INFO - Progress: 323,000 processed (322,485 OK, 515 failed) | 3,997,149/4,034,913 total complete
+2026-05-23 20:29:49,551 - INFO - Compacted 3,997,664 entries to DB
+2026-05-23 20:30:00,625 - INFO - Progress: 324,000 processed (323,485 OK, 515 failed) | 3,998,149/4,034,913 total complete
+2026-05-23 20:30:12,442 - INFO - Compacted 3,998,664 entries to DB
+2026-05-23 20:30:23,019 - INFO - Progress: 325,000 processed (324,485 OK, 515 failed) | 3,999,149/4,034,913 total complete
+2026-05-23 20:30:35,364 - INFO - Compacted 3,999,664 entries to DB
+2026-05-23 20:30:46,113 - INFO - Progress: 326,000 processed (325,485 OK, 515 failed) | 4,000,149/4,034,913 total complete
+2026-05-23 20:30:56,961 - INFO - Compacted 4,000,664 entries to DB
+2026-05-23 20:31:07,388 - INFO - Progress: 327,000 processed (326,485 OK, 515 failed) | 4,001,149/4,034,913 total complete
+2026-05-23 20:31:18,114 - INFO - Compacted 4,001,664 entries to DB
+2026-05-23 20:31:27,955 - INFO - Progress: 328,000 processed (327,485 OK, 515 failed) | 4,002,149/4,034,913 total complete
+2026-05-23 20:31:39,498 - INFO - Compacted 4,002,664 entries to DB
+2026-05-23 20:31:50,172 - INFO - Progress: 329,000 processed (328,485 OK, 515 failed) | 4,003,149/4,034,913 total complete
+2026-05-23 20:32:01,334 - INFO - Compacted 4,003,664 entries to DB
+2026-05-23 20:32:12,107 - INFO - Progress: 330,000 processed (329,485 OK, 515 failed) | 4,004,149/4,034,913 total complete
+2026-05-23 20:32:24,128 - INFO - Compacted 4,004,664 entries to DB
+2026-05-23 20:32:34,911 - INFO - Progress: 331,000 processed (330,485 OK, 515 failed) | 4,005,149/4,034,913 total complete
+2026-05-23 20:32:44,211 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/350814235/medium.jpg'
+2026-05-23 20:32:46,931 - INFO - Compacted 4,005,664 entries to DB
+2026-05-23 20:32:58,638 - INFO - Progress: 332,000 processed (331,484 OK, 516 failed) | 4,006,148/4,034,913 total complete
+2026-05-23 20:33:10,466 - INFO - Compacted 4,006,664 entries to DB
+2026-05-23 20:33:21,635 - INFO - Progress: 333,000 processed (332,484 OK, 516 failed) | 4,007,148/4,034,913 total complete
+2026-05-23 20:33:33,980 - INFO - Compacted 4,007,664 entries to DB
+2026-05-23 20:33:45,386 - INFO - Progress: 334,000 processed (333,484 OK, 516 failed) | 4,008,148/4,034,913 total complete
+2026-05-23 20:33:58,088 - INFO - Compacted 4,008,664 entries to DB
+2026-05-23 20:34:11,142 - INFO - Progress: 335,000 processed (334,484 OK, 516 failed) | 4,009,148/4,034,913 total complete
+2026-05-23 20:34:23,128 - INFO - Compacted 4,009,664 entries to DB
+2026-05-23 20:34:33,880 - WARNING - Error transferring photo 59456600: 
+2026-05-23 20:34:34,335 - INFO - Progress: 336,000 processed (335,483 OK, 517 failed) | 4,010,147/4,034,913 total complete
+2026-05-23 20:34:46,488 - INFO - Compacted 4,010,664 entries to DB
+2026-05-23 20:34:57,315 - INFO - Progress: 337,000 processed (336,483 OK, 517 failed) | 4,011,147/4,034,913 total complete
+2026-05-23 20:35:08,631 - INFO - Compacted 4,011,664 entries to DB
+2026-05-23 20:35:10,847 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/418891882/medium.jpeg'
+2026-05-23 20:35:19,113 - INFO - Progress: 338,000 processed (337,482 OK, 518 failed) | 4,012,146/4,034,913 total complete
+2026-05-23 20:35:30,648 - INFO - Compacted 4,012,664 entries to DB
+2026-05-23 20:35:40,892 - INFO - Progress: 339,000 processed (338,482 OK, 518 failed) | 4,013,146/4,034,913 total complete
+2026-05-23 20:35:52,457 - INFO - Compacted 4,013,664 entries to DB
+2026-05-23 20:36:03,524 - INFO - Progress: 340,000 processed (339,482 OK, 518 failed) | 4,014,146/4,034,913 total complete
+2026-05-23 20:36:15,635 - INFO - Compacted 4,014,664 entries to DB
+2026-05-23 20:36:26,475 - INFO - Progress: 341,000 processed (340,482 OK, 518 failed) | 4,015,146/4,034,913 total complete
+2026-05-23 20:36:39,096 - INFO - Compacted 4,015,664 entries to DB
+2026-05-23 20:36:50,095 - INFO - Progress: 342,000 processed (341,482 OK, 518 failed) | 4,016,146/4,034,913 total complete
+2026-05-23 20:37:02,340 - INFO - Compacted 4,016,664 entries to DB
+2026-05-23 20:37:13,043 - INFO - Progress: 343,000 processed (342,482 OK, 518 failed) | 4,017,146/4,034,913 total complete
+2026-05-23 20:37:25,199 - INFO - Compacted 4,017,664 entries to DB
+2026-05-23 20:37:36,503 - INFO - Progress: 344,000 processed (343,482 OK, 518 failed) | 4,018,146/4,034,913 total complete
+2026-05-23 20:37:48,219 - INFO - Compacted 4,018,664 entries to DB
+2026-05-23 20:37:58,497 - INFO - Progress: 345,000 processed (344,482 OK, 518 failed) | 4,019,146/4,034,913 total complete
+2026-05-23 20:38:10,287 - INFO - Compacted 4,019,664 entries to DB
+2026-05-23 20:38:20,956 - INFO - Progress: 346,000 processed (345,482 OK, 518 failed) | 4,020,146/4,034,913 total complete
+2026-05-23 20:38:32,506 - INFO - Compacted 4,020,664 entries to DB
+2026-05-23 20:38:43,678 - INFO - Progress: 347,000 processed (346,482 OK, 518 failed) | 4,021,146/4,034,913 total complete
+2026-05-23 20:38:57,094 - INFO - Compacted 4,021,664 entries to DB
+2026-05-23 20:39:09,947 - INFO - Progress: 348,000 processed (347,482 OK, 518 failed) | 4,022,146/4,034,913 total complete
+2026-05-23 20:39:22,485 - INFO - Compacted 4,022,664 entries to DB
+2026-05-23 20:39:34,046 - INFO - Progress: 349,000 processed (348,482 OK, 518 failed) | 4,023,146/4,034,913 total complete
+2026-05-23 20:39:46,233 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/470358209/medium.jpeg'
+2026-05-23 20:39:47,367 - INFO - Compacted 4,023,664 entries to DB
+2026-05-23 20:39:58,332 - INFO - Progress: 350,000 processed (349,481 OK, 519 failed) | 4,024,145/4,034,913 total complete
+2026-05-23 20:40:11,646 - INFO - Compacted 4,024,664 entries to DB
+2026-05-23 20:40:21,828 - INFO - Progress: 351,000 processed (350,481 OK, 519 failed) | 4,025,145/4,034,913 total complete
+2026-05-23 20:40:34,786 - INFO - Compacted 4,025,664 entries to DB
+2026-05-23 20:40:46,007 - INFO - Progress: 352,000 processed (351,481 OK, 519 failed) | 4,026,145/4,034,913 total complete
+2026-05-23 20:40:57,844 - INFO - Compacted 4,026,664 entries to DB
+2026-05-23 20:41:08,555 - INFO - Progress: 353,000 processed (352,481 OK, 519 failed) | 4,027,145/4,034,913 total complete
+2026-05-23 20:41:20,845 - INFO - Compacted 4,027,664 entries to DB
+2026-05-23 20:41:31,974 - INFO - Progress: 354,000 processed (353,481 OK, 519 failed) | 4,028,145/4,034,913 total complete
+2026-05-23 20:41:44,503 - INFO - Compacted 4,028,664 entries to DB
+2026-05-23 20:41:55,185 - INFO - Progress: 355,000 processed (354,481 OK, 519 failed) | 4,029,145/4,034,913 total complete
+2026-05-23 20:42:07,569 - INFO - Compacted 4,029,664 entries to DB
+2026-05-23 20:42:18,709 - INFO - Progress: 356,000 processed (355,481 OK, 519 failed) | 4,030,145/4,034,913 total complete
+2026-05-23 20:42:33,736 - INFO - Compacted 4,030,664 entries to DB
+2026-05-23 20:42:44,695 - INFO - Progress: 357,000 processed (356,481 OK, 519 failed) | 4,031,145/4,034,913 total complete
+2026-05-23 20:42:57,599 - INFO - Compacted 4,031,664 entries to DB
+2026-05-23 20:43:08,775 - INFO - Progress: 358,000 processed (357,481 OK, 519 failed) | 4,032,145/4,034,913 total complete
+2026-05-23 20:43:22,637 - INFO - Compacted 4,032,664 entries to DB
+2026-05-23 20:43:30,880 - WARNING - Error transferring photo 135161970: 
+2026-05-23 20:43:34,036 - INFO - Progress: 359,000 processed (358,480 OK, 520 failed) | 4,033,144/4,034,913 total complete
+2026-05-23 20:43:46,881 - INFO - Compacted 4,033,664 entries to DB
+2026-05-23 20:43:57,249 - INFO - Progress: 360,000 processed (359,480 OK, 520 failed) | 4,034,144/4,034,913 total complete
+2026-05-23 20:43:57,731 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/548467322/medium.jpg'
+2026-05-23 20:43:57,877 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208297/medium.jpg'
+2026-05-23 20:43:57,885 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208896/medium.jpg'
+2026-05-23 20:43:57,886 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208014/medium.jpg'
+2026-05-23 20:43:58,162 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/549418529/medium.jpg'
+2026-05-23 20:44:00,480 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/546498013/medium.jpg'
+2026-05-23 20:44:00,511 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/542768017/medium.jpg'
+2026-05-23 20:44:05,730 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/565872658/medium.jpg'
+2026-05-23 20:44:05,912 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389207975/medium.jpg'
+2026-05-23 20:44:05,939 - WARNING - Connection error: 404, message='Not Found', url='https://inaturalist-open-data.s3.amazonaws.com/photos/389208929/medium.jpg'
+2026-05-23 20:44:40,882 - WARNING - Error transferring photo 393919372: 
+2026-05-23 20:44:42,880 - WARNING - Error transferring photo 398134846: 
+2026-05-23 20:44:43,880 - WARNING - Error transferring photo 213840385: 
+2026-05-23 20:44:44,880 - WARNING - Error transferring photo 53848979: 
+2026-05-23 20:44:45,880 - WARNING - Error transferring photo 359064795: 
+2026-05-23 20:44:47,880 - WARNING - Error transferring photo 446817744: 
+2026-05-23 20:44:47,881 - WARNING - Error transferring photo 549495417: 
+2026-05-23 20:44:47,881 - WARNING - Error transferring photo 471553655: 
+2026-05-23 20:44:47,882 - WARNING - Error transferring photo 137566639: 
+2026-05-23 20:44:47,882 - WARNING - Error transferring photo 229536108: 
+2026-05-23 20:44:48,880 - WARNING - Error transferring photo 115377962: 
+2026-05-23 20:44:48,881 - WARNING - Error transferring photo 182729104: 
+2026-05-23 20:44:48,881 - WARNING - Error transferring photo 150690748: 
+2026-05-23 20:44:49,880 - WARNING - Error transferring photo 625381837: 
+2026-05-23 20:44:49,881 - WARNING - Error transferring photo 240368671: 
+2026-05-23 20:44:49,881 - WARNING - Error transferring photo 447621942: 
+2026-05-23 20:44:50,881 - WARNING - Error transferring photo 402167600: 
+2026-05-23 20:44:52,881 - WARNING - Error transferring photo 323434500: 
+2026-05-23 20:44:52,881 - WARNING - Error transferring photo 573565458: 
+2026-05-23 20:44:52,997 - INFO - Compacted 4,034,364 entries to DB
+2026-05-23 20:44:52,997 - INFO - Transfer complete: 359,700 succeeded, 549 failed
+2026-05-23 23:14:02,086 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,088 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,090 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,091 - INFO - Compacted 2 entries to DB
+2026-05-23 23:14:02,093 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,097 - INFO - Compacted 3 entries to DB
+2026-05-23 23:14:02,099 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,099 - INFO - Compacted 3 entries to DB
+2026-05-23 23:14:02,101 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,106 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,106 - INFO - Compacted 2 entries to DB
+2026-05-23 23:14:02,108 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,109 - INFO - Compacted 2 entries to DB
+2026-05-23 23:14:02,110 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,111 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,112 - INFO - Compacted 1 entries to DB
+2026-05-23 23:14:02,112 - INFO - Compacted 1 entries to DB
+2026-05-23 23:14:02,113 - INFO - Loaded 1 completed transfers from DB
+2026-05-23 23:14:02,113 - INFO - Total completed transfers: 1
+2026-05-23 23:14:02,113 - INFO - Loaded 1 completed transfers from DB
+2026-05-23 23:14:02,113 - INFO - Total completed transfers: 1
+2026-05-23 23:14:02,115 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,115 - INFO - Compacted 2 entries to DB
+2026-05-23 23:14:02,118 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,118 - INFO - Replayed 2 WAL entries
+2026-05-23 23:14:02,118 - INFO - Total completed transfers: 2
+2026-05-23 23:14:02,120 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,121 - INFO - Compacted 2 entries to DB
+2026-05-23 23:14:02,121 - INFO - Loaded 2 completed transfers from DB
+2026-05-23 23:14:02,121 - INFO - Replayed 2 WAL entries
+2026-05-23 23:14:02,121 - INFO - Total completed transfers: 4
+2026-05-23 23:14:02,123 - INFO - Total completed transfers: 0
+2026-05-23 23:14:02,123 - INFO - Compacted 2 entries to DB
+2026-05-23 23:14:02,124 - INFO - Loaded 2 completed transfers from DB
+2026-05-23 23:14:02,124 - INFO - Replayed 1 WAL entries
+2026-05-23 23:14:02,124 - INFO - Total completed transfers: 3
+2026-05-23 23:15:31,437 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,439 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,440 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,442 - INFO - Compacted 2 entries to DB
+2026-05-23 23:15:31,444 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,446 - INFO - Compacted 3 entries to DB
+2026-05-23 23:15:31,448 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,449 - INFO - Compacted 3 entries to DB
+2026-05-23 23:15:31,451 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,454 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,455 - INFO - Compacted 2 entries to DB
+2026-05-23 23:15:31,456 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,457 - INFO - Compacted 2 entries to DB
+2026-05-23 23:15:31,459 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,459 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,459 - INFO - Compacted 1 entries to DB
+2026-05-23 23:15:31,460 - INFO - Compacted 1 entries to DB
+2026-05-23 23:15:31,460 - INFO - Loaded 1 completed transfers from DB
+2026-05-23 23:15:31,460 - INFO - Total completed transfers: 1
+2026-05-23 23:15:31,460 - INFO - Loaded 1 completed transfers from DB
+2026-05-23 23:15:31,460 - INFO - Total completed transfers: 1
+2026-05-23 23:15:31,462 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,462 - INFO - Compacted 2 entries to DB
+2026-05-23 23:15:31,465 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,465 - INFO - Replayed 2 WAL entries
+2026-05-23 23:15:31,465 - INFO - Total completed transfers: 2
+2026-05-23 23:15:31,467 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,468 - INFO - Compacted 2 entries to DB
+2026-05-23 23:15:31,468 - INFO - Loaded 2 completed transfers from DB
+2026-05-23 23:15:31,468 - INFO - Replayed 2 WAL entries
+2026-05-23 23:15:31,468 - INFO - Total completed transfers: 4
+2026-05-23 23:15:31,469 - INFO - Total completed transfers: 0
+2026-05-23 23:15:31,470 - INFO - Compacted 2 entries to DB
+2026-05-23 23:15:31,470 - INFO - Loaded 2 completed transfers from DB
+2026-05-23 23:15:31,470 - INFO - Replayed 1 WAL entries
+2026-05-23 23:15:31,470 - INFO - Total completed transfers: 3
+2026-05-23 23:16:23,057 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,059 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,061 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,062 - INFO - Compacted 2 entries to DB
+2026-05-23 23:16:23,064 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,066 - INFO - Compacted 3 entries to DB
+2026-05-23 23:16:23,068 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,068 - INFO - Compacted 3 entries to DB
+2026-05-23 23:16:23,070 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,074 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,074 - INFO - Compacted 2 entries to DB
+2026-05-23 23:16:23,076 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,077 - INFO - Compacted 2 entries to DB
+2026-05-23 23:16:23,079 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,079 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,079 - INFO - Compacted 1 entries to DB
+2026-05-23 23:16:23,080 - INFO - Compacted 1 entries to DB
+2026-05-23 23:16:23,080 - INFO - Loaded 1 completed transfers from DB
+2026-05-23 23:16:23,080 - INFO - Total completed transfers: 1
+2026-05-23 23:16:23,080 - INFO - Loaded 1 completed transfers from DB
+2026-05-23 23:16:23,080 - INFO - Total completed transfers: 1
+2026-05-23 23:16:23,082 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,082 - INFO - Compacted 2 entries to DB
+2026-05-23 23:16:23,085 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,085 - INFO - Replayed 2 WAL entries
+2026-05-23 23:16:23,085 - INFO - Total completed transfers: 2
+2026-05-23 23:16:23,087 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,088 - INFO - Compacted 2 entries to DB
+2026-05-23 23:16:23,088 - INFO - Loaded 2 completed transfers from DB
+2026-05-23 23:16:23,088 - INFO - Replayed 2 WAL entries
+2026-05-23 23:16:23,088 - INFO - Total completed transfers: 4
+2026-05-23 23:16:23,090 - INFO - Total completed transfers: 0
+2026-05-23 23:16:23,090 - INFO - Compacted 2 entries to DB
+2026-05-23 23:16:23,091 - INFO - Loaded 2 completed transfers from DB
+2026-05-23 23:16:23,091 - INFO - Replayed 1 WAL entries
+2026-05-23 23:16:23,091 - INFO - Total completed transfers: 3
+2026-05-23 23:20:42,409 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,411 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,413 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,414 - INFO - Compacted 2 entries to DB
+2026-05-23 23:20:42,416 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,418 - INFO - Compacted 3 entries to DB
+2026-05-23 23:20:42,420 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,421 - INFO - Compacted 3 entries to DB
+2026-05-23 23:20:42,423 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,427 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,427 - INFO - Compacted 2 entries to DB
+2026-05-23 23:20:42,430 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,430 - INFO - Compacted 2 entries to DB
+2026-05-23 23:20:42,432 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,432 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,433 - INFO - Compacted 1 entries to DB
+2026-05-23 23:20:42,433 - INFO - Compacted 1 entries to DB
+2026-05-23 23:20:42,433 - INFO - Loaded 1 completed transfers from DB
+2026-05-23 23:20:42,434 - INFO - Total completed transfers: 1
+2026-05-23 23:20:42,434 - INFO - Loaded 1 completed transfers from DB
+2026-05-23 23:20:42,434 - INFO - Total completed transfers: 1
+2026-05-23 23:20:42,436 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,437 - INFO - Compacted 2 entries to DB
+2026-05-23 23:20:42,440 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,441 - INFO - Replayed 2 WAL entries
+2026-05-23 23:20:42,441 - INFO - Total completed transfers: 2
+2026-05-23 23:20:42,442 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,443 - INFO - Compacted 2 entries to DB
+2026-05-23 23:20:42,444 - INFO - Loaded 2 completed transfers from DB
+2026-05-23 23:20:42,444 - INFO - Replayed 2 WAL entries
+2026-05-23 23:20:42,444 - INFO - Total completed transfers: 4
+2026-05-23 23:20:42,445 - INFO - Total completed transfers: 0
+2026-05-23 23:20:42,446 - INFO - Compacted 2 entries to DB
+2026-05-23 23:20:42,446 - INFO - Loaded 2 completed transfers from DB
+2026-05-23 23:20:42,446 - INFO - Replayed 1 WAL entries
+2026-05-23 23:20:42,447 - INFO - Total completed transfers: 3

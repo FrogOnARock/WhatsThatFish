@@ -1,0 +1,262 @@
+2026-05-23 16:58:58,757 - INFO - Starting iNaturalist dataset pipeline
+2026-05-23 16:58:58,757 - INFO - Retrieving etl from S3 bucket
+2026-05-23 16:58:58,757 - INFO - Retrieving etl from S3 bucket for: observations
+2026-05-23 17:06:40,158 - INFO - Starting iNaturalist dataset pipeline
+2026-05-23 17:06:40,159 - INFO - Retrieving etl from S3 bucket
+2026-05-23 17:06:40,159 - INFO - Retrieving etl from S3 bucket for: observations
+2026-05-23 17:20:01,081 - INFO - Downloaded observations.csv.gz to /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/etl/observations.csv.gz
+2026-05-23 17:20:01,084 - INFO - Converting observations.csv.gz to parquet at /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/etl/observations.parquet
+2026-05-23 17:21:12,974 - INFO - Converted observations.csv.gz, removing csv file.
+2026-05-23 17:21:13,076 - INFO - Data retrieved from S3 bucket for: observations
+2026-05-23 17:21:13,077 - INFO - Retrieving etl from S3 bucket for: photos
+2026-05-23 17:43:06,795 - INFO - Downloaded photos.csv.gz to /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/etl/photos.csv.gz
+2026-05-23 17:43:06,798 - INFO - Converting photos.csv.gz to parquet at /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/etl/photos.parquet
+2026-05-23 17:44:39,018 - INFO - Converted photos.csv.gz, removing csv file.
+2026-05-23 17:44:39,109 - INFO - Data retrieved from S3 bucket for: photos
+2026-05-23 17:44:39,109 - INFO - Retrieving etl from S3 bucket for: taxa
+2026-05-23 17:44:43,099 - INFO - Downloaded taxa.csv.gz to /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/etl/taxa.csv.gz
+2026-05-23 17:44:43,099 - INFO - Converting taxa.csv.gz to parquet at /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/etl/taxa.parquet
+2026-05-23 17:44:43,796 - INFO - Converted taxa.csv.gz, removing csv file.
+2026-05-23 17:44:43,797 - INFO - Data retrieved from S3 bucket for: taxa
+2026-05-23 18:18:25,760 - INFO - Starting iNaturalist dataset pipeline
+2026-05-23 18:18:25,760 - INFO - Retrieving etl from S3 bucket
+2026-05-23 18:18:25,760 - INFO - Retrieving etl from S3 bucket for: observations
+2026-05-23 18:18:25,760 - INFO - Retrieving etl from S3 bucket for: photos
+2026-05-23 18:18:25,760 - INFO - Retrieving etl from S3 bucket for: taxa
+2026-05-23 18:18:25,760 - INFO - Filtering taxa for taxon_ids=[47533]
+2026-05-23 18:18:25,792 - INFO - Found 3,924 active taxa
+2026-05-23 18:18:25,793 - INFO - Sinking filtered observations to intermediate parquet
+2026-05-23 18:18:26,718 - INFO - Intermediate observations: 258,524 rows
+2026-05-23 18:18:26,718 - INFO - Joining photos to observations (streaming)
+2026-05-23 18:18:32,855 - INFO - Dataset complete: 360,178 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/etl/dataset.parquet
+2026-05-23 18:18:32,860 - INFO - Upserting 3,924 taxa rows
+2026-05-23 18:18:33,171 - INFO - Taxa upsert complete: 3,924 rows
+2026-05-23 18:18:37,679 - INFO - Found 3,676,182 existing photo records in DB
+2026-05-23 18:18:38,009 - INFO - Read 360,178 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/etl/dataset.parquet
+2026-05-23 18:18:38,901 - INFO - Inserting 358,731 new rows (1,447 already in DB)
+2026-05-23 18:18:40,463 - INFO - Inserted 4,041 rows (4,041 in this batch)
+2026-05-23 18:18:40,463 - INFO - Inserted 4041 rows. Rows left to insert 354690.
+2026-05-23 18:18:41,424 - INFO - Inserted 8,082 rows (4,041 in this batch)
+2026-05-23 18:18:41,424 - INFO - Inserted 8082 rows. Rows left to insert 350649.
+2026-05-23 18:18:42,072 - INFO - Inserted 12,123 rows (4,041 in this batch)
+2026-05-23 18:18:42,072 - INFO - Inserted 12123 rows. Rows left to insert 346608.
+2026-05-23 18:18:42,602 - INFO - Inserted 16,164 rows (4,041 in this batch)
+2026-05-23 18:18:42,602 - INFO - Inserted 16164 rows. Rows left to insert 342567.
+2026-05-23 18:18:43,067 - INFO - Inserted 20,205 rows (4,041 in this batch)
+2026-05-23 18:18:43,068 - INFO - Inserted 20205 rows. Rows left to insert 338526.
+2026-05-23 18:18:43,403 - INFO - Inserted 24,246 rows (4,041 in this batch)
+2026-05-23 18:18:43,404 - INFO - Inserted 24246 rows. Rows left to insert 334485.
+2026-05-23 18:18:43,737 - INFO - Inserted 28,287 rows (4,041 in this batch)
+2026-05-23 18:18:43,737 - INFO - Inserted 28287 rows. Rows left to insert 330444.
+2026-05-23 18:18:44,016 - INFO - Inserted 32,328 rows (4,041 in this batch)
+2026-05-23 18:18:44,016 - INFO - Inserted 32328 rows. Rows left to insert 326403.
+2026-05-23 18:18:44,263 - INFO - Inserted 36,369 rows (4,041 in this batch)
+2026-05-23 18:18:44,263 - INFO - Inserted 36369 rows. Rows left to insert 322362.
+2026-05-23 18:18:44,502 - INFO - Inserted 40,410 rows (4,041 in this batch)
+2026-05-23 18:18:44,502 - INFO - Inserted 40410 rows. Rows left to insert 318321.
+2026-05-23 18:18:44,722 - INFO - Inserted 44,451 rows (4,041 in this batch)
+2026-05-23 18:18:44,722 - INFO - Inserted 44451 rows. Rows left to insert 314280.
+2026-05-23 18:18:44,931 - INFO - Inserted 48,492 rows (4,041 in this batch)
+2026-05-23 18:18:44,932 - INFO - Inserted 48492 rows. Rows left to insert 310239.
+2026-05-23 18:18:45,131 - INFO - Inserted 52,533 rows (4,041 in this batch)
+2026-05-23 18:18:45,131 - INFO - Inserted 52533 rows. Rows left to insert 306198.
+2026-05-23 18:18:45,331 - INFO - Inserted 56,574 rows (4,041 in this batch)
+2026-05-23 18:18:45,331 - INFO - Inserted 56574 rows. Rows left to insert 302157.
+2026-05-23 18:18:45,520 - INFO - Inserted 60,615 rows (4,041 in this batch)
+2026-05-23 18:18:45,520 - INFO - Inserted 60615 rows. Rows left to insert 298116.
+2026-05-23 18:18:45,705 - INFO - Inserted 64,656 rows (4,041 in this batch)
+2026-05-23 18:18:45,705 - INFO - Inserted 64656 rows. Rows left to insert 294075.
+2026-05-23 18:18:45,884 - INFO - Inserted 68,697 rows (4,041 in this batch)
+2026-05-23 18:18:45,884 - INFO - Inserted 68697 rows. Rows left to insert 290034.
+2026-05-23 18:18:46,058 - INFO - Inserted 72,738 rows (4,041 in this batch)
+2026-05-23 18:18:46,058 - INFO - Inserted 72738 rows. Rows left to insert 285993.
+2026-05-23 18:18:46,226 - INFO - Inserted 76,779 rows (4,041 in this batch)
+2026-05-23 18:18:46,226 - INFO - Inserted 76779 rows. Rows left to insert 281952.
+2026-05-23 18:18:46,399 - INFO - Inserted 80,820 rows (4,041 in this batch)
+2026-05-23 18:18:46,399 - INFO - Inserted 80820 rows. Rows left to insert 277911.
+2026-05-23 18:18:46,568 - INFO - Inserted 84,861 rows (4,041 in this batch)
+2026-05-23 18:18:46,568 - INFO - Inserted 84861 rows. Rows left to insert 273870.
+2026-05-23 18:18:46,734 - INFO - Inserted 88,902 rows (4,041 in this batch)
+2026-05-23 18:18:46,734 - INFO - Inserted 88902 rows. Rows left to insert 269829.
+2026-05-23 18:18:46,898 - INFO - Inserted 92,943 rows (4,041 in this batch)
+2026-05-23 18:18:46,898 - INFO - Inserted 92943 rows. Rows left to insert 265788.
+2026-05-23 18:18:47,061 - INFO - Inserted 96,984 rows (4,041 in this batch)
+2026-05-23 18:18:47,061 - INFO - Inserted 96984 rows. Rows left to insert 261747.
+2026-05-23 18:18:47,221 - INFO - Inserted 101,025 rows (4,041 in this batch)
+2026-05-23 18:18:47,221 - INFO - Inserted 101025 rows. Rows left to insert 257706.
+2026-05-23 18:18:47,385 - INFO - Inserted 105,066 rows (4,041 in this batch)
+2026-05-23 18:18:47,385 - INFO - Inserted 105066 rows. Rows left to insert 253665.
+2026-05-23 18:18:47,545 - INFO - Inserted 109,107 rows (4,041 in this batch)
+2026-05-23 18:18:47,545 - INFO - Inserted 109107 rows. Rows left to insert 249624.
+2026-05-23 18:18:47,704 - INFO - Inserted 113,148 rows (4,041 in this batch)
+2026-05-23 18:18:47,704 - INFO - Inserted 113148 rows. Rows left to insert 245583.
+2026-05-23 18:18:47,861 - INFO - Inserted 117,189 rows (4,041 in this batch)
+2026-05-23 18:18:47,861 - INFO - Inserted 117189 rows. Rows left to insert 241542.
+2026-05-23 18:18:48,018 - INFO - Inserted 121,230 rows (4,041 in this batch)
+2026-05-23 18:18:48,018 - INFO - Inserted 121230 rows. Rows left to insert 237501.
+2026-05-23 18:18:48,175 - INFO - Inserted 125,271 rows (4,041 in this batch)
+2026-05-23 18:18:48,175 - INFO - Inserted 125271 rows. Rows left to insert 233460.
+2026-05-23 18:18:48,329 - INFO - Inserted 129,312 rows (4,041 in this batch)
+2026-05-23 18:18:48,329 - INFO - Inserted 129312 rows. Rows left to insert 229419.
+2026-05-23 18:18:48,488 - INFO - Inserted 133,353 rows (4,041 in this batch)
+2026-05-23 18:18:48,488 - INFO - Inserted 133353 rows. Rows left to insert 225378.
+2026-05-23 18:18:48,641 - INFO - Inserted 137,394 rows (4,041 in this batch)
+2026-05-23 18:18:48,641 - INFO - Inserted 137394 rows. Rows left to insert 221337.
+2026-05-23 18:18:48,796 - INFO - Inserted 141,435 rows (4,041 in this batch)
+2026-05-23 18:18:48,796 - INFO - Inserted 141435 rows. Rows left to insert 217296.
+2026-05-23 18:18:48,951 - INFO - Inserted 145,476 rows (4,041 in this batch)
+2026-05-23 18:18:48,951 - INFO - Inserted 145476 rows. Rows left to insert 213255.
+2026-05-23 18:18:49,109 - INFO - Inserted 149,517 rows (4,041 in this batch)
+2026-05-23 18:18:49,109 - INFO - Inserted 149517 rows. Rows left to insert 209214.
+2026-05-23 18:18:49,269 - INFO - Inserted 153,558 rows (4,041 in this batch)
+2026-05-23 18:18:49,269 - INFO - Inserted 153558 rows. Rows left to insert 205173.
+2026-05-23 18:18:49,427 - INFO - Inserted 157,599 rows (4,041 in this batch)
+2026-05-23 18:18:49,427 - INFO - Inserted 157599 rows. Rows left to insert 201132.
+2026-05-23 18:18:49,579 - INFO - Inserted 161,640 rows (4,041 in this batch)
+2026-05-23 18:18:49,580 - INFO - Inserted 161640 rows. Rows left to insert 197091.
+2026-05-23 18:18:49,741 - INFO - Inserted 165,681 rows (4,041 in this batch)
+2026-05-23 18:18:49,741 - INFO - Inserted 165681 rows. Rows left to insert 193050.
+2026-05-23 18:18:49,894 - INFO - Inserted 169,722 rows (4,041 in this batch)
+2026-05-23 18:18:49,894 - INFO - Inserted 169722 rows. Rows left to insert 189009.
+2026-05-23 18:18:50,049 - INFO - Inserted 173,763 rows (4,041 in this batch)
+2026-05-23 18:18:50,049 - INFO - Inserted 173763 rows. Rows left to insert 184968.
+2026-05-23 18:18:50,204 - INFO - Inserted 177,804 rows (4,041 in this batch)
+2026-05-23 18:18:50,204 - INFO - Inserted 177804 rows. Rows left to insert 180927.
+2026-05-23 18:18:50,361 - INFO - Inserted 181,845 rows (4,041 in this batch)
+2026-05-23 18:18:50,361 - INFO - Inserted 181845 rows. Rows left to insert 176886.
+2026-05-23 18:18:50,515 - INFO - Inserted 185,886 rows (4,041 in this batch)
+2026-05-23 18:18:50,515 - INFO - Inserted 185886 rows. Rows left to insert 172845.
+2026-05-23 18:18:50,666 - INFO - Inserted 189,927 rows (4,041 in this batch)
+2026-05-23 18:18:50,666 - INFO - Inserted 189927 rows. Rows left to insert 168804.
+2026-05-23 18:18:50,960 - INFO - Inserted 193,968 rows (4,041 in this batch)
+2026-05-23 18:18:50,960 - INFO - Inserted 193968 rows. Rows left to insert 164763.
+2026-05-23 18:18:51,111 - INFO - Inserted 198,009 rows (4,041 in this batch)
+2026-05-23 18:18:51,111 - INFO - Inserted 198009 rows. Rows left to insert 160722.
+2026-05-23 18:18:51,268 - INFO - Inserted 202,050 rows (4,041 in this batch)
+2026-05-23 18:18:51,268 - INFO - Inserted 202050 rows. Rows left to insert 156681.
+2026-05-23 18:18:51,422 - INFO - Inserted 206,091 rows (4,041 in this batch)
+2026-05-23 18:18:51,422 - INFO - Inserted 206091 rows. Rows left to insert 152640.
+2026-05-23 18:18:51,575 - INFO - Inserted 210,132 rows (4,041 in this batch)
+2026-05-23 18:18:51,575 - INFO - Inserted 210132 rows. Rows left to insert 148599.
+2026-05-23 18:18:51,733 - INFO - Inserted 214,173 rows (4,041 in this batch)
+2026-05-23 18:18:51,733 - INFO - Inserted 214173 rows. Rows left to insert 144558.
+2026-05-23 18:18:51,884 - INFO - Inserted 218,214 rows (4,041 in this batch)
+2026-05-23 18:18:51,884 - INFO - Inserted 218214 rows. Rows left to insert 140517.
+2026-05-23 18:18:52,036 - INFO - Inserted 222,255 rows (4,041 in this batch)
+2026-05-23 18:18:52,036 - INFO - Inserted 222255 rows. Rows left to insert 136476.
+2026-05-23 18:18:52,186 - INFO - Inserted 226,296 rows (4,041 in this batch)
+2026-05-23 18:18:52,186 - INFO - Inserted 226296 rows. Rows left to insert 132435.
+2026-05-23 18:18:52,338 - INFO - Inserted 230,337 rows (4,041 in this batch)
+2026-05-23 18:18:52,338 - INFO - Inserted 230337 rows. Rows left to insert 128394.
+2026-05-23 18:18:52,492 - INFO - Inserted 234,378 rows (4,041 in this batch)
+2026-05-23 18:18:52,492 - INFO - Inserted 234378 rows. Rows left to insert 124353.
+2026-05-23 18:18:52,650 - INFO - Inserted 238,419 rows (4,041 in this batch)
+2026-05-23 18:18:52,650 - INFO - Inserted 238419 rows. Rows left to insert 120312.
+2026-05-23 18:18:52,807 - INFO - Inserted 242,460 rows (4,041 in this batch)
+2026-05-23 18:18:52,807 - INFO - Inserted 242460 rows. Rows left to insert 116271.
+2026-05-23 18:18:52,959 - INFO - Inserted 246,501 rows (4,041 in this batch)
+2026-05-23 18:18:52,959 - INFO - Inserted 246501 rows. Rows left to insert 112230.
+2026-05-23 18:18:53,110 - INFO - Inserted 250,542 rows (4,041 in this batch)
+2026-05-23 18:18:53,110 - INFO - Inserted 250542 rows. Rows left to insert 108189.
+2026-05-23 18:18:53,277 - INFO - Inserted 254,583 rows (4,041 in this batch)
+2026-05-23 18:18:53,277 - INFO - Inserted 254583 rows. Rows left to insert 104148.
+2026-05-23 18:18:53,431 - INFO - Inserted 258,624 rows (4,041 in this batch)
+2026-05-23 18:18:53,431 - INFO - Inserted 258624 rows. Rows left to insert 100107.
+2026-05-23 18:18:53,719 - INFO - Inserted 262,665 rows (4,041 in this batch)
+2026-05-23 18:18:53,719 - INFO - Inserted 262665 rows. Rows left to insert 96066.
+2026-05-23 18:18:53,873 - INFO - Inserted 266,706 rows (4,041 in this batch)
+2026-05-23 18:18:53,873 - INFO - Inserted 266706 rows. Rows left to insert 92025.
+2026-05-23 18:18:54,027 - INFO - Inserted 270,747 rows (4,041 in this batch)
+2026-05-23 18:18:54,028 - INFO - Inserted 270747 rows. Rows left to insert 87984.
+2026-05-23 18:18:54,179 - INFO - Inserted 274,788 rows (4,041 in this batch)
+2026-05-23 18:18:54,179 - INFO - Inserted 274788 rows. Rows left to insert 83943.
+2026-05-23 18:18:54,329 - INFO - Inserted 278,829 rows (4,041 in this batch)
+2026-05-23 18:18:54,329 - INFO - Inserted 278829 rows. Rows left to insert 79902.
+2026-05-23 18:18:54,481 - INFO - Inserted 282,870 rows (4,041 in this batch)
+2026-05-23 18:18:54,481 - INFO - Inserted 282870 rows. Rows left to insert 75861.
+2026-05-23 18:18:54,633 - INFO - Inserted 286,911 rows (4,041 in this batch)
+2026-05-23 18:18:54,633 - INFO - Inserted 286911 rows. Rows left to insert 71820.
+2026-05-23 18:18:54,785 - INFO - Inserted 290,952 rows (4,041 in this batch)
+2026-05-23 18:18:54,785 - INFO - Inserted 290952 rows. Rows left to insert 67779.
+2026-05-23 18:18:54,937 - INFO - Inserted 294,993 rows (4,041 in this batch)
+2026-05-23 18:18:54,938 - INFO - Inserted 294993 rows. Rows left to insert 63738.
+2026-05-23 18:18:55,088 - INFO - Inserted 299,034 rows (4,041 in this batch)
+2026-05-23 18:18:55,088 - INFO - Inserted 299034 rows. Rows left to insert 59697.
+2026-05-23 18:18:55,243 - INFO - Inserted 303,075 rows (4,041 in this batch)
+2026-05-23 18:18:55,243 - INFO - Inserted 303075 rows. Rows left to insert 55656.
+2026-05-23 18:18:55,398 - INFO - Inserted 307,116 rows (4,041 in this batch)
+2026-05-23 18:18:55,399 - INFO - Inserted 307116 rows. Rows left to insert 51615.
+2026-05-23 18:18:55,554 - INFO - Inserted 311,157 rows (4,041 in this batch)
+2026-05-23 18:18:55,554 - INFO - Inserted 311157 rows. Rows left to insert 47574.
+2026-05-23 18:18:55,706 - INFO - Inserted 315,198 rows (4,041 in this batch)
+2026-05-23 18:18:55,707 - INFO - Inserted 315198 rows. Rows left to insert 43533.
+2026-05-23 18:18:55,861 - INFO - Inserted 319,239 rows (4,041 in this batch)
+2026-05-23 18:18:55,861 - INFO - Inserted 319239 rows. Rows left to insert 39492.
+2026-05-23 18:18:56,012 - INFO - Inserted 323,280 rows (4,041 in this batch)
+2026-05-23 18:18:56,013 - INFO - Inserted 323280 rows. Rows left to insert 35451.
+2026-05-23 18:18:56,307 - INFO - Inserted 327,321 rows (4,041 in this batch)
+2026-05-23 18:18:56,307 - INFO - Inserted 327321 rows. Rows left to insert 31410.
+2026-05-23 18:18:56,461 - INFO - Inserted 331,362 rows (4,041 in this batch)
+2026-05-23 18:18:56,461 - INFO - Inserted 331362 rows. Rows left to insert 27369.
+2026-05-23 18:18:56,618 - INFO - Inserted 335,403 rows (4,041 in this batch)
+2026-05-23 18:18:56,618 - INFO - Inserted 335403 rows. Rows left to insert 23328.
+2026-05-23 18:18:56,770 - INFO - Inserted 339,444 rows (4,041 in this batch)
+2026-05-23 18:18:56,770 - INFO - Inserted 339444 rows. Rows left to insert 19287.
+2026-05-23 18:18:56,924 - INFO - Inserted 343,485 rows (4,041 in this batch)
+2026-05-23 18:18:56,924 - INFO - Inserted 343485 rows. Rows left to insert 15246.
+2026-05-23 18:18:57,078 - INFO - Inserted 347,526 rows (4,041 in this batch)
+2026-05-23 18:18:57,079 - INFO - Inserted 347526 rows. Rows left to insert 11205.
+2026-05-23 18:18:57,231 - INFO - Inserted 351,567 rows (4,041 in this batch)
+2026-05-23 18:18:57,231 - INFO - Inserted 351567 rows. Rows left to insert 7164.
+2026-05-23 18:18:57,385 - INFO - Inserted 355,608 rows (4,041 in this batch)
+2026-05-23 18:18:57,385 - INFO - Inserted 355608 rows. Rows left to insert 3123.
+2026-05-23 18:18:57,510 - INFO - Inserted 358,731 rows (3,123 in this batch)
+2026-05-23 18:18:57,649 - INFO - Pipeline complete: 358,731 new rows inserted
+2026-05-30 20:22:01,026 - INFO - Starting iNaturalist dataset pipeline
+2026-05-30 20:22:01,026 - INFO - Retrieving etl from S3 bucket
+2026-05-30 20:22:01,026 - INFO - Retrieving etl from S3 bucket for: observations
+2026-05-30 20:22:01,026 - INFO - Retrieving etl from S3 bucket for: photos
+2026-05-30 20:22:01,026 - INFO - Retrieving etl from S3 bucket for: taxa
+2026-05-30 20:22:01,026 - INFO - Filtering taxa for taxon_ids=[47533, 47178, 196614]
+2026-05-30 20:22:01,151 - INFO - Found 47,921 active taxa
+2026-05-30 20:22:01,152 - INFO - Sinking filtered observations to intermediate parquet
+2026-05-30 20:22:02,986 - INFO - Intermediate observations: 2,731,748 rows
+2026-05-30 20:22:02,986 - INFO - Joining photos to observations (streaming)
+2026-05-30 20:22:10,444 - INFO - Dataset complete: 4,095,491 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/etl/dataset.parquet
+2026-05-30 20:22:10,449 - INFO - Upserting 47,921 taxa rows
+2026-05-30 20:22:13,440 - INFO - Taxa upsert complete: 47,921 rows
+2026-05-30 20:22:18,074 - INFO - Found 4,034,913 existing photo records in DB
+2026-05-30 20:22:18,468 - INFO - Read 4,095,491 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/etl/dataset.parquet
+2026-05-30 20:22:21,468 - INFO - Inserting 61,861 new rows (4,033,630 already in DB)
+2026-05-30 20:22:22,669 - INFO - Inserted 4,041 rows (4,041 in this batch)
+2026-05-30 20:22:22,669 - INFO - Inserted 4041 rows. Rows left to insert 57820.
+2026-05-30 20:22:23,217 - INFO - Inserted 8,082 rows (4,041 in this batch)
+2026-05-30 20:22:23,217 - INFO - Inserted 8082 rows. Rows left to insert 53779.
+2026-05-30 20:22:23,547 - INFO - Inserted 12,123 rows (4,041 in this batch)
+2026-05-30 20:22:23,547 - INFO - Inserted 12123 rows. Rows left to insert 49738.
+2026-05-30 20:22:23,837 - INFO - Inserted 16,164 rows (4,041 in this batch)
+2026-05-30 20:22:23,838 - INFO - Inserted 16164 rows. Rows left to insert 45697.
+2026-05-30 20:22:24,076 - INFO - Inserted 20,205 rows (4,041 in this batch)
+2026-05-30 20:22:24,076 - INFO - Inserted 20205 rows. Rows left to insert 41656.
+2026-05-30 20:22:24,312 - INFO - Inserted 24,246 rows (4,041 in this batch)
+2026-05-30 20:22:24,312 - INFO - Inserted 24246 rows. Rows left to insert 37615.
+2026-05-30 20:22:24,670 - INFO - Inserted 28,287 rows (4,041 in this batch)
+2026-05-30 20:22:24,670 - INFO - Inserted 28287 rows. Rows left to insert 33574.
+2026-05-30 20:22:24,881 - INFO - Inserted 32,328 rows (4,041 in this batch)
+2026-05-30 20:22:24,881 - INFO - Inserted 32328 rows. Rows left to insert 29533.
+2026-05-30 20:22:25,078 - INFO - Inserted 36,369 rows (4,041 in this batch)
+2026-05-30 20:22:25,078 - INFO - Inserted 36369 rows. Rows left to insert 25492.
+2026-05-30 20:22:25,271 - INFO - Inserted 40,410 rows (4,041 in this batch)
+2026-05-30 20:22:25,271 - INFO - Inserted 40410 rows. Rows left to insert 21451.
+2026-05-30 20:22:25,473 - INFO - Inserted 44,451 rows (4,041 in this batch)
+2026-05-30 20:22:25,473 - INFO - Inserted 44451 rows. Rows left to insert 17410.
+2026-05-30 20:22:25,675 - INFO - Inserted 48,492 rows (4,041 in this batch)
+2026-05-30 20:22:25,675 - INFO - Inserted 48492 rows. Rows left to insert 13369.
+2026-05-30 20:22:25,861 - INFO - Inserted 52,533 rows (4,041 in this batch)
+2026-05-30 20:22:25,862 - INFO - Inserted 52533 rows. Rows left to insert 9328.
+2026-05-30 20:22:26,046 - INFO - Inserted 56,574 rows (4,041 in this batch)
+2026-05-30 20:22:26,046 - INFO - Inserted 56574 rows. Rows left to insert 5287.
+2026-05-30 20:22:26,237 - INFO - Inserted 60,615 rows (4,041 in this batch)
+2026-05-30 20:22:26,237 - INFO - Inserted 60615 rows. Rows left to insert 1246.
+2026-05-30 20:22:26,293 - INFO - Inserted 61,861 rows (1,246 in this batch)
+2026-05-30 20:22:26,445 - INFO - Pipeline complete: 61,861 new rows inserted

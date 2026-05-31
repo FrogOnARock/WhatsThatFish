@@ -1,0 +1,1696 @@
+2026-05-23 23:14:02,138 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:14:02,138 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:14:02,138 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:14:02,141 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:14:02,141 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:14:02,141 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:14:02,143 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:14:02,144 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:14:02,144 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:14:02,146 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:14:02,146 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:14:02,146 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:14:02,149 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:14:02,149 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:14:02,149 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:14:02,149 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:14:02,149 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:14:02,149 - INFO - [inat_context] Replayed 3 WAL entries
+2026-05-23 23:14:02,149 - INFO - [inat_context] Total completed (DB + WAL): 3
+2026-05-23 23:14:02,151 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:14:02,152 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:14:02,152 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:14:02,152 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:14:02,152 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:14:02,152 - INFO - [inat_context] Replayed 1 WAL entries
+2026-05-23 23:14:02,152 - INFO - [inat_context] Total completed (DB + WAL): 1
+2026-05-23 23:14:02,154 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:14:02,155 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:14:02,155 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:14:02,163 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-23 23:14:02,164 - INFO - [ContextRunner/inat] 2 uploaded | 1 already done | 1 to score
+2026-05-23 23:14:02,164 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:14:02,164 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:14:02,164 - INFO - [ContextRunner/inat] Batch 1/1 complete — compacted
+2026-05-23 23:14:02,164 - INFO - [ContextRunner/inat] All context scoring batches complete
+2026-05-23 23:14:02,166 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-23 23:14:02,167 - INFO - [ContextRunner/inat] 1 uploaded | 0 already done | 1 to score
+2026-05-23 23:14:02,167 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:14:02,167 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:14:02,171 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-23 23:14:02,171 - INFO - [ScoreRunner/inat] 2 uploaded | 1 already scored | 1 to score
+2026-05-23 23:14:02,172 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:14:02,172 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:14:02,172 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-05-23 23:14:02,172 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-05-23 23:14:02,174 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-23 23:14:02,174 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
+2026-05-23 23:14:02,174 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:14:02,174 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:15:31,480 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:15:31,480 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:15:31,480 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:15:31,483 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:15:31,483 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:15:31,483 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:15:31,486 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:15:31,486 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:15:31,486 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:15:31,488 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:15:31,489 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:15:31,489 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:15:31,491 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:15:31,491 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:15:31,492 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:15:31,492 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:15:31,492 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:15:31,492 - INFO - [inat_context] Replayed 3 WAL entries
+2026-05-23 23:15:31,492 - INFO - [inat_context] Total completed (DB + WAL): 3
+2026-05-23 23:15:31,494 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:15:31,495 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:15:31,495 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:15:31,495 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:15:31,495 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:15:31,495 - INFO - [inat_context] Replayed 1 WAL entries
+2026-05-23 23:15:31,495 - INFO - [inat_context] Total completed (DB + WAL): 1
+2026-05-23 23:15:31,497 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:15:31,498 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:15:31,498 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:15:31,507 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-23 23:15:31,507 - INFO - [ContextRunner/inat] 2 uploaded | 1 already done | 1 to score
+2026-05-23 23:15:31,508 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:15:31,508 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:15:31,508 - INFO - [ContextRunner/inat] Batch 1/1 complete — compacted
+2026-05-23 23:15:31,508 - INFO - [ContextRunner/inat] All context scoring batches complete
+2026-05-23 23:15:31,509 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-23 23:15:31,510 - INFO - [ContextRunner/inat] 1 uploaded | 0 already done | 1 to score
+2026-05-23 23:15:31,510 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:15:31,510 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:15:31,514 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-23 23:15:31,515 - INFO - [ScoreRunner/inat] 2 uploaded | 1 already scored | 1 to score
+2026-05-23 23:15:31,515 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:15:31,515 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:15:31,515 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-05-23 23:15:31,515 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-05-23 23:15:31,517 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-23 23:15:31,517 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
+2026-05-23 23:15:31,517 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:15:31,517 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:16:23,101 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:16:23,101 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:16:23,101 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:16:23,104 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:16:23,104 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:16:23,104 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:16:23,106 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:16:23,106 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:16:23,107 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:16:23,109 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:16:23,109 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:16:23,109 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:16:23,112 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:16:23,112 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:16:23,112 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:16:23,112 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:16:23,112 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:16:23,112 - INFO - [inat_context] Replayed 3 WAL entries
+2026-05-23 23:16:23,112 - INFO - [inat_context] Total completed (DB + WAL): 3
+2026-05-23 23:16:23,115 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:16:23,116 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:16:23,116 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:16:23,116 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:16:23,116 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:16:23,116 - INFO - [inat_context] Replayed 1 WAL entries
+2026-05-23 23:16:23,116 - INFO - [inat_context] Total completed (DB + WAL): 1
+2026-05-23 23:16:23,119 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:16:23,119 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:16:23,119 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:16:23,129 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-23 23:16:23,129 - INFO - [ContextRunner/inat] 2 uploaded | 1 already done | 1 to score
+2026-05-23 23:16:23,129 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:16:23,129 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:16:23,130 - INFO - [ContextRunner/inat] Batch 1/1 complete — compacted
+2026-05-23 23:16:23,130 - INFO - [ContextRunner/inat] All context scoring batches complete
+2026-05-23 23:16:23,132 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-23 23:16:23,132 - INFO - [ContextRunner/inat] 1 uploaded | 0 already done | 1 to score
+2026-05-23 23:16:23,132 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:16:23,132 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:16:23,139 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-23 23:16:23,139 - INFO - [ScoreRunner/inat] 2 uploaded | 1 already scored | 1 to score
+2026-05-23 23:16:23,139 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:16:23,139 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:16:23,140 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-05-23 23:16:23,140 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-05-23 23:16:23,141 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-23 23:16:23,141 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
+2026-05-23 23:16:23,141 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:16:23,141 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:20:42,457 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:20:42,457 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:20:42,457 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:20:42,460 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:20:42,460 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:20:42,460 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:20:42,463 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:20:42,463 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:20:42,463 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:20:42,465 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:20:42,466 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:20:42,466 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:20:42,468 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:20:42,469 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:20:42,469 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:20:42,469 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:20:42,469 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:20:42,469 - INFO - [inat_context] Replayed 3 WAL entries
+2026-05-23 23:20:42,469 - INFO - [inat_context] Total completed (DB + WAL): 3
+2026-05-23 23:20:42,472 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:20:42,472 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:20:42,472 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:20:42,472 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:20:42,472 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:20:42,473 - INFO - [inat_context] Replayed 1 WAL entries
+2026-05-23 23:20:42,473 - INFO - [inat_context] Total completed (DB + WAL): 1
+2026-05-23 23:20:42,475 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-23 23:20:42,475 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-23 23:20:42,475 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-23 23:20:42,484 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-23 23:20:42,485 - INFO - [ContextRunner/inat] 2 uploaded | 1 already done | 1 to score
+2026-05-23 23:20:42,485 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:20:42,485 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:20:42,486 - INFO - [ContextRunner/inat] Batch 1/1 complete — compacted
+2026-05-23 23:20:42,486 - INFO - [ContextRunner/inat] All context scoring batches complete
+2026-05-23 23:20:42,488 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-23 23:20:42,488 - INFO - [ContextRunner/inat] 1 uploaded | 0 already done | 1 to score
+2026-05-23 23:20:42,488 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:20:42,488 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:20:42,493 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-23 23:20:42,493 - INFO - [ScoreRunner/inat] 2 uploaded | 1 already scored | 1 to score
+2026-05-23 23:20:42,493 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:20:42,493 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-23 23:20:42,494 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-05-23 23:20:42,494 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-05-23 23:20:42,495 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-23 23:20:42,495 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
+2026-05-23 23:20:42,495 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-23 23:20:42,495 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-30 16:43:17,511 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-30 16:43:20,630 - INFO - [ScoreRunner/inat] Found 2,202,547 candidates to score
+2026-05-30 16:43:20,790 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-05-30 16:43:23,334 - INFO - [inat_scoring] Loaded 2,202,385 completed entries from DB
+2026-05-30 16:43:23,338 - INFO - [inat_scoring] Total completed (DB + WAL): 2,202,385
+2026-05-30 16:43:38,709 - INFO - [ScoreRunner/inat] Retrieved 2,202,547 file rows from InatFilteredObservations
+2026-05-30 16:43:39,167 - INFO - [ScoreRunner/inat] 2,202,547 uploaded | 2,202,385 already scored | 162 to score
+2026-05-30 16:43:39,168 - INFO - [ScoreRunner/inat] 162 rows → 1 batches of 10,000
+2026-05-30 16:43:39,168 - INFO - [ScoreRunner/inat] Batch 1/1 — 162 rows
+2026-05-30 16:43:42,377 - INFO - [inat_scoring] Compacting 162 WAL entries to DB
+2026-05-30 16:43:42,455 - INFO - [inat_scoring] Compact complete — 162 entries flushed, WAL truncated, total scored: 2,202,547
+2026-05-30 16:43:42,456 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-05-30 16:43:42,456 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-05-30 16:43:42,456 - INFO - [inat_scoring] Closing tracker — running final compaction
+2026-05-30 16:43:42,456 - INFO - [inat_scoring] Tracker closed. Total scored this session: 2,202,547
+2026-05-30 16:43:42,595 - INFO - [ScoreRunner/lila] Starting UIQM scoring run
+2026-05-30 16:43:42,688 - INFO - [ScoreRunner/lila] Found 97,923 candidates to score
+2026-05-30 16:43:42,693 - INFO - [lila_scoring] Loading progress from DB table 'lila_image_quality'
+2026-05-30 16:43:42,741 - INFO - [lila_scoring] Loaded 97,914 completed entries from DB
+2026-05-30 16:43:42,742 - INFO - [lila_scoring] Total completed (DB + WAL): 97,914
+2026-05-30 16:43:42,747 - INFO - [ScoreRunner/lila] 97,923 uploaded | 97,914 already scored | 9 to score
+2026-05-30 16:43:42,747 - INFO - [ScoreRunner/lila] 9 rows → 1 batches of 10,000
+2026-05-30 16:43:42,747 - INFO - [ScoreRunner/lila] Batch 1/1 — 9 rows
+2026-05-30 16:43:45,805 - WARNING - [ScoreRunner/lila] Batch 1: 5/9 tasks failed — first: TypeError: cannot unpack non-iterable ValueError object
+2026-05-30 16:43:45,806 - INFO - [lila_scoring] Compacting 4 WAL entries to DB
+2026-05-30 16:43:45,811 - INFO - [lila_scoring] Compact complete — 4 entries flushed, WAL truncated, total scored: 97,918
+2026-05-30 16:43:45,811 - INFO - [ScoreRunner/lila] Batch 1/1 complete — compacted
+2026-05-30 16:43:45,811 - INFO - [ScoreRunner/lila] All UIQM scoring batches complete
+2026-05-30 16:43:45,811 - INFO - [lila_scoring] Closing tracker — running final compaction
+2026-05-30 16:43:45,811 - INFO - [lila_scoring] Tracker closed. Total scored this session: 97,918
+2026-05-30 16:46:03,137 - INFO - [inat_clip_context] Loading progress from DB table 'inat_clip_context'
+2026-05-30 16:46:06,102 - INFO - [inat_clip_context] Loaded 3,673,233 completed entries from DB
+2026-05-30 16:46:06,103 - INFO - [inat_clip_context] Total completed (DB + WAL): 3,673,233
+2026-05-30 16:46:51,453 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:46:51,710 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,674,233
+2026-05-30 16:47:18,162 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:47:18,381 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,675,233
+2026-05-30 16:47:32,568 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:47:32,772 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,676,233
+2026-05-30 16:47:44,967 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:47:45,159 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,677,233
+2026-05-30 16:47:55,136 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:47:55,325 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,678,233
+2026-05-30 16:48:05,747 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:48:05,941 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,679,233
+2026-05-30 16:48:17,332 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:48:17,525 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,680,233
+2026-05-30 16:48:28,728 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:48:28,903 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,681,233
+2026-05-30 16:48:40,000 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:48:40,150 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,682,233
+2026-05-30 16:48:53,373 - INFO - [inat_clip_context] Compacting 987 WAL entries to DB
+2026-05-30 16:48:53,498 - INFO - [inat_clip_context] Compact complete — 987 entries flushed, WAL truncated, total scored: 3,683,220
+2026-05-30 16:49:05,201 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:49:05,350 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,684,220
+2026-05-30 16:49:14,447 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:49:14,598 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,685,220
+2026-05-30 16:49:23,565 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:49:23,718 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,686,220
+2026-05-30 16:49:34,139 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:49:34,290 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,687,220
+2026-05-30 16:49:44,541 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:49:44,688 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,688,220
+2026-05-30 16:49:57,196 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:49:57,335 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,689,220
+2026-05-30 16:50:09,754 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:50:09,886 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,690,220
+2026-05-30 16:50:19,482 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:50:19,598 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,691,220
+2026-05-30 16:50:28,918 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:50:29,042 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,692,220
+2026-05-30 16:50:39,848 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:50:39,961 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,693,220
+2026-05-30 16:50:50,187 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:50:50,301 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,694,220
+2026-05-30 16:50:59,167 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:50:59,272 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,695,220
+2026-05-30 16:51:08,413 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:51:08,523 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,696,220
+2026-05-30 16:51:17,217 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:51:17,319 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,697,220
+2026-05-30 16:51:25,574 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:51:25,667 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,698,220
+2026-05-30 16:51:34,035 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:51:34,133 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,699,220
+2026-05-30 16:51:42,395 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:51:42,481 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,700,220
+2026-05-30 16:51:52,168 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:51:52,262 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,701,220
+2026-05-30 16:52:00,704 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:52:00,789 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,702,220
+2026-05-30 16:52:10,190 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:52:10,273 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,703,220
+2026-05-30 16:52:21,291 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:52:21,373 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,704,220
+2026-05-30 16:52:31,704 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:52:31,777 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,705,220
+2026-05-30 16:52:42,248 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:52:42,320 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,706,220
+2026-05-30 16:52:52,163 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:52:52,246 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,707,220
+2026-05-30 16:53:00,685 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:53:00,756 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,708,220
+2026-05-30 16:53:09,715 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:53:09,789 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,709,220
+2026-05-30 16:53:19,399 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:53:19,466 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,710,220
+2026-05-30 16:53:29,470 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:53:29,534 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,711,220
+2026-05-30 16:53:38,577 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:53:38,647 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,712,220
+2026-05-30 16:53:47,505 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:53:47,571 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,713,220
+2026-05-30 16:53:59,336 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:53:59,400 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,714,220
+2026-05-30 16:54:08,348 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:54:08,408 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,715,220
+2026-05-30 16:54:18,389 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:54:18,451 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,716,220
+2026-05-30 16:54:27,805 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:54:27,862 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,717,220
+2026-05-30 16:54:38,138 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:54:38,194 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,718,220
+2026-05-30 16:54:48,366 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:54:48,421 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,719,220
+2026-05-30 16:54:59,314 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:54:59,367 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,720,220
+2026-05-30 16:55:09,730 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:55:09,795 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,721,220
+2026-05-30 16:55:20,734 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:55:20,784 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,722,220
+2026-05-30 16:55:30,142 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:55:30,196 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,723,220
+2026-05-30 16:55:41,385 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:55:41,441 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,724,220
+2026-05-30 16:55:50,669 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:55:50,719 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,725,220
+2026-05-30 16:56:02,599 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:56:02,652 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,726,220
+2026-05-30 16:56:13,684 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:56:13,743 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,727,220
+2026-05-30 16:56:24,847 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:56:24,904 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,728,220
+2026-05-30 16:56:35,225 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:56:35,288 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,729,220
+2026-05-30 16:56:48,013 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:56:48,061 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,730,220
+2026-05-30 16:56:58,103 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:56:58,149 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,731,220
+2026-05-30 16:57:09,509 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:57:09,553 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,732,220
+2026-05-30 16:57:19,785 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:57:19,831 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,733,220
+2026-05-30 16:57:29,894 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:57:29,934 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,734,220
+2026-05-30 16:57:39,612 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:57:39,656 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,735,220
+2026-05-30 16:57:49,033 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:57:49,077 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,736,220
+2026-05-30 16:57:59,596 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:57:59,645 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,737,220
+2026-05-30 16:58:10,614 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:58:10,655 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,738,220
+2026-05-30 16:58:20,552 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:58:20,600 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,739,220
+2026-05-30 16:58:30,194 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:58:30,739 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,740,220
+2026-05-30 16:58:40,577 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:58:40,618 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,741,220
+2026-05-30 16:58:50,752 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:58:50,796 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,742,220
+2026-05-30 16:59:02,450 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:59:02,487 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,743,220
+2026-05-30 16:59:15,149 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:59:15,191 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,744,220
+2026-05-30 16:59:27,002 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:59:27,044 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,745,220
+2026-05-30 16:59:39,519 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:59:39,561 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,746,220
+2026-05-30 16:59:52,073 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 16:59:52,118 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,747,220
+2026-05-30 17:00:03,699 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:00:03,741 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,748,220
+2026-05-30 17:00:14,743 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:00:14,785 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,749,220
+2026-05-30 17:00:23,032 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:00:23,604 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,750,220
+2026-05-30 17:00:33,258 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:00:33,301 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,751,220
+2026-05-30 17:00:44,436 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:00:44,476 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,752,220
+2026-05-30 17:00:56,351 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:00:56,398 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,753,220
+2026-05-30 17:01:08,132 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:01:08,169 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,754,220
+2026-05-30 17:01:19,673 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:01:19,712 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,755,220
+2026-05-30 17:01:30,906 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:01:30,946 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,756,220
+2026-05-30 17:01:42,211 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:01:42,249 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,757,220
+2026-05-30 17:01:53,415 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:01:53,455 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,758,220
+2026-05-30 17:02:03,365 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:02:03,404 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,759,220
+2026-05-30 17:02:11,936 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:02:11,975 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,760,220
+2026-05-30 17:02:20,724 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:02:20,763 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,761,220
+2026-05-30 17:02:30,965 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:02:31,501 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,762,220
+2026-05-30 17:02:41,706 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:02:41,751 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,763,220
+2026-05-30 17:02:53,593 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:02:53,630 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,764,220
+2026-05-30 17:03:04,563 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:03:04,603 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,765,220
+2026-05-30 17:03:15,303 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:03:15,340 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,766,220
+2026-05-30 17:03:26,212 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:03:26,251 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,767,220
+2026-05-30 17:03:38,841 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:03:38,877 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,768,220
+2026-05-30 17:03:50,772 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:03:50,809 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,769,220
+2026-05-30 17:04:02,523 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:04:02,564 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,770,220
+2026-05-30 17:04:12,581 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:04:12,620 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,771,220
+2026-05-30 17:04:22,424 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:04:22,463 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,772,220
+2026-05-30 17:04:33,698 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:04:34,244 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,773,220
+2026-05-30 17:04:46,809 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:04:46,849 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,774,220
+2026-05-30 17:04:58,424 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:04:58,465 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,775,220
+2026-05-30 17:05:09,131 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:05:09,172 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,776,220
+2026-05-30 17:05:21,302 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:05:21,342 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,777,220
+2026-05-30 17:05:33,240 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:05:33,280 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,778,220
+2026-05-30 17:05:44,725 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:05:44,767 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,779,220
+2026-05-30 17:05:56,302 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:05:56,340 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,780,220
+2026-05-30 17:06:07,493 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:06:07,531 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,781,220
+2026-05-30 17:06:19,076 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:06:19,646 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,782,220
+2026-05-30 17:06:31,586 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:06:31,624 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,783,220
+2026-05-30 17:06:43,457 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:06:43,496 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,784,220
+2026-05-30 17:06:55,426 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:06:55,465 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,785,220
+2026-05-30 17:07:06,757 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:07:06,803 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,786,220
+2026-05-30 17:07:18,808 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:07:18,844 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,787,220
+2026-05-30 17:07:30,932 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:07:30,971 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,788,220
+2026-05-30 17:07:42,253 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:07:42,301 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,789,220
+2026-05-30 17:07:53,976 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:07:54,603 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,790,220
+2026-05-30 17:08:05,886 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:08:05,933 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,791,220
+2026-05-30 17:08:18,026 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:08:18,063 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,792,220
+2026-05-30 17:08:29,675 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:08:29,714 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,793,220
+2026-05-30 17:08:41,196 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:08:41,231 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,794,220
+2026-05-30 17:08:51,604 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:08:51,644 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,795,220
+2026-05-30 17:09:01,746 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:09:01,788 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,796,220
+2026-05-30 17:09:12,141 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:09:12,180 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,797,220
+2026-05-30 17:09:22,803 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:09:22,842 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,798,220
+2026-05-30 17:09:33,499 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:09:34,046 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,799,220
+2026-05-30 17:09:45,443 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:09:45,483 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,800,220
+2026-05-30 17:09:56,988 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:09:57,028 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,801,220
+2026-05-30 17:10:08,172 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:10:08,210 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,802,220
+2026-05-30 17:10:19,729 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:10:19,780 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,803,220
+2026-05-30 17:10:30,082 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:10:30,122 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,804,220
+2026-05-30 17:10:39,284 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:10:39,320 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,805,220
+2026-05-30 17:10:49,638 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:10:49,674 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,806,220
+2026-05-30 17:11:00,306 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:11:00,346 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,807,220
+2026-05-30 17:11:10,304 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:11:10,843 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,808,220
+2026-05-30 17:11:21,893 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:11:21,930 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,809,220
+2026-05-30 17:11:32,046 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:11:32,084 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,810,220
+2026-05-30 17:11:42,008 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:11:42,048 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,811,220
+2026-05-30 17:11:52,896 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:11:52,932 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,812,220
+2026-05-30 17:12:04,716 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:12:04,750 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,813,220
+2026-05-30 17:12:18,769 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:12:18,806 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,814,220
+2026-05-30 17:12:31,033 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:12:31,076 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,815,220
+2026-05-30 17:12:43,477 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:12:43,536 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,816,220
+2026-05-30 17:12:56,314 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:12:56,356 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,817,220
+2026-05-30 17:13:08,561 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:13:09,100 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,818,220
+2026-05-30 17:13:21,398 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:13:21,435 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,819,220
+2026-05-30 17:13:32,680 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:13:32,717 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,820,220
+2026-05-30 17:13:44,382 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:13:44,429 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,821,220
+2026-05-30 17:13:56,385 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:13:56,423 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,822,220
+2026-05-30 17:14:08,073 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:14:08,111 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,823,220
+2026-05-30 17:14:21,275 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:14:21,317 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,824,220
+2026-05-30 17:14:32,768 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:14:32,811 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,825,220
+2026-05-30 17:14:43,501 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:14:43,541 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,826,220
+2026-05-30 17:14:54,462 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:14:54,501 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,827,220
+2026-05-30 17:15:05,758 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:15:05,796 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,828,220
+2026-05-30 17:15:17,900 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:15:17,944 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,829,220
+2026-05-30 17:15:28,816 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:15:29,361 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,830,220
+2026-05-30 17:15:40,844 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:15:40,881 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,831,220
+2026-05-30 17:15:54,298 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:15:54,337 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,832,220
+2026-05-30 17:16:09,475 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:16:09,513 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,833,220
+2026-05-30 17:16:25,382 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:16:25,428 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,834,220
+2026-05-30 17:16:39,721 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:16:39,760 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,835,220
+2026-05-30 17:16:53,000 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:16:53,037 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,836,220
+2026-05-30 17:17:06,156 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:17:06,194 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,837,220
+2026-05-30 17:17:18,281 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:17:18,318 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,838,220
+2026-05-30 17:17:29,650 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:17:29,693 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,839,220
+2026-05-30 17:17:40,923 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:17:40,957 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,840,220
+2026-05-30 17:17:52,905 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:17:52,941 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,841,220
+2026-05-30 17:18:04,510 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:18:05,046 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,842,220
+2026-05-30 17:18:19,151 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:18:19,188 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,843,220
+2026-05-30 17:18:30,853 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:18:30,891 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,844,220
+2026-05-30 17:18:45,287 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:18:45,323 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,845,220
+2026-05-30 17:18:56,219 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:18:56,254 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,846,220
+2026-05-30 17:19:07,491 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:19:07,525 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,847,220
+2026-05-30 17:19:20,043 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:19:20,083 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,848,220
+2026-05-30 17:19:33,262 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:19:33,301 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,849,220
+2026-05-30 17:19:44,060 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:19:44,607 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,850,220
+2026-05-30 17:19:58,414 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:19:58,466 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,851,220
+2026-05-30 17:20:11,626 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:20:11,671 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,852,220
+2026-05-30 17:20:23,710 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:20:23,765 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,853,220
+2026-05-30 17:20:35,977 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:20:36,016 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,854,220
+2026-05-30 17:20:46,127 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:20:46,170 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,855,220
+2026-05-30 17:20:56,997 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:20:57,034 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,856,220
+2026-05-30 17:21:07,927 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:21:07,964 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,857,220
+2026-05-30 17:21:19,018 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:21:19,056 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,858,220
+2026-05-30 17:21:30,038 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:21:30,625 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,859,220
+2026-05-30 17:21:42,376 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:21:42,414 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,860,220
+2026-05-30 17:21:53,818 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:21:53,855 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,861,220
+2026-05-30 17:22:06,171 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:22:06,208 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,862,220
+2026-05-30 17:22:20,416 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:22:20,454 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,863,220
+2026-05-30 17:22:33,893 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:22:33,927 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,864,220
+2026-05-30 17:22:45,869 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:22:45,910 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,865,220
+2026-05-30 17:22:59,299 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:22:59,333 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,866,220
+2026-05-30 17:23:13,183 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:23:13,216 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,867,220
+2026-05-30 17:23:26,708 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:23:26,745 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,868,220
+2026-05-30 17:23:39,827 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:23:39,883 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,869,220
+2026-05-30 17:23:52,374 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:23:52,925 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,870,220
+2026-05-30 17:24:04,997 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:24:05,046 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,871,220
+2026-05-30 17:24:16,842 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:24:16,879 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,872,220
+2026-05-30 17:24:28,735 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:24:28,783 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,873,220
+2026-05-30 17:24:40,455 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:24:40,491 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,874,220
+2026-05-30 17:24:51,809 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:24:51,849 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,875,220
+2026-05-30 17:25:03,909 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:25:03,949 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,876,220
+2026-05-30 17:25:15,839 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:25:15,881 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,877,220
+2026-05-30 17:25:27,047 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:25:27,091 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,878,220
+2026-05-30 17:25:38,729 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:25:38,769 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,879,220
+2026-05-30 17:25:50,693 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:25:50,731 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,880,220
+2026-05-30 17:26:02,385 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:26:02,431 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,881,220
+2026-05-30 17:26:15,950 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:26:16,498 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,882,220
+2026-05-30 17:26:28,153 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:26:28,194 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,883,220
+2026-05-30 17:26:41,648 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:26:41,699 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,884,220
+2026-05-30 17:26:53,106 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:26:53,145 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,885,220
+2026-05-30 17:27:04,727 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:27:04,765 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,886,220
+2026-05-30 17:27:16,443 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:27:16,481 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,887,220
+2026-05-30 17:27:28,058 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:27:28,093 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,888,220
+2026-05-30 17:27:40,845 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:27:40,880 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,889,220
+2026-05-30 17:27:53,547 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:27:53,582 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,890,220
+2026-05-30 17:28:06,466 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:28:06,511 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,891,220
+2026-05-30 17:28:19,861 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:28:20,402 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,892,220
+2026-05-30 17:28:32,296 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:28:32,329 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,893,220
+2026-05-30 17:28:45,673 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:28:45,707 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,894,220
+2026-05-30 17:28:57,544 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:28:57,581 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,895,220
+2026-05-30 17:29:09,860 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:29:09,897 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,896,220
+2026-05-30 17:29:23,792 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:29:23,832 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,897,220
+2026-05-30 17:29:36,367 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:29:36,909 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,898,220
+2026-05-30 17:29:49,541 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:29:49,580 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,899,220
+2026-05-30 17:30:01,879 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:30:01,919 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,900,220
+2026-05-30 17:30:14,256 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:30:14,298 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,901,220
+2026-05-30 17:30:26,301 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:30:26,340 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,902,220
+2026-05-30 17:30:38,958 - INFO - [inat_clip_context] Compacting 999 WAL entries to DB
+2026-05-30 17:30:38,995 - INFO - [inat_clip_context] Compact complete — 999 entries flushed, WAL truncated, total scored: 3,903,219
+2026-05-30 17:30:52,846 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:30:52,888 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,904,219
+2026-05-30 17:31:04,925 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:31:04,966 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,905,219
+2026-05-30 17:31:17,155 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:31:17,201 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,906,219
+2026-05-30 17:31:29,537 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:31:30,077 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,907,219
+2026-05-30 17:31:41,216 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:31:41,259 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,908,219
+2026-05-30 17:31:52,454 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:31:52,491 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,909,219
+2026-05-30 17:32:05,300 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:32:05,338 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,910,219
+2026-05-30 17:32:17,872 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:32:17,910 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,911,219
+2026-05-30 17:32:29,917 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:32:29,960 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,912,219
+2026-05-30 17:32:42,100 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:32:42,138 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,913,219
+2026-05-30 17:32:55,915 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:32:55,956 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,914,219
+2026-05-30 17:33:07,536 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:33:07,575 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,915,219
+2026-05-30 17:33:19,606 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:33:19,642 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,916,219
+2026-05-30 17:33:31,143 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:33:31,724 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,917,219
+2026-05-30 17:33:42,637 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:33:42,691 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,918,219
+2026-05-30 17:33:54,299 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:33:54,335 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,919,219
+2026-05-30 17:34:05,997 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:34:06,031 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,920,219
+2026-05-30 17:34:17,561 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:34:17,600 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,921,219
+2026-05-30 17:34:29,410 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:34:29,453 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,922,219
+2026-05-30 17:34:41,401 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:34:41,440 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,923,219
+2026-05-30 17:34:54,209 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:34:54,248 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,924,219
+2026-05-30 17:35:06,419 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:35:06,457 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,925,219
+2026-05-30 17:35:18,178 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:35:18,219 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,926,219
+2026-05-30 17:35:29,818 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:35:29,858 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,927,219
+2026-05-30 17:35:43,245 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:35:43,284 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,928,219
+2026-05-30 17:35:56,268 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:35:56,308 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,929,219
+2026-05-30 17:36:08,433 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:36:08,472 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,930,219
+2026-05-30 17:36:20,255 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:36:20,293 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,931,219
+2026-05-30 17:36:31,948 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:36:31,986 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,932,219
+2026-05-30 17:36:44,449 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:36:44,498 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,933,219
+2026-05-30 17:36:58,619 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:36:58,659 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,934,219
+2026-05-30 17:37:11,333 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:37:11,398 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,935,219
+2026-05-30 17:37:23,532 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:37:23,578 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,936,219
+2026-05-30 17:37:35,099 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:37:35,653 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,937,219
+2026-05-30 17:37:47,423 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:37:47,460 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,938,219
+2026-05-30 17:37:59,164 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:37:59,201 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,939,219
+2026-05-30 17:38:10,450 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:38:10,495 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,940,219
+2026-05-30 17:38:21,397 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:38:21,438 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,941,219
+2026-05-30 17:38:32,808 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:38:32,854 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,942,219
+2026-05-30 17:38:46,105 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:38:46,155 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,943,219
+2026-05-30 17:38:58,589 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:38:58,622 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,944,219
+2026-05-30 17:39:09,621 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:39:09,659 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,945,219
+2026-05-30 17:39:20,607 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:39:21,159 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,946,219
+2026-05-30 17:39:32,260 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:39:32,297 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,947,219
+2026-05-30 17:39:44,029 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:39:44,068 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,948,219
+2026-05-30 17:39:55,448 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:39:55,490 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,949,219
+2026-05-30 17:40:06,773 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:40:06,811 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,950,219
+2026-05-30 17:40:18,454 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:40:18,497 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,951,219
+2026-05-30 17:40:28,843 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:40:28,879 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,952,219
+2026-05-30 17:40:40,645 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:40:40,684 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,953,219
+2026-05-30 17:40:51,571 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:40:51,610 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,954,219
+2026-05-30 17:41:01,771 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:41:01,810 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,955,219
+2026-05-30 17:41:12,892 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:41:12,932 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,956,219
+2026-05-30 17:41:23,880 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:41:23,918 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,957,219
+2026-05-30 17:41:33,893 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:41:33,928 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,958,219
+2026-05-30 17:41:44,683 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:41:45,225 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,959,219
+2026-05-30 17:41:55,885 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:41:55,922 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,960,219
+2026-05-30 17:42:07,306 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:42:07,346 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,961,219
+2026-05-30 17:42:18,643 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:42:18,677 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,962,219
+2026-05-30 17:42:29,797 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:42:29,832 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,963,219
+2026-05-30 17:42:41,306 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:42:41,344 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,964,219
+2026-05-30 17:42:52,740 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:42:52,779 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,965,219
+2026-05-30 17:43:03,699 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:43:03,748 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,966,219
+2026-05-30 17:43:14,453 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:43:14,486 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,967,219
+2026-05-30 17:43:27,117 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:43:27,154 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,968,219
+2026-05-30 17:43:38,706 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:43:39,251 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,969,219
+2026-05-30 17:43:51,189 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:43:51,228 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,970,219
+2026-05-30 17:44:04,162 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:44:04,208 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,971,219
+2026-05-30 17:44:16,205 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:44:16,243 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,972,219
+2026-05-30 17:44:28,517 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:44:28,570 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,973,219
+2026-05-30 17:44:46,803 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:44:46,849 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,974,219
+2026-05-30 17:45:04,240 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:45:04,290 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,975,219
+2026-05-30 17:45:21,452 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:45:21,515 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,976,219
+2026-05-30 17:45:39,631 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:45:39,686 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,977,219
+2026-05-30 17:47:12,949 - INFO - [inat_clip_context] Loading progress from DB table 'inat_clip_context'
+2026-05-30 17:47:17,567 - INFO - [inat_clip_context] Loaded 3,977,219 completed entries from DB
+2026-05-30 17:47:17,568 - INFO - [inat_clip_context] Replayed 292 WAL entries
+2026-05-30 17:47:17,568 - INFO - [inat_clip_context] Total completed (DB + WAL): 3,977,511
+2026-05-30 17:48:01,230 - INFO - [inat_clip_context] Compacting 1,292 WAL entries to DB
+2026-05-30 17:48:01,291 - INFO - [inat_clip_context] Compact complete — 1,292 entries flushed, WAL truncated, total scored: 3,978,511
+2026-05-30 17:48:14,772 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:48:14,828 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,979,511
+2026-05-30 17:48:25,478 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:48:25,530 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,980,511
+2026-05-30 17:48:36,131 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:48:36,176 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,981,511
+2026-05-30 17:48:46,255 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:48:46,300 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,982,511
+2026-05-30 17:48:56,957 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:48:57,024 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,983,511
+2026-05-30 17:49:07,038 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:49:07,083 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,984,511
+2026-05-30 17:49:18,136 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:49:18,182 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,985,511
+2026-05-30 17:49:27,734 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:49:27,778 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,986,511
+2026-05-30 17:49:38,917 - INFO - [inat_clip_context] Compacting 992 WAL entries to DB
+2026-05-30 17:49:38,962 - INFO - [inat_clip_context] Compact complete — 992 entries flushed, WAL truncated, total scored: 3,987,503
+2026-05-30 17:49:50,365 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:49:50,411 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,988,503
+2026-05-30 17:50:08,715 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:50:08,764 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,989,503
+2026-05-30 17:50:30,064 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:50:30,129 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,990,503
+2026-05-30 17:50:49,480 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:50:49,532 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,991,503
+2026-05-30 17:51:07,985 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:51:08,040 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,992,503
+2026-05-30 17:51:26,753 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:51:26,805 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,993,503
+2026-05-30 17:51:45,167 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:51:45,243 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,994,503
+2026-05-30 17:52:05,398 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:52:05,445 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,995,503
+2026-05-30 17:52:27,100 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:52:27,150 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,996,503
+2026-05-30 17:52:47,985 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:52:48,045 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,997,503
+2026-05-30 17:53:10,431 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:53:11,357 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,998,503
+2026-05-30 17:53:32,206 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:53:32,266 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 3,999,503
+2026-05-30 17:54:55,416 - INFO - [inat_clip_context] Loading progress from DB table 'inat_clip_context'
+2026-05-30 17:54:59,935 - INFO - [inat_clip_context] Loaded 3,999,503 completed entries from DB
+2026-05-30 17:54:59,936 - INFO - [inat_clip_context] Replayed 517 WAL entries
+2026-05-30 17:54:59,936 - INFO - [inat_clip_context] Total completed (DB + WAL): 4,000,020
+2026-05-30 17:55:41,788 - INFO - [inat_clip_context] Compacting 1,517 WAL entries to DB
+2026-05-30 17:55:41,872 - INFO - [inat_clip_context] Compact complete — 1,517 entries flushed, WAL truncated, total scored: 4,001,020
+2026-05-30 17:55:54,549 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:55:54,597 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,002,020
+2026-05-30 17:56:05,906 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:56:05,947 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,003,020
+2026-05-30 17:56:17,103 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:56:17,150 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,004,020
+2026-05-30 17:56:28,458 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:56:28,501 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,005,020
+2026-05-30 17:56:39,940 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:56:39,981 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,006,020
+2026-05-30 17:56:51,727 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:56:51,769 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,007,020
+2026-05-30 17:57:03,248 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:57:03,287 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,008,020
+2026-05-30 17:57:13,804 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:57:13,842 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,009,020
+2026-05-30 17:57:25,951 - INFO - [inat_clip_context] Compacting 995 WAL entries to DB
+2026-05-30 17:57:25,990 - INFO - [inat_clip_context] Compact complete — 995 entries flushed, WAL truncated, total scored: 4,010,015
+2026-05-30 17:57:38,844 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:57:38,888 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,011,015
+2026-05-30 17:57:51,428 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:57:51,466 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,012,015
+2026-05-30 17:58:01,340 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:58:01,381 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,013,015
+2026-05-30 17:58:13,042 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:58:13,085 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,014,015
+2026-05-30 17:58:25,275 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:58:25,321 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,015,015
+2026-05-30 17:58:37,397 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:58:37,434 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,016,015
+2026-05-30 17:58:48,823 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:58:48,891 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,017,015
+2026-05-30 17:59:00,560 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:59:00,602 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,018,015
+2026-05-30 17:59:12,828 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:59:12,873 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,019,015
+2026-05-30 17:59:24,936 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:59:24,996 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,020,015
+2026-05-30 17:59:38,034 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:59:38,074 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,021,015
+2026-05-30 17:59:50,423 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 17:59:50,475 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,022,015
+2026-05-30 18:00:03,305 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:00:03,350 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,023,015
+2026-05-30 18:00:15,486 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:00:15,528 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,024,015
+2026-05-30 18:00:27,130 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:00:27,173 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,025,015
+2026-05-30 18:00:38,920 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:00:38,961 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,026,015
+2026-05-30 18:00:50,564 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:00:50,603 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,027,015
+2026-05-30 18:01:01,911 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:01:01,955 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,028,015
+2026-05-30 18:01:13,617 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:01:13,658 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,029,015
+2026-05-30 18:01:25,498 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:01:25,547 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,030,015
+2026-05-30 18:01:38,356 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:01:38,397 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,031,015
+2026-05-30 18:01:51,785 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:01:51,829 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,032,015
+2026-05-30 18:02:04,443 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:02:04,478 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,033,015
+2026-05-30 18:02:17,023 - INFO - [inat_clip_context] Compacting 1,000 WAL entries to DB
+2026-05-30 18:02:17,063 - INFO - [inat_clip_context] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 4,034,015
+2026-05-30 18:02:22,019 - INFO - [inat_clip_context] Compacting 344 WAL entries to DB
+2026-05-30 18:02:22,034 - INFO - [inat_clip_context] Compact complete — 344 entries flushed, WAL truncated, total scored: 4,034,359
+2026-05-30 18:02:22,034 - INFO - [inat_clip_context] Closing tracker — running final compaction
+2026-05-30 18:02:22,034 - INFO - [inat_clip_context] Tracker closed. Total scored this session: 4,034,359
+2026-05-30 18:05:14,614 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-30 18:05:18,266 - INFO - [ScoreRunner/inat] Found 2,524,401 candidates to score
+2026-05-30 18:05:18,499 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-05-30 18:05:20,979 - INFO - [inat_scoring] Loaded 2,202,547 completed entries from DB
+2026-05-30 18:05:20,991 - INFO - [inat_scoring] Total completed (DB + WAL): 2,202,547
+2026-05-30 18:05:39,319 - INFO - [ScoreRunner/inat] Retrieved 2,524,401 file rows from InatFilteredObservations
+2026-05-30 18:05:39,827 - INFO - [ScoreRunner/inat] 2,524,401 uploaded | 2,202,547 already scored | 321,854 to score
+2026-05-30 18:05:39,827 - INFO - [ScoreRunner/inat] 321,854 rows → 33 batches of 10,000
+2026-05-30 18:05:39,827 - INFO - [ScoreRunner/inat] Batch 1/33 — 10,000 rows
+2026-05-30 18:06:02,408 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:06:02,704 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,203,547
+2026-05-30 18:06:15,852 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:06:16,098 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,204,547
+2026-05-30 18:06:25,403 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:06:25,620 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,205,547
+2026-05-30 18:06:35,234 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:06:35,434 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,206,547
+2026-05-30 18:06:44,497 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:06:44,686 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,207,547
+2026-05-30 18:06:53,623 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:06:53,785 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,208,547
+2026-05-30 18:07:02,704 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:07:02,869 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,209,547
+2026-05-30 18:07:11,766 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:07:12,330 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,210,547
+2026-05-30 18:07:21,841 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:07:21,978 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,211,547
+2026-05-30 18:07:30,891 - WARNING - [ScoreRunner/inat] Batch 1: 3/10,000 tasks failed — first: TimeoutError: 
+2026-05-30 18:07:30,895 - INFO - [inat_scoring] Compacting 997 WAL entries to DB
+2026-05-30 18:07:31,038 - INFO - [inat_scoring] Compact complete — 997 entries flushed, WAL truncated, total scored: 2,212,544
+2026-05-30 18:07:31,038 - INFO - [ScoreRunner/inat] Batch 1/33 complete — compacted
+2026-05-30 18:07:31,039 - INFO - [ScoreRunner/inat] Batch 2/33 — 10,000 rows
+2026-05-30 18:07:41,221 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:07:41,342 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,213,544
+2026-05-30 18:07:50,219 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:07:50,353 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,214,544
+2026-05-30 18:07:58,936 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:07:59,049 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,215,544
+2026-05-30 18:08:07,900 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:08:08,010 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,216,544
+2026-05-30 18:08:17,124 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:08:17,222 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,217,544
+2026-05-30 18:08:28,222 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:08:28,323 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,218,544
+2026-05-30 18:08:38,206 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:08:38,724 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,219,544
+2026-05-30 18:08:50,299 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:08:50,386 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,220,544
+2026-05-30 18:08:59,638 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:08:59,722 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,221,544
+2026-05-30 18:09:08,986 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:09:09,074 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,222,544
+2026-05-30 18:09:09,080 - INFO - [ScoreRunner/inat] Batch 2/33 complete — compacted
+2026-05-30 18:09:09,080 - INFO - [ScoreRunner/inat] Batch 3/33 — 10,000 rows
+2026-05-30 18:09:19,559 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:09:19,649 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,223,544
+2026-05-30 18:09:28,300 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:09:28,385 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,224,544
+2026-05-30 18:09:37,825 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:09:37,909 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,225,544
+2026-05-30 18:09:47,271 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:09:47,349 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,226,544
+2026-05-30 18:09:56,595 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:09:56,678 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,227,544
+2026-05-30 18:10:05,703 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:10:06,202 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,228,544
+2026-05-30 18:10:15,298 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:10:15,374 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,229,544
+2026-05-30 18:10:24,059 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:10:24,135 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,230,544
+2026-05-30 18:10:33,524 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:10:33,600 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,231,544
+2026-05-30 18:10:43,462 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:10:43,536 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,232,544
+2026-05-30 18:10:43,541 - INFO - [ScoreRunner/inat] Batch 3/33 complete — compacted
+2026-05-30 18:10:43,541 - INFO - [ScoreRunner/inat] Batch 4/33 — 10,000 rows
+2026-05-30 18:10:54,550 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:10:54,621 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,233,544
+2026-05-30 18:11:03,541 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:11:03,610 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,234,544
+2026-05-30 18:11:12,786 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:11:12,856 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,235,544
+2026-05-30 18:11:21,899 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:11:21,970 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,236,544
+2026-05-30 18:11:31,143 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:11:31,641 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,237,544
+2026-05-30 18:11:41,336 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:11:41,405 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,238,544
+2026-05-30 18:11:51,477 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:11:51,544 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,239,544
+2026-05-30 18:12:02,890 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:12:02,958 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,240,544
+2026-05-30 18:12:13,620 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:12:13,684 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,241,544
+2026-05-30 18:12:23,081 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:12:23,147 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,242,544
+2026-05-30 18:12:23,152 - INFO - [ScoreRunner/inat] Batch 4/33 complete — compacted
+2026-05-30 18:12:23,152 - INFO - [ScoreRunner/inat] Batch 5/33 — 10,000 rows
+2026-05-30 18:12:34,801 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:12:34,870 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,243,544
+2026-05-30 18:12:45,487 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:12:45,551 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,244,544
+2026-05-30 18:12:54,885 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:12:54,951 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,245,544
+2026-05-30 18:13:04,690 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:13:05,185 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,246,544
+2026-05-30 18:13:15,813 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:13:15,879 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,247,544
+2026-05-30 18:13:30,780 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:13:30,841 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,248,544
+2026-05-30 18:13:45,870 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:13:45,935 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,249,544
+2026-05-30 18:13:57,741 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:13:57,807 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,250,544
+2026-05-30 18:14:07,117 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:14:07,182 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,251,544
+2026-05-30 18:14:17,104 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:14:17,176 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,252,544
+2026-05-30 18:14:17,181 - INFO - [ScoreRunner/inat] Batch 5/33 complete — compacted
+2026-05-30 18:14:17,182 - INFO - [ScoreRunner/inat] Batch 6/33 — 10,000 rows
+2026-05-30 18:14:27,987 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:14:28,058 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,253,544
+2026-05-30 18:14:39,620 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:14:39,687 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,254,544
+2026-05-30 18:14:55,558 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:14:55,627 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,255,544
+2026-05-30 18:15:06,625 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:15:07,123 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,256,544
+2026-05-30 18:15:16,127 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:15:16,194 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,257,544
+2026-05-30 18:15:24,905 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:15:24,971 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,258,544
+2026-05-30 18:15:33,954 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:15:34,022 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,259,544
+2026-05-30 18:15:42,715 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:15:42,779 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,260,544
+2026-05-30 18:15:51,614 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:15:51,676 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,261,544
+2026-05-30 18:16:00,917 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:16:00,984 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,262,544
+2026-05-30 18:16:00,989 - INFO - [ScoreRunner/inat] Batch 6/33 complete — compacted
+2026-05-30 18:16:00,989 - INFO - [ScoreRunner/inat] Batch 7/33 — 10,000 rows
+2026-05-30 18:16:13,511 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:16:13,576 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,263,544
+2026-05-30 18:16:24,306 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:16:24,795 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,264,544
+2026-05-30 18:16:35,753 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:16:35,818 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,265,544
+2026-05-30 18:16:47,075 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:16:47,139 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,266,544
+2026-05-30 18:16:59,243 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:16:59,307 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,267,544
+2026-05-30 18:17:11,811 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:17:11,875 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,268,544
+2026-05-30 18:17:24,635 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:17:24,703 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,269,544
+2026-05-30 18:17:37,031 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:17:37,096 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,270,544
+2026-05-30 18:17:48,773 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:17:48,846 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,271,544
+2026-05-30 18:18:02,820 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:18:02,887 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,272,544
+2026-05-30 18:18:02,892 - INFO - [ScoreRunner/inat] Batch 7/33 complete — compacted
+2026-05-30 18:18:02,893 - INFO - [ScoreRunner/inat] Batch 8/33 — 10,000 rows
+2026-05-30 18:18:16,357 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:18:16,421 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,273,544
+2026-05-30 18:18:30,810 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:18:31,291 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,274,544
+2026-05-30 18:18:42,940 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:18:43,004 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,275,544
+2026-05-30 18:18:55,399 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:18:55,463 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,276,544
+2026-05-30 18:19:10,281 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:19:10,350 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,277,544
+2026-05-30 18:19:25,256 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:19:25,327 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,278,544
+2026-05-30 18:19:37,922 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:19:37,991 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,279,544
+2026-05-30 18:19:49,943 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:19:50,009 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,280,544
+2026-05-30 18:20:03,514 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:20:03,582 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,281,544
+2026-05-30 18:20:16,840 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:20:16,908 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,282,544
+2026-05-30 18:20:16,912 - INFO - [ScoreRunner/inat] Batch 8/33 complete — compacted
+2026-05-30 18:20:16,913 - INFO - [ScoreRunner/inat] Batch 9/33 — 10,000 rows
+2026-05-30 18:20:30,801 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:20:30,870 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,283,544
+2026-05-30 18:20:43,088 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:20:43,154 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,284,544
+2026-05-30 18:20:56,485 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:20:56,550 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,285,544
+2026-05-30 18:21:08,024 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:21:08,091 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,286,544
+2026-05-30 18:21:20,002 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:21:20,067 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,287,544
+2026-05-30 18:21:32,177 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:21:32,239 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,288,544
+2026-05-30 18:21:43,783 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:21:43,846 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,289,544
+2026-05-30 18:21:55,923 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:21:55,990 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,290,544
+2026-05-30 18:22:07,606 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:22:07,668 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,291,544
+2026-05-30 18:22:19,201 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:22:19,705 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,292,544
+2026-05-30 18:22:19,709 - INFO - [ScoreRunner/inat] Batch 9/33 complete — compacted
+2026-05-30 18:22:19,709 - INFO - [ScoreRunner/inat] Batch 10/33 — 10,000 rows
+2026-05-30 18:22:32,744 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:22:32,808 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,293,544
+2026-05-30 18:22:44,577 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:22:44,644 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,294,544
+2026-05-30 18:22:55,257 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:22:55,321 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,295,544
+2026-05-30 18:23:07,084 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:23:07,150 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,296,544
+2026-05-30 18:23:18,550 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:23:18,616 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,297,544
+2026-05-30 18:23:29,814 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:23:29,879 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,298,544
+2026-05-30 18:23:40,931 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:23:40,998 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,299,544
+2026-05-30 18:23:53,150 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:23:53,215 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,300,544
+2026-05-30 18:24:05,216 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:24:05,728 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,301,544
+2026-05-30 18:24:18,568 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:24:18,646 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,302,544
+2026-05-30 18:24:18,651 - INFO - [ScoreRunner/inat] Batch 10/33 complete — compacted
+2026-05-30 18:24:18,651 - INFO - [ScoreRunner/inat] Batch 11/33 — 10,000 rows
+2026-05-30 18:24:33,580 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:24:33,646 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,303,544
+2026-05-30 18:24:44,845 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:24:44,915 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,304,544
+2026-05-30 18:24:55,947 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:24:56,011 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,305,544
+2026-05-30 18:25:06,696 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:25:06,764 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,306,544
+2026-05-30 18:25:19,225 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:25:19,291 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,307,544
+2026-05-30 18:25:30,364 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:25:30,431 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,308,544
+2026-05-30 18:25:42,076 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:25:42,142 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,309,544
+2026-05-30 18:25:53,005 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:25:53,069 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,310,544
+2026-05-30 18:26:04,556 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:26:05,069 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,311,544
+2026-05-30 18:26:18,025 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:26:18,087 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,312,544
+2026-05-30 18:26:18,092 - INFO - [ScoreRunner/inat] Batch 11/33 complete — compacted
+2026-05-30 18:26:18,092 - INFO - [ScoreRunner/inat] Batch 12/33 — 10,000 rows
+2026-05-30 18:26:31,045 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:26:31,109 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,313,544
+2026-05-30 18:26:42,024 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:26:42,089 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,314,544
+2026-05-30 18:26:53,314 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:26:53,380 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,315,544
+2026-05-30 18:27:05,163 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:27:05,231 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,316,544
+2026-05-30 18:27:16,375 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:27:16,442 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,317,544
+2026-05-30 18:27:28,331 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:27:28,396 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,318,544
+2026-05-30 18:27:38,913 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:27:38,979 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,319,544
+2026-05-30 18:27:50,026 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:27:50,089 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,320,544
+2026-05-30 18:28:02,067 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:28:02,588 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,321,544
+2026-05-30 18:28:14,970 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:28:15,037 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,322,544
+2026-05-30 18:28:15,042 - INFO - [ScoreRunner/inat] Batch 12/33 complete — compacted
+2026-05-30 18:28:15,042 - INFO - [ScoreRunner/inat] Batch 13/33 — 10,000 rows
+2026-05-30 18:28:27,738 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:28:27,802 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,323,544
+2026-05-30 18:28:39,471 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:28:39,535 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,324,544
+2026-05-30 18:28:50,990 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:28:51,054 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,325,544
+2026-05-30 18:29:02,552 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:29:02,617 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,326,544
+2026-05-30 18:29:13,985 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:29:14,068 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,327,544
+2026-05-30 18:29:25,389 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:29:25,457 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,328,544
+2026-05-30 18:29:35,986 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:29:36,056 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,329,544
+2026-05-30 18:29:47,058 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:29:47,126 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,330,544
+2026-05-30 18:29:57,234 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:29:57,748 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,331,544
+2026-05-30 18:30:08,233 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:30:08,298 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,332,544
+2026-05-30 18:30:08,303 - INFO - [ScoreRunner/inat] Batch 13/33 complete — compacted
+2026-05-30 18:30:08,303 - INFO - [ScoreRunner/inat] Batch 14/33 — 10,000 rows
+2026-05-30 18:30:21,052 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:30:21,115 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,333,544
+2026-05-30 18:30:30,956 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:30:31,020 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,334,544
+2026-05-30 18:30:42,841 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:30:42,908 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,335,544
+2026-05-30 18:30:56,069 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:30:56,133 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,336,544
+2026-05-30 18:31:12,961 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:31:13,023 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,337,544
+2026-05-30 18:31:32,795 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:31:32,860 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,338,544
+2026-05-30 18:31:50,039 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:31:50,105 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,339,544
+2026-05-30 18:32:02,857 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:32:03,358 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,340,544
+2026-05-30 18:32:15,287 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:32:15,351 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,341,544
+2026-05-30 18:32:27,340 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:32:27,403 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,342,544
+2026-05-30 18:32:27,408 - INFO - [ScoreRunner/inat] Batch 14/33 complete — compacted
+2026-05-30 18:32:27,408 - INFO - [ScoreRunner/inat] Batch 15/33 — 10,000 rows
+2026-05-30 18:32:42,296 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:32:42,360 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,343,544
+2026-05-30 18:32:53,507 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:32:53,571 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,344,544
+2026-05-30 18:33:05,282 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:33:05,347 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,345,544
+2026-05-30 18:33:18,092 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:33:18,159 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,346,544
+2026-05-30 18:33:29,513 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:33:29,576 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,347,544
+2026-05-30 18:33:42,993 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:33:43,058 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,348,544
+2026-05-30 18:33:55,670 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:33:56,183 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,349,544
+2026-05-30 18:34:09,521 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:34:09,591 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,350,544
+2026-05-30 18:34:21,405 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:34:21,480 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,351,544
+2026-05-30 18:34:36,167 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:34:36,237 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,352,544
+2026-05-30 18:34:36,242 - INFO - [ScoreRunner/inat] Batch 15/33 complete — compacted
+2026-05-30 18:34:36,242 - INFO - [ScoreRunner/inat] Batch 16/33 — 10,000 rows
+2026-05-30 18:34:54,245 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:34:54,313 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,353,544
+2026-05-30 18:35:11,287 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:35:11,353 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,354,544
+2026-05-30 18:35:28,513 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:35:28,584 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,355,544
+2026-05-30 18:35:46,641 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:35:46,709 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,356,544
+2026-05-30 18:36:14,445 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:36:14,510 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,357,544
+2026-05-30 18:36:33,352 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:36:33,419 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,358,544
+2026-05-30 18:36:49,317 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:36:49,831 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,359,544
+2026-05-30 18:37:06,565 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:37:06,627 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,360,544
+2026-05-30 18:37:19,758 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:37:19,825 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,361,544
+2026-05-30 18:37:33,160 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:37:33,227 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,362,544
+2026-05-30 18:37:33,231 - INFO - [ScoreRunner/inat] Batch 16/33 complete — compacted
+2026-05-30 18:37:33,232 - INFO - [ScoreRunner/inat] Batch 17/33 — 10,000 rows
+2026-05-30 18:37:47,510 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:37:47,575 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,363,544
+2026-05-30 18:38:00,363 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:38:00,429 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,364,544
+2026-05-30 18:38:21,648 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:38:21,713 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,365,544
+2026-05-30 18:38:36,485 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:38:36,552 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,366,544
+2026-05-30 18:38:57,181 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:38:57,248 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,367,544
+2026-05-30 18:39:10,220 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:39:10,292 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,368,544
+2026-05-30 18:39:33,287 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:39:33,821 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,369,544
+2026-05-30 18:39:51,241 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:39:51,307 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,370,544
+2026-05-30 18:40:09,241 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:40:09,309 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,371,544
+2026-05-30 18:40:26,891 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:40:26,956 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,372,544
+2026-05-30 18:40:26,960 - INFO - [ScoreRunner/inat] Batch 17/33 complete — compacted
+2026-05-30 18:40:26,961 - INFO - [ScoreRunner/inat] Batch 18/33 — 10,000 rows
+2026-05-30 18:40:44,258 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:40:44,326 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,373,544
+2026-05-30 18:41:01,156 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:41:01,225 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,374,544
+2026-05-30 18:41:17,027 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:41:17,091 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,375,544
+2026-05-30 18:41:33,517 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:41:33,583 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,376,544
+2026-05-30 18:41:48,617 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:41:48,687 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,377,544
+2026-05-30 18:42:04,357 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:42:04,423 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,378,544
+2026-05-30 18:42:28,653 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:42:29,168 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,379,544
+2026-05-30 18:42:47,557 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:42:47,622 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,380,544
+2026-05-30 18:43:04,529 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:43:04,596 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,381,544
+2026-05-30 18:43:23,610 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:43:23,685 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,382,544
+2026-05-30 18:43:23,690 - INFO - [ScoreRunner/inat] Batch 18/33 complete — compacted
+2026-05-30 18:43:23,690 - INFO - [ScoreRunner/inat] Batch 19/33 — 10,000 rows
+2026-05-30 18:43:43,815 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:43:43,882 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,383,544
+2026-05-30 18:44:01,554 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:44:01,619 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,384,544
+2026-05-30 18:44:18,393 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:44:18,478 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,385,544
+2026-05-30 18:44:34,874 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:44:34,948 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,386,544
+2026-05-30 18:44:51,987 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:44:52,058 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,387,544
+2026-05-30 18:45:07,923 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:45:07,989 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,388,544
+2026-05-30 18:45:23,676 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:45:24,196 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,389,544
+2026-05-30 18:45:39,077 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:45:39,145 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,390,544
+2026-05-30 18:45:53,576 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:45:53,644 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,391,544
+2026-05-30 18:46:08,287 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:46:08,354 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,392,544
+2026-05-30 18:46:08,359 - INFO - [ScoreRunner/inat] Batch 19/33 complete — compacted
+2026-05-30 18:46:08,359 - INFO - [ScoreRunner/inat] Batch 20/33 — 10,000 rows
+2026-05-30 18:46:24,764 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:46:24,840 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,393,544
+2026-05-30 18:46:40,051 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:46:40,116 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,394,544
+2026-05-30 18:46:54,328 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:46:54,396 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,395,544
+2026-05-30 18:47:05,920 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:47:05,987 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,396,544
+2026-05-30 18:47:18,563 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:47:18,627 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,397,544
+2026-05-30 18:47:30,041 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:47:30,542 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,398,544
+2026-05-30 18:47:42,107 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:47:42,174 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,399,544
+2026-05-30 18:47:53,181 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:47:53,246 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,400,544
+2026-05-30 18:48:04,632 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:48:04,698 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,401,544
+2026-05-30 18:48:15,668 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:48:15,733 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,402,544
+2026-05-30 18:48:15,738 - INFO - [ScoreRunner/inat] Batch 20/33 complete — compacted
+2026-05-30 18:48:15,738 - INFO - [ScoreRunner/inat] Batch 21/33 — 10,000 rows
+2026-05-30 18:48:27,397 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:48:27,462 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,403,544
+2026-05-30 18:48:38,201 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:48:38,267 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,404,544
+2026-05-30 18:48:48,536 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:48:48,600 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,405,544
+2026-05-30 18:48:59,446 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:48:59,512 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,406,544
+2026-05-30 18:49:11,004 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:49:11,075 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,407,544
+2026-05-30 18:49:22,665 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:49:23,186 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,408,544
+2026-05-30 18:49:35,175 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:49:35,247 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,409,544
+2026-05-30 18:49:46,281 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:49:46,352 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,410,544
+2026-05-30 18:49:56,833 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:49:56,901 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,411,544
+2026-05-30 18:50:09,308 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:50:09,377 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,412,544
+2026-05-30 18:50:09,382 - INFO - [ScoreRunner/inat] Batch 21/33 complete — compacted
+2026-05-30 18:50:09,382 - INFO - [ScoreRunner/inat] Batch 22/33 — 10,000 rows
+2026-05-30 18:50:22,315 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:50:22,385 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,413,544
+2026-05-30 18:50:33,908 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:50:33,975 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,414,544
+2026-05-30 18:50:45,728 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:50:45,798 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,415,544
+2026-05-30 18:50:57,270 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:50:57,338 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,416,544
+2026-05-30 18:51:08,693 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:51:08,758 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,417,544
+2026-05-30 18:51:19,078 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:51:19,607 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,418,544
+2026-05-30 18:51:29,571 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:51:29,636 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,419,544
+2026-05-30 18:51:39,384 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:51:39,449 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,420,544
+2026-05-30 18:51:49,502 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:51:49,567 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,421,544
+2026-05-30 18:52:00,264 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:52:00,331 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,422,544
+2026-05-30 18:52:00,335 - INFO - [ScoreRunner/inat] Batch 22/33 complete — compacted
+2026-05-30 18:52:00,336 - INFO - [ScoreRunner/inat] Batch 23/33 — 10,000 rows
+2026-05-30 18:52:12,822 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:52:12,890 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,423,544
+2026-05-30 18:52:23,325 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:52:23,389 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,424,544
+2026-05-30 18:52:33,684 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:52:33,748 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,425,544
+2026-05-30 18:52:45,899 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:52:45,964 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,426,544
+2026-05-30 18:52:56,597 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:52:57,096 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,427,544
+2026-05-30 18:53:08,292 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:53:08,355 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,428,544
+2026-05-30 18:53:18,985 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:53:19,046 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,429,544
+2026-05-30 18:53:29,446 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:53:29,509 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,430,544
+2026-05-30 18:53:41,213 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:53:41,277 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,431,544
+2026-05-30 18:53:52,606 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:53:52,670 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,432,544
+2026-05-30 18:53:52,675 - INFO - [ScoreRunner/inat] Batch 23/33 complete — compacted
+2026-05-30 18:53:52,675 - INFO - [ScoreRunner/inat] Batch 24/33 — 10,000 rows
+2026-05-30 18:54:05,221 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:54:05,284 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,433,544
+2026-05-30 18:54:16,713 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:54:16,786 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,434,544
+2026-05-30 18:54:26,860 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:54:26,926 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,435,544
+2026-05-30 18:54:37,618 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:54:37,684 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,436,544
+2026-05-30 18:54:47,945 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:54:48,450 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,437,544
+2026-05-30 18:54:58,073 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:54:58,142 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,438,544
+2026-05-30 18:55:07,292 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:55:07,355 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,439,544
+2026-05-30 18:55:18,250 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:55:18,316 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,440,544
+2026-05-30 18:55:28,158 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:55:28,224 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,441,544
+2026-05-30 18:55:38,082 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:55:38,148 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,442,544
+2026-05-30 18:55:38,153 - INFO - [ScoreRunner/inat] Batch 24/33 complete — compacted
+2026-05-30 18:55:38,153 - INFO - [ScoreRunner/inat] Batch 25/33 — 10,000 rows
+2026-05-30 18:55:49,017 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:55:49,079 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,443,544
+2026-05-30 18:55:57,905 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:55:57,969 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,444,544
+2026-05-30 18:56:08,608 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:56:08,675 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,445,544
+2026-05-30 18:56:18,769 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:56:19,278 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,446,544
+2026-05-30 18:56:30,164 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:56:30,235 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,447,544
+2026-05-30 18:56:39,344 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:56:39,410 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,448,544
+2026-05-30 18:56:48,867 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:56:48,930 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,449,544
+2026-05-30 18:56:57,773 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:56:57,837 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,450,544
+2026-05-30 18:57:08,305 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:57:08,371 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,451,544
+2026-05-30 18:57:22,446 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:57:22,510 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,452,544
+2026-05-30 18:57:22,516 - INFO - [ScoreRunner/inat] Batch 25/33 complete — compacted
+2026-05-30 18:57:22,516 - INFO - [ScoreRunner/inat] Batch 26/33 — 10,000 rows
+2026-05-30 18:57:34,377 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:57:34,440 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,453,544
+2026-05-30 18:57:43,648 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:57:43,712 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,454,544
+2026-05-30 18:57:53,484 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:57:53,545 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,455,544
+2026-05-30 18:58:03,588 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:58:04,078 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,456,544
+2026-05-30 18:58:14,614 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:58:14,677 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,457,544
+2026-05-30 18:58:23,886 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:58:23,950 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,458,544
+2026-05-30 18:58:33,607 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:58:33,671 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,459,544
+2026-05-30 18:58:43,987 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:58:44,051 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,460,544
+2026-05-30 18:58:55,549 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:58:55,610 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,461,544
+2026-05-30 18:59:07,209 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:59:07,270 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,462,544
+2026-05-30 18:59:07,276 - INFO - [ScoreRunner/inat] Batch 26/33 complete — compacted
+2026-05-30 18:59:07,276 - INFO - [ScoreRunner/inat] Batch 27/33 — 10,000 rows
+2026-05-30 18:59:20,121 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:59:20,193 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,463,544
+2026-05-30 18:59:31,262 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:59:31,329 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,464,544
+2026-05-30 18:59:42,196 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:59:42,686 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,465,544
+2026-05-30 18:59:53,181 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 18:59:53,247 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,466,544
+2026-05-30 19:00:03,072 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:00:03,139 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,467,544
+2026-05-30 19:00:13,506 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:00:13,572 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,468,544
+2026-05-30 19:00:24,195 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:00:24,262 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,469,544
+2026-05-30 19:00:35,484 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:00:35,551 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,470,544
+2026-05-30 19:00:46,016 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:00:46,081 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,471,544
+2026-05-30 19:00:55,546 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:00:55,612 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,472,544
+2026-05-30 19:00:55,617 - INFO - [ScoreRunner/inat] Batch 27/33 complete — compacted
+2026-05-30 19:00:55,617 - INFO - [ScoreRunner/inat] Batch 28/33 — 10,000 rows
+2026-05-30 19:01:06,884 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:01:06,950 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,473,544
+2026-05-30 19:01:17,193 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:01:17,258 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,474,544
+2026-05-30 19:01:28,568 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:01:29,077 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,475,544
+2026-05-30 19:01:41,835 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:01:41,897 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,476,544
+2026-05-30 19:01:52,986 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:01:53,052 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,477,544
+2026-05-30 19:02:02,319 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:02:02,383 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,478,544
+2026-05-30 19:02:12,357 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:02:12,422 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,479,544
+2026-05-30 19:02:21,528 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:02:21,592 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,480,544
+2026-05-30 19:02:31,917 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:02:31,980 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,481,544
+2026-05-30 19:02:42,549 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:02:42,613 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,482,544
+2026-05-30 19:02:42,618 - INFO - [ScoreRunner/inat] Batch 28/33 complete — compacted
+2026-05-30 19:02:42,618 - INFO - [ScoreRunner/inat] Batch 29/33 — 10,000 rows
+2026-05-30 19:02:54,913 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:02:54,977 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,483,544
+2026-05-30 19:03:06,316 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:03:06,839 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,484,544
+2026-05-30 19:03:18,073 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:03:18,137 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,485,544
+2026-05-30 19:03:28,869 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:03:28,932 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,486,544
+2026-05-30 19:03:38,974 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:03:39,038 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,487,544
+2026-05-30 19:03:49,730 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:03:49,795 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,488,544
+2026-05-30 19:04:01,213 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:04:01,278 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,489,544
+2026-05-30 19:04:12,610 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:04:12,680 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,490,544
+2026-05-30 19:04:23,678 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:04:23,745 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,491,544
+2026-05-30 19:04:34,531 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:04:34,599 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,492,544
+2026-05-30 19:04:34,604 - INFO - [ScoreRunner/inat] Batch 29/33 complete — compacted
+2026-05-30 19:04:34,605 - INFO - [ScoreRunner/inat] Batch 30/33 — 10,000 rows
+2026-05-30 19:04:45,680 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:04:46,201 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,493,544
+2026-05-30 19:04:55,653 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:04:55,722 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,494,544
+2026-05-30 19:05:04,685 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:05:04,752 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,495,544
+2026-05-30 19:05:13,956 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:05:14,023 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,496,544
+2026-05-30 19:05:23,078 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:05:23,147 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,497,544
+2026-05-30 19:05:33,009 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:05:33,076 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,498,544
+2026-05-30 19:05:42,721 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:05:42,783 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,499,544
+2026-05-30 19:05:51,943 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:05:52,009 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,500,544
+2026-05-30 19:06:01,081 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:06:01,149 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,501,544
+2026-05-30 19:06:10,016 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:06:10,543 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,502,544
+2026-05-30 19:06:10,550 - INFO - [ScoreRunner/inat] Batch 30/33 complete — compacted
+2026-05-30 19:06:10,550 - INFO - [ScoreRunner/inat] Batch 31/33 — 10,000 rows
+2026-05-30 19:06:20,815 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:06:21,340 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,503,544
+2026-05-30 19:06:30,033 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:06:30,097 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,504,544
+2026-05-30 19:06:38,961 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:06:39,026 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,505,544
+2026-05-30 19:06:48,756 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:06:48,825 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,506,544
+2026-05-30 19:06:59,088 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:06:59,150 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,507,544
+2026-05-30 19:07:08,260 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:07:08,326 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,508,544
+2026-05-30 19:07:17,293 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:07:17,359 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,509,544
+2026-05-30 19:07:28,505 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:07:28,570 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,510,544
+2026-05-30 19:07:39,453 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:07:39,518 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,511,544
+2026-05-30 19:07:51,407 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:07:51,903 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,512,544
+2026-05-30 19:07:51,907 - INFO - [ScoreRunner/inat] Batch 31/33 complete — compacted
+2026-05-30 19:07:51,907 - INFO - [ScoreRunner/inat] Batch 32/33 — 10,000 rows
+2026-05-30 19:08:04,410 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:08:04,474 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,513,544
+2026-05-30 19:08:16,074 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:08:16,139 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,514,544
+2026-05-30 19:08:28,224 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:08:28,289 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,515,544
+2026-05-30 19:08:41,442 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:08:41,503 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,516,544
+2026-05-30 19:08:53,031 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:08:53,095 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,517,544
+2026-05-30 19:09:03,386 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:09:03,450 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,518,544
+2026-05-30 19:09:15,486 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:09:15,558 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,519,544
+2026-05-30 19:09:26,076 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:09:26,144 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,520,544
+2026-05-30 19:09:36,859 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:09:36,928 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,521,544
+2026-05-30 19:09:46,969 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:09:47,539 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,522,544
+2026-05-30 19:09:47,544 - INFO - [ScoreRunner/inat] Batch 32/33 complete — compacted
+2026-05-30 19:09:47,544 - INFO - [ScoreRunner/inat] Batch 33/33 — 1,854 rows
+2026-05-30 19:09:58,158 - INFO - [inat_scoring] Compacting 1,000 WAL entries to DB
+2026-05-30 19:09:58,231 - INFO - [inat_scoring] Compact complete — 1,000 entries flushed, WAL truncated, total scored: 2,523,544
+2026-05-30 19:10:06,334 - INFO - [inat_scoring] Compacting 854 WAL entries to DB
+2026-05-30 19:10:06,392 - INFO - [inat_scoring] Compact complete — 854 entries flushed, WAL truncated, total scored: 2,524,398
+2026-05-30 19:10:06,392 - INFO - [ScoreRunner/inat] Batch 33/33 complete — compacted
+2026-05-30 19:10:06,392 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-05-30 19:10:06,392 - INFO - [inat_scoring] Closing tracker — running final compaction
+2026-05-30 19:10:06,392 - INFO - [inat_scoring] Tracker closed. Total scored this session: 2,524,398
+2026-05-30 19:10:06,583 - INFO - [ScoreRunner/lila] Starting UIQM scoring run
+2026-05-30 19:10:06,827 - INFO - [ScoreRunner/lila] Found 97,923 candidates to score
+2026-05-30 19:10:06,831 - INFO - [lila_scoring] Loading progress from DB table 'lila_image_quality'
+2026-05-30 19:10:07,051 - INFO - [lila_scoring] Loaded 97,918 completed entries from DB
+2026-05-30 19:10:07,052 - INFO - [lila_scoring] Total completed (DB + WAL): 97,918
+2026-05-30 19:10:07,057 - INFO - [ScoreRunner/lila] 97,923 uploaded | 97,918 already scored | 5 to score
+2026-05-30 19:10:07,057 - INFO - [ScoreRunner/lila] 5 rows → 1 batches of 10,000
+2026-05-30 19:10:07,057 - INFO - [ScoreRunner/lila] Batch 1/1 — 5 rows
+2026-05-30 19:10:07,853 - WARNING - [ScoreRunner/lila] Batch 1: 5/5 tasks failed — first: TypeError: cannot unpack non-iterable ValueError object
+2026-05-30 19:10:07,854 - INFO - [ScoreRunner/lila] Batch 1/1 complete — compacted
+2026-05-30 19:10:07,854 - INFO - [ScoreRunner/lila] All UIQM scoring batches complete
+2026-05-30 19:10:07,854 - INFO - [lila_scoring] Closing tracker — running final compaction
+2026-05-30 19:10:07,854 - INFO - [lila_scoring] Tracker closed. Total scored this session: 97,918

@@ -1,0 +1,66 @@
+import io
+import logging
+
+from PIL import Image
+from ultralytics import YOLO
+
+logger = logging.getLogger(__name__)
+
+class BoundingBoxInference:
+    def __init__(self, model: str, conf: float):
+        logger.info("Loading YOLO model from %s (conf=%.2f)", model, conf)
+        self.model = YOLO(model, task='detect')
+        self.conf = conf
+
+    def infer(self, data: bytes | list[bytes]):
+
+        imgs_to_infer = []
+        w = []
+        h = []
+        if isinstance(data, list):
+            for img_bytes in data:
+                img = (Image.open(io.BytesIO(img_bytes)).convert("RGB"))
+                w.append(img.size[0])
+                h.append(img.size[1])
+                imgs_to_infer.append(img)
+        else:
+            img = Image.open(io.BytesIO(data)).convert("RGB")
+            w.append(img.size[0])
+            h.append(img.size[1])
+            imgs_to_infer.append(img)
+
+        results = self.model.predict(imgs_to_infer, conf=self.conf, verbose=False)
+
+        if len(results) == 1:
+            if results[0].boxes is None or len(results[0].boxes) == 0:
+                return [None]
+
+        def _has_boxes(result):
+            return result.boxes is not None and len(result.boxes) > 0
+
+        best_idx = [result.boxes.conf.argmax() if _has_boxes(result) else None for result in results]
+        xyxy = [result.boxes.xyxy[best_idx[i]].cpu().tolist() if _has_boxes(result) else [None] * 4 for i, result in enumerate(results)]
+        conf = [result.boxes.conf[best_idx[i]].item() if _has_boxes(result) else None for i, result in enumerate(results)]
+
+        results = list(zip(xyxy, conf, w, h))
+
+        return [
+            {
+                "x1": max(0.0, result[0][0]),
+                "y1": max(0.0, result[0][1]),
+                "x2": min(result[2], result[0][2]),
+                "y2": min(result[3], result[0][3]),
+                "conf": result[1],
+                "w": result[2],
+                "h": result[3]
+            } if result[0][0] is not None else None
+            for result in results
+        ]
+
+
+
+
+
+
+
+

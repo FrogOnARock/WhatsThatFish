@@ -22,8 +22,8 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Import models so that Base.metadata includes all tables
-from src.database.base import Base
-import src.database.models  # noqa: F401
+from src.whatsthatfish.database.base import Base
+import src.whatsthatfish.database.models  # noqa: F401
 
 target_metadata = Base.metadata
 

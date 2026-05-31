@@ -1,0 +1,67 @@
+# ── Param Space ──────────────────────────────────────────────────────
+# Each parameter entry requires: type (uniform | loguniform | choice | randint),
+# min, and max. The loader in od_training.py maps these to ray.tune distributions.
+
+lila:
+  lr0:
+    type: loguniform
+    min: 5e-3
+    max: 5e-2
+  box:
+    type: uniform
+    min: 5.0
+    max: 9.0
+  cls:
+    type: uniform
+    min: 0.8
+    max: 1.5
+  weight_decay:
+    type: loguniform
+    min: 1e-3
+    max: 1e-2
+  dfl:
+    type: loguniform
+    min: 0.5
+    max: 2.0
+
+lc1:
+  # Fine-tuning on iNat pseudo-labels — lower lr + weight_decay vs. LILA scratch training
+  lr0:
+    type: loguniform
+    min: 5e-5
+    max: 5e-3
+  box:
+    type: uniform
+    min: 5.0
+    max: 9.0
+  cls:
+    type: fixed
+    value: 0.4   # binary task, model already knows fish vs. no-fish from LILA
+  weight_decay:
+    type: loguniform
+    min: 1e-4
+    max: 1e-3
+  dfl:
+    type: fixed
+    value: 1.0   # pseudo-label targets don't warrant tight edge distribution learning
+
+lc2:
+  # Same philosophy as LC1; conf-weighted sampler handles curriculum progression
+  lr0:
+    type: loguniform
+    min: 5e-5
+    max: 5e-3
+  box:
+    type: uniform
+    min: 5.0
+    max: 9.0
+  cls:
+    type: fixed
+    value: 0.4
+  weight_decay:
+    type: loguniform
+    min: 1e-4
+    max: 1e-3
+  dfl:
+    type: fixed
+    value: 1.0

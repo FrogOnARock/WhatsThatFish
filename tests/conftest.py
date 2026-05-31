@@ -15,7 +15,7 @@ import pytest
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 
-from whatsthatfish.src.database.base import Base
+from whatsthatfish.database.base import Base
 
 TEST_DATABASE_URL = "postgresql://test:test@localhost:5433/wtf_test"
 FIXTURES_DIR = Path(__file__).parent / "fixtures"

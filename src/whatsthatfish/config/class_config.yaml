@@ -1,0 +1,4 @@
+nc: 1
+names: ["fish"]
+train: /dev/null
+val: /dev/null

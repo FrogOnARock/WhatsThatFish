@@ -20,9 +20,9 @@ import pytest
 from sqlalchemy import create_engine, func, select
 from sqlalchemy.orm import sessionmaker
 
-from whatsthatfish.src.config import GCSConfig
-from whatsthatfish.src.database.base import Base
-from whatsthatfish.src.database.models import (
+from whatsthatfish.config import GCSConfig
+from whatsthatfish.database.base import Base
+from whatsthatfish.database.models import (
     InatCaptureContext,
     InatFilteredObservations,
     InatImageQuality,
@@ -30,14 +30,14 @@ from whatsthatfish.src.database.models import (
     LilaCollectedImages,
     LilaImageQuality, InatClipContext,
 )
-from whatsthatfish.src.preprocessing.capture_context_scorer import ContextScorer
-from whatsthatfish.src.preprocessing.factory import Dataset, PreProcessingFactory
-from whatsthatfish.src.preprocessing.score_runner import (
+from whatsthatfish.preprocessing.capture_context_scorer import ContextScorer
+from whatsthatfish.preprocessing.factory import Dataset, PreProcessingFactory
+from whatsthatfish.preprocessing.score_runner import (
     ContextRunner,
     ScoreRunner,
     ScoringProgressTracker,
 )
-from whatsthatfish.src.preprocessing.uiqm_quality_scorer import QualityScorer
+from whatsthatfish.preprocessing.uiqm_quality_scorer import QualityScorer
 
 
 # ── Image helpers ──────────────────────────────────────────────────────────────
@@ -146,9 +146,9 @@ def seeded_lila_filename(session_factory):
 @pytest.fixture
 def factory_mocks():
     """Patch external deps so PreProcessingFactory can be constructed in isolation."""
-    with patch("whatsthatfish.src.preprocessing.factory.get_config") as mock_cfg, \
-         patch("whatsthatfish.src.preprocessing.factory.get_session_factory") as mock_sf, \
-         patch("whatsthatfish.src.preprocessing.factory.GCSClient"):
+    with patch("whatsthatfish.preprocessing.factory.get_config") as mock_cfg, \
+         patch("whatsthatfish.preprocessing.factory.get_session_factory") as mock_sf, \
+         patch("whatsthatfish.preprocessing.factory.GCSClient"):
         mock_cfg.return_value = MagicMock()
         mock_cfg.return_value.gcs = GCSConfig(bucket="b", prefixes={})
         mock_sf.return_value = MagicMock()
@@ -587,7 +587,7 @@ class TestContextRunnerTracking:
         mock_storage = AsyncMock()
         mock_storage.download.return_value = blue_bytes
 
-        with patch("whatsthatfish.src.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
+        with patch("whatsthatfish.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
             MockGCS.return_value.__aenter__ = AsyncMock(return_value=mock_storage)
             MockGCS.return_value.__aexit__ = AsyncMock(return_value=False)
             await runner.run()
@@ -605,7 +605,7 @@ class TestContextRunnerTracking:
             {"photo_uuid": "uuid-1", "filename": "1.jpg"}
         ])
 
-        with patch("whatsthatfish.src.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
+        with patch("whatsthatfish.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
             MockGCS.return_value.__aenter__ = AsyncMock(side_effect=RuntimeError("gcs down"))
             MockGCS.return_value.__aexit__ = AsyncMock(return_value=False)
             with pytest.raises(RuntimeError):
@@ -680,7 +680,7 @@ class TestScoreRunnerTracking:
         mock_storage = AsyncMock()
         mock_storage.download.return_value = blue_bytes
 
-        with patch("whatsthatfish.src.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
+        with patch("whatsthatfish.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
             MockGCS.return_value.__aenter__ = AsyncMock(return_value=mock_storage)
             MockGCS.return_value.__aexit__ = AsyncMock(return_value=False)
             await runner.run()
@@ -698,7 +698,7 @@ class TestScoreRunnerTracking:
             {"photo_uuid": "uuid-1", "filename": "111.jpg", "photo_id": 111}
         ])
 
-        with patch("whatsthatfish.src.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
+        with patch("whatsthatfish.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
             MockGCS.return_value.__aenter__ = AsyncMock(side_effect=RuntimeError("gcs down"))
             MockGCS.return_value.__aexit__ = AsyncMock(return_value=False)
             with pytest.raises(RuntimeError):
@@ -732,8 +732,8 @@ class TestPreProcessingFactoryRouting:
             factory._dest_table("unknown", runner="scoring")
 
     @pytest.mark.asyncio
-    @patch("whatsthatfish.src.preprocessing.factory.ContextRunner")
-    @patch("whatsthatfish.src.preprocessing.factory.ScoringProgressTracker")
+    @patch("whatsthatfish.preprocessing.factory.ContextRunner")
+    @patch("whatsthatfish.preprocessing.factory.ScoringProgressTracker")
     async def test_context_type_builds_context_runner(
         self, mock_tracker, mock_runner, factory_mocks
     ):
@@ -743,8 +743,8 @@ class TestPreProcessingFactoryRouting:
         assert mock_runner.call_count == 1
 
     @pytest.mark.asyncio
-    @patch("whatsthatfish.src.preprocessing.factory.ScoreRunner")
-    @patch("whatsthatfish.src.preprocessing.factory.ScoringProgressTracker")
+    @patch("whatsthatfish.preprocessing.factory.ScoreRunner")
+    @patch("whatsthatfish.preprocessing.factory.ScoringProgressTracker")
     async def test_scoring_type_builds_two_score_runners(
         self, mock_tracker, mock_runner, factory_mocks
     ):
@@ -754,10 +754,10 @@ class TestPreProcessingFactoryRouting:
         assert mock_runner.call_count == 2  # inat + lila
 
     @pytest.mark.asyncio
-    @patch("whatsthatfish.src.preprocessing.factory.AnnotationConverter")
-    @patch("whatsthatfish.src.preprocessing.factory.ScoringProgressTracker")
-    @patch("whatsthatfish.src.preprocessing.factory.ScoreRunner")
-    @patch("whatsthatfish.src.preprocessing.factory.ClipModel")
+    @patch("whatsthatfish.preprocessing.factory.AnnotationConverter")
+    @patch("whatsthatfish.preprocessing.factory.ScoringProgressTracker")
+    @patch("whatsthatfish.preprocessing.factory.ScoreRunner")
+    @patch("whatsthatfish.preprocessing.factory.ClipModel")
     async def test_all_type_runs_every_pipeline(
         self, mock_clip, mock_score, mock_tracker, mock_ann, factory_mocks
     ):

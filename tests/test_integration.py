@@ -18,14 +18,14 @@ from sqlalchemy import select, func
 from sqlalchemy.exc import IntegrityError
 import os
 
-from whatsthatfish.src.etl.download_lila import LilaDataset
-from whatsthatfish.src.etl.gcs_client import GCSClient
-from whatsthatfish.src.database import LilaAnnotations
-from whatsthatfish.src.etl.inaturalist_dataset import INaturalistDataset
-from whatsthatfish.src.etl.photo_transfer import TransferProgressTracker, PhotoTransferPipeline
-from whatsthatfish.src.database.models import InatTaxa, InatFilteredObservations, SuccessfulUploads, LilaCollectedImages
+from whatsthatfish.etl.download_lila import LilaDataset
+from whatsthatfish.etl.gcs_client import GCSClient
+from whatsthatfish.database import LilaAnnotations
+from whatsthatfish.etl.inaturalist_dataset import INaturalistDataset
+from whatsthatfish.etl.photo_transfer import TransferProgressTracker, PhotoTransferPipeline
+from whatsthatfish.database.models import InatTaxa, InatFilteredObservations, SuccessfulUploads, LilaCollectedImages
 
-from whatsthatfish.tests.test_pipeline import tracker_dir
+from tests.test_pipeline import tracker_dir
 
 
 # ─── Helper ───────────────────────────────────────────────────────────

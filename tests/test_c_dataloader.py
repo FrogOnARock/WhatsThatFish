@@ -4,10 +4,9 @@ Tests for classification collate functions.
 Pure tensor/dict logic — no GCS, DB, or model loading required.
 """
 
-import pytest
 import torch
 
-from whatsthatfish.src.models.c_dataloader import collate_fn, collate_fn_ultralytics
+from whatsthatfish.models.data.c_dataloader import collate_fn, collate_fn_ultralytics
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────

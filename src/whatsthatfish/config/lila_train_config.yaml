@@ -1,0 +1,27 @@
+# ── LILA detection training config ───────────────────────────────────────────
+# Training from pretrained YOLO11l weights on the domain-balanced LILA dataset.
+# These values reflect the best trial from the Ray Tune hyperparameter search.
+
+# ── Data ─────────────────────────────────────────────────────────────────────
+imgsz: 640
+
+# ── Training schedule ────────────────────────────────────────────────────────
+epochs: 50
+batch: 16
+patience: 20
+optimizer: SGD
+lr0: 0.00609026145230817
+lrf: 0.01
+momentum: 0.937
+weight_decay: 0.0033792340142953705
+warmup_epochs: 3
+warmup_momentum: 0.8
+warmup_bias_lr: 0.1
+
+# ── Loss ─────────────────────────────────────────────────────────────────────
+box: 7.822536022813804
+cls: 1.3618777774705366
+dfl: 0.7592864358710216
+
+# ── Transfer learning ────────────────────────────────────────────────────────
+freeze: 5

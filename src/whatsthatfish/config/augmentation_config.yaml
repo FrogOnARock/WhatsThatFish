@@ -1,0 +1,33 @@
+# Standard augmentations (applied via Ultralytics config)
+standard:
+  hsv_h: 0.04
+  hsv_s: 0.40
+  hsv_v: 0.30
+  flipud: 0.0
+  fliplr: 0.5
+  mosaic: 1.0
+  close_mosaic: 10
+  mixup: 0.15
+  scale: 0.5
+  translate: 0.1
+
+# Physics-informed augmentation parameters
+physics:
+  beta_range: [0.05, 0.5]
+  backscatter_range: [0.01, 0.3]
+  depth_range: [1, 50]
+  water_types:
+    - jerlov_I
+    - jerlov_II
+    - jerlov_III
+    - coastal_1
+    - coastal_3
+    - coastal_5
+    - coastal_9
+
+# Background-aware copy-paste
+copy_paste:
+  probability: 0.2
+  histogram_bins: 16
+  top_k_backgrounds: 5
+  padding_ratio: 0.1
