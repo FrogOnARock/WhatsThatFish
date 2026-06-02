@@ -1631,3 +1631,39 @@
 2026-05-31 16:53:03,657 - INFO - Loaded 2 completed transfers from DB
 2026-05-31 16:53:03,657 - INFO - Replayed 1 WAL entries
 2026-05-31 16:53:03,657 - INFO - Total completed transfers: 3
+2026-06-01 21:46:36,212 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,215 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,218 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,219 - INFO - Compacted 2 entries to DB
+2026-06-01 21:46:36,222 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,225 - INFO - Compacted 3 entries to DB
+2026-06-01 21:46:36,228 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,229 - INFO - Compacted 3 entries to DB
+2026-06-01 21:46:36,233 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,237 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,238 - INFO - Compacted 2 entries to DB
+2026-06-01 21:46:36,240 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,241 - INFO - Compacted 2 entries to DB
+2026-06-01 21:46:36,243 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,243 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,244 - INFO - Compacted 1 entries to DB
+2026-06-01 21:46:36,244 - INFO - Compacted 1 entries to DB
+2026-06-01 21:46:36,244 - INFO - Loaded 1 completed transfers from DB
+2026-06-01 21:46:36,244 - INFO - Total completed transfers: 1
+2026-06-01 21:46:36,245 - INFO - Loaded 1 completed transfers from DB
+2026-06-01 21:46:36,245 - INFO - Total completed transfers: 1
+2026-06-01 21:46:36,247 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,247 - INFO - Compacted 2 entries to DB
+2026-06-01 21:46:36,250 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,251 - INFO - Replayed 2 WAL entries
+2026-06-01 21:46:36,251 - INFO - Total completed transfers: 2
+2026-06-01 21:46:36,253 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,254 - INFO - Compacted 2 entries to DB
+2026-06-01 21:46:36,254 - INFO - Loaded 2 completed transfers from DB
+2026-06-01 21:46:36,254 - INFO - Replayed 2 WAL entries
+2026-06-01 21:46:36,254 - INFO - Total completed transfers: 4
+2026-06-01 21:46:36,256 - INFO - Total completed transfers: 0
+2026-06-01 21:46:36,257 - INFO - Compacted 2 entries to DB
+2026-06-01 21:46:36,257 - INFO - Loaded 2 completed transfers from DB
+2026-06-01 21:46:36,257 - INFO - Replayed 1 WAL entries
+2026-06-01 21:46:36,257 - INFO - Total completed transfers: 3

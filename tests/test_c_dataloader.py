@@ -85,22 +85,22 @@ class TestCollateFnUltralytics:
 
     def test_images_are_stacked(self):
         batch = _batch(4)
-        imgs, _ = collate_fn_ultralytics(batch)
-        assert imgs.shape == (4, 3, 224, 224)
+        result = collate_fn_ultralytics(batch)
+        assert result["img"].shape == (4, 3, 224, 224)
 
     def test_labels_dict_has_only_cls_key(self):
         batch = _batch(2)
-        _, labels = collate_fn_ultralytics(batch)
-        assert set(labels.keys()) == {"cls"}
-        assert "genus" not in labels
-        assert "subfamily" not in labels
+        result = collate_fn_ultralytics(batch)
+        assert set(result["cls"].keys()) == {"cls"}
+        assert "genus" not in result["cls"]
+        assert "subfamily" not in result["cls"]
 
     def test_cls_tensor_length_matches_batch(self):
         batch = _batch(5)
-        _, labels = collate_fn_ultralytics(batch)
-        assert labels["cls"].shape == (5,)
+        result = collate_fn_ultralytics(batch)
+        assert result["cls"]["cls"].shape == (5,)
 
     def test_cls_values_are_species_labels(self):
         batch = [(_img(), _label(species=i, genus=99, subfamily=88)) for i in range(3)]
-        _, labels = collate_fn_ultralytics(batch)
-        assert labels["cls"].tolist() == [0, 1, 2]
+        result = collate_fn_ultralytics(batch)
+        assert result["cls"]["cls"].tolist() == [0, 1, 2]

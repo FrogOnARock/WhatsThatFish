@@ -55,11 +55,11 @@ class TestNoDetection:
 
     def test_returns_none_when_boxes_is_none(self, inferrer):
         _set_predictions(inferrer, None)
-        assert inferrer.infer(_make_image_bytes()) is None
+        assert inferrer.infer(_make_image_bytes()) == [None]
 
     def test_returns_none_when_boxes_empty(self, inferrer):
         _set_predictions(inferrer, _FakeBoxes([], []))
-        assert inferrer.infer(_make_image_bytes()) is None
+        assert inferrer.infer(_make_image_bytes()) == [None]
 
 
 # ════════════════════════════════════════════════════════════════════════════════
@@ -73,7 +73,7 @@ class TestDetection:
         _set_predictions(inferrer, _FakeBoxes([[10.0, 10.0, 50.0, 60.0]], [0.8]))
         result = inferrer.infer(_make_image_bytes())
         assert len(result) == 1
-        assert set(result[0].keys()) == {"x1", "y1", "x2", "y2", "conf"}
+        assert set(result[0].keys()) == {"x1", "y1", "x2", "y2", "conf", "w", "h"}
 
     def test_selects_highest_confidence_box(self, inferrer):
         boxes = _FakeBoxes(
@@ -140,7 +140,7 @@ class TestBatchInference:
         result = inferrer.infer([_make_image_bytes(), _make_image_bytes()])
         assert len(result) == 2
         assert all(r is not None for r in result)
-        assert set(result[0].keys()) == {"x1", "y1", "x2", "y2", "conf"}
+        assert set(result[0].keys()) == {"x1", "y1", "x2", "y2", "conf", "w", "h"}
 
     def test_no_detection_in_one_image_yields_none_in_correct_position(self, inferrer):
         _set_batch_predictions(inferrer, [

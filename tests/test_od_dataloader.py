@@ -145,25 +145,15 @@ def dataset():
     mock_session_factory = MagicMock(return_value=mock_session_instance)
     mock_get_session = MagicMock(return_value=mock_session_factory)
 
-    mock_gcs_config = MagicMock()
-    mock_gcs_config.bucket = "whats-that-fish"
-    mock_gcs_config.prefixes.get.return_value = "object_detection"
-    mock_config = MagicMock()
-    mock_config.gcs = mock_gcs_config
-
-    with patch("whatsthatfish.models.od_dataset.get_session_factory", mock_get_session), \
-         patch("whatsthatfish.models.od_dataset.get_config", return_value=mock_config):
-        ds = ObjectDetectionDataset(split="train", transforms=_transform)
+    with patch("whatsthatfish.models.data.od_dataset.get_session_factory", mock_get_session):
+        ds = ObjectDetectionDataset(dataset="lila", split="train", transforms=_transform)
 
     return ds
 
 
-def _mock_bucket_for(image_bytes: bytes) -> MagicMock:
-    mock_blob = MagicMock()
-    mock_blob.download_as_bytes.return_value = image_bytes
-    mock_bucket = MagicMock()
-    mock_bucket.blob.return_value = mock_blob
-    return mock_bucket
+def _fake_pil_image(h: int = 64, w: int = 64):
+    arr = np.random.randint(0, 255, (h, w, 3), dtype=np.uint8)
+    return Image.fromarray(arr, mode="RGB")
 
 
 class TestObjectDetectionDataset:
@@ -172,34 +162,29 @@ class TestObjectDetectionDataset:
         assert len(dataset) == 3
 
     def test_getitem_returns_three_values(self, dataset):
-        mock_bucket = _mock_bucket_for(_make_image_bytes())
-        with patch("whatsthatfish.models.od_dataset._bucket", mock_bucket):
+        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
             result = dataset[0]
         assert len(result) == 3
 
     def test_getitem_image_shape(self, dataset):
-        mock_bucket = _mock_bucket_for(_make_image_bytes())
-        with patch("whatsthatfish.models.od_dataset._bucket", mock_bucket):
+        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
             img, _, _ = dataset[0]
         assert img.shape == (3, 64, 64)
         assert img.dtype == torch.float32
 
     def test_getitem_positive_label_shape(self, dataset):
-        mock_bucket = _mock_bucket_for(_make_image_bytes())
-        with patch("whatsthatfish.models.od_dataset._bucket", mock_bucket):
+        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
             _, labels, _ = dataset[0]
         assert labels.shape == (1, 5)
         assert labels.dtype == torch.float32
 
     def test_getitem_negative_label_is_empty(self, dataset):
-        mock_bucket = _mock_bucket_for(_make_image_bytes())
-        with patch("whatsthatfish.models.od_dataset._bucket", mock_bucket):
+        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
             _, labels, _ = dataset[1]
         assert labels.shape == (0, 5)
 
     def test_getitem_filename_returned(self, dataset):
-        mock_bucket = _mock_bucket_for(_make_image_bytes())
-        with patch("whatsthatfish.models.od_dataset._bucket", mock_bucket):
+        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
             _, _, fname = dataset[0]
         assert fname == "fish_001.jpg"
 
@@ -208,8 +193,7 @@ class TestObjectDetectionDataset:
         assert len(weights) == len(dataset)
 
     def test_image_values_normalized_to_unit_range(self, dataset):
-        mock_bucket = _mock_bucket_for(_make_image_bytes())
-        with patch("whatsthatfish.models.od_dataset._bucket", mock_bucket):
+        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
             img, _, _ = dataset[0]
         assert img.min().item() >= 0.0
         assert img.max().item() <= 1.0

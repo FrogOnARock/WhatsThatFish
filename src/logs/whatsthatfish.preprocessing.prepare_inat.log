@@ -76,3 +76,10 @@
 2026-05-31 16:53:13,104 - INFO - Dropped 48 taxa with <50 train examples.
 2026-05-31 16:53:13,176 - INFO - Split complete — train: 421137, val: 76137
 2026-05-31 16:53:13,275 - INFO - load: 497274 total rows → 441612 classification, 497274 OD (includes coral)
+2026-06-01 21:46:36,322 - INFO - Retrieving lat, lon pairs for iNaturalist Observations.
+2026-06-01 21:46:41,469 - INFO - Pairs retrieved.
+2026-06-01 21:46:43,171 - INFO - Fitting cuKMeans k=80 on full dataset.
+2026-06-01 21:46:48,926 - INFO - Val clusters (16): [5, 6, 14, 29, 39, 43, 50, 51, 56, 59, 60, 62, 68, 73, 74, 78]
+2026-06-01 21:46:48,991 - INFO - Dropped 50 taxa with <50 train examples.
+2026-06-01 21:46:49,058 - INFO - Split complete — train: 446988, val: 49670
+2026-06-01 21:46:49,157 - INFO - load: 496658 total rows → 441300 classification, 496658 OD (includes coral)

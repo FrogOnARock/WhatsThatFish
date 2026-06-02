@@ -5,19 +5,19 @@ on:
     branches:
       - master
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
 
-      - name: setup-python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+        - name: setup-python
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.12'
 
-      - name: install-dependencies
-        run: pip install -e ".[dev]"
+        - name: install-dependencies
+          run: pip install -e ".[dev]"
 
-      - name: run-tests
-        run: python -m pytest tests/ -q
+        - name: run-tests
+          run: python -m pytest tests/ -q
