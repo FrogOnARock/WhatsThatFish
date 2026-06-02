@@ -114,7 +114,13 @@ class ObjectDetectionTrain:
         )
 
 
-    def tune_model(self, num_samples: int = 10):
+    def tune_model(self, num_samples: int = 5):
+
+        failure_config = tune.FailureConfig(
+            max_failures=3,
+            fail_fast=False
+        )
+
         if self.restore_path and Path(self.restore_path).exists():
             tuner = tune.Tuner.restore(
                 self.restore_path,
@@ -133,6 +139,10 @@ class ObjectDetectionTrain:
                     num_samples=num_samples,
                 ),
                 param_space=self.tune_param_space,
+                run_config=tune.RunConfig(
+                    failure_config=failure_config,
+                    name=f"{self.train_type}_experiment"
+                )
             )
 
         results = tuner.fit()

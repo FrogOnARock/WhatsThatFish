@@ -28,19 +28,19 @@ lc1:
   # Fine-tuning on iNat pseudo-labels — lower lr + weight_decay vs. LILA scratch training
   lr0:
     type: loguniform
-    min: 5e-5
-    max: 5e-3
+    min: 2e-4
+    max: 1e-3
   box:
     type: uniform
-    min: 5.0
-    max: 9.0
+    min: 6.0
+    max: 7.0
   cls:
     type: fixed
     value: 0.4   # binary task, model already knows fish vs. no-fish from LILA
   weight_decay:
     type: loguniform
     min: 1e-4
-    max: 1e-3
+    max: 5e-4
   dfl:
     type: fixed
     value: 1.0   # pseudo-label targets don't warrant tight edge distribution learning

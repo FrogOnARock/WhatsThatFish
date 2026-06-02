@@ -1694,3 +1694,150 @@
 2026-05-30 19:10:07,854 - INFO - [ScoreRunner/lila] All UIQM scoring batches complete
 2026-05-30 19:10:07,854 - INFO - [lila_scoring] Closing tracker — running final compaction
 2026-05-30 19:10:07,854 - INFO - [lila_scoring] Tracker closed. Total scored this session: 97,918
+2026-05-31 16:34:14,471 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:14,472 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:14,472 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:14,474 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:14,474 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:14,474 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:14,477 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:14,477 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:14,477 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:14,479 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:14,480 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:14,480 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:14,482 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:14,482 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:14,483 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:14,483 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:14,483 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:14,483 - INFO - [inat_context] Replayed 3 WAL entries
+2026-05-31 16:34:14,483 - INFO - [inat_context] Total completed (DB + WAL): 3
+2026-05-31 16:34:14,485 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:14,486 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:14,486 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:14,486 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:14,486 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:14,486 - INFO - [inat_context] Replayed 1 WAL entries
+2026-05-31 16:34:14,486 - INFO - [inat_context] Total completed (DB + WAL): 1
+2026-05-31 16:34:14,488 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:14,489 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:14,489 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:14,498 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-31 16:34:14,498 - INFO - [ContextRunner/inat] 2 uploaded | 1 already done | 1 to score
+2026-05-31 16:34:14,498 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:34:14,498 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:34:14,499 - INFO - [ContextRunner/inat] Batch 1/1 complete — compacted
+2026-05-31 16:34:14,499 - INFO - [ContextRunner/inat] All context scoring batches complete
+2026-05-31 16:34:14,500 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-31 16:34:14,500 - INFO - [ContextRunner/inat] 1 uploaded | 0 already done | 1 to score
+2026-05-31 16:34:14,500 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:34:14,500 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:34:14,506 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-31 16:34:14,506 - INFO - [ScoreRunner/inat] 2 uploaded | 1 already scored | 1 to score
+2026-05-31 16:34:14,506 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:34:14,506 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:34:14,507 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-05-31 16:34:14,507 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-05-31 16:34:14,508 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-31 16:34:14,508 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
+2026-05-31 16:34:14,508 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:34:14,508 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:34:58,683 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:58,684 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:58,684 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:58,686 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:58,686 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:58,686 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:58,689 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:58,689 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:58,689 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:58,691 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:58,691 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:58,692 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:58,694 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:58,694 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:58,694 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:58,694 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:58,695 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:58,695 - INFO - [inat_context] Replayed 3 WAL entries
+2026-05-31 16:34:58,695 - INFO - [inat_context] Total completed (DB + WAL): 3
+2026-05-31 16:34:58,697 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:58,697 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:58,697 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:58,697 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:58,697 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:58,697 - INFO - [inat_context] Replayed 1 WAL entries
+2026-05-31 16:34:58,697 - INFO - [inat_context] Total completed (DB + WAL): 1
+2026-05-31 16:34:58,700 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:34:58,700 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:34:58,700 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:34:58,708 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-31 16:34:58,708 - INFO - [ContextRunner/inat] 2 uploaded | 1 already done | 1 to score
+2026-05-31 16:34:58,708 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:34:58,708 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:34:58,709 - INFO - [ContextRunner/inat] Batch 1/1 complete — compacted
+2026-05-31 16:34:58,709 - INFO - [ContextRunner/inat] All context scoring batches complete
+2026-05-31 16:34:58,710 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-31 16:34:58,710 - INFO - [ContextRunner/inat] 1 uploaded | 0 already done | 1 to score
+2026-05-31 16:34:58,710 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:34:58,710 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:34:58,716 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-31 16:34:58,716 - INFO - [ScoreRunner/inat] 2 uploaded | 1 already scored | 1 to score
+2026-05-31 16:34:58,716 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:34:58,716 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:34:58,717 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-05-31 16:34:58,717 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-05-31 16:34:58,718 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-31 16:34:58,718 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
+2026-05-31 16:34:58,718 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:34:58,718 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:53:03,667 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:53:03,667 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:53:03,667 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:53:03,670 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:53:03,670 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:53:03,670 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:53:03,672 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:53:03,673 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:53:03,673 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:53:03,675 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:53:03,676 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:53:03,676 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:53:03,678 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:53:03,679 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:53:03,679 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:53:03,679 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:53:03,679 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:53:03,679 - INFO - [inat_context] Replayed 3 WAL entries
+2026-05-31 16:53:03,679 - INFO - [inat_context] Total completed (DB + WAL): 3
+2026-05-31 16:53:03,681 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:53:03,681 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:53:03,682 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:53:03,682 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:53:03,682 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:53:03,682 - INFO - [inat_context] Replayed 1 WAL entries
+2026-05-31 16:53:03,682 - INFO - [inat_context] Total completed (DB + WAL): 1
+2026-05-31 16:53:03,684 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-05-31 16:53:03,684 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-05-31 16:53:03,685 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-05-31 16:53:03,843 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-31 16:53:03,843 - INFO - [ContextRunner/inat] 2 uploaded | 1 already done | 1 to score
+2026-05-31 16:53:03,843 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:53:03,843 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:53:03,844 - INFO - [ContextRunner/inat] Batch 1/1 complete — compacted
+2026-05-31 16:53:03,844 - INFO - [ContextRunner/inat] All context scoring batches complete
+2026-05-31 16:53:03,846 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-05-31 16:53:03,846 - INFO - [ContextRunner/inat] 1 uploaded | 0 already done | 1 to score
+2026-05-31 16:53:03,846 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:53:03,846 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:53:03,851 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-31 16:53:03,851 - INFO - [ScoreRunner/inat] 2 uploaded | 1 already scored | 1 to score
+2026-05-31 16:53:03,851 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:53:03,851 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-05-31 16:53:03,852 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-05-31 16:53:03,852 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-05-31 16:53:03,853 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-05-31 16:53:03,854 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
+2026-05-31 16:53:03,854 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-05-31 16:53:03,854 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
