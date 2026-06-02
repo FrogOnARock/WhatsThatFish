@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from gcloud.aio.storage import Storage as GCSAsyncStorage
 from sqlalchemy import select
 
-from whatsthatfish.database import InatObjDetectionDataset
+from ..database.models import InatObjDetectionDataset
 from ..database.config import get_session_factory
 from ..database.models import InatClassificationDataset, LilaYolo
 
@@ -111,9 +111,9 @@ async def _retrieve_images_async(
 
 
 def retrieve_images(
-    inat_dir: str = Path(__file__).parents[1]  / "data/classification_images",
-    inat_od_dir: str = Path(__file__).parents[1]  / "data/inat_od_images",
-    lila_dir: str = Path(__file__).parents[1]  / "data/od_images",
+    inat_dir: str = Path(__file__).parents[1]  / "loaders/classification_images",
+    inat_od_dir: str = Path(__file__).parents[1]  / "loaders/inat_od_images",
+    lila_dir: str = Path(__file__).parents[1]  / "loaders/od_images",
     concurrency: int = 50,
     dataset: str = "all",
 ):
@@ -127,7 +127,7 @@ if __name__ == "__main__":
         epilog=(
             "Examples:\n"
             "  Download iNat classification only:    --dataset inat_classification\n"
-            "  Download LILA to classification dir:  --dataset lila --lila-dir data/classification_images\n"
+            "  Download LILA to classification dir:  --dataset lila --lila-dir loaders/classification_images\n"
             "  Download all (default):               --dataset all\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -141,15 +141,15 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--inat-dir",
-        default="src/data/classification_images",
+        default="src/loaders/classification_images",
         metavar="DIR",
-        help="Local destination for iNat images. Default: /data/classification_images",
+        help="Local destination for iNat images. Default: /loaders/classification_images",
     )
     parser.add_argument(
         "--lila-dir",
-        default="src/data/od_images",
+        default="src/loaders/od_images",
         metavar="DIR",
-        help="Local destination for LILA images. Default: /data/od_images",
+        help="Local destination for LILA images. Default: /loaders/od_images",
     )
     parser.add_argument(
         "--concurrency",

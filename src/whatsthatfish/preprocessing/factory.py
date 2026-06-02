@@ -41,7 +41,7 @@ class PreProcessingFactory:
                  type: Dataset,
                  source_dataset: SourceDataset = SourceDataset.BOTH):
 
-        self.data_path = Path(__file__).parents[1] / "data" / "preprocessing"
+        self.data_path = Path(__file__).parents[1] / "loaders" / "preprocessing"
         self.session_factory = get_session_factory()
         self.config = get_config()
         self.gcs_config = self.config.gcs

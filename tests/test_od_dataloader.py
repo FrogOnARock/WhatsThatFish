@@ -14,8 +14,8 @@ import torch
 from PIL import Image
 from torchvision.transforms import v2
 
-from whatsthatfish.models.data.od_dataloader import object_detection_collate
-from whatsthatfish.models.data.od_dataset import ObjectDetectionDataset
+from whatsthatfish.models.loaders.od_dataloader import object_detection_collate
+from whatsthatfish.models.datasets.od_dataset import ObjectDetectionDataset
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
@@ -145,7 +145,7 @@ def dataset():
     mock_session_factory = MagicMock(return_value=mock_session_instance)
     mock_get_session = MagicMock(return_value=mock_session_factory)
 
-    with patch("whatsthatfish.models.data.od_dataset.get_session_factory", mock_get_session):
+    with patch("whatsthatfish.models.datasets.od_dataset.get_session_factory", mock_get_session):
         ds = ObjectDetectionDataset(dataset="lila", split="train", transforms=_transform)
 
     return ds
@@ -162,29 +162,29 @@ class TestObjectDetectionDataset:
         assert len(dataset) == 3
 
     def test_getitem_returns_three_values(self, dataset):
-        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
+        with patch("whatsthatfish.models.datasets.od_dataset.Image.open", return_value=_fake_pil_image()):
             result = dataset[0]
         assert len(result) == 3
 
     def test_getitem_image_shape(self, dataset):
-        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
+        with patch("whatsthatfish.models.datasets.od_dataset.Image.open", return_value=_fake_pil_image()):
             img, _, _ = dataset[0]
         assert img.shape == (3, 64, 64)
         assert img.dtype == torch.float32
 
     def test_getitem_positive_label_shape(self, dataset):
-        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
+        with patch("whatsthatfish.models.datasets.od_dataset.Image.open", return_value=_fake_pil_image()):
             _, labels, _ = dataset[0]
         assert labels.shape == (1, 5)
         assert labels.dtype == torch.float32
 
     def test_getitem_negative_label_is_empty(self, dataset):
-        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
+        with patch("whatsthatfish.models.datasets.od_dataset.Image.open", return_value=_fake_pil_image()):
             _, labels, _ = dataset[1]
         assert labels.shape == (0, 5)
 
     def test_getitem_filename_returned(self, dataset):
-        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
+        with patch("whatsthatfish.models.datasets.od_dataset.Image.open", return_value=_fake_pil_image()):
             _, _, fname = dataset[0]
         assert fname == "fish_001.jpg"
 
@@ -193,7 +193,7 @@ class TestObjectDetectionDataset:
         assert len(weights) == len(dataset)
 
     def test_image_values_normalized_to_unit_range(self, dataset):
-        with patch("whatsthatfish.models.data.od_dataset.Image.open", return_value=_fake_pil_image()):
+        with patch("whatsthatfish.models.datasets.od_dataset.Image.open", return_value=_fake_pil_image()):
             img, _, _ = dataset[0]
         assert img.min().item() >= 0.0
         assert img.max().item() <= 1.0

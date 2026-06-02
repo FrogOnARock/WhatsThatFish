@@ -41,7 +41,7 @@ class LilaDataset:
                  session_factory: sessionmaker, concurrency: int = 50):
         self.gcs_client = gcs.get_gcs_client()
         self.logger = _get_logger("LilaDataset")
-        self.ann_out_dir = Path(__file__).parents[1] / "data" / "etl" / "metadata" / "lila"
+        self.ann_out_dir = Path(__file__).parents[1] / "loaders" / "etl" / "metadata" / "lila"
         self.gcs_bucket = "public-datasets-lila"
         self.gcs_prefix = "community-fish-detection-dataset"
         self.data_path = data_path

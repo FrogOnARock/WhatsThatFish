@@ -26,9 +26,9 @@ class InatBoundingBox:
                  img_folder_path: str = None,
                  model_path: str = Path(__file__).parents[1] / "weights/od_best.pt",
                  conf: float = 0.25,
-                 data_path: Path = Path(__file__).parents[1] / "data",
+                 data_path: Path = Path(__file__).parents[1] / "loaders",
                  wal_path: str = "bbox_wal.csv",
-                 bbox_folder_path: Path = Path(__file__).parents[1] / "data/classification_bboxs"
+                 bbox_folder_path: Path = Path(__file__).parents[1] / "loaders/classification_bboxs"
                  ):
         if mode not in _MODES:
             raise ValueError(f"mode must be one of {_MODES}, got {mode!r}")
@@ -205,7 +205,7 @@ if __name__ == '__main__':
         description="Run bounding box proposal inference on iNat images",
         epilog=(
             "Examples:\n"
-            "  Build LC1/LC2 OD training data:        --mode detection\n"
+            "  Build LC1/LC2 OD training loaders:        --mode detection\n"
             "  Populate classifier crop bboxes:       --mode classification\n"
             "  Write existing WAL to DB only:         --mode classification --wal-only\n"
         ),

@@ -347,7 +347,7 @@ class TestScoringProgressTrackerWAL:
 
         wal_path = tmp_path / "inat_context_transfer_progress_wal.csv"
         non_empty_lines = [l for l in wal_path.read_text().splitlines() if l.strip()]
-        assert len(non_empty_lines) == 2  # header + 1 data row, no duplicate header
+        assert len(non_empty_lines) == 2  # header + 1 loaders row, no duplicate header
 
     def test_auto_compact_triggered_at_threshold(self, tmp_path, sqlite_session_factory):
         """compact() should fire after compact_every records."""

@@ -1,5 +1,5 @@
 # ── LC2 fine-tuning config ────────────────────────────────────────────────────
-# Fine-tuning lc1_best.pt on iNat data with conf-weighted sampling.
+# Fine-tuning lc1_best.pt on iNat loaders with conf-weighted sampling.
 # Placeholder — review after LC1 results are in.
 
 # ── Data ─────────────────────────────────────────────────────────────────────

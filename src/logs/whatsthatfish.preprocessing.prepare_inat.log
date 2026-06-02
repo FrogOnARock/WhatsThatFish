@@ -83,3 +83,45 @@
 2026-06-01 21:46:48,991 - INFO - Dropped 50 taxa with <50 train examples.
 2026-06-01 21:46:49,058 - INFO - Split complete — train: 446988, val: 49670
 2026-06-01 21:46:49,157 - INFO - load: 496658 total rows → 441300 classification, 496658 OD (includes coral)
+2026-06-01 21:59:59,721 - INFO - Retrieving lat, lon pairs for iNaturalist Observations.
+2026-06-01 22:00:04,702 - INFO - Pairs retrieved.
+2026-06-01 22:00:06,541 - INFO - Fitting cuKMeans k=80 on full dataset.
+2026-06-01 22:00:10,914 - INFO - Val clusters (16): [5, 6, 14, 29, 39, 43, 50, 51, 56, 59, 60, 62, 68, 73, 74, 78]
+2026-06-01 22:00:10,983 - INFO - Dropped 50 taxa with <50 train examples.
+2026-06-01 22:00:11,054 - INFO - Split complete — train: 446988, val: 49670
+2026-06-01 22:00:11,153 - INFO - load: 496658 total rows → 441300 classification, 496658 OD (includes coral)
+2026-06-01 22:02:00,476 - INFO - Retrieving lat, lon pairs for iNaturalist Observations.
+2026-06-01 22:02:04,675 - INFO - Pairs retrieved.
+2026-06-01 22:02:06,344 - INFO - Fitting cuKMeans k=80 on full dataset.
+2026-06-01 22:02:10,811 - INFO - Val clusters (16): [5, 6, 14, 29, 39, 43, 50, 51, 56, 59, 60, 62, 68, 73, 74, 78]
+2026-06-01 22:02:10,879 - INFO - Dropped 50 taxa with <50 train examples.
+2026-06-01 22:02:10,959 - INFO - Split complete — train: 446988, val: 49670
+2026-06-01 22:02:11,054 - INFO - load: 496658 total rows → 441300 classification, 496658 OD (includes coral)
+2026-06-01 22:05:22,171 - INFO - Retrieving lat, lon pairs for iNaturalist Observations.
+2026-06-01 22:05:26,749 - INFO - Pairs retrieved.
+2026-06-01 22:05:28,467 - INFO - Fitting cuKMeans k=80 on full dataset.
+2026-06-01 22:05:32,711 - INFO - Val clusters (16): [5, 6, 14, 29, 39, 43, 50, 51, 56, 59, 60, 62, 68, 73, 74, 78]
+2026-06-01 22:05:32,781 - INFO - Dropped 50 taxa with <50 train examples.
+2026-06-01 22:05:32,854 - INFO - Split complete — train: 446988, val: 49670
+2026-06-01 22:05:32,944 - INFO - load: 496658 total rows → 441300 classification, 496658 OD (includes coral)
+2026-06-01 22:08:05,486 - INFO - Retrieving lat, lon pairs for iNaturalist Observations.
+2026-06-01 22:08:09,701 - INFO - Pairs retrieved.
+2026-06-01 22:08:11,379 - INFO - Fitting cuKMeans k=80 on full dataset.
+2026-06-01 22:08:16,483 - INFO - Val clusters (16): [5, 6, 14, 29, 39, 43, 50, 51, 56, 59, 60, 62, 68, 73, 74, 78]
+2026-06-01 22:08:16,546 - INFO - Dropped 50 taxa with <50 train examples.
+2026-06-01 22:08:16,621 - INFO - Split complete — train: 446988, val: 49670
+2026-06-01 22:08:16,725 - INFO - load: 496658 total rows → 441300 classification, 496658 OD (includes coral)
+2026-06-01 22:09:32,186 - INFO - Retrieving lat, lon pairs for iNaturalist Observations.
+2026-06-01 22:09:36,452 - INFO - Pairs retrieved.
+2026-06-01 22:09:38,148 - INFO - Fitting cuKMeans k=80 on full dataset.
+2026-06-01 22:09:40,422 - INFO - Val clusters (16): [5, 6, 14, 29, 39, 43, 50, 51, 56, 59, 60, 62, 68, 73, 74, 78]
+2026-06-01 22:09:40,488 - INFO - Dropped 67 taxa with <50 train examples.
+2026-06-01 22:09:40,554 - INFO - Split complete — train: 415490, val: 76058
+2026-06-01 22:09:40,642 - INFO - load: 491548 total rows → 435892 classification, 491548 OD (includes coral)
+2026-06-01 22:11:47,702 - INFO - Retrieving lat, lon pairs for iNaturalist Observations.
+2026-06-01 22:11:52,013 - INFO - Pairs retrieved.
+2026-06-01 22:11:53,657 - INFO - Fitting cuKMeans k=80 on full dataset.
+2026-06-01 22:11:54,789 - INFO - Val clusters (16): [5, 6, 14, 29, 39, 43, 50, 51, 56, 59, 60, 62, 68, 73, 74, 78]
+2026-06-01 22:11:54,852 - INFO - Dropped 50 taxa with <50 train examples.
+2026-06-01 22:11:54,916 - INFO - Split complete — train: 446988, val: 49670
+2026-06-01 22:11:55,004 - INFO - load: 496658 total rows → 441300 classification, 496658 OD (includes coral)

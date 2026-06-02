@@ -1,4 +1,4 @@
 from pathlib import Path
 
 
-print(Path(__file__).parents[1]  / "data/od_images")
+print(Path(__file__).parents[1]  / "loaders/od_images")

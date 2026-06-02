@@ -148,7 +148,7 @@ class TestLogBbox:
         tmp_inat.wal_file.flush()
 
         raw = open(tmp_path / "bbox_wal.csv").read()
-        assert "'" not in raw.split("\n")[1]  # no single quotes in data row
+        assert "'" not in raw.split("\n")[1]  # no single quotes in loaders row
 
 
 # ════════════════════════════════════════════════════════════════════════════════

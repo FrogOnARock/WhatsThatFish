@@ -144,7 +144,7 @@ class InatPreparation:
         Return a representative subsample of coords_radians for hyperparameter search.
         """
 
-        logger.info(f"Creating a subsample of {n} data points.")
+        logger.info(f"Creating a subsample of {n} loaders points.")
         min_lat, max_lat, dev_lat = np.min(coords_radians[:, 0]), np.max(coords_radians[:, 0]), np.std(coords_radians[:, 0])
         min_lon, max_lon, dev_lon = np.min(coords_radians[:, 1]), np.max(coords_radians[:, 1]), np.std(coords_radians[:, 1])
 
@@ -294,7 +294,7 @@ class InatPreparation:
         uiqm -> required for weighted sampling based on image quality
         is_underwater -> filter to ensure we're leveraging the underwater images as defined by CLIP
 
-        results: rows dict containing data
+        results: rows dict containing loaders
         """
 
         logger.info("Retrieving lat, lon pairs for iNaturalist Observations.")

@@ -37,7 +37,7 @@ def upgrade() -> None:
         sa.Column('id', sa.String(length=255), nullable=False, server_default=''),
     )
     # Remove the server_default — it was only needed so the NOT NULL ADD COLUMN succeeds
-    # on an empty table. If the table has data you'd populate id first, then set NOT NULL.
+    # on an empty table. If the table has loaders you'd populate id first, then set NOT NULL.
     op.alter_column('lila_collected_images', 'id', server_default=None)
 
     # 4. Create the new PK on id

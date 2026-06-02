@@ -75,8 +75,8 @@ def _compute_uiconm_vectorized(img_bgr: np.ndarray, block_size: int = 8) -> floa
 import torch
 import numpy as np
 import cv2
-from whatsthatfish.src.preprocessing.gradient_map import compute_gradient_magnitude
-from whatsthatfish.src.preprocessing.local_contrast_norm import local_contrast_normalize
+from .src.preprocessing.gradient_map import compute_gradient_magnitude
+from .src.preprocessing.local_contrast_norm import local_contrast_normalize
 
 
 class AddGradientLCNChannels:
@@ -144,7 +144,7 @@ import pandas as pd
 import torch
 from torch.utils.data import WeightedRandomSampler
 from pathlib import Path
-from whatsthatfish.src.etl.quality_scorer import compute_uiqm, compute_entropy
+from .src.etl.quality_scorer import compute_uiqm, compute_entropy
 import cv2
 import numpy as np
 

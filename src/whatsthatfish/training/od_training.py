@@ -11,7 +11,7 @@ from enum import Enum
 from dataclasses import dataclass
 import shutil
 
-from whatsthatfish.models.data.od_dataloader import CustomDetectionTrainer
+from ..models.loaders.od_dataloader import CustomDetectionTrainer
 load_dotenv()
 
 logger = logging.getLogger(__name__)

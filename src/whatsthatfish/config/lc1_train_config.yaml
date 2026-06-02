@@ -1,5 +1,5 @@
 # ── LC1 fine-tuning config ────────────────────────────────────────────────────
-# Fine-tuning od_best.pt on iNat pseudo-labelled data (UIQM top-ranked, fish only).
+# Fine-tuning od_best.pt on iNat pseudo-labelled loaders (UIQM top-ranked, fish only).
 # lr0/box/weight_decay are swept by Ray Tune — values here apply to train_final only.
 # cls and dfl are fixed (not tuned): pseudo-labels don't warrant tight edge distributions.
 

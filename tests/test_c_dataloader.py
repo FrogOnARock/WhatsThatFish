@@ -6,7 +6,7 @@ Pure tensor/dict logic — no GCS, DB, or model loading required.
 
 import torch
 
-from whatsthatfish.models.data.c_dataloader import collate_fn, collate_fn_ultralytics
+from whatsthatfish.models.loaders.c_dataloader import collate_fn, collate_fn_ultralytics
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────

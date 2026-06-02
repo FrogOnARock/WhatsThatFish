@@ -7,7 +7,7 @@ from sqlalchemy import select, func
 from collections import defaultdict
 
 from ..database.models import InatClassificationDataset
-from ..models.data.c_dataloader import class_dataloader
+from ..models.loaders.c_dataloader import class_dataloader
 from ..models.c_custom_resnet import CustomResnet, BasicBlock
 from ..database.config import get_session_factory
 
