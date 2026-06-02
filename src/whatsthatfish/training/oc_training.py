@@ -59,7 +59,8 @@ class CustomResnetTrainer:
         self.criterion_subfamily = nn.CrossEntropyLoss(weight=torch.tensor(weight_dict["subfamily"]).to(self.device))
 
     def train_one_epoch(self):
-        raise NotImplementedError
+        for idx, data in enumerate(self.dataloader):
+            raise NotImplementedError
 
 
 
