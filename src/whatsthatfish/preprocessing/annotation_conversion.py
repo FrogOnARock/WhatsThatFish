@@ -13,14 +13,15 @@ from ..database.config import get_session_factory
 load_dotenv()
 logger = _get_logger("AnnotationConverter")
 
+
 class RuntimeConfig(str, Enum):
     CONVERT = "convert"
     WRITE_TEXT = "write_text"
     ALL = "all"
 
+
 class AnnotationConverter:
-    def __init__(self,
-                 session_factory: sessionmaker):
+    def __init__(self, session_factory: sessionmaker):
         self._session_factory = session_factory
         self.config = get_model_config().yolo
 
@@ -29,30 +30,47 @@ class AnnotationConverter:
 
         with self._session_factory() as session:
             rows = session.execute(
-                select(LilaCollectedImages.file_name, LilaCollectedImages.is_train,
-                       LilaCollectedImages.width, LilaCollectedImages.height,
-                       LilaAnnotations.image_id, LilaAnnotations.category_id, LilaAnnotations.x,
-                       LilaAnnotations.y, LilaAnnotations.w, LilaAnnotations.h
-                       ).outerjoin(LilaAnnotations, LilaAnnotations.image_id == LilaCollectedImages.id)
+                select(
+                    LilaCollectedImages.file_name,
+                    LilaCollectedImages.is_train,
+                    LilaCollectedImages.width,
+                    LilaCollectedImages.height,
+                    LilaAnnotations.image_id,
+                    LilaAnnotations.category_id,
+                    LilaAnnotations.x,
+                    LilaAnnotations.y,
+                    LilaAnnotations.w,
+                    LilaAnnotations.h,
+                ).outerjoin(
+                    LilaAnnotations, LilaAnnotations.image_id == LilaCollectedImages.id
+                )
             )
-            df = pl.DataFrame(rows, schema=["file_name", "is_train", "width", "height",
-                                            "image_id", "category_id",
-                                            "x", "y", "w", "h"])
+            df = pl.DataFrame(
+                rows,
+                schema=[
+                    "file_name",
+                    "is_train",
+                    "width",
+                    "height",
+                    "image_id",
+                    "category_id",
+                    "x",
+                    "y",
+                    "w",
+                    "h",
+                ],
+            )
 
             return df
 
-
     def _convert_annotations(self, df: pl.DataFrame) -> pl.DataFrame:
 
-        df = (
-            df
-            .with_columns(
-                ((pl.col("x") + pl.col("w") / 2) / pl.col("width")).alias("norm_center_x"),
-                ((pl.col("y") + pl.col("h") / 2) / pl.col("height")).alias("norm_center_y"),
-                (pl.col("w") / pl.col("width")).alias("norm_width"),
-                (pl.col("h") / pl.col("height")).alias("norm_height")
-            ).drop(["x", "y", "w", "h"])
-        )
+        df = df.with_columns(
+            ((pl.col("x") + pl.col("w") / 2) / pl.col("width")).alias("norm_center_x"),
+            ((pl.col("y") + pl.col("h") / 2) / pl.col("height")).alias("norm_center_y"),
+            (pl.col("w") / pl.col("width")).alias("norm_width"),
+            (pl.col("h") / pl.col("height")).alias("norm_height"),
+        ).drop(["x", "y", "w", "h"])
 
         return df
 
@@ -61,9 +79,7 @@ class AnnotationConverter:
             return session.execute(select(LilaYolo.file_name)).scalars().all()
 
     @db_retry
-    def _write_annotations(self,
-                           df: pl.DataFrame,
-                           batch_size: int = 5_000):
+    def _write_annotations(self, df: pl.DataFrame, batch_size: int = 5_000):
 
         existing = set(self._check_converted())
         df = df.filter(~pl.col("file_name").is_in(existing))
@@ -75,11 +91,21 @@ class AnnotationConverter:
         # Group bbox rows by image into a list of bbox dicts per file_name.
         # Each row in df is one bbox — an image with 3 fish has 3 rows.
         # After grouping, each row is one image with annotation = [bbox, bbox, ...].
-        bbox_cols = ["class_id", "norm_center_x", "norm_center_y", "norm_width", "norm_height", "is_train"]
+        bbox_cols = [
+            "class_id",
+            "norm_center_x",
+            "norm_center_y",
+            "norm_width",
+            "norm_height",
+            "is_train",
+        ]
         grouped = (
             df.with_columns(
-                pl.when(pl.col("category_id").is_not_null()).then(pl.lit(0))
-                .otherwise(pl.lit(1)).alias("class_id"))
+                pl.when(pl.col("category_id").is_not_null())
+                .then(pl.lit(0))
+                .otherwise(pl.lit(1))
+                .alias("class_id")
+            )
             .group_by("file_name")
             .agg(pl.struct(bbox_cols).alias("annotation"))
         )
@@ -110,7 +136,6 @@ class AnnotationConverter:
             rows = session.execute(select(LilaYolo))
             df = pl.DataFrame(rows, schema=["file_name", "annotation"])
 
-
         train_path = self.config.data_paths["obj_training_labels"]
         test_path = self.config.data_paths["obj_val_labels"]
 
@@ -118,7 +143,6 @@ class AnnotationConverter:
             Path.mkdir(Path(train_path), exist_ok=True)
         if not os.path.exists(test_path):
             Path.mkdir(Path(test_path), exist_ok=True)
-
 
         for row in df.to_dicts():
             file_name = row["file_name"]
@@ -130,17 +154,18 @@ class AnnotationConverter:
                 for ann in annotations:
                     if ann["class_id"] == 0:
                         f.write(
-                            f"{ann['class_id']} {ann['norm_center_x']} {ann['norm_center_y']} {ann['norm_width']} {ann['norm_height']}\n")
+                            f"{ann['class_id']} {ann['norm_center_x']} {ann['norm_center_y']} {ann['norm_width']} {ann['norm_height']}\n"
+                        )
                     else:
                         f.write("")
 
     def run(self, runtime_config: RuntimeConfig = RuntimeConfig.CONVERT):
 
-        if runtime_config == 'convert':
+        if runtime_config == "convert":
             df = self._retrieve_annotations()
             df = self._convert_annotations(df)
             self._write_annotations(df)
-        elif runtime_config == 'write_text':
+        elif runtime_config == "write_text":
             self._write_text()
         else:
             df = self._retrieve_annotations()
@@ -152,15 +177,3 @@ class AnnotationConverter:
 if __name__ == "__main__":
     session_factory = get_session_factory()
     AnnotationConverter(session_factory).run(runtime_config=RuntimeConfig.ALL)
-
-
-
-
-
-
-
-
-
-
-
-

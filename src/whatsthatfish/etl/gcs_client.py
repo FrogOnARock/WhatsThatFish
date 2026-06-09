@@ -11,12 +11,10 @@ load_dotenv()
 
 
 class GCSClient:
-    def __init__(self,
-                 config):
+    def __init__(self, config):
         self.key_path = os.environ.get("GCS_SECRET")
         self.config = config
         self.logger = _get_logger("GCSClient")
-
 
     @gcs_retry
     def get_gcs_client(self) -> gcs.Client:
@@ -41,7 +39,9 @@ class GCSClient:
                 scopes=["https://www.googleapis.com/auth/cloud-platform"],
             )
             client = gcs.Client(credentials=credentials, project=credentials.project_id)
-            print(f"  Authenticated via service account: {credentials.service_account_email}")
+            print(
+                f"  Authenticated via service account: {credentials.service_account_email}"
+            )
             return client
 
         # Fall back to default credentials
@@ -49,11 +49,7 @@ class GCSClient:
         print("Authenticated via default credentials")
         return client
 
-
-    def gcs_upload(self,
-                   dataset_dir: str,
-                   bucket_name: str,
-                   prefix: str):
+    def gcs_upload(self, dataset_dir: str, bucket_name: str, prefix: str):
         """Upload all files in dataset_dir to GCS, skipping those already present.
 
         Args:
@@ -75,15 +71,13 @@ class GCSClient:
 
         # List existing blobs under this prefix — returns full paths like "prefix/image.jpg"
         existing_blobs = {
-            blob.name
-            for blob in storage_client.list_blobs(bucket_name, prefix=prefix)
+            blob.name for blob in storage_client.list_blobs(bucket_name, prefix=prefix)
         }
 
         # Build the set of files that need uploading by comparing
         # the prefixed blob name against what's already in the bucket
         to_upload = [
-            image for image in image_files
-            if f"{prefix}/{image}" not in existing_blobs
+            image for image in image_files if f"{prefix}/{image}" not in existing_blobs
         ]
 
         self.logger.info(

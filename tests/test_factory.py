@@ -16,10 +16,11 @@ from whatsthatfish.etl.photo_transfer import PhotoTransferPipeline
 @pytest.fixture
 def factory():
     """Create a DataFactory with all external dependencies mocked."""
-    with patch("whatsthatfish.etl.factory.get_config") as mock_config, \
-         patch("whatsthatfish.etl.factory.get_session_factory") as mock_sf, \
-         patch("whatsthatfish.etl.factory.GCSClient"):
-
+    with (
+        patch("whatsthatfish.etl.factory.get_config") as mock_config,
+        patch("whatsthatfish.etl.factory.get_session_factory") as mock_sf,
+        patch("whatsthatfish.etl.factory.GCSClient"),
+    ):
         mock_config.return_value = MagicMock()
         mock_sf.return_value = MagicMock()
         yield DataFactory()
@@ -39,7 +40,9 @@ class TestPipelineRouting:
     ):
         mock_inat.return_value = MagicMock(spec=INaturalistDataset)
         mock_lila.return_value = MagicMock(spec=LilaDataset)
-        mock_transfer.return_value = MagicMock(spec=PhotoTransferPipeline, run=AsyncMock())
+        mock_transfer.return_value = MagicMock(
+            spec=PhotoTransferPipeline, run=AsyncMock()
+        )
 
         factory.run(dataset=Dataset.CLASSIFICATION)
 
@@ -55,7 +58,9 @@ class TestPipelineRouting:
     ):
         mock_inat.return_value = MagicMock(spec=INaturalistDataset)
         mock_lila.return_value = MagicMock(spec=LilaDataset)
-        mock_transfer.return_value = MagicMock(spec=PhotoTransferPipeline, run=AsyncMock())
+        mock_transfer.return_value = MagicMock(
+            spec=PhotoTransferPipeline, run=AsyncMock()
+        )
 
         factory.run(dataset=Dataset.DETECTION)
 
@@ -71,7 +76,9 @@ class TestPipelineRouting:
     ):
         mock_inat.return_value = MagicMock(spec=INaturalistDataset)
         mock_lila.return_value = MagicMock(spec=LilaDataset)
-        mock_transfer.return_value = MagicMock(spec=PhotoTransferPipeline, run=AsyncMock())
+        mock_transfer.return_value = MagicMock(
+            spec=PhotoTransferPipeline, run=AsyncMock()
+        )
 
         factory.run(dataset=Dataset.ALL)
 
@@ -88,11 +95,11 @@ class TestTaxaPassthrough:
 
     @patch.object(DataFactory, "_build_photo_transfer")
     @patch.object(DataFactory, "_build_inat")
-    def test_custom_taxa_forwarded_to_inat(
-        self, mock_inat, mock_transfer, factory
-    ):
+    def test_custom_taxa_forwarded_to_inat(self, mock_inat, mock_transfer, factory):
         mock_inat.return_value = MagicMock(spec=INaturalistDataset)
-        mock_transfer.return_value = MagicMock(spec=PhotoTransferPipeline, run=AsyncMock())
+        mock_transfer.return_value = MagicMock(
+            spec=PhotoTransferPipeline, run=AsyncMock()
+        )
 
         custom_taxa = [12345, 67890]
         factory.run(dataset=Dataset.CLASSIFICATION, taxa=custom_taxa)
@@ -108,11 +115,11 @@ class TestTaxaPassthrough:
         """LILA pipeline doesn't accept taxa — ensure no leakage."""
         mock_inat.return_value = MagicMock(spec=INaturalistDataset)
         mock_lila.return_value = MagicMock(spec=LilaDataset)
-        mock_transfer.return_value = MagicMock(spec=PhotoTransferPipeline, run=AsyncMock())
+        mock_transfer.return_value = MagicMock(
+            spec=PhotoTransferPipeline, run=AsyncMock()
+        )
 
         factory.run(dataset=Dataset.ALL, taxa=[47178])
 
         # extract_lila_images takes no arguments
         mock_lila.return_value.extract_lila_images.assert_called_once_with()
-
-

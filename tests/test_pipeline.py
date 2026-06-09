@@ -39,13 +39,17 @@ def session_factory():
 
 class TestFreshStart:
     def test_load_returns_empty_set(self, tracker_dir: Path, session_factory):
-        tracker = TransferProgressTracker(str(tracker_dir), source="inat", session_factory=session_factory)
+        tracker = TransferProgressTracker(
+            str(tracker_dir), source="inat", session_factory=session_factory
+        )
         completed = tracker.load()
         assert completed == set()
         tracker.close()
 
     def test_completed_count_is_zero(self, tracker_dir: Path, session_factory):
-        tracker = TransferProgressTracker(str(tracker_dir), source="inat", session_factory=session_factory)
+        tracker = TransferProgressTracker(
+            str(tracker_dir), source="inat", session_factory=session_factory
+        )
         tracker.load()
         assert tracker.completed_count == 0
         tracker.close()
@@ -57,7 +61,10 @@ class TestFreshStart:
 class TestRecordingInat:
     def test_record_adds_to_completed_set(self, tracker_dir: Path, session_factory):
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="inat", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="inat",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
 
@@ -72,7 +79,10 @@ class TestRecordingInat:
 
     def test_record_appends_to_wal_file(self, tracker_dir: Path, session_factory):
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="inat", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="inat",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
         tracker.record("1")
@@ -87,7 +97,10 @@ class TestRecordingInat:
 
     def test_compact_writes_to_db(self, tracker_dir: Path, session_factory):
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="inat", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="inat",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
         tracker.record("1")
@@ -96,16 +109,26 @@ class TestRecordingInat:
         tracker.compact()
 
         with session_factory() as session:
-            rows = session.execute(
-                select(SuccessfulUploads.identifier)
-                .where(SuccessfulUploads.source == "inat")
-            ).scalars().all()
+            rows = (
+                session.execute(
+                    select(SuccessfulUploads.identifier).where(
+                        SuccessfulUploads.source == "inat"
+                    )
+                )
+                .scalars()
+                .all()
+            )
             assert set(rows) == {"1", "2", "3"}
         tracker.close()
 
-    def test_record_does_not_write_db_without_compact(self, tracker_dir: Path, session_factory):
+    def test_record_does_not_write_db_without_compact(
+        self, tracker_dir: Path, session_factory
+    ):
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="inat", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="inat",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
         tracker.record("1")
@@ -122,7 +145,10 @@ class TestRecordingInat:
 class TestRecordingLila:
     def test_record_string_identifiers(self, tracker_dir: Path, session_factory):
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="lila", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="lila",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
 
@@ -135,9 +161,14 @@ class TestRecordingLila:
         assert tracker.completed_count == 2
         tracker.close()
 
-    def test_compact_writes_to_db_with_lila_source(self, tracker_dir: Path, session_factory):
+    def test_compact_writes_to_db_with_lila_source(
+        self, tracker_dir: Path, session_factory
+    ):
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="lila", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="lila",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
         tracker.record("salmon_cv/frame_00123.jpg")
@@ -145,10 +176,15 @@ class TestRecordingLila:
         tracker.compact()
 
         with session_factory() as session:
-            rows = session.execute(
-                select(SuccessfulUploads.identifier)
-                .where(SuccessfulUploads.source == "lila")
-            ).scalars().all()
+            rows = (
+                session.execute(
+                    select(SuccessfulUploads.identifier).where(
+                        SuccessfulUploads.source == "lila"
+                    )
+                )
+                .scalars()
+                .all()
+            )
             assert set(rows) == {
                 "salmon_cv/frame_00123.jpg",
                 "deep_reef/IMG_4501.jpg",
@@ -158,10 +194,16 @@ class TestRecordingLila:
     def test_sources_are_isolated(self, tracker_dir: Path, session_factory):
         """iNat and LILA trackers sharing the same DB don't see each other's entries."""
         inat_tracker = TransferProgressTracker(
-            str(tracker_dir), source="inat", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="inat",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         lila_tracker = TransferProgressTracker(
-            str(tracker_dir), source="lila", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="lila",
+            session_factory=session_factory,
+            compact_every=9999,
         )
 
         inat_tracker.load()
@@ -195,7 +237,10 @@ class TestRecordingLila:
 class TestCompactionDetails:
     def test_auto_compact_and_truncates_wal(self, tracker_dir: Path, session_factory):
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="inat", session_factory=session_factory, compact_every=2
+            str(tracker_dir),
+            source="inat",
+            session_factory=session_factory,
+            compact_every=2,
         )
         tracker.load()
         tracker.record("1")
@@ -217,7 +262,10 @@ class TestCrashRecovery:
     def test_wal_replay_after_crash(self, tracker_dir: Path, session_factory):
         """Records in WAL but never compacted should survive a restart."""
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="inat", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="inat",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
         tracker.record("1")
@@ -225,7 +273,10 @@ class TestCrashRecovery:
 
         # Simulate crash — new tracker, same directory and DB
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="inat", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="inat",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
         assert tracker.completed_count == 2
@@ -234,7 +285,10 @@ class TestCrashRecovery:
     def test_db_plus_wal_combined_recovery(self, tracker_dir: Path, session_factory):
         """Some records in DB, some only in WAL — all should load."""
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="inat", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="inat",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
         tracker.record("1")
@@ -246,15 +300,23 @@ class TestCrashRecovery:
 
         # Simulate crash
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="inat", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="inat",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
         assert tracker.completed_count == 4
 
-    def test_crash_recovery_with_lila_file_names(self, tracker_dir: Path, session_factory):
+    def test_crash_recovery_with_lila_file_names(
+        self, tracker_dir: Path, session_factory
+    ):
         """Crash recovery works with string file_name identifiers (LILA)."""
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="lila", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="lila",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
         tracker.record("salmon_cv/frame_001.jpg")
@@ -264,7 +326,10 @@ class TestCrashRecovery:
 
         # Simulate crash
         tracker = TransferProgressTracker(
-            str(tracker_dir), source="lila", session_factory=session_factory, compact_every=9999
+            str(tracker_dir),
+            source="lila",
+            session_factory=session_factory,
+            compact_every=9999,
         )
         tracker.load()
         assert tracker.completed_count == 3

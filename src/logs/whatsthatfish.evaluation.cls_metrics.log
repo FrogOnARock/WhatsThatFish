@@ -1,0 +1,84 @@
+2026-06-04 15:42:43,898 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-0/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-04 15:42:44,071 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-0/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-04 15:42:44,378 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-0/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-04 15:42:44,387 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-0/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-04 15:42:44,405 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-0/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-04 15:42:44,564 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-0/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-04 15:42:44,573 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-0/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-04 15:42:44,593 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-0/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-04 15:42:44,751 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-0/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-04 15:44:39,769 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-04 15:44:39,822 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-04 15:44:40,086 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-04 15:44:40,094 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-04 15:44:40,110 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-04 15:44:40,265 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-04 15:44:40,274 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-04 15:44:40,291 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-04 15:44:40,444 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-04 15:47:14,015 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-1/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-04 15:47:14,066 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-1/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-04 15:47:14,232 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-1/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-04 15:47:14,240 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-1/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-04 15:47:14,256 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-1/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-04 15:47:14,414 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-1/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-04 15:47:14,423 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-1/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-04 15:47:14,443 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-1/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-04 15:47:14,649 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-1/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-04 15:53:37,158 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-04 15:53:37,206 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-04 15:53:37,385 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-04 15:53:37,394 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-04 15:53:37,407 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-04 15:53:37,577 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-04 15:53:37,586 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-04 15:53:37,604 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-04 15:53:37,924 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-04 16:29:26,605 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-04 16:29:26,659 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-04 16:29:26,829 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-04 16:29:26,838 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-04 16:29:26,852 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-04 16:29:27,162 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-04 16:29:27,170 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-04 16:29:27,185 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-04 16:29:27,358 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-04 16:30:16,776 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-04 16:30:16,824 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-04 16:30:17,008 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-04 16:30:17,017 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-04 16:30:17,032 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-04 16:30:17,193 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-04 16:30:17,201 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-04 16:30:17,221 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-04 16:30:17,525 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-04 16:33:28,437 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-2/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-04 16:33:28,491 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-2/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-04 16:33:28,658 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-2/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-04 16:33:28,667 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-2/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-04 16:33:28,680 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-2/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-04 16:33:28,983 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-2/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-04 16:33:28,991 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-2/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-04 16:33:29,005 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-2/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-04 16:33:29,167 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-2/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-04 16:36:20,004 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-04 16:36:20,056 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-04 16:36:20,372 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-04 16:36:20,381 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-04 16:36:20,399 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-04 16:36:20,561 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-04 16:36:20,569 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-04 16:36:20,588 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-04 16:36:20,749 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-04 16:37:45,752 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-04 16:37:45,799 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-04 16:37:45,969 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-04 16:37:45,977 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-04 16:37:45,990 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-04 16:37:46,147 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-04 16:37:46,156 - INFO - Metrics table → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-04 16:37:46,171 - INFO - Sunburst → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-04 16:37:46,473 - INFO - PR curves → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-04 19:38:04,012 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260604_183523_classification/metrics_epoch_0.html
+2026-06-04 19:38:04,130 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260604_183523_classification/sunburst_epoch_0.html
+2026-06-04 19:38:53,304 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260604_183523_classification/pr_curves_epoch_0.png

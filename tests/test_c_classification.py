@@ -16,8 +16,8 @@ from whatsthatfish.models.c_custom_resnet import BasicBlock, CustomResnet
 # BasicBlock
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestBasicBlock:
 
+class TestBasicBlock:
     def test_forward_same_planes_preserves_shape(self):
         block = BasicBlock(planes=64)
         x = torch.randn(2, 64, 32, 32)
@@ -71,6 +71,7 @@ class TestBasicBlock:
 # CustomResnet
 # ════════════════════════════════════════════════════════════════════════════════
 
+
 @pytest.fixture(scope="module")
 def small_model():
     """Minimal ResNet18-equivalent with 5-channel input and three heads."""
@@ -83,7 +84,6 @@ def small_model():
 
 
 class TestCustomResnet:
-
     def test_forward_returns_three_tensors(self, small_model):
         x = torch.randn(2, 5, 224, 224)
         out = small_model(x)

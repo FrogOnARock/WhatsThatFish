@@ -8,6 +8,7 @@ UIQM = c1 * UICM + c2 * UISM + c3 * UIConM   (Panetta et al. 2015)
 Sub-scores are returned alongside the composite so downstream consumers
 can re-weight without re-scoring.
 """
+
 from __future__ import annotations
 
 import cv2
@@ -15,15 +16,16 @@ import numpy as np
 
 
 class QualityScorer:
-    def __init__(self,
-                UIQM_C1_UICM: float = 0.0282,
-                UIQM_C2_UISM: float = 0.2953,
-                UIQM_C3_UICONM: float = 3.5753,
-                BLOCK_SIZE: int = 8,
-                LUM_B: float = 0.114,
-                LUM_R: float = 0.299,
-                LUM_G: float = 0.587):
-
+    def __init__(
+        self,
+        UIQM_C1_UICM: float = 0.0282,
+        UIQM_C2_UISM: float = 0.2953,
+        UIQM_C3_UICONM: float = 3.5753,
+        BLOCK_SIZE: int = 8,
+        LUM_B: float = 0.114,
+        LUM_R: float = 0.299,
+        LUM_G: float = 0.587,
+    ):
 
         # Composite weights from the original UIQM paper.
         # Tunable — kept as module constants so calibration experiments are explicit.
@@ -60,7 +62,6 @@ class QualityScorer:
             return 0.0, 0.0
         return float(trimmed.mean()), float(trimmed.var())
 
-
     def compute_uicm(self, img_bgr: np.ndarray) -> float:
         """Underwater Image Colorfulness Measure (UICM).
 
@@ -74,7 +75,7 @@ class QualityScorer:
         The negative-mean term penalizes color casts (e.g. uniform blue tint
         from depth attenuation); the positive-variance term rewards
         chromatic spread.
-    """
+        """
         img = img_bgr.astype(np.float64)
         b, g, r = img[..., 0], img[..., 1], img[..., 2]
 
@@ -84,11 +85,10 @@ class QualityScorer:
         mean_rg, var_rg = self._alpha_trimmed_stats(rg)
         mean_yb, var_yb = self._alpha_trimmed_stats(yb)
 
-        mean_term = np.sqrt(mean_rg ** 2 + mean_yb ** 2)
+        mean_term = np.sqrt(mean_rg**2 + mean_yb**2)
         var_term = np.sqrt(var_rg + var_yb)
 
         return float(-0.0268 * mean_term + 0.1586 * var_term)
-
 
     def _block_view(self, arr: np.ndarray) -> np.ndarray:
         """Reshape a 2-D array into non-overlapping (nH, nW, B, B) blocks.
@@ -101,12 +101,9 @@ class QualityScorer:
         h_crop = (h // block) * block
         w_crop = (w // block) * block
         cropped = arr[:h_crop, :w_crop]
-        return (
-            cropped
-            .reshape(h_crop // block, block, w_crop // block, block)
-            .transpose(0, 2, 1, 3)
-        )
-
+        return cropped.reshape(
+            h_crop // block, block, w_crop // block, block
+        ).transpose(0, 2, 1, 3)
 
     def _channel_eme(self, channel: np.ndarray) -> float:
         """EME (Enhancement Measure of Enhancement) over non-overlapping blocks.
@@ -128,7 +125,6 @@ class QualityScorer:
         ratios = np.log(bmax[valid] / bmin[valid])
         n_blocks = blocks.shape[0] * blocks.shape[1]
         return float(2.0 / n_blocks * ratios.sum())
-
 
     def compute_uism(self, img_bgr: np.ndarray) -> float:
         """Underwater Image Sharpness Measure (UISM).
@@ -159,7 +155,6 @@ class QualityScorer:
 
         return float(self.LUM_R * eme_r + self.LUM_G * eme_g + self.LUM_B * eme_b)
 
-
     def compute_uiconm(self, img_bgr: np.ndarray) -> float:
         """Underwater Image Contrast Measure (UIConM).
 
@@ -182,16 +177,14 @@ class QualityScorer:
         if not valid.any():
             return 0.0
 
+        ratios = np.log(bmax[valid] / bmin[valid])
 
-        ratios = np.log( bmax[valid] / bmin[valid] )
-
-        return ( ( 1 / n_blocks ) * ratios.sum() ).astype(np.float64)
-
+        return ((1 / n_blocks) * ratios.sum()).astype(np.float64)
 
     def compute_uiqm(
-            self,
-            image_bytes: bytes,
-        ) -> ValueError | tuple[float, float, float, float]:
+        self,
+        image_bytes: bytes,
+    ) -> tuple[float, float, float, float]:
         """Composite UIQM and its three sub-scores.
 
         Returns (uicm, uism, uiconm, uiqm). Sub-scores are returned
@@ -201,10 +194,14 @@ class QualityScorer:
         arr = np.frombuffer(image_bytes, dtype=np.uint8)
         img_bgr = cv2.imdecode(arr, cv2.IMREAD_COLOR)
         if img_bgr is None:
-            return ValueError("Failed to decode image")
+            raise ValueError("Failed to decode image")
 
         uicm = self.compute_uicm(img_bgr)
         uism = self.compute_uism(img_bgr)
         uiconm = self.compute_uiconm(img_bgr)
-        uiqm = self.UIQM_C1_UICM * uicm + self.UIQM_C2_UISM * uism + self.UIQM_C3_UICONM * uiconm
+        uiqm = (
+            self.UIQM_C1_UICM * uicm
+            + self.UIQM_C2_UISM * uism
+            + self.UIQM_C3_UICONM * uiconm
+        )
         return uicm, uism, uiconm, uiqm

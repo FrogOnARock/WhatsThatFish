@@ -1,0 +1,25 @@
+# ── Classification Training config ────────────────────────────────────────────────────
+
+# ── Training schedule ────────────────────────────────────────────────────────
+epochs: 50
+batch_size: 16        # NOTE: trainer reads `batch_size` (was `batch`, silently ignored → always 16)
+patience: 10
+lr: 0.001
+weight_decay: 0.01
+warmup_pct: 0.05      # NOTE: trainer reads `warmup_pct` and now passes it to OneCycleLR pct_start (was the 0.3 default)
+loss_weights: [0.6, 0.3, 0.1]
+max_lr: 0.01
+
+# ── Model variant (the A/B/C comparative harness) ────────────────────────────
+# Run the three under otherwise-identical config to isolate pretraining + channels:
+#   A) 5ch pretrained : pretrained=true,  in_dim=5, layers=[3,4,6,3]
+#   B) 3ch pretrained : pretrained=true,  in_dim=3, layers=[3,4,6,3]
+#   C) 5ch scratch    : pretrained=false, in_dim=5, layers=[8,8,12,6]  (current baseline)
+pretrained: true
+in_dim: 5
+layers: [8, 8, 12, 6]
+
+# ── Fine-tune schedule (pretrained variants only; ignored when pretrained=false) ──
+backbone_lr: 0.0001   # ~10x lower than the heads so pretrained features aren't wrecked
+head_lr: 0.001        # heads (+ inflated stem) move fast
+freeze_epochs: 3      # Phase A: backbone frozen, train heads/stem; then unfreeze at backbone_lr

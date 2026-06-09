@@ -13,6 +13,7 @@ from whatsthatfish.transforms.letterbox_resize import LetterboxResize
 
 # ── Fixtures ───────────────────────────────────────────────────────────────────
 
+
 @pytest.fixture
 def transform():
     return LetterboxResize(320)
@@ -31,8 +32,8 @@ def _solid(w: int, h: int, color=(255, 0, 0)) -> Image.Image:
 # Output dimensions
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestOutputDimensions:
 
+class TestOutputDimensions:
     def test_square_input_stays_square(self, transform):
         out = transform(_pil(300, 300))
         assert out.size == (320, 320)
@@ -64,8 +65,8 @@ class TestOutputDimensions:
 # Aspect ratio preservation
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestAspectRatio:
 
+class TestAspectRatio:
     def test_landscape_longer_side_fills_canvas(self, transform):
         """Wider dimension should fill the full 224px after scaling."""
         img = _solid(400, 200, color=(255, 0, 0))
@@ -100,8 +101,8 @@ class TestAspectRatio:
 # Padding symmetry
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestPaddingSymmetry:
 
+class TestPaddingSymmetry:
     def test_landscape_padding_is_top_bottom(self, transform):
         """For landscape input, padding appears above and below the image."""
         img = _solid(400, 200, color=(200, 200, 200))
@@ -128,5 +129,5 @@ class TestPaddingSymmetry:
         last_content = len(col_has_content) - np.argmax(col_has_content[::-1]) - 1
 
         left_pad = first_content
-        right_pad = 319  - last_content
+        right_pad = 319 - last_content
         assert abs(left_pad - right_pad) <= 1

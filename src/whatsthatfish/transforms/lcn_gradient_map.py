@@ -2,15 +2,13 @@ import numpy as np
 import cv2
 
 
-def local_contrast_normalization(
-        image: np.ndarray
-):
+def local_contrast_normalization(image: np.ndarray):
     """
     Local contrast normalization calculation applied to get
     """
 
     # Apply the Gaussian blur to get weighted average for local regions in image
-    gaussian_image = cv2.GaussianBlur(image, (5,5), 0)
+    gaussian_image = cv2.GaussianBlur(image, (5, 5), 0)
 
     # Subtract to get V
     image_subtract = np.subtract(image, gaussian_image)
@@ -31,9 +29,7 @@ def local_contrast_normalization(
     return image_out
 
 
-def gradient_map(
-    image: np.ndarray
-):
+def gradient_map(image: np.ndarray):
     """
     Implementing the Scharr gradient to compute image gradients in 3x3 Kernel.
     Will be used to provide further edge detection in images for object classification.

@@ -37,7 +37,9 @@ def _get_lila_blobs() -> list[tuple[str, str]]:
     """Returns (blob_path, filename) pairs for lila detection images."""
     with _session() as session:
         rows = session.execute(select(LilaYolo.file_name)).all()
-    return [("object_detection//" + str(row.file_name), str(row.file_name)) for row in rows]
+    return [
+        ("object_detection//" + str(row.file_name), str(row.file_name)) for row in rows
+    ]
 
 
 async def _download_one(
@@ -66,7 +68,9 @@ async def _download_dataset(
     already = {p.name for p in dest_dir.iterdir()}
     blobs = [(path, name) for path, name in blobs if name not in already]
 
-    print(f"{label}: {len(already):,} already present, {len(blobs):,} to download")
+    print(
+        f"{label}: {len(already):,} already present at {dest_dir}, {len(blobs):,} to download"
+    )
     if not blobs:
         return
 
@@ -78,20 +82,26 @@ async def _download_dataset(
         batch = blobs[start : start + _BATCH_SIZE]
         async with GCSAsyncStorage(service_file=os.environ.get("GCS_SECRET")) as gcs:
             results = await asyncio.gather(
-                *[_download_one(path, name, dest_dir, gcs, semaphore) for path, name in batch],
+                *[
+                    _download_one(path, name, dest_dir, gcs, semaphore)
+                    for path, name in batch
+                ],
                 return_exceptions=True,
             )
         batch_errors = [r for r in results if r is not None]
         failed += len(batch_errors)
         if batch_errors:
-            print(f"  batch {batch_idx}/{total_batches}: {len(batch_errors)} failed — first: {batch_errors[0]}")
+            print(
+                f"  batch {batch_idx}/{total_batches}: {len(batch_errors)} failed — first: {batch_errors[0]}"
+            )
         else:
             print(f"  batch {batch_idx}/{total_batches}: {len(batch)} ok")
 
     succeeded = len(blobs) - failed
     print(f"{label}: done — {succeeded:,} succeeded, {failed:,} failed")
 
-#TODO understand why this is erroring on OD images.
+
+# TODO understand why this is erroring on OD images.
 async def _retrieve_images_async(
     inat_dir: Path,
     inat_od_dir: Path,
@@ -104,21 +114,28 @@ async def _retrieve_images_async(
         (_get_inat_od_blobs(), inat_od_dir, "inat_od"),
         (_get_lila_blobs(), lila_dir, "lila"),
     ]
-    active = [(blobs, dest, label) for blobs, dest, label in candidates
-              if dataset == "all" or dataset == label]
+    active = [
+        (blobs, dest, label)
+        for blobs, dest, label in candidates
+        if dataset == "all" or dataset == label
+    ]
     for blobs, dest, label in active:
         await _download_dataset(blobs, dest, concurrency, label)
 
 
 def retrieve_images(
-    inat_dir: str = Path(__file__).parents[1]  / "loaders/classification_images",
-    inat_od_dir: str = Path(__file__).parents[1]  / "loaders/inat_od_images",
-    lila_dir: str = Path(__file__).parents[1]  / "loaders/od_images",
+    inat_dir: str = Path(__file__).parents[1] / "data/classification_images",
+    inat_od_dir: str = Path(__file__).parents[1] / "data/inat_od_images",
+    lila_dir: str = Path(__file__).parents[1] / "data/od_images",
     concurrency: int = 50,
     dataset: str = "all",
 ):
     load_dotenv()
-    asyncio.run(_retrieve_images_async(Path(inat_dir), Path(inat_od_dir), Path(lila_dir), concurrency, dataset))
+    asyncio.run(
+        _retrieve_images_async(
+            Path(inat_dir), Path(inat_od_dir), Path(lila_dir), concurrency, dataset
+        )
+    )
 
 
 if __name__ == "__main__":
@@ -127,7 +144,7 @@ if __name__ == "__main__":
         epilog=(
             "Examples:\n"
             "  Download iNat classification only:    --dataset inat_classification\n"
-            "  Download LILA to classification dir:  --dataset lila --lila-dir loaders/classification_images\n"
+            "  Download LILA to classification dir:  --dataset lila --lila-dir data/classification_images\n"
             "  Download all (default):               --dataset all\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -140,18 +157,6 @@ if __name__ == "__main__":
         help="Which dataset to download. Choices: inat_classification, inat_od, lila, all. Default: all",
     )
     parser.add_argument(
-        "--inat-dir",
-        default="src/loaders/classification_images",
-        metavar="DIR",
-        help="Local destination for iNat images. Default: /loaders/classification_images",
-    )
-    parser.add_argument(
-        "--lila-dir",
-        default="src/loaders/od_images",
-        metavar="DIR",
-        help="Local destination for LILA images. Default: /loaders/od_images",
-    )
-    parser.add_argument(
         "--concurrency",
         type=int,
         default=50,
@@ -160,8 +165,6 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     retrieve_images(
-        inat_dir=args.inat_dir,
-        lila_dir=args.lila_dir,
         concurrency=args.concurrency,
         dataset=args.dataset,
     )

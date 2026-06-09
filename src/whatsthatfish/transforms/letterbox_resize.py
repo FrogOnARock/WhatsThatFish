@@ -22,7 +22,6 @@ class LetterboxResize:
         pad_w = self.size - new_w
         pad_h = self.size - new_h
         left, top = pad_w // 2, pad_h // 2
-        right, bottom = pad_w - left, pad_h - top
 
         canvas = Image.new("RGB", (self.size, self.size), (0, 0, 0))
         canvas.paste(img, (left, top))

@@ -7,7 +7,7 @@ import polars as pl
 from botocore import UNSIGNED
 from botocore.client import Config
 from dotenv import load_dotenv
-from sqlalchemy import select, func
+from sqlalchemy import select
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.orm import sessionmaker
 
@@ -19,10 +19,12 @@ load_dotenv()
 
 
 class INaturalistDataset:
-
-    def __init__(self, config,
-                 session_factory: sessionmaker,
-                 data_path: str,):
+    def __init__(
+        self,
+        config,
+        session_factory: sessionmaker,
+        data_path: str,
+    ):
         self.s3_config = config
         self.logger = _get_logger("INaturalistDataset")
         self.s3_client = b3.client("s3", config=Config(signature_version=UNSIGNED))
@@ -32,12 +34,8 @@ class INaturalistDataset:
 
     @s3_retry
     def retrieve_s3_data_by_blob(
-            self,
-            key: str = None,
-            output_raw: str = None,
-            output_ext: str = None,
-            **kwargs) -> str:
-
+        self, key: str = None, output_raw: str = None, output_ext: str = None, **kwargs
+    ) -> str:
         """
         Retrieves the etl from AWS S3 bucket
         :param bucket_name: refers to the bucket name we're retrieving etl from (example: ml-inat-competition-datasets)
@@ -59,6 +57,7 @@ class INaturalistDataset:
 
         last_reported = 0
         progress_bytes = 0
+
         def progress(chunk):
             nonlocal progress_bytes, last_reported
             progress_bytes += chunk
@@ -83,7 +82,12 @@ class INaturalistDataset:
             else:
                 schema_overrides = None
             self.logger.info(f"Converting {key} to parquet at {output_ext}")
-            pl.scan_csv(output_raw, separator='\t', ignore_errors=True, schema_overrides=schema_overrides).sink_parquet(output_ext)
+            pl.scan_csv(
+                output_raw,
+                separator="\t",
+                ignore_errors=True,
+                schema_overrides=schema_overrides,
+            ).sink_parquet(output_ext)
             self.logger.info(f"Converted {key}, removing csv file.")
             os.remove(output_raw)
 
@@ -93,10 +97,14 @@ class INaturalistDataset:
             output_path = self.s3_config.output_paths[key]
             self.logger.info(f"Retrieving etl from S3 bucket for: {key}")
             path = str(data_path)
-            #TODO remove
+            # TODO remove
             if os.path.exists(path + "/" + output_path):
                 continue
-            self.retrieve_s3_data_by_blob(key=value, output_raw=path + "/" + value, output_ext=path + "/" + output_path)
+            self.retrieve_s3_data_by_blob(
+                key=value,
+                output_raw=path + "/" + value,
+                output_ext=path + "/" + output_path,
+            )
             self.logger.info(f"Data retrieved from S3 bucket for: {key}")
 
     def _build_filtered_dataset(
@@ -117,7 +125,9 @@ class INaturalistDataset:
         taxa_path = os.path.join(self.data_path, "taxa.parquet")
         obs_path = os.path.join(self.data_path, "observations.parquet")
         photos_path = os.path.join(self.data_path, "photos.parquet")
-        obs_intermediate_path = os.path.join(self.data_path, "_obs_intermediate.parquet")
+        obs_intermediate_path = os.path.join(
+            self.data_path, "_obs_intermediate.parquet"
+        )
         output_path = os.path.join(self.data_path, output_name)
 
         # --- 1. Filter taxa (small table, safe to collect) ---
@@ -144,14 +154,20 @@ class INaturalistDataset:
                 & (pl.col("quality_grade") == "research")
             )
             .select(
-                "observation_uuid", "observer_id", "latitude",
-                "longitude", "observed_on", "taxon_id",
+                "observation_uuid",
+                "observer_id",
+                "latitude",
+                "longitude",
+                "observed_on",
+                "taxon_id",
             )
             .sink_parquet(obs_intermediate_path)
         )
         del taxon_id_series
 
-        obs_count = pl.scan_parquet(obs_intermediate_path).select(pl.len()).collect().item()
+        obs_count = (
+            pl.scan_parquet(obs_intermediate_path).select(pl.len()).collect().item()
+        )
         self.logger.info(f"Intermediate observations: {obs_count:,} rows")
 
         # --- 3. Stream-join photos against intermediate observations → sink ---
@@ -160,12 +176,21 @@ class INaturalistDataset:
         photos_lazy = pl.scan_parquet(photos_path)
 
         (
-            photos_lazy
-            .join(obs_lazy, on="observation_uuid", how="inner")
+            photos_lazy.join(obs_lazy, on="observation_uuid", how="inner")
             .select(
-                "photo_uuid", "photo_id", "observation_uuid",
-                "extension", "license", "width", "height", "position",
-                "observer_id", "latitude", "longitude", "observed_on", "taxon_id",
+                "photo_uuid",
+                "photo_id",
+                "observation_uuid",
+                "extension",
+                "license",
+                "width",
+                "height",
+                "position",
+                "observer_id",
+                "latitude",
+                "longitude",
+                "observed_on",
+                "taxon_id",
             )
             .unique("photo_uuid")
             .sink_parquet(output_path)
@@ -228,9 +253,11 @@ class INaturalistDataset:
     def _get_existing_photo_uuids(self) -> set[str]:
         """Pull existing photo_uuids from Postgres for anti-join."""
         with self._session_factory() as session:
-            rows = session.execute(
-                select(InatFilteredObservations.photo_uuid)
-            ).scalars().all()
+            rows = (
+                session.execute(select(InatFilteredObservations.photo_uuid))
+                .scalars()
+                .all()
+            )
         self.logger.info(f"Found {len(rows):,} existing photo records in DB")
         return set(rows)
 
@@ -264,22 +291,27 @@ class INaturalistDataset:
             self.logger.info("No new rows to insert — database is up to date")
             return 0
 
-        self.logger.info(f"Inserting {new_rows:,} new rows ({total_scanned - new_rows:,} already in DB)")
+        self.logger.info(
+            f"Inserting {new_rows:,} new rows ({total_scanned - new_rows:,} already in DB)"
+        )
 
         inserted = 0
         batch_size = (max_params / len(df.columns)) - 1000
         batch_size = int(batch_size)
         for batch_increment in range(0, len(df), batch_size):
-
             if inserted > 0:
-                self.logger.info(f"Inserted {inserted} rows. Rows left to insert {len(df) - inserted}.")
+                self.logger.info(
+                    f"Inserted {inserted} rows. Rows left to insert {len(df) - inserted}."
+                )
 
             batch = df.slice(batch_increment, batch_size).to_dicts()
             with self._session_factory() as session:
                 session.execute(insert(InatFilteredObservations), batch)
                 session.commit()
             inserted += len(batch)
-            self.logger.info(f"Inserted {inserted:,} rows ({len(batch):,} in this batch)")
+            self.logger.info(
+                f"Inserted {inserted:,} rows ({len(batch):,} in this batch)"
+            )
 
         return inserted
 
@@ -295,4 +327,3 @@ class INaturalistDataset:
         self._load_taxa(filtered_taxa)
         count = self._load_filtered_observations(dataset_path)
         self.logger.info(f"Pipeline complete: {count:,} new rows inserted")
-

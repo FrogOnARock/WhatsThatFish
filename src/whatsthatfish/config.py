@@ -1,10 +1,9 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 import yaml
 from pathlib import Path
 import logging
 import os
 import sys
-
 
 
 @dataclass
@@ -20,9 +19,11 @@ class GCSConfig:
     bucket: str
     prefixes: dict[str, str]
 
+
 @dataclass
 class YoloConfig:
     data_paths: dict[str, str]
+
 
 @dataclass
 class AppConfig:
@@ -38,6 +39,7 @@ class AppConfig:
             s3=S3Config(**raw["s3"]),
             gcs=GCSConfig(**raw["gcs"]),
         )
+
 
 @dataclass
 class ModelConfig:
@@ -57,6 +59,7 @@ class ModelConfig:
 _config = None
 _model_config = None
 
+
 def get_config(path: str | None = None) -> AppConfig:
     global _config
     if _config is None:
@@ -74,6 +77,7 @@ def get_model_config(path: str | None = None) -> ModelConfig:
         _model_config = ModelConfig.from_yaml(path)
     return _model_config
 
+
 def _get_logger(name: str):
     """
 
@@ -83,7 +87,7 @@ def _get_logger(name: str):
     logging_path = Path(__file__).parents[1] / "logs" / f"{name}.log"
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)
-    formatting = '%(asctime)s - %(levelname)s - %(message)s'
+    formatting = "%(asctime)s - %(levelname)s - %(message)s"
 
     if logger.handlers:
         return logger
@@ -107,5 +111,3 @@ def _get_logger(name: str):
     logger.addHandler(console_handler)
 
     return logger
-
-

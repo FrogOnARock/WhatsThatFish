@@ -1,0 +1,3 @@
+2026-06-08 20:29:16,936 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260608_195558_classification/metrics_epoch_0.html
+2026-06-08 20:29:17,096 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260608_195558_classification/sunburst_epoch_0.html
+2026-06-08 20:30:16,643 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260608_195558_classification/pr_curves_epoch_0.png

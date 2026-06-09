@@ -17,10 +17,9 @@ class Dataset(str, Enum):
 
 
 class DataFactory:
-
     def __init__(self):
         self.config = get_config()
-        self.data_path = Path(__file__).parents[1] / "loaders" / "etl"
+        self.data_path = Path(__file__).parents[1] / "data" / "etl"
         self.logger = _get_logger("DataFactory")
         self.session_factory = get_session_factory()
         self.gcs = GCSClient(self.config.gcs)
@@ -74,6 +73,7 @@ class DataFactory:
 
         self.logger.info("Data pipeline complete")
 
+
 def main():
     factory = DataFactory()
     factory.run(dataset=Dataset.CLASSIFICATION)
@@ -81,8 +81,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-

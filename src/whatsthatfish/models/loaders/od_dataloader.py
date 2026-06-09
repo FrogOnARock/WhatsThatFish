@@ -29,14 +29,17 @@ def object_detection_collate(original_batch):
         "bboxes": torch.cat(bboxes, 0) if bboxes else torch.zeros((0, 4)),
         "im_file": [item[2] for item in original_batch],
         "ori_shape": [tuple(img.shape[1:]) for img in img],
-        "ratio_pad": [((1.0, 1.0), (0.0, 0.0)) for _ in original_batch]
+        "ratio_pad": [((1.0, 1.0), (0.0, 0.0)) for _ in original_batch],
     }
 
-def od_dataloader(mode: str, dataset: str, batch_size: int = 16, max_samples: int = None):
+
+def od_dataloader(
+    mode: str, dataset: str, batch_size: int = 16, max_samples: int = None
+):
     base_transform = [
         v2.Resize(size=(640, 640)),
         v2.ToImage(),
-        v2.ToDtype(torch.float32, scale=True)
+        v2.ToDtype(torch.float32, scale=True),
     ]
 
     if mode == "train":
@@ -47,15 +50,22 @@ def od_dataloader(mode: str, dataset: str, batch_size: int = 16, max_samples: in
         ]
         base_transform = to_insert + base_transform
         transform = v2.Compose(base_transform)
-        od_dataset = ObjectDetectionDataset(dataset=dataset, transforms=transform, split=mode, max_samples=max_samples)
-        if dataset == "lc2":
-            weights = [max(row.uiqm or 0.0, 1e-6) * max(row.conf or 0.0, 1e-6) for row in od_dataset.data]
+        od_dataset = ObjectDetectionDataset(
+            dataset=dataset, transforms=transform, split=mode, max_samples=max_samples
+        )
+        if dataset in ("lc1", "lc2"):
+            weights = [
+                max(row.uiqm or 0.0, 1e-6) * max(row.conf or 0.0, 1e-6)
+                for row in od_dataset.data
+            ]
         else:
             weights = [max(row.uiqm or 0.0, 1e-6) for row in od_dataset.data]
         sampler = WeightedRandomSampler(weights, len(od_dataset), replacement=True)
     else:
         transform = v2.Compose(base_transform)
-        od_dataset = ObjectDetectionDataset(dataset=dataset, transforms=transform, split=mode, max_samples=max_samples)
+        od_dataset = ObjectDetectionDataset(
+            dataset=dataset, transforms=transform, split=mode, max_samples=max_samples
+        )
         sampler = None
 
     dataloader = DataLoader(
@@ -67,7 +77,7 @@ def od_dataloader(mode: str, dataset: str, batch_size: int = 16, max_samples: in
         num_workers=12,
         pin_memory=True,
         prefetch_factor=2,
-        persistent_workers=True
+        persistent_workers=True,
     )
     dataloader.reset = lambda: None
     return dataloader
@@ -84,8 +94,19 @@ class CustomDetectionTrainer(DetectionTrainer):
     max_samples: int = None
     dataset: str = "lila"
 
-    def get_dataloader(self, dataset_path: str, batch_size: int = 16, rank: int = 0, mode: str = "train"):
-        return od_dataloader(dataset=self.dataset, mode=mode, batch_size=batch_size, max_samples=self.max_samples)
+    def get_dataloader(
+        self,
+        dataset_path: str,
+        batch_size: int = 16,
+        rank: int = 0,
+        mode: str = "train",
+    ):
+        return od_dataloader(
+            dataset=self.dataset,
+            mode=mode,
+            batch_size=batch_size,
+            max_samples=self.max_samples,
+        )
 
     def preprocess_batch(self, batch):
         batch["img"] = batch["img"].to(self.device, non_blocking=True).float()
@@ -97,5 +118,8 @@ class CustomDetectionTrainer(DetectionTrainer):
     def get_validator(self):
         self.loss_names = "box_loss", "cls_loss", "dfl_loss"
         return CustomDetectionValidator(
-            self.test_loader, save_dir=self.save_dir, args=copy(self.args), _callbacks=self.callbacks
+            self.test_loader,
+            save_dir=self.save_dir,
+            args=copy(self.args),
+            _callbacks=self.callbacks,
         )

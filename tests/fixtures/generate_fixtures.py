@@ -32,17 +32,43 @@ def generate_taxa() -> pl.DataFrame:
         # Family
         (2000, "48460/1/47178/1000/2000", 30.0, "family", "Labridae", True),
         # Species — the kind of row we'll have observations for
-        (3001, "48460/1/47178/1000/2000/3001", 10.0, "species", "Thalassoma lunare", True),
+        (
+            3001,
+            "48460/1/47178/1000/2000/3001",
+            10.0,
+            "species",
+            "Thalassoma lunare",
+            True,
+        ),
         (3002, "48460/1/47178/1000/2000/3002", 10.0, "species", "Coris gaimard", True),
-        (3003, "48460/1/47178/1000/2000/3003", 10.0, "species", "Halichoeres hortulanus", True),
+        (
+            3003,
+            "48460/1/47178/1000/2000/3003",
+            10.0,
+            "species",
+            "Halichoeres hortulanus",
+            True,
+        ),
         # Inactive fish — should be filtered by active=True
-        (3099, "48460/1/47178/1000/2000/3099", 10.0, "species", "Extinct wrasse", False),
-
+        (
+            3099,
+            "48460/1/47178/1000/2000/3099",
+            10.0,
+            "species",
+            "Extinct wrasse",
+            False,
+        ),
         # ── Fish: Chondrichthyes lineage ──
         (196614, "48460/1/196614", 50.0, "class", "Chondrichthyes", True),
         (4000, "48460/1/196614/4000", 30.0, "family", "Carcharhinidae", True),
-        (4001, "48460/1/196614/4000/4001", 10.0, "species", "Carcharhinus melanopterus", True),
-
+        (
+            4001,
+            "48460/1/196614/4000/4001",
+            10.0,
+            "species",
+            "Carcharhinus melanopterus",
+            True,
+        ),
         # ── Non-fish: should NOT appear after filtering ──
         # Insecta — ancestry does NOT contain 47178 or 196614
         (47158, "48460/1/47158", 50.0, "class", "Insecta", True),
@@ -73,10 +99,8 @@ def generate_observations() -> pl.DataFrame:
         ("obs-uuid-005", 104, 26.22, 127.68, "2024-05-12", 4001, "research"),  # shark
         # Duplicate observer, different taxon
         ("obs-uuid-006", 100, 21.36, -158.14, "2024-06-01", 3002, "research"),
-
         # Fish but casual quality — should be filtered out
         ("obs-uuid-007", 105, 10.00, 20.00, "2024-07-01", 3001, "casual"),
-
         # Non-fish observation — won't join on taxon_id
         ("obs-uuid-008", 106, 40.71, -74.01, "2024-08-15", 5001, "research"),
         ("obs-uuid-009", 107, 51.51, -0.13, "2024-09-20", 6001, "research"),
@@ -84,11 +108,17 @@ def generate_observations() -> pl.DataFrame:
     return pl.DataFrame(
         rows,
         schema=[
-            "observation_uuid", "observer_id", "latitude",
-            "longitude", "observed_on", "taxon_id", "quality_grade",
+            "observation_uuid",
+            "observer_id",
+            "latitude",
+            "longitude",
+            "observed_on",
+            "taxon_id",
+            "quality_grade",
         ],
         orient="row",
     ).cast({"observer_id": pl.Int64, "taxon_id": pl.Int64})
+
 
 def generate_photos() -> pl.DataFrame:
     """~12 photo rows linked to observations.
@@ -108,7 +138,6 @@ def generate_photos() -> pl.DataFrame:
         (str(uuid.UUID(int=6)), 10006, "obs-uuid-005", "jpg", "cc-by", 1920, 1080, 0),
         # obs-uuid-006: 1 photo
         (str(uuid.UUID(int=7)), 10007, "obs-uuid-006", "jpg", "cc-by-nc", 1024, 768, 0),
-
         # obs-uuid-007: casual quality — photo exists but observation gets filtered
         (str(uuid.UUID(int=8)), 10008, "obs-uuid-007", "jpg", "cc-by", 800, 600, 0),
         # obs-uuid-008: insect — photo exists but observation gets filtered
@@ -117,11 +146,25 @@ def generate_photos() -> pl.DataFrame:
     return pl.DataFrame(
         rows,
         schema=[
-            "photo_uuid", "photo_id", "observation_uuid",
-            "extension", "license", "width", "height", "position",
+            "photo_uuid",
+            "photo_id",
+            "observation_uuid",
+            "extension",
+            "license",
+            "width",
+            "height",
+            "position",
         ],
         orient="row",
-    ).cast({"photo_id": pl.Int64, "width": pl.Int64, "height": pl.Int64, "position": pl.Int64})
+    ).cast(
+        {
+            "photo_id": pl.Int64,
+            "width": pl.Int64,
+            "height": pl.Int64,
+            "position": pl.Int64,
+        }
+    )
+
 
 def generate_lila_collected_images() -> pl.DataFrame:
     """~9 collected images across 3 LILA datasets covering:
@@ -132,21 +175,82 @@ def generate_lila_collected_images() -> pl.DataFrame:
     """
     rows = [
         # ── salmon_cv: dominant source in real etl ──
-        ("salmon_cv/frame_00100.jpg", "JPEGImages/salmon_cv/frame_00100.jpg", "salmon_cv", True, 720, 720),
-        ("salmon_cv/frame_00200.jpg", "JPEGImages/salmon_cv/frame_00200.jpg", "salmon_cv", True, 720, 720),
-        ("salmon_cv/frame_00300.jpg", "JPEGImages/salmon_cv/frame_00300.jpg", "salmon_cv", False, 800, 1000),  # val split
+        (
+            "salmon_cv/frame_00100.jpg",
+            "JPEGImages/salmon_cv/frame_00100.jpg",
+            "salmon_cv",
+            True,
+            720,
+            720,
+        ),
+        (
+            "salmon_cv/frame_00200.jpg",
+            "JPEGImages/salmon_cv/frame_00200.jpg",
+            "salmon_cv",
+            True,
+            720,
+            720,
+        ),
+        (
+            "salmon_cv/frame_00300.jpg",
+            "JPEGImages/salmon_cv/frame_00300.jpg",
+            "salmon_cv",
+            False,
+            800,
+            1000,
+        ),  # val split
         # Negative frame — no annotations will reference this
-        ("salmon_cv/frame_00400.jpg", "JPEGImages/salmon_cv/frame_00400.jpg", "salmon_cv", True, 720, 720),
-
+        (
+            "salmon_cv/frame_00400.jpg",
+            "JPEGImages/salmon_cv/frame_00400.jpg",
+            "salmon_cv",
+            True,
+            720,
+            720,
+        ),
         # ── deep_fish: smaller source ──
-        ("deep_fish/img_0010.jpg", "JPEGImages/deep_fish/img_0010.jpg", "deep_fish", True, 720, 720),
-        ("deep_fish/img_0020.jpg", "JPEGImages/deep_fish/img_0020.jpg", "deep_fish", False, 720, 720),  # val split
-
+        (
+            "deep_fish/img_0010.jpg",
+            "JPEGImages/deep_fish/img_0010.jpg",
+            "deep_fish",
+            True,
+            720,
+            720,
+        ),
+        (
+            "deep_fish/img_0020.jpg",
+            "JPEGImages/deep_fish/img_0020.jpg",
+            "deep_fish",
+            False,
+            720,
+            720,
+        ),  # val split
         # ── brackish: another source ──
-        ("brackish/seq01_000100.jpg", "JPEGImages/brackish/seq01_000100.jpg", "brackish", True, 720, 720),
-        ("brackish/seq01_000200.jpg", "JPEGImages/brackish/seq01_000200.jpg", "brackish", True, 720, 720),
+        (
+            "brackish/seq01_000100.jpg",
+            "JPEGImages/brackish/seq01_000100.jpg",
+            "brackish",
+            True,
+            720,
+            720,
+        ),
+        (
+            "brackish/seq01_000200.jpg",
+            "JPEGImages/brackish/seq01_000200.jpg",
+            "brackish",
+            True,
+            720,
+            720,
+        ),
         # Negative frame
-        ("brackish/seq01_000300.jpg", "JPEGImages/brackish/seq01_000300.jpg", "brackish", False, 720, 720),
+        (
+            "brackish/seq01_000300.jpg",
+            "JPEGImages/brackish/seq01_000300.jpg",
+            "brackish",
+            False,
+            720,
+            720,
+        ),
     ]
     return pl.DataFrame(
         rows,
@@ -169,26 +273,27 @@ def generate_lila_annotations() -> pl.DataFrame:
         # salmon_cv/frame_00100: 2 annotations (school of fish)
         ("1", "salmon_cv/frame_00100.jpg", "1", 0.10, 0.20, 0.30, 0.25),
         ("2", "salmon_cv/frame_00100.jpg", "1", 0.55, 0.40, 0.20, 0.15),
-
         # salmon_cv/frame_00200: 1 annotation
         ("3", "salmon_cv/frame_00200.jpg", "1", 0.30, 0.35, 0.40, 0.30),
-
         # salmon_cv/frame_00300: 1 annotation (val split image)
         ("4", "salmon_cv/frame_00300.jpg", "1", 0.15, 0.10, 0.25, 0.20),
-
         # deep_fish/img_0010: 1 annotation
         ("5", "deep_fish/img_0010.jpg", "1", 0.45, 0.50, 0.35, 0.28),
-
         # deep_fish/img_0020: 2 annotations
         ("6", "deep_fish/img_0020.jpg", "1", 0.05, 0.15, 0.20, 0.18),
-        ("7", "deep_fish/img_0020.jpg", "2", 0.60, 0.55, 0.15, 0.12),  # different category
-
+        (
+            "7",
+            "deep_fish/img_0020.jpg",
+            "2",
+            0.60,
+            0.55,
+            0.15,
+            0.12,
+        ),  # different category
         # brackish/seq01_000100: 1 annotation
         ("8", "brackish/seq01_000100.jpg", "1", 0.25, 0.30, 0.30, 0.22),
-
         # brackish/seq01_000200: 1 annotation
         ("9", "brackish/seq01_000200.jpg", "1", 0.40, 0.45, 0.25, 0.20),
-
         # No annotations for salmon_cv/frame_00400 (negative)
         # No annotations for brackish/seq01_000300 (negative)
     ]

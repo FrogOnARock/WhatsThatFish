@@ -11,6 +11,7 @@ from whatsthatfish.models.loaders.c_dataloader import collate_fn, collate_fn_ult
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
+
 def _img(c: int = 3, h: int = 224, w: int = 224) -> torch.Tensor:
     return torch.rand(c, h, w)
 
@@ -27,8 +28,8 @@ def _batch(n: int = 4, **label_kwargs) -> list:
 # collate_fn (custom multi-head)
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestCollateFn:
 
+class TestCollateFn:
     def test_images_are_stacked(self):
         batch = _batch(4)
         imgs, _ = collate_fn(batch)
@@ -81,8 +82,8 @@ class TestCollateFn:
 # collate_fn_ultralytics (single species label for YOLO11-cls)
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestCollateFnUltralytics:
 
+class TestCollateFnUltralytics:
     def test_images_are_stacked(self):
         batch = _batch(4)
         result = collate_fn_ultralytics(batch)

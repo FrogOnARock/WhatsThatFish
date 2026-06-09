@@ -27,21 +27,28 @@ from sqlalchemy import select, insert
 from sqlalchemy.orm import sessionmaker
 
 from .photo_transfer import TransferProgressTracker
-from ..config import _get_logger, GCSConfig
+from ..config import _get_logger
 from ..database.models import LilaCollectedImages, LilaAnnotations
 from ..retry import db_retry, gcs_retry, transfer_retry
 
 
 class LilaDataset:
-
     # LILA public GCS bucket served over HTTPS — no auth needed
     LILA_BASE_URL = "https://storage.googleapis.com/public-datasets-lila/community-fish-detection-dataset"
 
-    def __init__(self, gcs, data_path: str, gcs_config,
-                 session_factory: sessionmaker, concurrency: int = 50):
+    def __init__(
+        self,
+        gcs,
+        data_path: str,
+        gcs_config,
+        session_factory: sessionmaker,
+        concurrency: int = 50,
+    ):
         self.gcs_client = gcs.get_gcs_client()
         self.logger = _get_logger("LilaDataset")
-        self.ann_out_dir = Path(__file__).parents[1] / "loaders" / "etl" / "metadata" / "lila"
+        self.ann_out_dir = (
+            Path(__file__).parents[1] / "data" / "etl" / "metadata" / "lila"
+        )
         self.gcs_bucket = "public-datasets-lila"
         self.gcs_prefix = "community-fish-detection-dataset"
         self.data_path = data_path
@@ -147,15 +154,17 @@ class LilaDataset:
             ws.append(w)
             hs.append(h)
 
-        annotations_df = pl.DataFrame({
-            "id": pl.Series(ann_ids, dtype=pl.Utf8),
-            "image_id": pl.Series(img_ids, dtype=pl.Utf8),
-            "category_id": pl.Series(cats, dtype=pl.Utf8),
-            "x": pl.Series(xs, dtype=pl.Float64),
-            "y": pl.Series(ys, dtype=pl.Float64),
-            "w": pl.Series(ws, dtype=pl.Float64),
-            "h": pl.Series(hs, dtype=pl.Float64),
-        })
+        annotations_df = pl.DataFrame(
+            {
+                "id": pl.Series(ann_ids, dtype=pl.Utf8),
+                "image_id": pl.Series(img_ids, dtype=pl.Utf8),
+                "category_id": pl.Series(cats, dtype=pl.Utf8),
+                "x": pl.Series(xs, dtype=pl.Float64),
+                "y": pl.Series(ys, dtype=pl.Float64),
+                "w": pl.Series(ws, dtype=pl.Float64),
+                "h": pl.Series(hs, dtype=pl.Float64),
+            }
+        )
 
         # Tag images: has_fish = True if image has at least one valid fish bbox
         positive_ids = annotations_df["image_id"].unique()
@@ -175,9 +184,7 @@ class LilaDataset:
         return images_df, annotations_df
 
     @staticmethod
-    def _stratified_sample(
-        df: pl.DataFrame, n: int, seed: int
-    ) -> list[pl.DataFrame]:
+    def _stratified_sample(df: pl.DataFrame, n: int, seed: int) -> list[pl.DataFrame]:
         """Sample n rows from df, preserving the natural is_train ratio.
 
         Splits df into train/val groups and allocates n proportionally.
@@ -269,16 +276,12 @@ class LilaDataset:
 
             # Sample positives: up to cap, stratified by is_train
             n_pos = min(pos_df.height, max_pos_per_source)
-            sampled_parts.extend(
-                self._stratified_sample(pos_df, n_pos, seed)
-            )
+            sampled_parts.extend(self._stratified_sample(pos_df, n_pos, seed))
 
             # Sample negatives: up to cap, stratified by is_train
             n_neg = min(neg_df.height, max_neg_per_source)
             if n_neg > 0:
-                sampled_parts.extend(
-                    self._stratified_sample(neg_df, n_neg, seed)
-                )
+                sampled_parts.extend(self._stratified_sample(neg_df, n_neg, seed))
 
             self.logger.info(
                 f"  {source}: {n_pos:,} pos, {n_neg:,} neg "
@@ -304,9 +307,7 @@ class LilaDataset:
         while pos_count != neg_count:
             # Rank sources by count descending each iteration
             sorted_sources = (
-                adj_images_df.group_by("dataset")
-                .len()
-                .sort("len", descending=True)
+                adj_images_df.group_by("dataset").len().sort("len", descending=True)
             )["dataset"].to_list()
 
             pos_to_remove_add = max_pos_images - pos_count
@@ -465,7 +466,9 @@ class LilaDataset:
         """Wraps _transfer_single with semaphore, progress tracking, and logging."""
         try:
             async with self._semaphore:
-                success = await self._transfer_single(file_name, http_session, gcs_client)
+                success = await self._transfer_single(
+                    file_name, http_session, gcs_client
+                )
         except Exception as e:
             self.logger.warning(f"Transfer failed after retries for {file_name}: {e}")
             success = False
@@ -521,14 +524,13 @@ class LilaDataset:
     @db_retry
     def _retrieve_annotations(self) -> set:
         with self._session_factory() as session:
-            collected_ids = session.execute(
-                select(LilaAnnotations.id)).scalars().all()
+            collected_ids = session.execute(select(LilaAnnotations.id)).scalars().all()
         return set(collected_ids)
 
     @db_retry
-    def _load_annotations(self,
-                          annotations_df: pl.DataFrame,
-                          max_params: int = 65535) -> bool:
+    def _load_annotations(
+        self, annotations_df: pl.DataFrame, max_params: int = 65535
+    ) -> bool:
         """Anti-join against existing annotations and bulk insert new rows."""
         collected_ids = self._retrieve_annotations()
         insert_df = annotations_df.filter(~pl.col("id").is_in(collected_ids))
@@ -546,33 +548,32 @@ class LilaDataset:
                 session.commit()
             inserted += len(data_insert)
             self.logger.info(f"Inserted {inserted:,}/{insert_df.height:,} annotations")
- 
+
         return True
 
     @db_retry
     def _retrieve_collected_images(self) -> set:
         with self._session_factory() as session:
-            ids = session.execute(
-                select(LilaCollectedImages.id)).scalars().all()
+            ids = session.execute(select(LilaCollectedImages.id)).scalars().all()
         return set(ids)
 
     @db_retry
-    def _load_collected_images(self,
-                               sampled_df: pl.DataFrame,
-                               max_params: int = 65535) -> bool:
+    def _load_collected_images(
+        self, sampled_df: pl.DataFrame, max_params: int = 65535
+    ) -> bool:
         """Anti-join against existing images and bulk insert new rows."""
         collected_images = self._retrieve_collected_images()
-        insert_df = (
-            sampled_df
-            .filter(~pl.col("id").is_in(collected_images))
-            .select(["id", "file_name", "dataset", "is_train", "width", "height"])
+        insert_df = sampled_df.filter(~pl.col("id").is_in(collected_images)).select(
+            ["id", "file_name", "dataset", "is_train", "width", "height"]
         )
 
         if insert_df.height == 0:
             self.logger.info("No new collected images to insert")
             return True
 
-        self.logger.info(f"Inserting {insert_df.height:,} images into LILA Collected Images")
+        self.logger.info(
+            f"Inserting {insert_df.height:,} images into LILA Collected Images"
+        )
 
         inserted = 0
         batch_size = max_params // len(insert_df.columns)
@@ -582,7 +583,9 @@ class LilaDataset:
                 session.execute(insert(LilaCollectedImages), data_insert)
                 session.commit()
             inserted += len(data_insert)
-            self.logger.info(f"Inserted {inserted:,}/{insert_df.height:,} collected images")
+            self.logger.info(
+                f"Inserted {inserted:,}/{insert_df.height:,} collected images"
+            )
 
         return True
 

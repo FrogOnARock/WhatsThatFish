@@ -1,45 +1,44 @@
 from dotenv import load_dotenv
 from sqlalchemy import select, func
-import torch
-import numpy as np
 from ..database.config import get_session_factory
 from ..database.models import InatClassificationDataset
-from collections import defaultdict
+from PIL import Image
+from pathlib import Path
+from ..transforms.letterbox_resize import LetterboxResize
+
 
 def run():
     session = get_session_factory()()
-    col_set = {"species": InatClassificationDataset.zero_indexed_species,
-               "genus": InatClassificationDataset.zero_indexed_genus,
-               "subfamily": InatClassificationDataset.zero_indexed_subfamily}
+    letterbox = LetterboxResize(320)
+    rows = session.execute(
+        select(
+            InatClassificationDataset.taxon_id,
+            InatClassificationDataset.filename,
+            InatClassificationDataset.proposed_bbox,
+        ).where(InatClassificationDataset.proposed_bbox != "null")
+    )
 
-    with session:
-        rows = session.execute(
-            select(
-                func.max(InatClassificationDataset.zero_indexed_species),
-                func.max(InatClassificationDataset.zero_indexed_genus),
-                func.max(InatClassificationDataset.zero_indexed_subfamily)
-            )
-        )
-        num_labels = [[r[0], r[1], r[2]] for r in rows][0]
+    dictrows = [{"filename": r.filename, "bbox": r.proposed_bbox} for r in rows][2]
+    print(dictrows["filename"], dictrows["bbox"])
+    bbox = dictrows["bbox"]
+    filename = dictrows["filename"]
+    x1, x2, y1, y2 = bbox["x1"], bbox["y1"], bbox["x2"], bbox["y2"]
+    x1 -= x1 * 0.15 / 2
+    y1 -= y1 * 0.15 / 2
+    x2 += x2 * 0.15 / 2
+    y2 += y2 * 0.15 / 2
 
-        weight_dict = defaultdict(list)
-        for lbl, col in col_set.items():
-            rows = session.execute(
-                select(
-                    col,
-                    func.round(
-                        (func.sum(func.count()).over() / func.count(col).over()) / func.count(),
-                        4).label("weight")
-                ).group_by(col)
-                .order_by(col.desc())
-            )
-            weight_dict[lbl] = [float(r.weight) for r in rows]
+    with Image.open(
+        Path(__file__).parents[1] / "data/classification_images" / filename
+    ) as img:
+        print(img.size[0], img.size[1])
+        img2 = img.crop((x1, x2, y1, y2))
+        img2.save("./cropped_image.jpg")
+        img3 = letterbox(img2)
+        img3.save("./letterbox_resize.jpg")
 
-    print(num_labels)
-    print(weight_dict["species"][:10])
-    print(torch.tensor(weight_dict["species"]))
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     load_dotenv()
 
     run()

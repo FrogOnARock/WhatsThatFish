@@ -28,7 +28,8 @@ from whatsthatfish.database.models import (
     InatImageQuality,
     InatTaxa,
     LilaCollectedImages,
-    LilaImageQuality, InatClipContext,
+    LilaImageQuality,
+    InatClipContext,
 )
 from whatsthatfish.preprocessing.capture_context_scorer import ContextScorer
 from whatsthatfish.preprocessing.factory import Dataset, PreProcessingFactory
@@ -42,7 +43,10 @@ from whatsthatfish.preprocessing.uiqm_quality_scorer import QualityScorer
 
 # ── Image helpers ──────────────────────────────────────────────────────────────
 
-def _make_image_bytes(r: int, g: int, b: int, size: tuple[int, int] = (64, 64)) -> bytes:
+
+def _make_image_bytes(
+    r: int, g: int, b: int, size: tuple[int, int] = (64, 64)
+) -> bytes:
     """Solid-colour JPEG encoded as bytes (OpenCV BGR channel order)."""
     img = np.full((size[0], size[1], 3), (b, g, r), dtype=np.uint8)
     _, buf = cv2.imencode(".jpg", img)
@@ -59,6 +63,7 @@ def _make_gradient_bytes(size: tuple[int, int] = (64, 64)) -> bytes:
 
 
 # ── Shared fixtures ────────────────────────────────────────────────────────────
+
 
 @pytest.fixture
 def sqlite_session_factory():
@@ -84,7 +89,10 @@ def sqlite_session_factory():
 def gcs_config():
     return GCSConfig(
         bucket="test-bucket",
-        prefixes={"gcs_train": "training/", "gcs_object_detection": "object_detection/"},
+        prefixes={
+            "gcs_train": "training/",
+            "gcs_object_detection": "object_detection/",
+        },
     )
 
 
@@ -105,21 +113,24 @@ def gradient_bytes() -> bytes:
 
 # ── Postgres-only fixtures (skipped if no docker) ──────────────────────────────
 
+
 @pytest.fixture
 def seeded_inat_uuid(session_factory):
     """Insert the FK parent chain and return a valid photo_uuid for scoring rows."""
     uuid = "test-score-uuid-001"
     with session_factory() as session:
         session.add(InatTaxa(taxon_id=88888, name="Test Fish", active=True))
-        session.add(InatFilteredObservations(
-            photo_uuid=uuid,
-            photo_id=88888001,
-            observation_uuid="test-obs-uuid-001",
-            observer_id=1,
-            taxon_id=88888,
-            extension="jpg",
-            license="cc-by",
-        ))
+        session.add(
+            InatFilteredObservations(
+                photo_uuid=uuid,
+                photo_id=88888001,
+                observation_uuid="test-obs-uuid-001",
+                observer_id=1,
+                taxon_id=88888,
+                extension="jpg",
+                license="cc-by",
+            )
+        )
         session.commit()
     return uuid
 
@@ -129,26 +140,31 @@ def seeded_lila_filename(session_factory):
     """Insert a LilaCollectedImages parent row and return its file_name."""
     fname = "test-dataset/test-image.jpg"
     with session_factory() as session:
-        session.add(LilaCollectedImages(
-            id=fname,
-            file_name=fname,
-            dataset="test-dataset",
-            is_train=True,
-            width=640,
-            height=480,
-        ))
+        session.add(
+            LilaCollectedImages(
+                id=fname,
+                file_name=fname,
+                dataset="test-dataset",
+                is_train=True,
+                width=640,
+                height=480,
+            )
+        )
         session.commit()
     return fname
 
 
 # ── Factory fixture ─────────────────────────────────────────────────────────────
 
+
 @pytest.fixture
 def factory_mocks():
     """Patch external deps so PreProcessingFactory can be constructed in isolation."""
-    with patch("whatsthatfish.preprocessing.factory.get_config") as mock_cfg, \
-         patch("whatsthatfish.preprocessing.factory.get_session_factory") as mock_sf, \
-         patch("whatsthatfish.preprocessing.factory.GCSClient"):
+    with (
+        patch("whatsthatfish.preprocessing.factory.get_config") as mock_cfg,
+        patch("whatsthatfish.preprocessing.factory.get_session_factory") as mock_sf,
+        patch("whatsthatfish.preprocessing.factory.GCSClient"),
+    ):
         mock_cfg.return_value = MagicMock()
         mock_cfg.return_value.gcs = GCSConfig(bucket="b", prefixes={})
         mock_sf.return_value = MagicMock()
@@ -159,8 +175,8 @@ def factory_mocks():
 # QualityScorer
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestQualityScorer:
 
+class TestQualityScorer:
     def setup_method(self):
         self.scorer = QualityScorer()
 
@@ -169,9 +185,9 @@ class TestQualityScorer:
         assert len(result) == 4
         assert all(isinstance(v, float) for v in result)
 
-    def test_compute_uiqm_corrupt_bytes_returns_value_error(self):
-        result = self.scorer.compute_uiqm(b"not-an-image")
-        assert isinstance(result, ValueError)
+    def test_compute_uiqm_corrupt_bytes_raises_value_error(self):
+        with pytest.raises(ValueError, match="Failed to decode image"):
+            self.scorer.compute_uiqm(b"not-an-image")
 
     def test_uicm_negative_for_blue_cast(self, blue_bytes):
         """Strong colour cast should produce a negative UICM (mean-term dominates)."""
@@ -208,8 +224,8 @@ class TestQualityScorer:
 # ContextScorer
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestContextScorer:
 
+class TestContextScorer:
     def setup_method(self):
         self.scorer = ContextScorer()
 
@@ -247,13 +263,15 @@ class TestContextScorer:
         _, _, _, _, classification = self.scorer.score_capture_context(blue_bytes)
         assert classification > 0
 
-    def test_score_capture_context_corrupt_bytes_returns_value_error(self):
-        assert isinstance(self.scorer.score_capture_context(b"garbage"), ValueError)
+    def test_score_capture_context_corrupt_bytes_raises_value_error(self):
+        with pytest.raises(ValueError, match="Failed to decode image"):
+            self.scorer.score_capture_context(b"garbage")
 
 
 # ════════════════════════════════════════════════════════════════════════════════
 # ScoringProgressTracker — WAL behaviour (SQLite, compact never fires)
 # ════════════════════════════════════════════════════════════════════════════════
+
 
 def _context_tracker(tmp_path, session_factory, compact_every=9999):
     return ScoringProgressTracker(
@@ -277,7 +295,6 @@ _CONTEXT_ROW = {
 
 
 class TestScoringProgressTrackerWAL:
-
     def test_fresh_load_returns_empty_set(self, tmp_path, sqlite_session_factory):
         tracker = _context_tracker(tmp_path, sqlite_session_factory)
         assert tracker.load() == set()
@@ -291,7 +308,9 @@ class TestScoringProgressTrackerWAL:
         assert tracker.completed_count == 1
         tracker._wal_file.close()
 
-    def test_wal_written_with_header_on_first_record(self, tmp_path, sqlite_session_factory):
+    def test_wal_written_with_header_on_first_record(
+        self, tmp_path, sqlite_session_factory
+    ):
         tracker = _context_tracker(tmp_path, sqlite_session_factory)
         tracker.load()
         tracker.record(_CONTEXT_ROW)
@@ -319,7 +338,9 @@ class TestScoringProgressTrackerWAL:
         assert len(rows) == 3
         tracker._wal_file.close()
 
-    def test_wal_replay_recovers_uncompacted_records(self, tmp_path, sqlite_session_factory):
+    def test_wal_replay_recovers_uncompacted_records(
+        self, tmp_path, sqlite_session_factory
+    ):
         """Simulated crash: a new tracker instance replays the existing WAL."""
         tracker = _context_tracker(tmp_path, sqlite_session_factory)
         tracker.load()
@@ -334,7 +355,9 @@ class TestScoringProgressTrackerWAL:
         assert tracker2.is_completed("uuid-002")
         tracker2._wal_file.close()
 
-    def test_existing_wal_header_not_duplicated_on_reopen(self, tmp_path, sqlite_session_factory):
+    def test_existing_wal_header_not_duplicated_on_reopen(
+        self, tmp_path, sqlite_session_factory
+    ):
         """Reopening an existing WAL should not prepend a second header line."""
         tracker = _context_tracker(tmp_path, sqlite_session_factory)
         tracker.load()
@@ -349,7 +372,9 @@ class TestScoringProgressTrackerWAL:
         non_empty_lines = [l for l in wal_path.read_text().splitlines() if l.strip()]
         assert len(non_empty_lines) == 2  # header + 1 loaders row, no duplicate header
 
-    def test_auto_compact_triggered_at_threshold(self, tmp_path, sqlite_session_factory):
+    def test_auto_compact_triggered_at_threshold(
+        self, tmp_path, sqlite_session_factory
+    ):
         """compact() should fire after compact_every records."""
         tracker = _context_tracker(tmp_path, sqlite_session_factory, compact_every=2)
         tracker.load()
@@ -367,9 +392,11 @@ class TestScoringProgressTrackerWAL:
 # ScoringProgressTracker — DB compaction (Postgres, requires docker)
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestScoringProgressTrackerDB:
 
-    def test_compact_inat_context_upserts_to_db(self, tmp_path, session_factory, seeded_inat_uuid):
+class TestScoringProgressTrackerDB:
+    def test_compact_inat_context_upserts_to_db(
+        self, tmp_path, session_factory, seeded_inat_uuid
+    ):
         tracker = ScoringProgressTracker(
             data_path=str(tmp_path),
             source="inat_context",
@@ -379,11 +406,16 @@ class TestScoringProgressTrackerDB:
             compact_every=9999,
         )
         tracker.load()
-        tracker.record({
-            "photo_uuid": seeded_inat_uuid,
-            "mean_r": 50.0, "mean_g": 80.0, "mean_b": 180.0,
-            "stddev": 0.35, "is_underwater": 2,
-        })
+        tracker.record(
+            {
+                "photo_uuid": seeded_inat_uuid,
+                "mean_r": 50.0,
+                "mean_g": 80.0,
+                "mean_b": 180.0,
+                "stddev": 0.35,
+                "is_underwater": 2,
+            }
+        )
         tracker.compact()
 
         with session_factory() as session:
@@ -395,7 +427,9 @@ class TestScoringProgressTrackerDB:
         assert row.is_underwater == 2
         assert abs(row.mean_b - 180.0) < 0.01
 
-    def test_compact_inat_scoring_upserts_to_db(self, tmp_path, session_factory, seeded_inat_uuid):
+    def test_compact_inat_scoring_upserts_to_db(
+        self, tmp_path, session_factory, seeded_inat_uuid
+    ):
         tracker = ScoringProgressTracker(
             data_path=str(tmp_path),
             source="inat_scoring",
@@ -405,10 +439,15 @@ class TestScoringProgressTrackerDB:
             compact_every=9999,
         )
         tracker.load()
-        tracker.record({
-            "photo_uuid": seeded_inat_uuid,
-            "uicm": 1.5, "uism": 2.3, "uiconm": 0.8, "uiqm": 5.1,
-        })
+        tracker.record(
+            {
+                "photo_uuid": seeded_inat_uuid,
+                "uicm": 1.5,
+                "uism": 2.3,
+                "uiconm": 0.8,
+                "uiqm": 5.1,
+            }
+        )
         tracker.compact()
 
         with session_factory() as session:
@@ -419,7 +458,9 @@ class TestScoringProgressTrackerDB:
             ).scalar_one()
         assert abs(row.uiqm - 5.1) < 0.01
 
-    def test_compact_lila_upserts_to_db(self, tmp_path, session_factory, seeded_lila_filename):
+    def test_compact_lila_upserts_to_db(
+        self, tmp_path, session_factory, seeded_lila_filename
+    ):
         tracker = ScoringProgressTracker(
             data_path=str(tmp_path),
             source="lila_scoring",
@@ -429,10 +470,15 @@ class TestScoringProgressTrackerDB:
             compact_every=9999,
         )
         tracker.load()
-        tracker.record({
-            "file_name": seeded_lila_filename,
-            "uicm": 1.1, "uism": 1.2, "uiconm": 0.5, "uiqm": 3.3,
-        })
+        tracker.record(
+            {
+                "file_name": seeded_lila_filename,
+                "uicm": 1.1,
+                "uism": 1.2,
+                "uiconm": 0.5,
+                "uiqm": 3.3,
+            }
+        )
         tracker.compact()
 
         with session_factory() as session:
@@ -443,7 +489,9 @@ class TestScoringProgressTrackerDB:
             ).scalar_one()
         assert abs(row.uiqm - 3.3) < 0.01
 
-    def test_compact_clears_buffer_and_resets_counter(self, tmp_path, session_factory, seeded_inat_uuid):
+    def test_compact_clears_buffer_and_resets_counter(
+        self, tmp_path, session_factory, seeded_inat_uuid
+    ):
         tracker = ScoringProgressTracker(
             data_path=str(tmp_path),
             source="inat_scoring",
@@ -453,10 +501,15 @@ class TestScoringProgressTrackerDB:
             compact_every=9999,
         )
         tracker.load()
-        tracker.record({
-            "photo_uuid": seeded_inat_uuid,
-            "uicm": 1.0, "uism": 1.0, "uiconm": 1.0, "uiqm": 1.0,
-        })
+        tracker.record(
+            {
+                "photo_uuid": seeded_inat_uuid,
+                "uicm": 1.0,
+                "uism": 1.0,
+                "uiconm": 1.0,
+                "uiqm": 1.0,
+            }
+        )
         assert len(tracker._wal_buffer) == 1 and tracker._since_last_compact == 1
 
         tracker.compact()
@@ -464,7 +517,9 @@ class TestScoringProgressTrackerDB:
         assert len(tracker._wal_buffer) == 0
         assert tracker._since_last_compact == 0
 
-    def test_compact_rewrites_wal_with_header_only(self, tmp_path, session_factory, seeded_inat_uuid):
+    def test_compact_rewrites_wal_with_header_only(
+        self, tmp_path, session_factory, seeded_inat_uuid
+    ):
         """After compaction the WAL should be truncated to just the header line."""
         tracker = ScoringProgressTracker(
             data_path=str(tmp_path),
@@ -475,10 +530,15 @@ class TestScoringProgressTrackerDB:
             compact_every=9999,
         )
         tracker.load()
-        tracker.record({
-            "photo_uuid": seeded_inat_uuid,
-            "uicm": 1.0, "uism": 1.0, "uiconm": 1.0, "uiqm": 1.0,
-        })
+        tracker.record(
+            {
+                "photo_uuid": seeded_inat_uuid,
+                "uicm": 1.0,
+                "uism": 1.0,
+                "uiconm": 1.0,
+                "uiqm": 1.0,
+            }
+        )
         tracker.compact()
         tracker._wal_file.flush()
 
@@ -500,24 +560,38 @@ class TestScoringProgressTrackerDB:
             compact_every=9999,
         )
         tracker.load()
-        tracker.record({
-            "photo_uuid": seeded_inat_uuid,
-            "uicm": 1.0, "uism": 1.0, "uiconm": 1.0, "uiqm": 1.0,
-        })
+        tracker.record(
+            {
+                "photo_uuid": seeded_inat_uuid,
+                "uicm": 1.0,
+                "uism": 1.0,
+                "uiconm": 1.0,
+                "uiqm": 1.0,
+            }
+        )
         tracker.compact()
 
-        tracker.record({
-            "photo_uuid": seeded_inat_uuid,
-            "uicm": 9.9, "uism": 9.9, "uiconm": 9.9, "uiqm": 9.9,
-        })
+        tracker.record(
+            {
+                "photo_uuid": seeded_inat_uuid,
+                "uicm": 9.9,
+                "uism": 9.9,
+                "uiconm": 9.9,
+                "uiqm": 9.9,
+            }
+        )
         tracker.compact()
 
         with session_factory() as session:
-            results = session.execute(
-                select(InatImageQuality).where(
-                    InatImageQuality.photo_uuid == seeded_inat_uuid
+            results = (
+                session.execute(
+                    select(InatImageQuality).where(
+                        InatImageQuality.photo_uuid == seeded_inat_uuid
+                    )
                 )
-            ).scalars().all()
+                .scalars()
+                .all()
+            )
         assert len(results) == 1
         assert abs(results[0].uiqm - 9.9) < 0.01
 
@@ -526,8 +600,8 @@ class TestScoringProgressTrackerDB:
 # ContextRunner — tracking behaviour
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestContextRunnerTracking:
 
+class TestContextRunnerTracking:
     def _make_runner(self, gcs_config, tracker=None):
         return ContextRunner(
             gcs_config=gcs_config,
@@ -538,7 +612,9 @@ class TestContextRunnerTracking:
         )
 
     @pytest.mark.asyncio
-    async def test_context_dict_uses_photo_uuid_not_filename(self, gcs_config, blue_bytes):
+    async def test_context_dict_uses_photo_uuid_not_filename(
+        self, gcs_config, blue_bytes
+    ):
         mock_tracker = MagicMock(spec=ScoringProgressTracker)
         runner = self._make_runner(gcs_config, mock_tracker)
         mock_storage = AsyncMock()
@@ -567,7 +643,12 @@ class TestContextRunnerTracking:
 
         recorded = mock_tracker.record.call_args[0][0]
         assert set(recorded.keys()) == {
-            "photo_uuid", "mean_r", "mean_g", "mean_b", "stddev", "is_underwater"
+            "photo_uuid",
+            "mean_r",
+            "mean_g",
+            "mean_b",
+            "stddev",
+            "is_underwater",
         }
 
     @pytest.mark.asyncio
@@ -579,15 +660,19 @@ class TestContextRunnerTracking:
         # _select_all_uploads now returns photo_ids from SuccessfulUploads
         runner._select_all_uploads = MagicMock(return_value={"111", "222"})
         # _select_files receives photo_ids and returns rows with photo_uuid
-        runner._select_files = MagicMock(return_value=[
-            {"photo_uuid": "uuid-already-done", "filename": "111.jpg"},
-            {"photo_uuid": "uuid-new", "filename": "222.jpg"},
-        ])
+        runner._select_files = MagicMock(
+            return_value=[
+                {"photo_uuid": "uuid-already-done", "filename": "111.jpg"},
+                {"photo_uuid": "uuid-new", "filename": "222.jpg"},
+            ]
+        )
 
         mock_storage = AsyncMock()
         mock_storage.download.return_value = blue_bytes
 
-        with patch("whatsthatfish.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
+        with patch(
+            "whatsthatfish.preprocessing.score_runner.GCSAsyncStorage"
+        ) as MockGCS:
             MockGCS.return_value.__aenter__ = AsyncMock(return_value=mock_storage)
             MockGCS.return_value.__aexit__ = AsyncMock(return_value=False)
             await runner.run()
@@ -601,12 +686,16 @@ class TestContextRunnerTracking:
         mock_tracker.load.return_value = set()
         runner = self._make_runner(gcs_config, mock_tracker)
         runner._select_all_uploads = MagicMock(return_value={"uuid-1"})
-        runner._select_files = MagicMock(return_value=[
-            {"photo_uuid": "uuid-1", "filename": "1.jpg"}
-        ])
+        runner._select_files = MagicMock(
+            return_value=[{"photo_uuid": "uuid-1", "filename": "1.jpg"}]
+        )
 
-        with patch("whatsthatfish.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
-            MockGCS.return_value.__aenter__ = AsyncMock(side_effect=RuntimeError("gcs down"))
+        with patch(
+            "whatsthatfish.preprocessing.score_runner.GCSAsyncStorage"
+        ) as MockGCS:
+            MockGCS.return_value.__aenter__ = AsyncMock(
+                side_effect=RuntimeError("gcs down")
+            )
             MockGCS.return_value.__aexit__ = AsyncMock(return_value=False)
             with pytest.raises(RuntimeError):
                 await runner.run()
@@ -618,8 +707,8 @@ class TestContextRunnerTracking:
 # ScoreRunner — tracking behaviour
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestScoreRunnerTracking:
 
+class TestScoreRunnerTracking:
     def _make_runner(self, gcs_config, dataset, tracker=None):
         return ScoreRunner(
             gcs_config=gcs_config,
@@ -672,15 +761,19 @@ class TestScoreRunnerTracking:
         # _select_all_uploads now returns photo_uuids from InatCaptureContext (is_underwater in [1,2])
         runner._select_all_uploads = MagicMock(return_value={"uuid-done", "uuid-new"})
         # _select_files receives photo_uuids and returns rows filtered by photo_uuid
-        runner._select_files = MagicMock(return_value=[
-            {"photo_uuid": "uuid-done", "filename": "111.jpg", "photo_id": 111},
-            {"photo_uuid": "uuid-new", "filename": "222.jpg", "photo_id": 222},
-        ])
+        runner._select_files = MagicMock(
+            return_value=[
+                {"photo_uuid": "uuid-done", "filename": "111.jpg", "photo_id": 111},
+                {"photo_uuid": "uuid-new", "filename": "222.jpg", "photo_id": 222},
+            ]
+        )
 
         mock_storage = AsyncMock()
         mock_storage.download.return_value = blue_bytes
 
-        with patch("whatsthatfish.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
+        with patch(
+            "whatsthatfish.preprocessing.score_runner.GCSAsyncStorage"
+        ) as MockGCS:
             MockGCS.return_value.__aenter__ = AsyncMock(return_value=mock_storage)
             MockGCS.return_value.__aexit__ = AsyncMock(return_value=False)
             await runner.run()
@@ -694,12 +787,18 @@ class TestScoreRunnerTracking:
         mock_tracker.load.return_value = set()
         runner = self._make_runner(gcs_config, "inat", mock_tracker)
         runner._select_all_uploads = MagicMock(return_value={"111"})
-        runner._select_files = MagicMock(return_value=[
-            {"photo_uuid": "uuid-1", "filename": "111.jpg", "photo_id": 111}
-        ])
+        runner._select_files = MagicMock(
+            return_value=[
+                {"photo_uuid": "uuid-1", "filename": "111.jpg", "photo_id": 111}
+            ]
+        )
 
-        with patch("whatsthatfish.preprocessing.score_runner.GCSAsyncStorage") as MockGCS:
-            MockGCS.return_value.__aenter__ = AsyncMock(side_effect=RuntimeError("gcs down"))
+        with patch(
+            "whatsthatfish.preprocessing.score_runner.GCSAsyncStorage"
+        ) as MockGCS:
+            MockGCS.return_value.__aenter__ = AsyncMock(
+                side_effect=RuntimeError("gcs down")
+            )
             MockGCS.return_value.__aexit__ = AsyncMock(return_value=False)
             with pytest.raises(RuntimeError):
                 await runner.run()
@@ -711,8 +810,8 @@ class TestScoreRunnerTracking:
 # PreProcessingFactory — dest_table resolution and pipeline routing
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestPreProcessingFactoryRouting:
 
+class TestPreProcessingFactoryRouting:
     def test_dest_table_scoring_inat_returns_image_quality(self, factory_mocks):
         factory = PreProcessingFactory(type=Dataset.SCORING)
         assert factory._dest_table("inat", runner="scoring") is InatImageQuality

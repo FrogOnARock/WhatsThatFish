@@ -5,26 +5,30 @@ from ...models.datasets.c_dataset import ClassificationDataset
 from ...transforms.five_channel_conversion import AddMultiChannel
 from ...transforms.letterbox_resize import LetterboxResize
 
+
 def collate_fn(original_batch):
 
     img = torch.stack([item[0] for item in original_batch])
     labels = {
-        "subfamily": torch.tensor([item[1].get("subfamily") for item in original_batch]),
+        "subfamily": torch.tensor(
+            [item[1].get("subfamily") for item in original_batch]
+        ),
         "genus": torch.tensor([item[1].get("genus") for item in original_batch]),
-        "species": torch.tensor([item[1].get("species") for item in original_batch])
+        "species": torch.tensor([item[1].get("species") for item in original_batch]),
     }
     return img, labels
+
 
 def collate_fn_ultralytics(original_batch):
 
     img = torch.stack([item[0] for item in original_batch])
-    labels = {
-        "cls": torch.tensor([item[1].get("species") for item in original_batch])
-    }
+    labels = {"cls": torch.tensor([item[1].get("species") for item in original_batch])}
     return {"img": img, "cls": labels}
 
 
-def class_dataloader(mode: str = "custom", split: str = "train", batch: int = 16, max_samples: int = None):
+def class_dataloader(
+    mode: str = "custom", split: str = "train", batch: int = 16, max_samples: int = None
+):
 
     base_transform = [
         LetterboxResize(320),
@@ -42,12 +46,20 @@ def class_dataloader(mode: str = "custom", split: str = "train", batch: int = 16
         ]
         transforms = add_transforms + base_transform
         transforms_composed = v2.Compose(transforms)
-        class_dataset = ClassificationDataset(split=split, transform=transforms_composed, max_samples=max_samples)
-        sampler = WeightedRandomSampler([max(row.uiqm or 0.0, 1e-6) for row in class_dataset.data], num_samples=len(class_dataset))
+        class_dataset = ClassificationDataset(
+            split=split, transform=transforms_composed, max_samples=max_samples
+        )
+        weights = [max(row.uiqm or 0.0, 1e-6) for row in class_dataset.data]
+        sampler = WeightedRandomSampler(
+            weights,
+            num_samples=len(class_dataset),
+        )
 
     else:
         transforms_composed = v2.Compose(base_transform)
-        class_dataset = ClassificationDataset(split=split, transform=transforms_composed, max_samples=max_samples)
+        class_dataset = ClassificationDataset(
+            split=split, transform=transforms_composed, max_samples=max_samples
+        )
         sampler = None
 
     if mode == "custom":
@@ -59,13 +71,11 @@ def class_dataloader(mode: str = "custom", split: str = "train", batch: int = 16
         dataset=class_dataset,
         sampler=sampler,
         batch_size=batch,
-        num_workers=12,
+        num_workers=16,
         prefetch_factor=2,
         collate_fn=collate_function,
         shuffle=False,
         pin_memory=True,
-
+        persistent_workers=True,
     )
     return dataloader
-
-

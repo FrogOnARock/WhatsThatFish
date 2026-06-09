@@ -1,0 +1,477 @@
+2026-06-04 15:42:44,863 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_writes_file0/run/last.pt
+2026-06-04 15:42:44,892 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_checkpoint_contains_full_0/run/best.pt
+2026-06-04 15:42:44,923 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_model_state_loads_into_fr0/run/best.pt
+2026-06-04 15:42:44,970 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:42:44,970 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:42:44,979 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:42:44,988 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 15:42:44,988 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:42:44,988 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:42:44,988 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:42:44,996 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:42:45,004 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 15:42:45,004 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:42:45,004 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:42:45,004 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:42:45,012 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:42:45,012 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:42:45,012 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-04 15:42:45,012 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:42:45,039 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:42:45,039 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:42:45,048 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:42:45,057 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 15:42:45,057 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:42:45,057 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:42:45,057 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:42:45,065 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:42:45,073 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 15:42:45,073 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:42:45,073 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:42:45,073 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:42:45,081 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:42:45,081 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:42:45,081 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/experiments.csv
+2026-06-04 15:42:45,081 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:42:45,102 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:42:45,102 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:42:45,110 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:42:45,119 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 15:42:45,119 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:42:45,119 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:42:45,119 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:42:45,127 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:42:45,135 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 15:42:45,135 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:42:45,135 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:42:45,135 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:42:45,143 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:42:45,143 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:42:45,144 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-04 15:42:45,144 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:42:45,185 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_register_experiment_appen0/experiments.csv
+2026-06-04 15:42:45,185 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_register_experiment_appen0/experiments.csv
+2026-06-04 15:44:39,415 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_writes_file0/run/last.pt
+2026-06-04 15:44:39,446 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_checkpoint_contains_full_0/run/best.pt
+2026-06-04 15:44:39,484 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_model_state_loads_into_fr0/run/best.pt
+2026-06-04 15:44:39,543 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:44:39,543 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:44:39,550 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:44:39,557 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 15:44:39,557 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:44:39,557 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:44:39,557 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:44:39,565 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:44:39,572 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 15:44:39,573 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:44:39,573 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:44:39,573 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:44:39,580 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:44:39,580 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:44:39,580 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-04 15:44:39,580 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:44:39,618 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:44:39,618 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:44:39,625 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:44:39,632 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 15:44:39,632 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:44:39,632 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:44:39,632 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:44:39,639 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:44:39,647 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 15:44:39,647 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:44:39,647 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:44:39,647 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:44:39,655 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:44:39,655 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:44:39,655 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/experiments.csv
+2026-06-04 15:44:39,655 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:44:39,676 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:44:39,676 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:44:39,683 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:44:39,692 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 15:44:39,692 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:44:39,692 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:44:39,692 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:44:39,700 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:44:39,708 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 15:44:39,709 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:44:39,709 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:44:39,709 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:44:39,716 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:44:39,716 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:44:39,716 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-04 15:44:39,716 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:44:39,757 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_register_experiment_appen0/experiments.csv
+2026-06-04 15:44:39,757 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-0/test_register_experiment_appen0/experiments.csv
+2026-06-04 15:47:20,637 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_writes_file0/run/last.pt
+2026-06-04 15:47:20,665 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_checkpoint_contains_full_0/run/best.pt
+2026-06-04 15:47:20,698 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_model_state_loads_into_fr0/run/best.pt
+2026-06-04 15:47:20,744 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:47:20,744 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:47:20,752 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:47:20,760 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 15:47:20,760 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:47:20,761 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:47:20,761 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:47:20,769 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:47:20,778 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 15:47:20,778 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:47:20,778 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:47:20,778 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:47:20,786 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:47:20,786 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:47:20,786 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-04 15:47:20,786 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:47:20,814 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:47:20,814 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:47:20,824 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:47:20,832 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 15:47:20,833 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:47:20,833 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:47:20,833 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:47:20,840 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:47:20,849 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 15:47:20,849 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:47:20,849 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:47:20,849 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:47:20,857 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:47:20,857 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:47:20,857 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/experiments.csv
+2026-06-04 15:47:20,857 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:47:20,877 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:47:20,878 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:47:20,886 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:47:20,894 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 15:47:20,894 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:47:20,894 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:47:20,894 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:47:20,902 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:47:20,910 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 15:47:20,911 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:47:20,911 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:47:20,911 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:47:20,919 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:47:20,919 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:47:20,919 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-04 15:47:20,919 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:47:20,961 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-1/test_register_experiment_appen0/experiments.csv
+2026-06-04 15:47:20,962 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-1/test_register_experiment_appen0/experiments.csv
+2026-06-04 15:53:43,681 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_writes_file0/run/last.pt
+2026-06-04 15:53:43,721 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_checkpoint_contains_full_0/run/best.pt
+2026-06-04 15:53:43,755 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_model_state_loads_into_fr0/run/best.pt
+2026-06-04 15:53:43,804 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:53:43,804 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:53:43,813 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:53:43,822 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 15:53:43,822 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:53:43,822 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:53:43,822 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:53:43,830 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:53:43,838 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 15:53:43,838 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:53:43,838 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:53:43,838 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:53:43,846 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 15:53:43,846 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:53:43,846 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-04 15:53:43,846 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:53:43,873 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:53:43,873 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:53:43,880 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:53:43,887 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 15:53:43,887 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:53:43,887 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:53:43,887 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:53:43,895 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:53:43,903 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 15:53:43,903 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:53:43,903 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:53:43,903 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:53:43,911 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 15:53:43,911 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:53:43,911 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/experiments.csv
+2026-06-04 15:53:43,911 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:53:43,932 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 15:53:43,932 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:53:43,939 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:53:43,948 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 15:53:43,948 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 15:53:43,948 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 15:53:43,948 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:53:43,956 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:53:43,964 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 15:53:43,964 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 15:53:43,964 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 15:53:43,964 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 15:53:43,972 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 15:53:43,972 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 15:53:43,972 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-04 15:53:43,972 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 15:53:44,013 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_register_experiment_appen0/experiments.csv
+2026-06-04 15:53:44,013 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-1/test_register_experiment_appen0/experiments.csv
+2026-06-04 16:29:32,950 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_writes_file0/run/last.pt
+2026-06-04 16:29:32,982 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_checkpoint_contains_full_0/run/best.pt
+2026-06-04 16:29:33,016 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_model_state_loads_into_fr0/run/best.pt
+2026-06-04 16:29:33,067 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:29:33,067 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:29:33,080 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:29:33,088 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 16:29:33,088 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:29:33,088 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:29:33,088 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:29:33,096 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:29:33,105 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 16:29:33,105 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:29:33,105 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:29:33,105 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:29:33,114 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:29:33,114 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:29:33,114 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-04 16:29:33,114 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:29:33,142 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:29:33,142 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:29:33,151 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:29:33,161 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 16:29:33,161 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:29:33,161 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:29:33,161 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:29:33,169 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:29:33,178 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 16:29:33,178 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:29:33,178 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:29:33,178 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:29:33,186 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:29:33,186 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:29:33,187 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/experiments.csv
+2026-06-04 16:29:33,187 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:29:33,207 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:29:33,208 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:29:33,215 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:29:33,222 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 16:29:33,222 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:29:33,222 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:29:33,222 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:29:33,231 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:29:33,240 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 16:29:33,240 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:29:33,240 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:29:33,240 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:29:33,248 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:29:33,249 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:29:33,249 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-04 16:29:33,249 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:29:33,290 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_register_experiment_appen0/experiments.csv
+2026-06-04 16:29:33,290 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-2/test_register_experiment_appen0/experiments.csv
+2026-06-04 16:30:23,141 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_writes_file0/run/last.pt
+2026-06-04 16:30:23,170 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_checkpoint_contains_full_0/run/best.pt
+2026-06-04 16:30:23,200 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_model_state_loads_into_fr0/run/best.pt
+2026-06-04 16:30:23,245 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:30:23,245 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:30:23,253 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:30:23,262 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 16:30:23,262 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:30:23,262 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:30:23,263 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:30:23,270 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:30:23,278 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 16:30:23,279 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:30:23,279 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:30:23,279 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:30:23,287 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:30:23,287 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:30:23,287 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-04 16:30:23,287 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:30:23,314 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:30:23,314 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:30:23,322 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:30:23,331 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 16:30:23,331 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:30:23,331 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:30:23,331 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:30:23,339 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:30:23,348 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 16:30:23,348 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:30:23,348 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:30:23,348 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:30:23,356 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:30:23,356 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:30:23,356 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_registered_metrics_come_f0/experiments.csv
+2026-06-04 16:30:23,356 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:30:23,377 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:30:23,377 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:30:23,384 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:30:23,392 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 16:30:23,392 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:30:23,392 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:30:23,392 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:30:23,400 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:30:23,408 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 16:30:23,408 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:30:23,409 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:30:23,409 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:30:23,416 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:30:23,417 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:30:23,417 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-04 16:30:23,417 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:30:23,458 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_register_experiment_appen0/experiments.csv
+2026-06-04 16:30:23,458 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-3/test_register_experiment_appen0/experiments.csv
+2026-06-04 16:33:34,834 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_writes_file0/run/last.pt
+2026-06-04 16:33:34,862 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_checkpoint_contains_full_0/run/best.pt
+2026-06-04 16:33:34,894 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_model_state_loads_into_fr0/run/best.pt
+2026-06-04 16:33:34,941 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:33:34,941 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:33:34,950 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:33:34,957 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 16:33:34,957 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:33:34,957 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:33:34,957 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:33:34,965 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:33:34,973 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 16:33:34,973 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:33:34,973 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:33:34,974 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:33:34,981 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:33:34,981 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:33:34,982 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-2/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-04 16:33:34,982 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:33:35,009 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:33:35,009 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:33:35,016 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:33:35,030 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 16:33:35,030 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:33:35,030 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:33:35,030 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:33:35,038 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:33:35,048 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 16:33:35,048 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:33:35,048 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:33:35,048 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:33:35,056 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:33:35,056 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:33:35,056 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-2/test_registered_metrics_come_f0/experiments.csv
+2026-06-04 16:33:35,056 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:33:35,077 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:33:35,077 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:33:35,084 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:33:35,091 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 16:33:35,092 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:33:35,092 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:33:35,092 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:33:35,099 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:33:35,107 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 16:33:35,107 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:33:35,108 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:33:35,108 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:33:35,115 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:33:35,115 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:33:35,115 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-2/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-04 16:33:35,116 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:33:35,156 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-2/test_register_experiment_appen0/experiments.csv
+2026-06-04 16:33:35,156 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-2/test_register_experiment_appen0/experiments.csv
+2026-06-04 16:36:27,302 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_writes_file0/run/last.pt
+2026-06-04 16:36:27,331 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_checkpoint_contains_full_0/run/best.pt
+2026-06-04 16:36:27,362 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_model_state_loads_into_fr0/run/best.pt
+2026-06-04 16:36:27,411 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:36:27,412 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:36:27,419 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:36:27,427 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 16:36:27,428 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:36:27,428 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:36:27,428 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:36:27,435 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:36:27,443 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 16:36:27,444 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:36:27,444 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:36:27,444 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:36:27,451 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:36:27,451 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:36:27,451 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-04 16:36:27,451 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:36:27,478 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:36:27,478 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:36:27,485 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:36:27,493 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 16:36:27,493 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:36:27,493 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:36:27,493 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:36:27,501 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:36:27,509 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 16:36:27,509 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:36:27,509 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:36:27,509 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:36:27,517 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:36:27,517 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:36:27,517 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/experiments.csv
+2026-06-04 16:36:27,517 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:36:27,538 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:36:27,538 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:36:27,546 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:36:27,553 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 16:36:27,553 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:36:27,553 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:36:27,553 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:36:27,561 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:36:27,569 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 16:36:27,569 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:36:27,569 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:36:27,569 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:36:27,577 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:36:27,577 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:36:27,577 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-04 16:36:27,577 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:36:27,618 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_register_experiment_appen0/experiments.csv
+2026-06-04 16:36:27,618 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-4/test_register_experiment_appen0/experiments.csv
+2026-06-04 16:37:53,761 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_writes_file0/run/last.pt
+2026-06-04 16:37:53,795 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_checkpoint_contains_full_0/run/best.pt
+2026-06-04 16:37:53,828 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_model_state_loads_into_fr0/run/best.pt
+2026-06-04 16:37:53,889 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:37:53,890 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:37:53,899 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:37:53,906 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 16:37:53,907 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:37:53,907 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:37:53,907 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:37:53,914 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:37:53,922 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-04 16:37:53,922 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:37:53,922 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:37:53,922 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:37:53,930 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-04 16:37:53,930 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:37:53,930 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-04 16:37:53,930 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:37:53,957 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:37:53,957 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:37:53,966 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:37:53,974 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 16:37:53,974 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:37:53,974 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:37:53,974 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:37:53,982 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:37:53,990 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/run/best.pt
+2026-06-04 16:37:53,990 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:37:53,990 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:37:53,990 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:37:53,998 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/run/last.pt
+2026-06-04 16:37:53,998 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:37:53,998 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/experiments.csv
+2026-06-04 16:37:53,998 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:37:54,019 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-04 16:37:54,019 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:37:54,026 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:37:54,034 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 16:37:54,034 - INFO - Epoch 0 finished in 0.0s
+2026-06-04 16:37:54,034 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-04 16:37:54,034 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:37:54,042 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:37:54,050 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-04 16:37:54,050 - INFO - Epoch 1 finished in 0.0s
+2026-06-04 16:37:54,050 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-04 16:37:54,050 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-04 16:37:54,057 - INFO - Checkpoint saved → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-04 16:37:54,058 - INFO - Epoch 2 finished in 0.0s
+2026-06-04 16:37:54,058 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-04 16:37:54,058 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-04 16:37:54,099 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_register_experiment_appen0/experiments.csv
+2026-06-04 16:37:54,099 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_register_experiment_appen0/experiments.csv

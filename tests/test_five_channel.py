@@ -15,6 +15,7 @@ from whatsthatfish.transforms.five_channel_conversion import AddMultiChannel
 
 # ── Fixtures ───────────────────────────────────────────────────────────────────
 
+
 @pytest.fixture
 def transform():
     return AddMultiChannel()
@@ -37,15 +38,17 @@ def step_edge_pil() -> Image.Image:
 @pytest.fixture
 def random_pil() -> Image.Image:
     rng = np.random.default_rng(42)
-    return Image.fromarray(rng.integers(0, 255, (64, 64, 3), dtype=np.uint8), mode="RGB")
+    return Image.fromarray(
+        rng.integers(0, 255, (64, 64, 3), dtype=np.uint8), mode="RGB"
+    )
 
 
 # ════════════════════════════════════════════════════════════════════════════════
 # Output shape and dtype
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestOutputFormat:
 
+class TestOutputFormat:
     def test_output_shape(self, transform, step_edge_pil):
         out = transform(step_edge_pil)
         assert out.shape == (5, 64, 64)
@@ -64,8 +67,8 @@ class TestOutputFormat:
 # RGB channels (0-2)
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestRGBChannels:
 
+class TestRGBChannels:
     def test_rgb_normalized(self, transform, random_pil):
         """RGB channels should equal the original pixel values divided by 255."""
         arr = np.array(random_pil.convert("RGB"), dtype=np.float32) / 255.0
@@ -82,8 +85,8 @@ class TestRGBChannels:
 # Gradient channel (3)
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestGradientChannel:
 
+class TestGradientChannel:
     def test_uniform_image_has_zero_gradient(self, transform, uniform_pil):
         """No edges means gradient channel should collapse to zero."""
         out = transform(uniform_pil)
@@ -98,8 +101,8 @@ class TestGradientChannel:
 # LCN channel (4)
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestLCNChannel:
 
+class TestLCNChannel:
     def test_uniform_image_has_flat_lcn(self, transform, uniform_pil):
         """No local contrast means LCN channel should be flat."""
         out = transform(uniform_pil)

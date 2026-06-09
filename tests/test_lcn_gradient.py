@@ -16,6 +16,7 @@ from whatsthatfish.transforms.lcn_gradient_map import (
 
 # ── Fixtures ───────────────────────────────────────────────────────────────────
 
+
 @pytest.fixture
 def uniform_gray() -> np.ndarray:
     """Solid grey — no edges, no contrast variation."""
@@ -34,8 +35,8 @@ def step_edge() -> np.ndarray:
 # gradient_map
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestGradientMap:
 
+class TestGradientMap:
     def test_output_is_2d_uint8(self, step_edge):
         out = gradient_map(step_edge)
         assert out.ndim == 2
@@ -65,8 +66,8 @@ class TestGradientMap:
 # local_contrast_normalization
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestLocalContrastNormalization:
 
+class TestLocalContrastNormalization:
     def test_output_is_2d_uint8(self, step_edge):
         out = local_contrast_normalization(step_edge)
         assert out.ndim == 2

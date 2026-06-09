@@ -37,6 +37,8 @@ dependencies = [
     "wandb>=0.26.1",
     "cuml-cu13==26.4",
     "hdbscan>=0.8.43",
+    "plotly>=6.7.0",
+    "ruff>=0.15.15",
 ]
 
 [tool.setuptools.packages.find]
@@ -53,6 +55,7 @@ clip = { git = "https://github.com/openai/CLIP.git" }
 [dependency-groups]
 dev = [
     "jupyter>=1.1.1",
+    "ruff>=0.15.15",
 ]
 
 [build-system]

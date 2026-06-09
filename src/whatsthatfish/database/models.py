@@ -6,7 +6,9 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
-    String, func, DateTime, JSON
+    String,
+    func,
+    DateTime,
 )
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -42,6 +44,7 @@ class InatFilteredObservations(Base):
     filtering to in-scope taxa (Actinopterygii + Chondrichthyes),
     research-grade observations, and active taxa, then bulk inserting.
     """
+
     __tablename__ = "inat_filtered_observations"
 
     photo_uuid: Mapped[str] = mapped_column(String(36), primary_key=True)
@@ -50,8 +53,7 @@ class InatFilteredObservations(Base):
     observer_id: Mapped[int] = mapped_column(BigInteger)
     latitude: Mapped[float | None] = mapped_column(Float)
     longitude: Mapped[float | None] = mapped_column(Float)
-    taxon_id: Mapped[int] = mapped_column(BigInteger,
-                                          ForeignKey("inat_taxa.taxon_id"))
+    taxon_id: Mapped[int] = mapped_column(BigInteger, ForeignKey("inat_taxa.taxon_id"))
     observed_on: Mapped[str | None] = mapped_column(Date)
     extension: Mapped[str] = mapped_column(String(10))
     license: Mapped[str] = mapped_column(String(20))
@@ -59,10 +61,17 @@ class InatFilteredObservations(Base):
     height: Mapped[int | None] = mapped_column(Integer)
     position: Mapped[int | None] = mapped_column(Integer)
 
-    taxon: Mapped["InatTaxa | None"] = relationship(back_populates="filtered_observations")
+    taxon: Mapped["InatTaxa | None"] = relationship(
+        back_populates="filtered_observations"
+    )
+    classification_entry: Mapped["InatClassificationDataset | None"] = relationship(
+        back_populates="observation"
+    )
 
     __table_args__ = (
-        Index("ix_inat_filtered_observations_latitude_longitude", "latitude", "longitude"),
+        Index(
+            "ix_inat_filtered_observations_latitude_longitude", "latitude", "longitude"
+        ),
         Index("ix_inat_filtered_observations_observed_on", "observed_on"),
         Index("ix_inat_filtered_observations_taxon_id", "taxon_id"),
     )
@@ -72,19 +81,22 @@ class LilaAnnotations(Base):
     __tablename__ = "lila_annotations"
 
     id: Mapped[str] = mapped_column(String(255), primary_key=True)
-    image_id: Mapped[str] = mapped_column(String(255),
-                                          ForeignKey("lila_collected_images.id"))
+    image_id: Mapped[str] = mapped_column(
+        String(255), ForeignKey("lila_collected_images.id")
+    )
     category_id: Mapped[str] = mapped_column(String(255))
     x: Mapped[float] = mapped_column(Float)
     y: Mapped[float] = mapped_column(Float)
     w: Mapped[float] = mapped_column(Float)
     h: Mapped[float] = mapped_column(Float)
 
-    collected_images: Mapped["LilaCollectedImages"] = relationship(back_populates="annotations")
+    collected_images: Mapped["LilaCollectedImages"] = relationship(
+        back_populates="annotations"
+    )
 
     __table_args__ = (
         Index("ix_lila_annotations_image_id", "image_id"),
-        Index("ix_lila_annotations_category_id", "category_id")
+        Index("ix_lila_annotations_category_id", "category_id"),
     )
 
 
@@ -98,11 +110,13 @@ class LilaCollectedImages(Base):
     width: Mapped[int] = mapped_column(Integer)
     height: Mapped[int] = mapped_column(Integer)
 
-    annotations: Mapped[list["LilaAnnotations"]] = relationship(back_populates="collected_images")
+    annotations: Mapped[list["LilaAnnotations"]] = relationship(
+        back_populates="collected_images"
+    )
 
     __table_args__ = (
         Index("ix_lila_collected_images_file_name", "file_name"),
-        Index("ix_lila_collected_images_dataset", "dataset")
+        Index("ix_lila_collected_images_dataset", "dataset"),
     )
 
 
@@ -124,6 +138,7 @@ class InatCaptureContext(Base):
     Capture-context filter is applied *before* UIQM filtering during
     per-class downsampling — see preprocessing/working_notes.md.
     """
+
     __tablename__ = "inat_capture_context"
 
     photo_uuid: Mapped[str] = mapped_column(
@@ -137,9 +152,8 @@ class InatCaptureContext(Base):
     stddev: Mapped[float | None] = mapped_column(Float)
     is_underwater: Mapped[int | None] = mapped_column(Integer)
 
-    __table_args__ = (
-        Index("ix_inat_capture_context_is_underwater", "is_underwater"),
-    )
+    __table_args__ = (Index("ix_inat_capture_context_is_underwater", "is_underwater"),)
+
 
 class InatClipContext(Base):
     """Underwater vs above-water classification for iNaturalist images.
@@ -152,6 +166,7 @@ class InatClipContext(Base):
     We now leverage a CLIP models to no-shot predict whether an image is one of the above classes
     the outputs of that are stored here.
     """
+
     __tablename__ = "inat_clip_context"
 
     photo_uuid: Mapped[str] = mapped_column(
@@ -161,9 +176,7 @@ class InatClipContext(Base):
     )
     is_underwater: Mapped[int | None] = mapped_column(Integer)
 
-    __table_args__ = (
-        Index("ix_inat_clip_context_is_underwater", "is_underwater"),
-    )
+    __table_args__ = (Index("ix_inat_clip_context_is_underwater", "is_underwater"),)
 
 
 class InatImageQuality(Base):
@@ -178,6 +191,7 @@ class InatImageQuality(Base):
     photo that was attempted but unscoreable (corrupt file, too small,
     etc.) — distinct from "not yet scored," which means no row exists.
     """
+
     __tablename__ = "inat_image_quality"
 
     photo_uuid: Mapped[str] = mapped_column(
@@ -190,20 +204,19 @@ class InatImageQuality(Base):
     uiconm: Mapped[float | None] = mapped_column(Float)
     uiqm: Mapped[float | None] = mapped_column(Float)
 
-    __table_args__ = (
-        Index("ix_inat_image_quality_uiqm", "uiqm"),
-    )
+    __table_args__ = (Index("ix_inat_image_quality_uiqm", "uiqm"),)
+
 
 class InatClassificationDataset(Base):
     """
-    The final table containing all taxons with at least 1500 above water observations.
+    The final table containing all taxa with more than 300 underwater observations.
     The observations have been ranked by UIQM with a max sample count per taxon of 300.
     These observations are clustered and then entered into this table where they will be leveraged
     in the CV Classification.
     Species, genus, subfamily integers all added for top-3 classification.
     """
 
-    __tablename__ = 'inat_classification_dataset'
+    __tablename__ = "inat_classification_dataset"
 
     photo_uuid: Mapped[str] = mapped_column(
         String(36),
@@ -224,20 +237,21 @@ class InatClassificationDataset(Base):
     cluster: Mapped[int | None] = mapped_column(Integer)
     train: Mapped[bool | None] = mapped_column(Boolean)
     proposed_bbox: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
-    conf: Mapped[Float | None] = mapped_column(Float)
+    conf: Mapped[float | None] = mapped_column(Float)
     annotation: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
     zero_indexed_subfamily: Mapped[int | None] = mapped_column(Integer)
     zero_indexed_genus: Mapped[int | None] = mapped_column(Integer)
     zero_indexed_species: Mapped[int | None] = mapped_column(Integer)
 
+    observation: Mapped["InatFilteredObservations"] = relationship(
+        back_populates="classification_entry"
+    )
 
     __table_args__ = (
         Index("ix_inat_classification_dataset_cluster", "cluster"),
         Index("ix_inat_classification_dataset_uiqm", "uiqm"),
-        Index("ix_inat_classification_dataset", "train")
+        Index("ix_inat_classification_dataset", "train"),
     )
-
-
 
 
 class InatObjDetectionDataset(Base):
@@ -282,6 +296,7 @@ class LilaImageQuality(Base):
     that was attempted but unscoreable (corrupt file, too small, etc.) —
     distinct from "not yet scored," which means no row exists.
     """
+
     __tablename__ = "lila_image_quality"
 
     file_name: Mapped[str] = mapped_column(
@@ -294,9 +309,7 @@ class LilaImageQuality(Base):
     uiconm: Mapped[float | None] = mapped_column(Float)
     uiqm: Mapped[float | None] = mapped_column(Float)
 
-    __table_args__ = (
-        Index("ix_lila_image_quality_uiqm", "uiqm"),
-    )
+    __table_args__ = (Index("ix_lila_image_quality_uiqm", "uiqm"),)
 
 
 class LilaYolo(Base):
@@ -305,10 +318,7 @@ class LilaYolo(Base):
     file_name: Mapped[str] = mapped_column(String(255), primary_key=True)
     annotation: Mapped[dict[str, Any]] = mapped_column(JSONB)
 
-    __table_args__ = (
-        Index("ix_lila_yolo_file_name", "file_name"),
-    )
-
+    __table_args__ = (Index("ix_lila_yolo_file_name", "file_name"),)
 
 
 class SuccessfulUploads(Base):
@@ -323,5 +333,3 @@ class SuccessfulUploads(Base):
         UniqueConstraint("identifier", "source", name="uq_identifier_source"),
         Index("ix_successful_uploads_source", "source"),
     )
-
-

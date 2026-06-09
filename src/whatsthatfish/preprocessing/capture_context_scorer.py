@@ -18,6 +18,7 @@ If this heuristic underperforms on a manually-labeled spot-check sample,
 swap in a CLIP-based scorer with the same return shape — the table schema
 already accommodates it.
 """
+
 from __future__ import annotations
 
 import cv2
@@ -35,7 +36,6 @@ from typing import Any
 # above 0.25 is considered underwater
 
 
-
 class ContextScorer:
     def __init__(self):
         self._std_chrom: float = 0.015
@@ -43,7 +43,7 @@ class ContextScorer:
     @staticmethod
     def compute_channel_means(img_bgr: np.ndarray) -> tuple[float, float, float]:
         """Per-channel pixel-mean of a BGR image.
-    
+
         Returns (mean_r, mean_g, mean_b) in conventional R-G-B order — note the
         index swap, since OpenCV's native layout is BGR. Means are computed in
         float64 to avoid uint8 overflow on the sum.
@@ -54,8 +54,7 @@ class ContextScorer:
             float(img[..., 1].mean()),  # G — BGR index 1
             float(img[..., 0].mean()),  # B — BGR index 0
         )
-    
-    
+
     def classify_underwater(
         self,
         mean_r: float,
@@ -66,30 +65,29 @@ class ContextScorer:
         Combined channel standard deviation metric to determine what images
         are confidently above water
         """
-    
+
         total = mean_r + mean_g + mean_b
         if total == 0:
             return 0, 0.0  # or surface as unscoreable to the caller
-    
+
         red_chrom = mean_r / total
         blue_chrom = mean_b / total
         green_chrom = mean_g / total
         std_dev = np.std([red_chrom, blue_chrom, green_chrom])
-    
+
         if std_dev < self._std_chrom:
             return 0, std_dev
         elif std_dev < 0.25:
             return 1, std_dev
         else:
             return 2, std_dev
-    
-    
+
     def score_capture_context(
         self,
         image_bytes: bytes,
-    ) -> ValueError | tuple[float, float, float, Any, int]:
+    ) -> tuple[float, float, float, Any, int]:
         """Composite scorer: per-channel means plus underwater verdict.
-    
+
         Returns (mean_r, mean_g, mean_b, is_underwater). The means are stored
         in the DB alongside the verdict so the threshold/rule can be retuned
         later without re-scoring images.
@@ -97,7 +95,7 @@ class ContextScorer:
         arr = np.frombuffer(image_bytes, dtype=np.uint8)
         img_bgr = cv2.imdecode(arr, cv2.IMREAD_COLOR)
         if img_bgr is None:
-            return ValueError("Failed to decode image")
+            raise ValueError("Failed to decode image")
 
         mean_r, mean_g, mean_b = self.compute_channel_means(img_bgr)
         classification, stddev = self.classify_underwater(mean_r, mean_g, mean_b)

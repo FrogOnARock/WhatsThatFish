@@ -20,8 +20,24 @@ from whatsthatfish.inference.inat_bbox_proposal import InatBoundingBox
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
-BBOX_A = {"x1": 10.0, "y1": 15.0, "x2": 80.0, "y2": 70.0, "conf": 0.85, "w": 100.0, "h": 80.0}
-BBOX_B = {"x1": 5.0, "y1": 5.0, "x2": 40.0, "y2": 40.0, "conf": 0.60, "w": 100.0, "h": 80.0}
+BBOX_A = {
+    "x1": 10.0,
+    "y1": 15.0,
+    "x2": 80.0,
+    "y2": 70.0,
+    "conf": 0.85,
+    "w": 100.0,
+    "h": 80.0,
+}
+BBOX_B = {
+    "x1": 5.0,
+    "y1": 5.0,
+    "x2": 40.0,
+    "y2": 40.0,
+    "conf": 0.60,
+    "w": 100.0,
+    "h": 80.0,
+}
 
 
 def _make_image_bytes(w: int = 100, h: int = 80) -> bytes:
@@ -46,8 +62,10 @@ def _make_img_files(tmp_path: Path, count: int) -> list[dict]:
 @pytest.fixture
 def tmp_inat(tmp_path):
     """InatBoundingBox with all paths under tmp_path; model and DB mocked."""
-    with patch("whatsthatfish.inference.inat_bbox_proposal.BoundingBoxInference"), \
-         patch("whatsthatfish.inference.inat_bbox_proposal.get_session_factory"):
+    with (
+        patch("whatsthatfish.inference.inat_bbox_proposal.BoundingBoxInference"),
+        patch("whatsthatfish.inference.inat_bbox_proposal.get_session_factory"),
+    ):
         obj = InatBoundingBox(
             mode="classification",
             img_folder_path="images",
@@ -74,15 +92,20 @@ def _read_wal(tmp_path: Path) -> list[dict]:
 # log_bbox — WAL writing and JSON serialization
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestLogBbox:
 
+class TestLogBbox:
     def test_writes_header_on_empty_file(self, tmp_inat, tmp_path):
         _open_wal(tmp_inat, tmp_path)
         tmp_inat.log_bbox([("uuid-001", BBOX_A)])
         tmp_inat.wal_file.flush()
 
         rows = _read_wal(tmp_path)
-        assert set(rows[0].keys()) == {"photo_uuid", "proposed_bbox", "annotation", "conf"}
+        assert set(rows[0].keys()) == {
+            "photo_uuid",
+            "proposed_bbox",
+            "annotation",
+            "conf",
+        }
 
     def test_proposed_bbox_is_valid_json(self, tmp_inat, tmp_path):
         _open_wal(tmp_inat, tmp_path)
@@ -123,11 +146,13 @@ class TestLogBbox:
 
     def test_batch_writes_all_rows(self, tmp_inat, tmp_path):
         _open_wal(tmp_inat, tmp_path)
-        tmp_inat.log_bbox([
-            ("uuid-001", BBOX_A),
-            ("uuid-002", BBOX_B),
-            ("uuid-003", None),
-        ])
+        tmp_inat.log_bbox(
+            [
+                ("uuid-001", BBOX_A),
+                ("uuid-002", BBOX_B),
+                ("uuid-003", None),
+            ]
+        )
         tmp_inat.wal_file.flush()
 
         rows = _read_wal(tmp_path)
@@ -155,8 +180,8 @@ class TestLogBbox:
 # JSONB roundtrip — write then deserialize as write_to_db would
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestJsonbRoundtrip:
 
+class TestJsonbRoundtrip:
     def _roundtrip(self, tmp_path: Path) -> list[dict]:
         rows = _read_wal(tmp_path)
         for row in rows:
@@ -202,8 +227,8 @@ class TestJsonbRoundtrip:
 # run_inference — batching and coverage
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestRunInference:
 
+class TestRunInference:
     def test_single_batch_processes_all_images(self, tmp_inat, tmp_path):
         img_dict = _make_img_files(tmp_path, 5)
         tmp_inat.model.infer.return_value = [BBOX_A] * 5
@@ -258,8 +283,8 @@ class TestRunInference:
 # _select_photo_uuid
 # ════════════════════════════════════════════════════════════════════════════════
 
-class TestSelectPhotoUuid:
 
+class TestSelectPhotoUuid:
     def _configure_session(self, tmp_inat, db_rows):
         mock_session = MagicMock()
         mock_session.__enter__ = MagicMock(return_value=mock_session)

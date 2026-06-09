@@ -17,14 +17,15 @@ from pathlib import Path
 import aiohttp
 import polars as pl
 from gcloud.aio.storage import Storage as GCSAsyncStorage
-from sqlalchemy import select, func
+from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
 
-from ..config import _get_logger, GCSConfig, S3Config
+from ..config import _get_logger
 from ..database.models import SuccessfulUploads, InatFilteredObservations
-from ..retry import transfer_retry, db_retry
+from ..retry import transfer_retry
 
 logger = _get_logger("PhotoTransfer")
+
 
 class TransferProgressTracker:
     """Tracks completed transfers using a WAL + Postgres pattern.
@@ -54,7 +55,9 @@ class TransferProgressTracker:
         self._data_dir = Path(data_path)
         self._source = source
         self._session_factory = session_factory
-        self._wal_path = self._data_dir / (wal_path or f"{source}_transfer_progress_wal.csv")
+        self._wal_path = self._data_dir / (
+            wal_path or f"{source}_transfer_progress_wal.csv"
+        )
         self._compact_every = compact_every
 
         self._completed: set[str] = set()
@@ -66,13 +69,20 @@ class TransferProgressTracker:
     def load(self) -> set[str]:
         """Load completed transfers from Postgres + replay any WAL entries."""
         with self._session_factory() as session:
-            rows = session.execute(
-                select(SuccessfulUploads.identifier)
-                .where(SuccessfulUploads.source == self._source)
-            ).scalars().all()
+            rows = (
+                session.execute(
+                    select(SuccessfulUploads.identifier).where(
+                        SuccessfulUploads.source == self._source
+                    )
+                )
+                .scalars()
+                .all()
+            )
             self._completed = set(rows)
             if self._completed:
-                logger.info(f"Loaded {len(self._completed):,} completed transfers from DB")
+                logger.info(
+                    f"Loaded {len(self._completed):,} completed transfers from DB"
+                )
 
         wal_count = 0
         if self._wal_path.exists():
@@ -109,10 +119,12 @@ class TransferProgressTracker:
             return
 
         with self._session_factory() as session:
-            session.add_all([
-                SuccessfulUploads(identifier=ident, source=self._source)
-                for ident in self._wal_buffer
-            ])
+            session.add_all(
+                [
+                    SuccessfulUploads(identifier=ident, source=self._source)
+                    for ident in self._wal_buffer
+                ]
+            )
             session.commit()
 
         self._wal_buffer.clear()
@@ -164,7 +176,9 @@ class PhotoTransferPipeline:
         self._semaphore = asyncio.Semaphore(concurrency)
         self._session_factory = session_factory
         self._tracker = TransferProgressTracker(
-            data_path, source="inat", session_factory=session_factory,
+            data_path,
+            source="inat",
+            session_factory=session_factory,
             compact_every=compact_every,
         )
 
@@ -172,8 +186,6 @@ class PhotoTransferPipeline:
         self._transferred: int = 0
         self._failed: int = 0
         self._total: int = 0
-
-
 
     def _load_pending_photos(self) -> pl.DataFrame:
         """Load dataset.parquet and filter out already-completed transfers.
@@ -183,7 +195,10 @@ class PhotoTransferPipeline:
 
         with self._session_factory() as session:
             rows = session.execute(
-                select(InatFilteredObservations.photo_id, InatFilteredObservations.extension)
+                select(
+                    InatFilteredObservations.photo_id,
+                    InatFilteredObservations.extension,
+                )
             ).all()
             df = pl.DataFrame(rows, schema=["photo_id", "extension"])
 
@@ -235,7 +250,9 @@ class PhotoTransferPipeline:
             prefix = self._gcs_config.prefixes["gcs_train"]
 
             # Upload to GCS
-            await gcs_client.upload(bucket_name, f"{prefix}/{photo_id}.{extension}", image_bytes)
+            await gcs_client.upload(
+                bucket_name, f"{prefix}/{photo_id}.{extension}", image_bytes
+            )
             return True
 
         except aiohttp.ClientResponseError as e:
@@ -245,7 +262,6 @@ class PhotoTransferPipeline:
         except Exception as e:
             logger.warning(f"Error transferring photo {photo_id}: {e}")
             return False
-
 
     async def _transfer_with_tracking(
         self,

@@ -2,7 +2,8 @@ import argparse
 import logging
 from pathlib import Path
 import matplotlib
-matplotlib.use('Agg')
+
+matplotlib.use("Agg")
 from ultralytics import YOLO
 from dotenv import load_dotenv
 from ray import tune
@@ -12,6 +13,7 @@ from dataclasses import dataclass
 import shutil
 
 from ..models.loaders.od_dataloader import CustomDetectionTrainer
+
 load_dotenv()
 
 logger = logging.getLogger(__name__)
@@ -59,28 +61,31 @@ class Dataset(str, Enum):
     LC1 = "lc1"
     LC2 = "lc2"
 
+
 @dataclass
 class TrainType(str, Enum):
     FULL = "full"
     TUNE = "tune"
 
-class ObjectDetectionTrain:
 
+class ObjectDetectionTrain:
     # Input weights and output filename per dataset
     _WEIGHTS: dict[str, tuple[str, str]] = {
-        "lila": ("yolo11l.pt",   "od_best.pt"),
-        "lc1":  ("od_best.pt",   "lc1_best.pt"),
-        "lc2":  ("lc1_best.pt",  "lc2_best.pt"),
+        "lila": ("yolo11l.pt", "od_best.pt"),
+        "lc1": ("od_best.pt", "lc1_best.pt"),
+        "lc2": ("lc1_best.pt", "lc2_best.pt"),
     }
 
-    def __init__(self,
-                 dataset: Dataset,
-                 train_type: TrainType,
-                 config_path: str = Path(__file__).parent.parent / "config",
-                 class_config: str = "class_config.yaml",
-                 weights_path: str = Path(__file__).parent.parent / "weights",
-                 param_tuning_path: str = "param_space_config.yaml",
-                 restore_path: str = None):
+    def __init__(
+        self,
+        dataset: Dataset,
+        train_type: TrainType,
+        config_path: str = Path(__file__).parent.parent / "config",
+        class_config: str = "class_config.yaml",
+        weights_path: str = Path(__file__).parent.parent / "weights",
+        param_tuning_path: str = "param_space_config.yaml",
+        restore_path: str = None,
+    ):
 
         self.config_path = Path(config_path)
         self.dataset = dataset.value
@@ -92,7 +97,11 @@ class ObjectDetectionTrain:
         self.restore_path = restore_path
         self.input_weights, self.output_weights = self._WEIGHTS[self.dataset]
         self.tune_param_space = load_param_space(self.param_path, self.dataset)
-        logger.info("ObjectDetectionTrain initialised: dataset=%s train_type=%s", self.dataset, self.train_type)
+        logger.info(
+            "ObjectDetectionTrain initialised: dataset=%s train_type=%s",
+            self.dataset,
+            self.train_type,
+        )
 
     def train_fn(self, config, epochs: int = 20, img_size: int = 640):
         logger.info("tune trial starting: %s", config)
@@ -113,13 +122,9 @@ class ObjectDetectionTrain:
             verbose=False,
         )
 
-
     def tune_model(self, num_samples: int = 5):
 
-        failure_config = tune.FailureConfig(
-            max_failures=3,
-            fail_fast=False
-        )
+        failure_config = tune.FailureConfig(max_failures=3, fail_fast=False)
 
         if self.restore_path and Path(self.restore_path).exists():
             tuner = tune.Tuner.restore(
@@ -128,7 +133,7 @@ class ObjectDetectionTrain:
                 param_space=self.tune_param_space,
                 resume_unfinished=True,
                 resume_errored=False,
-                restart_errored=False
+                restart_errored=False,
             )
         else:
             tuner = tune.Tuner(
@@ -140,17 +145,19 @@ class ObjectDetectionTrain:
                 ),
                 param_space=self.tune_param_space,
                 run_config=tune.RunConfig(
-                    failure_config=failure_config,
-                    name=f"{self.train_type}_experiment"
-                )
+                    failure_config=failure_config, name=f"{self.train_type}_experiment"
+                ),
             )
 
         results = tuner.fit()
         return results
 
-
     def train_final(self):
-        logger.info("Starting full training run: dataset=%s weights=%s", self.dataset, self.input_weights)
+        logger.info(
+            "Starting full training run: dataset=%s weights=%s",
+            self.dataset,
+            self.input_weights,
+        )
         CustomDetectionTrainer.max_samples = None
         CustomDetectionTrainer.dataset = self.dataset
         model = YOLO(model=self.weights_path / self.input_weights)
@@ -173,8 +180,10 @@ class ObjectDetectionTrain:
             self.train_final()
 
 
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s — %(message)s")
+if __name__ == "__main__":
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s — %(message)s"
+    )
 
     parser = argparse.ArgumentParser(
         description="Train or tune the YOLO object detection model",
@@ -216,8 +225,3 @@ if __name__ == '__main__':
         restore_path=args.restore_path,
     )
     od_train.run()
-
-
-
-
-
