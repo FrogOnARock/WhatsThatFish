@@ -12,12 +12,12 @@ class ZeroIndexClassification:
         self.session = session_factory
 
     def _select_classification_taxa(self):
-        logger.info("Retrieving classification subfamily, genus, species.")
+        logger.info("Retrieving classification family, genus, species.")
         with self.session() as session:
             rows = session.execute(
                 select(
                     InatClassificationDataset.photo_uuid,
-                    InatClassificationDataset.subfamily,
+                    InatClassificationDataset.family,
                     InatClassificationDataset.genus,
                     InatClassificationDataset.species,
                 )
@@ -26,7 +26,7 @@ class ZeroIndexClassification:
         return [
             {
                 "photo_uuid": r.photo_uuid,
-                "subfamily": r.subfamily,
+                "family": r.family,
                 "genus": r.genus,
                 "species": r.species,
             }
@@ -35,14 +35,18 @@ class ZeroIndexClassification:
 
     def _zero_index(self, rows):
         logger.info(
-            "Zero indexing subfamily, genus, species for load to inat_classification_dataset."
+            "Zero indexing family, genus, species for load to inat_classification_dataset."
         )
-        subfamily_list = list(set([r["subfamily"] for r in rows]))
-        genus_list = list(set([r["genus"] for r in rows]))
-        species_list = list(set([r["species"] for r in rows]))
+        # sorted() — not bare set() — so the taxon→index map is reproducible across
+        # runs instead of depending on Python's per-process hash seed. Safe for the
+        # from-scratch reindex we do today; a future warm-start path must instead seed
+        # from the checkpoint's pinned map and only append new taxa (never re-sort all).
+        family_list = sorted(set(r["family"] for r in rows))
+        genus_list = sorted(set(r["genus"] for r in rows))
+        species_list = sorted(set(r["species"] for r in rows))
 
         for r in rows:
-            r["zero_indexed_subfamily"] = subfamily_list.index(r["subfamily"])
+            r["zero_indexed_family"] = family_list.index(r["family"])
             r["zero_indexed_genus"] = genus_list.index(r["genus"])
             r["zero_indexed_species"] = species_list.index(r["species"])
 
@@ -53,7 +57,7 @@ class ZeroIndexClassification:
         rows_to_insert = [
             {
                 "photo_uuid": r["photo_uuid"],
-                "zero_indexed_subfamily": r["zero_indexed_subfamily"],
+                "zero_indexed_family": r["zero_indexed_family"],
                 "zero_indexed_genus": r["zero_indexed_genus"],
                 "zero_indexed_species": r["zero_indexed_species"],
             }
@@ -65,7 +69,7 @@ class ZeroIndexClassification:
             insert_stmt = stmt.on_conflict_do_update(
                 index_elements=[InatClassificationDataset.photo_uuid],
                 set_={
-                    "zero_indexed_subfamily": stmt.excluded.zero_indexed_subfamily,
+                    "zero_indexed_family": stmt.excluded.zero_indexed_family,
                     "zero_indexed_genus": stmt.excluded.zero_indexed_genus,
                     "zero_indexed_species": stmt.excluded.zero_indexed_species,
                 },

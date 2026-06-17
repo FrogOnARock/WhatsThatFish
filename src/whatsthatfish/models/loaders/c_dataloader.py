@@ -10,11 +10,11 @@ def collate_fn(original_batch):
 
     img = torch.stack([item[0] for item in original_batch])
     labels = {
-        "subfamily": torch.tensor(
-            [item[1].get("subfamily") for item in original_batch]
-        ),
+        "family": torch.tensor([item[1].get("family") for item in original_batch]),
         "genus": torch.tensor([item[1].get("genus") for item in original_batch]),
         "species": torch.tensor([item[1].get("species") for item in original_batch]),
+        # Per-sample topped-up flag → lets metrics split geographic vs IID val macro.
+        "topup": torch.tensor([item[1].get("topup", 0) for item in original_batch]),
     }
     return img, labels
 
@@ -27,7 +27,7 @@ def collate_fn_ultralytics(original_batch):
 
 
 def class_dataloader(
-    mode: str = "custom", split: str = "train", batch: int = 16, max_samples: int = None
+    mode: str = "custom", split: str = "train", batch: int = 16, tuning: bool = False
 ):
 
     base_transform = [
@@ -44,10 +44,10 @@ def class_dataloader(
             v2.ColorJitter(brightness=0.4, contrast=0.2, hue=0.015, saturation=0.3),
             v2.RandomAdjustSharpness(sharpness_factor=2, p=0.5),
         ]
-        transforms = add_transforms + base_transform
+        transforms = [LetterboxResize(320)] + add_transforms + [AddMultiChannel()]
         transforms_composed = v2.Compose(transforms)
         class_dataset = ClassificationDataset(
-            split=split, transform=transforms_composed, max_samples=max_samples
+            split=split, transform=transforms_composed, tuning=tuning
         )
         weights = [max(row.uiqm or 0.0, 1e-6) for row in class_dataset.data]
         sampler = WeightedRandomSampler(
@@ -58,7 +58,7 @@ def class_dataloader(
     else:
         transforms_composed = v2.Compose(base_transform)
         class_dataset = ClassificationDataset(
-            split=split, transform=transforms_composed, max_samples=max_samples
+            split=split, transform=transforms_composed, tuning=tuning
         )
         sampler = None
 
@@ -71,8 +71,8 @@ def class_dataloader(
         dataset=class_dataset,
         sampler=sampler,
         batch_size=batch,
-        num_workers=16,
-        prefetch_factor=2,
+        num_workers=8,
+        prefetch_factor=4,
         collate_fn=collate_function,
         shuffle=False,
         pin_memory=True,

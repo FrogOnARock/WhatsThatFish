@@ -638,6 +638,28 @@
   50%      { opacity: 1;    transform: scale(1.1);  }
 }
 
+.standard_msg {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: calc(100% - 28px);
+  text-align: center;
+  background: oklch(0.18 0.04 240 / 0.78);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+
+
+
 /* ------------------------------------------------------------------ */
 /* History page — Field log / Pokedex                                  */
 /* ------------------------------------------------------------------ */
@@ -826,6 +848,37 @@
   font-style: italic;
   border: 1px dashed var(--line-strong);
   border-radius: var(--radius);
+}
+
+/* pagination */
+.pdx-pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+}
+.pdx-pager button {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.pdx-pager button:hover:not(:disabled) {
+  background: var(--bg-2);
+  border-color: var(--line-strong);
+}
+.pdx-pager button:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 /* detail panel */

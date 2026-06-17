@@ -475,3 +475,380 @@
 2026-06-04 16:37:54,058 - INFO - Training complete — 3 epochs in 0.0s
 2026-06-04 16:37:54,099 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_register_experiment_appen0/experiments.csv
 2026-06-04 16:37:54,099 - INFO - Experiment registered → /tmp/claude-1000/pytest-of-frogonarock/pytest-5/test_register_experiment_appen0/experiments.csv
+2026-06-09 20:04:37,201 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-3/test_writes_file0/run/last.pt
+2026-06-09 20:04:37,357 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-3/test_checkpoint_contains_full_0/run/best.pt
+2026-06-09 20:04:37,525 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-3/test_model_state_loads_into_fr0/run/best.pt
+2026-06-09 20:04:38,020 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-09 20:04:38,069 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-09 20:04:38,115 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-09 20:04:38,197 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-3/test_register_experiment_appen0/experiments.csv
+2026-06-09 20:04:38,197 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-3/test_register_experiment_appen0/experiments.csv
+2026-06-10 09:56:33,289 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_writes_file0/run/last.pt
+2026-06-10 09:56:33,534 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_checkpoint_contains_full_0/run/best.pt
+2026-06-10 09:56:33,686 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_model_state_loads_into_fr0/run/best.pt
+2026-06-10 09:56:34,147 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-10 09:56:34,262 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-10 09:56:34,323 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-10 09:56:34,425 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-4/test_register_experiment_appen0/experiments.csv
+2026-06-10 09:56:34,425 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-4/test_register_experiment_appen0/experiments.csv
+2026-06-10 09:56:56,012 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-10 09:58:01,410 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_writes_file0/run/last.pt
+2026-06-10 09:58:01,457 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_checkpoint_contains_full_0/run/best.pt
+2026-06-10 09:58:01,521 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_model_state_loads_into_fr0/run/best.pt
+2026-06-10 09:58:01,877 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-10 09:58:01,877 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 09:58:01,893 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-10 09:58:01,921 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-10 09:58:01,922 - INFO - Epoch 0 finished in 0.0s
+2026-06-10 09:58:01,922 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-10 09:58:01,922 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 09:58:01,959 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-10 09:58:01,985 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-10 09:58:01,985 - INFO - Epoch 1 finished in 0.1s
+2026-06-10 09:58:01,985 - INFO - Beginning epoch 2. Total elapsed: 0.1s
+2026-06-10 09:58:01,985 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 09:58:02,012 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-10 09:58:02,012 - INFO - Epoch 2 finished in 0.0s
+2026-06-10 09:58:02,012 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-6/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-10 09:58:02,012 - INFO - Training complete — 3 epochs in 0.1s
+2026-06-10 09:58:02,108 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-10 09:58:02,112 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 09:58:02,189 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_registered_metrics_come_f0/run/last.pt
+2026-06-10 09:58:02,257 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_registered_metrics_come_f0/run/best.pt
+2026-06-10 09:58:02,257 - INFO - Epoch 0 finished in 0.1s
+2026-06-10 09:58:02,257 - INFO - Beginning epoch 1. Total elapsed: 0.1s
+2026-06-10 09:58:02,257 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 09:58:02,279 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_registered_metrics_come_f0/run/last.pt
+2026-06-10 09:58:02,296 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_registered_metrics_come_f0/run/best.pt
+2026-06-10 09:58:02,297 - INFO - Epoch 1 finished in 0.0s
+2026-06-10 09:58:02,297 - INFO - Beginning epoch 2. Total elapsed: 0.2s
+2026-06-10 09:58:02,297 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 09:58:02,315 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_registered_metrics_come_f0/run/last.pt
+2026-06-10 09:58:02,315 - INFO - Epoch 2 finished in 0.0s
+2026-06-10 09:58:02,315 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-6/test_registered_metrics_come_f0/experiments.csv
+2026-06-10 09:58:02,315 - INFO - Training complete — 3 epochs in 0.2s
+2026-06-10 09:58:02,362 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-10 09:58:02,362 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 09:58:02,387 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-10 09:58:02,426 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-10 09:58:02,426 - INFO - Epoch 0 finished in 0.1s
+2026-06-10 09:58:02,426 - INFO - Beginning epoch 1. Total elapsed: 0.1s
+2026-06-10 09:58:02,426 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 09:58:02,443 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-10 09:58:02,461 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-10 09:58:02,461 - INFO - Epoch 1 finished in 0.0s
+2026-06-10 09:58:02,461 - INFO - Beginning epoch 2. Total elapsed: 0.1s
+2026-06-10 09:58:02,461 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 09:58:02,481 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-6/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-10 09:58:02,482 - INFO - Epoch 2 finished in 0.0s
+2026-06-10 09:58:02,482 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-6/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-10 09:58:02,482 - INFO - Training complete — 3 epochs in 0.1s
+2026-06-10 09:58:02,580 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-6/test_register_experiment_appen0/experiments.csv
+2026-06-10 09:58:02,580 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-6/test_register_experiment_appen0/experiments.csv
+2026-06-10 15:28:51,013 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_writes_file0/run/last.pt
+2026-06-10 15:28:51,045 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_checkpoint_contains_full_0/run/best.pt
+2026-06-10 15:28:51,083 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_model_state_loads_into_fr0/run/best.pt
+2026-06-10 15:28:51,143 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-10 15:28:51,143 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 15:28:51,150 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-10 15:28:51,157 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-10 15:28:51,157 - INFO - Epoch 0 finished in 0.0s
+2026-06-10 15:28:51,157 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-10 15:28:51,157 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 15:28:51,170 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-10 15:28:51,180 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-10 15:28:51,180 - INFO - Epoch 1 finished in 0.0s
+2026-06-10 15:28:51,180 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-10 15:28:51,180 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 15:28:51,190 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-10 15:28:51,190 - INFO - Epoch 2 finished in 0.0s
+2026-06-10 15:28:51,190 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-10 15:28:51,190 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-10 15:28:51,226 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-10 15:28:51,226 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 15:28:51,233 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-10 15:28:51,241 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/best.pt
+2026-06-10 15:28:51,241 - INFO - Epoch 0 finished in 0.0s
+2026-06-10 15:28:51,241 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-10 15:28:51,241 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 15:28:51,250 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-10 15:28:51,260 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/best.pt
+2026-06-10 15:28:51,260 - INFO - Epoch 1 finished in 0.0s
+2026-06-10 15:28:51,261 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-10 15:28:51,261 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 15:28:51,270 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-10 15:28:51,270 - INFO - Epoch 2 finished in 0.0s
+2026-06-10 15:28:51,271 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/experiments.csv
+2026-06-10 15:28:51,271 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-10 15:28:51,292 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-10 15:28:51,292 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 15:28:51,299 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-10 15:28:51,306 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-10 15:28:51,306 - INFO - Epoch 0 finished in 0.0s
+2026-06-10 15:28:51,306 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-10 15:28:51,306 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 15:28:51,313 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-10 15:28:51,321 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-10 15:28:51,321 - INFO - Epoch 1 finished in 0.0s
+2026-06-10 15:28:51,321 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-10 15:28:51,321 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, subfamily=0.1000, total=0.3000
+2026-06-10 15:28:51,329 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-10 15:28:51,329 - INFO - Epoch 2 finished in 0.0s
+2026-06-10 15:28:51,329 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-10 15:28:51,329 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-10 15:28:51,370 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_register_experiment_appen0/experiments.csv
+2026-06-10 15:28:51,370 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_register_experiment_appen0/experiments.csv
+2026-06-15 19:51:24,756 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_writes_file0/run/last.pt
+2026-06-15 19:51:24,784 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_checkpoint_contains_full_0/run/best.pt
+2026-06-15 19:51:24,816 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_model_state_loads_into_fr0/run/best.pt
+2026-06-15 19:51:24,861 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-15 19:51:24,861 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 19:51:24,869 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-15 19:51:24,877 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-15 19:51:24,877 - INFO - Epoch 0 finished in 0.0s
+2026-06-15 19:51:24,877 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-15 19:51:24,877 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 19:51:24,888 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-15 19:51:24,898 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-15 19:51:24,898 - INFO - Epoch 1 finished in 0.0s
+2026-06-15 19:51:24,898 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-15 19:51:24,898 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 19:51:24,909 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-15 19:51:24,909 - INFO - Epoch 2 finished in 0.0s
+2026-06-15 19:51:24,909 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-15 19:51:24,909 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-15 19:51:24,936 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-15 19:51:24,936 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 19:51:24,943 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-15 19:51:24,951 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/best.pt
+2026-06-15 19:51:24,951 - INFO - Epoch 0 finished in 0.0s
+2026-06-15 19:51:24,951 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-15 19:51:24,951 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 19:51:24,961 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-15 19:51:24,971 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/best.pt
+2026-06-15 19:51:24,972 - INFO - Epoch 1 finished in 0.0s
+2026-06-15 19:51:24,972 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-15 19:51:24,972 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 19:51:24,982 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/run/last.pt
+2026-06-15 19:51:24,982 - INFO - Epoch 2 finished in 0.0s
+2026-06-15 19:51:24,982 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_registered_metrics_come_f0/experiments.csv
+2026-06-15 19:51:24,982 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-15 19:51:25,003 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-15 19:51:25,003 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 19:51:25,011 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-15 19:51:25,019 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-15 19:51:25,019 - INFO - Epoch 0 finished in 0.0s
+2026-06-15 19:51:25,019 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-15 19:51:25,019 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 19:51:25,029 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-15 19:51:25,040 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-15 19:51:25,040 - INFO - Epoch 1 finished in 0.0s
+2026-06-15 19:51:25,040 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-15 19:51:25,040 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 19:51:25,050 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-15 19:51:25,050 - INFO - Epoch 2 finished in 0.0s
+2026-06-15 19:51:25,050 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-15 19:51:25,050 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-15 19:51:25,091 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_register_experiment_appen0/experiments.csv
+2026-06-15 19:51:25,091 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-0/test_register_experiment_appen0/experiments.csv
+2026-06-15 20:37:59,774 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_writes_file0/run/last.pt
+2026-06-15 20:37:59,805 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_checkpoint_contains_full_0/run/best.pt
+2026-06-15 20:37:59,842 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_model_state_loads_into_fr0/run/best.pt
+2026-06-15 20:37:59,900 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-15 20:37:59,900 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 20:37:59,913 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-15 20:37:59,925 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-15 20:37:59,925 - INFO - Epoch 0 finished in 0.0s
+2026-06-15 20:37:59,925 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-15 20:37:59,925 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 20:37:59,943 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-15 20:37:59,954 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-06-15 20:37:59,954 - INFO - Epoch 1 finished in 0.0s
+2026-06-15 20:37:59,954 - INFO - Beginning epoch 2. Total elapsed: 0.1s
+2026-06-15 20:37:59,954 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 20:37:59,965 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-06-15 20:37:59,965 - INFO - Epoch 2 finished in 0.0s
+2026-06-15 20:37:59,965 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-1/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-06-15 20:37:59,965 - INFO - Training complete — 3 epochs in 0.1s
+2026-06-15 20:38:00,006 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-15 20:38:00,006 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 20:38:00,013 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/last.pt
+2026-06-15 20:38:00,020 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/best.pt
+2026-06-15 20:38:00,021 - INFO - Epoch 0 finished in 0.0s
+2026-06-15 20:38:00,021 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-15 20:38:00,021 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 20:38:00,031 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/last.pt
+2026-06-15 20:38:00,041 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/best.pt
+2026-06-15 20:38:00,041 - INFO - Epoch 1 finished in 0.0s
+2026-06-15 20:38:00,041 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-15 20:38:00,041 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 20:38:00,051 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/run/last.pt
+2026-06-15 20:38:00,051 - INFO - Epoch 2 finished in 0.0s
+2026-06-15 20:38:00,051 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-1/test_registered_metrics_come_f0/experiments.csv
+2026-06-15 20:38:00,051 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-15 20:38:00,072 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-06-15 20:38:00,072 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 20:38:00,078 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-15 20:38:00,085 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-15 20:38:00,085 - INFO - Epoch 0 finished in 0.0s
+2026-06-15 20:38:00,085 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-06-15 20:38:00,085 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 20:38:00,096 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-15 20:38:00,106 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-06-15 20:38:00,106 - INFO - Epoch 1 finished in 0.0s
+2026-06-15 20:38:00,106 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-06-15 20:38:00,106 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-06-15 20:38:00,116 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-06-15 20:38:00,116 - INFO - Epoch 2 finished in 0.0s
+2026-06-15 20:38:00,116 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-1/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-06-15 20:38:00,116 - INFO - Training complete — 3 epochs in 0.0s
+2026-06-15 20:38:00,156 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-1/test_register_experiment_appen0/experiments.csv
+2026-06-15 20:38:00,156 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-1/test_register_experiment_appen0/experiments.csv
+2026-06-15 20:38:00,157 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.0000
+2026-06-15 20:38:00,157 - INFO - Current gate values: 
+Time gate: 0.5000 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.0200 | Performance gate: 0.5000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.0400 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.0600 | Performance gate: 0.5000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.0800 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.5000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.1200 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.1400 | Performance gate: 0.5000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.1600 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.1800 | Performance gate: 0.5000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.2200 | Performance gate: 0.5000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.2400 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.2600 | Performance gate: 0.5000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.2800 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.5000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.3200 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.3400 | Performance gate: 0.5000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.3600 | Performance gate: 0.0000
+2026-06-15 20:38:00,158 - INFO - Current gate values: 
+Time gate: 0.3800 | Performance gate: 0.5000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.4000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.5000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.6000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.7000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.8000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.9000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 1.0000 | Performance gate: 0.0000
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.9500
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.0500 | Performance gate: 0.9500
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.9500
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.1500 | Performance gate: 0.9500
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.2500 | Performance gate: 0.9500
+2026-06-15 20:38:00,159 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.0200 | Performance gate: 0.0000
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.0400 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.0600 | Performance gate: 0.0000
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.0800 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.0000
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.1200 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.1400 | Performance gate: 0.0000
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.1600 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.1800 | Performance gate: 0.0000
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.2200 | Performance gate: 0.0000
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.2400 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.2600 | Performance gate: 0.0000
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.2800 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.0000
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.3200 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.3400 | Performance gate: 0.0000
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.3600 | Performance gate: 0.9500
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.3800 | Performance gate: 0.0000
+2026-06-15 20:38:00,160 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 1.0000
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.0500 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.1500 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.2500 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.0500 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.1500 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.2500 | Performance gate: 0.9500
+2026-06-15 20:38:00,161 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.9500

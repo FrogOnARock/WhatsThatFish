@@ -27,7 +27,7 @@ class ClassificationMetrics:
     Outputs per epoch (written to output_dir):
       - metrics_epoch_{n}.html  — sortable per-class table (accuracy/precision/recall/F1/support)
                                    with top-3 and top-5 summary at the top
-      - sunburst_epoch_{n}.html — Plotly hierarchy: subfamily → genus → species,
+      - sunburst_epoch_{n}.html — Plotly hierarchy: family → genus → species,
                                    sector size = val sample count, color = F1
       - pr_curves_epoch_{n}.png — macro-averaged PR curves for each head
     """
@@ -37,6 +37,8 @@ class ClassificationMetrics:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         sf = session_factory or get_session_factory()
         self._taxonomy = self._load_taxonomy(sf)
+        self.sub_gate = 0.0
+        self.genus_gate = 0.0
         self.reset()
 
     # ------------------------------------------------------------------
@@ -44,22 +46,31 @@ class ClassificationMetrics:
     # ------------------------------------------------------------------
 
     def reset(self):
-        self._logits: dict[str, list] = {"species": [], "genus": [], "subfamily": []}
-        self._targets: dict[str, list] = {"species": [], "genus": [], "subfamily": []}
+        self._logits: dict[str, list] = {"species": [], "genus": [], "family": []}
+        self._targets: dict[str, list] = {"species": [], "genus": [], "family": []}
+        # Per-sample topped-up flag (1 = IID top-up, 0 = geographic val).
+        self._topup: list = []
 
     def update(
         self,
         out_species: torch.Tensor,
         out_genus: torch.Tensor,
-        out_subfamily: torch.Tensor,
+        out_family: torch.Tensor,
         target: dict,
     ):
         self._logits["species"].append(out_species.cpu())
         self._logits["genus"].append(out_genus.cpu())
-        self._logits["subfamily"].append(out_subfamily.cpu())
+        self._logits["family"].append(out_family.cpu())
         self._targets["species"].append(target["species"].cpu())
         self._targets["genus"].append(target["genus"].cpu())
-        self._targets["subfamily"].append(target["subfamily"].cpu())
+        self._targets["family"].append(target["family"].cpu())
+        # Absent (e.g. legacy callers) → treat the whole batch as geographic val.
+        topup = target.get("topup")
+        self._topup.append(
+            topup.cpu()
+            if topup is not None
+            else torch.zeros_like(target["species"].cpu())
+        )
 
     # ------------------------------------------------------------------
     # Entry point
@@ -71,27 +82,79 @@ class ClassificationMetrics:
 
         metrics_dfs = {
             head: self._per_class_metrics(logits[head], targets[head])
-            for head in ("species", "genus", "subfamily")
+            for head in ("species", "genus", "family")
         }
 
         topk = {
+            "top1_species": self._top_k_accuracy(
+                logits["species"], targets["species"], 1
+            ),
             "top3_species": self._top_k_accuracy(
                 logits["species"], targets["species"], 3
             ),
             "top5_species": self._top_k_accuracy(
                 logits["species"], targets["species"], 5
             ),
+            "top1_genus": self._top_k_accuracy(logits["genus"], targets["genus"], 1),
             "top3_genus": self._top_k_accuracy(logits["genus"], targets["genus"], 3),
+            "top1_family": self._top_k_accuracy(logits["family"], targets["family"], 1),
+        }
+
+        # Macro (per-class average) of the stated targets, split three ways by the
+        # topped-up flag so the headline isn't contaminated by IID top-up rows:
+        #   macro_*  — all val (kept for backward-compat / experiments.csv)
+        #   geo_*    — pure held-out geographic val  ← the honest generalization number
+        #   topup_*  — IID top-up rows (rare-class coverage; NOT generalization)
+        topup = (
+            torch.cat(self._topup)
+            if self._topup
+            else torch.zeros(targets["species"].shape[0], dtype=torch.long)
+        )
+        geo_mask = topup == 0
+        topup_mask = topup == 1
+
+        macro = self._macro_block(logits, targets, None, "macro")
+        geo = self._macro_block(logits, targets, geo_mask, "geo")
+        tu = self._macro_block(logits, targets, topup_mask, "topup")
+        counts = {
+            "geo_n": int(geo_mask.sum()),
+            "topup_n": int(topup_mask.sum()),
+            "geo_classes": int(targets["species"][geo_mask].unique().numel())
+            if bool(geo_mask.any())
+            else 0,
+            "topup_classes": int(targets["species"][topup_mask].unique().numel())
+            if bool(topup_mask.any())
+            else 0,
         }
 
         consistency = self._hierarchical_consistency(logits, targets)
 
-        self._html_table(metrics_dfs, topk, consistency, epoch)
+        self.sub_gate, self.genus_gate = self._lc_gate(metrics_dfs)
+        self._html_table(metrics_dfs, topk, macro, geo, tu, counts, consistency, epoch)
         self._sunburst(metrics_dfs, epoch)
         self._pr_curves(logits, targets, epoch)
 
         self.reset()
-        return {**topk, **consistency}
+        return {**topk, **macro, **geo, **tu, **consistency}
+
+    # ------------------------------------------------------------------
+    # Learning Curriculum Gate
+    # ------------------------------------------------------------------
+
+    def _lc_gate(self, metrics_df: dict) -> tuple[float, float]:
+
+        sub_df = metrics_df["family"]
+        genus_df = metrics_df["genus"]
+
+        family_gate = len(
+            sub_df[(sub_df["recall"] > 0.6) & (sub_df["f1"] > 0.6)]
+        ) / len(sub_df)
+
+        genus_gate = len(
+            genus_df[(genus_df["recall"] > 0.6) & (genus_df["f1"] > 0.6)]
+        ) / len(genus_df)
+
+        return float(family_gate), float(genus_gate)
 
     # ------------------------------------------------------------------
     # Metrics
@@ -126,8 +189,42 @@ class ClassificationMetrics:
         self, logits: torch.Tensor, targets: torch.Tensor, k: int
     ) -> float:
         top_k = torch.topk(logits, k, dim=1).indices
+        # Check if any of the tensors are equal to each other: [0, 0, 1, 0, 0] & [0, 0, 1, 0, 0] for example.
         correct = top_k.eq(targets.unsqueeze(1).expand_as(top_k))
         return round(correct.any(dim=1).float().mean().item(), 4)
+
+    def _macro_top_k_accuracy(
+        self, logits: torch.Tensor, targets: torch.Tensor, k: int
+    ) -> float:
+        """Per-class top-k accuracy averaged over classes (macro). Unlike
+        _top_k_accuracy (micro, sample-weighted), every class counts equally so the
+        rare-species tail isn't masked by abundant ones — this matches how the
+        evaluation targets are defined. Classes absent from this split contribute
+        nothing (torch.unique only iterates classes actually present in targets)."""
+        top_k = torch.topk(logits, k, dim=1).indices
+        hit = top_k.eq(targets.unsqueeze(1).expand_as(top_k)).any(dim=1)
+        per_class = [hit[targets == c].float().mean() for c in torch.unique(targets)]
+        return round(torch.stack(per_class).mean().item(), 4)
+
+    def _macro_block(self, logits: dict, targets: dict, mask, prefix: str) -> dict:
+        """The four target metrics (macro Top-1 species/genus/family + Top-3
+        species), optionally restricted to a per-sample boolean `mask`. Returns None
+        for a metric when the masked subset is empty (e.g. no topped-up rows)."""
+
+        def m(head: str, k: int):
+            lg, tg = logits[head], targets[head]
+            if mask is not None:
+                if not bool(mask.any()):
+                    return None
+                lg, tg = lg[mask], tg[mask]
+            return self._macro_top_k_accuracy(lg, tg, k)
+
+        return {
+            f"{prefix}_top1_species": m("species", 1),
+            f"{prefix}_top3_species": m("species", 3),
+            f"{prefix}_top1_genus": m("genus", 1),
+            f"{prefix}_top1_family": m("family", 1),
+        }
 
     def _hierarchical_consistency(self, logits: dict, targets: dict) -> dict:
         """
@@ -139,12 +236,12 @@ class ClassificationMetrics:
 
         Three rates:
           species_wrong_genus_right     — missed species but predicted correct genus
-          species_wrong_subfamily_right — missed species but predicted correct subfamily
-          genus_wrong_subfamily_right   — missed genus but predicted correct subfamily
+          species_wrong_family_right — missed species but predicted correct family
+          genus_wrong_family_right   — missed genus but predicted correct family
         """
         pred_species = logits["species"].argmax(dim=1)
         pred_genus = logits["genus"].argmax(dim=1)
-        pred_subfamily = logits["subfamily"].argmax(dim=1)
+        pred_family = logits["family"].argmax(dim=1)
 
         species_wrong = pred_species != targets["species"]
         genus_wrong = pred_genus != targets["genus"]
@@ -160,11 +257,11 @@ class ClassificationMetrics:
             "species_wrong_genus_right": round(
                 _rate(species_wrong, pred_genus, targets["genus"]), 4
             ),
-            "species_wrong_subfamily_right": round(
-                _rate(species_wrong, pred_subfamily, targets["subfamily"]), 4
+            "species_wrong_family_right": round(
+                _rate(species_wrong, pred_family, targets["family"]), 4
             ),
-            "genus_wrong_subfamily_right": round(
-                _rate(genus_wrong, pred_subfamily, targets["subfamily"]), 4
+            "genus_wrong_family_right": round(
+                _rate(genus_wrong, pred_family, targets["family"]), 4
             ),
         }
 
@@ -175,7 +272,7 @@ class ClassificationMetrics:
     def _sunburst(self, metrics_dfs: dict, epoch: int):
         species_f1 = metrics_dfs["species"].set_index("class_idx")[["f1", "support"]]
         genus_f1 = metrics_dfs["genus"].set_index("class_idx")["f1"].to_dict()
-        subfamily_f1 = metrics_dfs["subfamily"].set_index("class_idx")["f1"].to_dict()
+        family_f1 = metrics_dfs["family"].set_index("class_idx")["f1"].to_dict()
 
         merged = self._taxonomy.merge(
             species_f1, left_on="species_idx", right_index=True, how="left"
@@ -184,29 +281,27 @@ class ClassificationMetrics:
         merged["support"] = merged["support"].fillna(0).astype(int)
 
         genus_support = merged.groupby("genus_idx")["support"].sum().to_dict()
-        subfamily_support = merged.groupby("subfamily_idx")["support"].sum().to_dict()
+        family_support = merged.groupby("family_idx")["support"].sum().to_dict()
 
         ids, labels, parents, values, colors = [], [], [], [], []
 
         for _, row in (
-            self._taxonomy[["subfamily_idx", "subfamily_name"]]
-            .drop_duplicates()
-            .iterrows()
+            self._taxonomy[["family_idx", "family_name"]].drop_duplicates().iterrows()
         ):
-            ids.append(f"sf_{row.subfamily_idx}")
-            labels.append(row.subfamily_name or f"Subfamily {int(row.subfamily_idx)}")
+            ids.append(f"sf_{row.family_idx}")
+            labels.append(row.family_name or f"Family {int(row.family_idx)}")
             parents.append("")
-            values.append(subfamily_support.get(row.subfamily_idx, 0))
-            colors.append(subfamily_f1.get(row.subfamily_idx, 0.0))
+            values.append(family_support.get(row.family_idx, 0))
+            colors.append(family_f1.get(row.family_idx, 0.0))
 
         for _, row in (
-            self._taxonomy[["genus_idx", "genus_name", "subfamily_idx"]]
+            self._taxonomy[["genus_idx", "genus_name", "family_idx"]]
             .drop_duplicates()
             .iterrows()
         ):
             ids.append(f"ge_{row.genus_idx}")
             labels.append(row.genus_name or f"Genus {int(row.genus_idx)}")
-            parents.append(f"sf_{row.subfamily_idx}")
+            parents.append(f"sf_{row.family_idx}")
             values.append(genus_support.get(row.genus_idx, 0))
             colors.append(genus_f1.get(row.genus_idx, 0.0))
 
@@ -246,7 +341,7 @@ class ClassificationMetrics:
         fig, axes = plt.subplots(1, 3, figsize=(18, 6))
         recall_grid = np.linspace(0, 1, 200)
 
-        for ax, head in zip(axes, ("species", "genus", "subfamily")):
+        for ax, head in zip(axes, ("species", "genus", "family")):
             y = targets[head].numpy()
             probs = torch.softmax(logits[head], dim=1).numpy()
             classes = np.unique(y)
@@ -281,12 +376,22 @@ class ClassificationMetrics:
         plt.close(fig)
         logger.info(f"PR curves → {out}")
 
-    def _html_table(self, metrics_dfs: dict, topk: dict, consistency: dict, epoch: int):
+    def _html_table(
+        self,
+        metrics_dfs: dict,
+        topk: dict,
+        macro: dict,
+        geo: dict,
+        tu: dict,
+        counts: dict,
+        consistency: dict,
+        epoch: int,
+    ):
         species_df = (
             metrics_dfs["species"]
             .merge(
                 self._taxonomy[
-                    ["species_idx", "species_name", "genus_name", "subfamily_name"]
+                    ["species_idx", "species_name", "genus_name", "family_name"]
                 ].drop_duplicates("species_idx"),
                 left_on="class_idx",
                 right_on="species_idx",
@@ -300,7 +405,7 @@ class ClassificationMetrics:
             metrics_dfs["genus"]
             .merge(
                 self._taxonomy[
-                    ["genus_idx", "genus_name", "subfamily_name"]
+                    ["genus_idx", "genus_name", "family_name"]
                 ].drop_duplicates("genus_idx"),
                 left_on="class_idx",
                 right_on="genus_idx",
@@ -310,31 +415,62 @@ class ClassificationMetrics:
             .sort_values("f1")
         )
 
-        subfamily_df = (
-            metrics_dfs["subfamily"]
+        family_df = (
+            metrics_dfs["family"]
             .merge(
-                self._taxonomy[["subfamily_idx", "subfamily_name"]].drop_duplicates(
-                    "subfamily_idx"
+                self._taxonomy[["family_idx", "family_name"]].drop_duplicates(
+                    "family_idx"
                 ),
                 left_on="class_idx",
-                right_on="subfamily_idx",
+                right_on="family_idx",
                 how="left",
             )
-            .drop(columns=["subfamily_idx"])
+            .drop(columns=["family_idx"])
             .sort_values("f1")
         )
 
         consistency_str = ""
         if consistency:
             sgr = consistency.get("species_wrong_genus_right", "—")
-            ssfr = consistency.get("species_wrong_subfamily_right", "—")
-            gsfr = consistency.get("genus_wrong_subfamily_right", "—")
+            ssfr = consistency.get("species_wrong_family_right", "—")
+            gsfr = consistency.get("genus_wrong_family_right", "—")
             consistency_str = (
                 f"<p><b>Hierarchical consistency — </b>"
                 f"Sp wrong → genus right: <b>{sgr}</b> &nbsp;|&nbsp; "
-                f"Sp wrong → subfamily right: <b>{ssfr}</b> &nbsp;|&nbsp; "
-                f"Genus wrong → subfamily right: <b>{gsfr}</b></p>"
+                f"Sp wrong → family right: <b>{ssfr}</b> &nbsp;|&nbsp; "
+                f"Genus wrong → family right: <b>{gsfr}</b></p>"
             )
+
+        def _fmt(v):
+            return f"{v:.4f}" if isinstance(v, (int, float)) else "—"
+
+        def _line(d, p, targets=True):
+            tg = {
+                "top1_species": " (≥0.65)",
+                "top3_species": " (≥0.80)",
+                "top1_genus": " (≥0.78)",
+                "top1_family": " (≥0.88)",
+            }
+            order = ["top1_species", "top3_species", "top1_genus", "top1_family"]
+            labels = {
+                "top1_species": "Top-1 Species",
+                "top3_species": "Top-3 Species",
+                "top1_genus": "Top-1 Genus",
+                "top1_family": "Top-1 Family",
+            }
+            return " &nbsp; ".join(
+                f"<b>{labels[k]}:</b> {_fmt(d[f'{p}_{k}'])}{tg[k] if targets else ''}"
+                for k in order
+            )
+
+        geo_line = _line(geo, "geo", targets=True)
+        topup_line = _line(tu, "topup", targets=False)
+        all_line = _line(macro, "macro", targets=False)
+        counts_line = (
+            f"geographic val: {counts['geo_n']} imgs / {counts['geo_classes']} classes"
+            f" &nbsp;·&nbsp; topped-up val: {counts['topup_n']} imgs /"
+            f" {counts['topup_classes']} classes"
+        )
 
         header = f"""<!DOCTYPE html><html><head>
 <meta charset="utf-8">
@@ -345,11 +481,18 @@ class ClassificationMetrics:
 <style>body{{font-family:sans-serif;padding:1rem}}h2{{margin-top:2rem}}</style>
 </head><body>
 <h1>Classification Metrics — Epoch {epoch}</h1>
-<p>
+<p><b>Micro (sample-weighted) — </b>
+  <b>Top-1 Species:</b> {topk["top1_species"]:.4f} &nbsp;
   <b>Top-3 Species:</b> {topk["top3_species"]:.4f} &nbsp;
   <b>Top-5 Species:</b> {topk["top5_species"]:.4f} &nbsp;
-  <b>Top-3 Genus:</b>   {topk["top3_genus"]:.4f}
+  <b>Top-1 Genus:</b> {topk["top1_genus"]:.4f} &nbsp;
+  <b>Top-3 Genus:</b>   {topk["top3_genus"]:.4f} &nbsp;
+  <b>Top-1 Family:</b> {topk["top1_family"]:.4f} &nbsp;
 </p>
+<p><b>Macro — geographic held-out (HEADLINE, target metric) — </b>{geo_line}</p>
+<p><b>Macro — topped-up IID (rare-class coverage, NOT generalization) — </b>{topup_line}</p>
+<p><b>Macro — all val (reference) — </b>{all_line}</p>
+<p style="color:#666">{counts_line}</p>
 {consistency_str}"""
 
         def section(title, df, tid):
@@ -361,7 +504,7 @@ class ClassificationMetrics:
             header
             + section("Species", species_df, "t_species")
             + section("Genus", genus_df, "t_genus")
-            + section("Subfamily", subfamily_df, "t_subfamily")
+            + section("Family", family_df, "t_family")
             + "</body></html>"
         )
 
@@ -384,14 +527,14 @@ class ClassificationMetrics:
                 select(
                     InatClassificationDataset.zero_indexed_species,
                     InatClassificationDataset.zero_indexed_genus,
-                    InatClassificationDataset.zero_indexed_subfamily,
+                    InatClassificationDataset.zero_indexed_family,
                     sp.name.label("species_name"),
                     ge.name.label("genus_name"),
-                    sf.name.label("subfamily_name"),
+                    sf.name.label("family_name"),
                 )
                 .outerjoin(sp, InatClassificationDataset.species == sp.taxon_id)
                 .outerjoin(ge, InatClassificationDataset.genus == ge.taxon_id)
-                .outerjoin(sf, InatClassificationDataset.subfamily == sf.taxon_id)
+                .outerjoin(sf, InatClassificationDataset.family == sf.taxon_id)
                 .where(InatClassificationDataset.zero_indexed_species.isnot(None))
                 .distinct()
             ).all()
@@ -401,9 +544,9 @@ class ClassificationMetrics:
             columns=[
                 "species_idx",
                 "genus_idx",
-                "subfamily_idx",
+                "family_idx",
                 "species_name",
                 "genus_name",
-                "subfamily_name",
+                "family_name",
             ],
         )

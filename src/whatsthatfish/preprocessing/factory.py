@@ -4,6 +4,7 @@ from pathlib import Path
 from sqlalchemy import inspect
 import asyncio
 
+from whatsthatfish.preprocessing.app_taxa import BuildAppTaxa
 from .clip_context import ClipModel
 from .score_runner import ScoreRunner, ContextRunner
 from .annotation_conversion import AnnotationConverter
@@ -35,6 +36,7 @@ class Dataset(str, Enum):
     CONTEXT_ORIG = "context_orig"
     CONTEXT_CLIP = "context_clip"
     CLASS_PREP = "classification_preparation"
+    APP_TAXA = "app_taxa"
 
 
 @dataclass
@@ -146,29 +148,35 @@ class PreProcessingFactory:
     def _load_zero_index_runner(self):
         return ZeroIndexClassification(session_factory=self.session_factory)
 
+    def _load_app_taxa_runner(self):
+        return BuildAppTaxa(session_factory=self.session_factory)
+
     async def run(self):
         logger.info(f"PreProcessingFactory.run() starting — type={self.type}")
 
         if self.type == "all":
-            logger.info("Step 1/6: iNat capture context scoring")
+            logger.info("Step 1/7: iNat capture context scoring")
             await self._load_clip_context_runner(
                 dataset="inat", source="inat_clip_context"
             ).run()
 
-            logger.info("Step 2/6: iNat UIQM scoring")
+            logger.info("Step 2/7: iNat UIQM scoring")
             await self._load_score_runner(dataset="inat", source="inat_scoring").run()
 
-            logger.info("Step 3/6: LILA UIQM scoring")
+            logger.info("Step 3/7: LILA UIQM scoring")
             await self._load_score_runner(dataset="lila", source="lila_scoring").run()
 
-            logger.info("Step 4/6: Annotation conversion")
+            logger.info("Step 4/7: Annotation conversion")
             self._load_annotation_runner().run()
 
-            logger.info("Step 5/6: Classification DS Preparation")
+            logger.info("Step 5/7: Classification DS Preparation")
             self._load_ds_runner().run()
 
-            logger.info("Step 6/6: Zero Indexed Classification")
+            logger.info("Step 6/7: Zero Indexed Classification")
             self._load_zero_index_runner().run()
+
+            logger.info("Step 7/7: Retrieving App Meta Data")
+            self._load_app_taxa_runner().run()
 
         elif self.type == "scoring":
             if self.source_dataset in (SourceDataset.INAT, SourceDataset.BOTH):
@@ -204,6 +212,10 @@ class PreProcessingFactory:
             logger.info("Step 2/2: Zero Indexed Classification")
             self._load_zero_index_runner().run()
 
+        elif self.type == "app_taxa":
+            logger.info("Step 1/1: Retrieving App Meta Data")
+            self._load_app_taxa_runner().run()
+
         else:
             raise ValueError(f"Unknown pipeline type: {self.type!r}")
 
@@ -220,6 +232,7 @@ if __name__ == "__main__":
             "  Run CLIP context (iNat only):    --type context_clip\n"
             "  Full pipeline (both datasets):   --type all\n"
             "  Build classification dataset:    --type classification_preparation\n"
+            "  Build App Taxonomy:              --type app_taxa\n"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )

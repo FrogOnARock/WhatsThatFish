@@ -24,6 +24,7 @@ uv.lock
 /runs
 **/runs/*/*/weights/
 **/data/
+**/runs/
 **/best.pt
 **/last.pt
 

@@ -99,10 +99,10 @@ class TestCustomResnet:
         _, out_genus, _ = small_model(x)
         assert out_genus.shape == (2, 30)
 
-    def test_subfamily_head_shape(self, small_model):
+    def test_family_head_shape(self, small_model):
         x = torch.randn(2, 5, 224, 224)
-        _, _, out_subfamily = small_model(x)
-        assert out_subfamily.shape == (2, 10)
+        _, _, out_family = small_model(x)
+        assert out_family.shape == (2, 10)
 
     def test_five_channel_input_accepted(self, small_model):
         x = torch.randn(1, 5, 224, 224)
@@ -137,7 +137,7 @@ class TestCustomResnet:
         x = torch.randn(1, 5, 224, 224)
         with torch.no_grad():
             out = small_model.conv1(x)
-            out = small_model.bn(out)
+            out = small_model.bn1(out)
             out = small_model.relu(out)
             out = small_model.max_pool(out)
             out = small_model.layer1(out)

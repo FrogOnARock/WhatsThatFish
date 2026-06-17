@@ -8,6 +8,7 @@ to skip the DB-dependent __init__, then populated with a tiny model.
 
 import csv
 
+import pytest
 import torch
 from torch import optim
 
@@ -38,12 +39,16 @@ def _bare_trainer(tmp_path) -> CustomResnetTrainer:
     t.epochs = 3
     t.batch_size = 2
     t.loss_weights = [0.6, 0.3, 0.1]
+    # Variant-C defaults: no pretrained backbone, so train()'s progressive
+    # freeze/unfreeze branches are no-ops for these checkpoint/CSV tests.
+    t.pretrained = False
+    t.freeze_epochs = 0
     return t
 
 
 def _stub_train_loop(trainer, val_losses: list[float]):
     """Replace the heavy per-epoch methods with deterministic stubs."""
-    trainer.train_one_epoch = lambda: (0.1, 0.1, 0.1, 0.3)
+    trainer.train_one_epoch = lambda epoch: (0.1, 0.1, 0.1, 0.3)
     it = iter(enumerate(val_losses))
 
     def fake_eval(epoch):
@@ -158,3 +163,138 @@ class TestCsvBookkeeping:
         with open(t.experiments_csv) as f:
             lines = f.readlines()
         assert len(lines) == 3  # header + 2 rows
+
+
+# ════════════════════════════════════════════════════════════════════════════════
+# _curriculum_loss — the progressive loss-weight scheduler
+#
+# Pure arithmetic over (epoch, loss_phase, gate). These tests pin the behaviour
+# that several subtle bugs broke during development:
+#   - phase-local time must be (epoch - phase_start)/tc, not epoch/tc*phase
+#   - the gate counter must RESET on a miss (consecutive, not cumulative)
+#   - B must be clamped to [0, 1] so high coverage can't extrapolate past END
+#   - val/best.pt uses fixed end-state weights (covered in eval tests, not here)
+#   - early gate-driven transitions must re-anchor the next phase's clock
+# ════════════════════════════════════════════════════════════════════════════════
+
+
+# Schedule milestones (species, genus, family), matching the trainer defaults.
+P1 = [0.0, 0.0, 1.0]  # start: pure family
+P2 = [0.0, 0.6, 0.4]  # genus-focus
+P3 = [0.6, 0.3, 0.1]  # species-dominant end state
+
+
+class _FakeMetrics:
+    """Stand-in for ClassificationMetrics exposing only the two gate fields the
+    scheduler reads (per-class coverage, updated after each eval)."""
+
+    def __init__(self, sub_gate: float = 0.0, genus_gate: float = 0.0):
+        self.sub_gate = sub_gate
+        self.genus_gate = genus_gate
+
+
+def _curriculum_trainer(min_time_per_phase: int = 5) -> CustomResnetTrainer:
+    """Minimal trainer carrying only the attributes _curriculum_loss touches.
+
+    `min_time_per_phase` is now a trainer attribute (read as self.min_time_per_phase),
+    not a _curriculum_loss kwarg — set it here per test.
+    """
+    t = object.__new__(CustomResnetTrainer)
+    t.loss_phase = 1
+    t.consecutive_epochs = 0
+    t.phase_start_epoch = 0
+    t.epochs = 40
+    t.min_time_per_phase = min_time_per_phase
+    t.loss_weights = list(P1)
+    t.loss_weights_2 = list(P2)
+    t.loss_weights_3 = list(P3)
+    t.metrics = _FakeMetrics()
+    return t
+
+
+class TestCurriculumLoss:
+    def test_phase1_starts_at_start_weights(self):
+        t = _curriculum_trainer()
+        w = t._curriculum_loss(epoch=0, time_constraint=20)
+        assert w == pytest.approx(P1)
+
+    def test_phase1_ramps_linearly_toward_p2(self):
+        """Halfway through phase 1's time budget (no gate) → midpoint of P1→P2."""
+        t = _curriculum_trainer()
+        w = t._curriculum_loss(epoch=10, time_constraint=20)
+        assert w == pytest.approx([0.0, 0.3, 0.7])  # 0.5*P1 + 0.5*P2
+
+    def test_weights_sum_to_one_across_sweep(self):
+        """Invariant: lerp of two sum-1 vectors stays sum-1, and clamping holds it."""
+        t = _curriculum_trainer(min_time_per_phase=99)
+        for e in range(0, 20):
+            t.metrics.sub_gate = 0.5 if e % 2 else 0.0
+            w = t._curriculum_loss(epoch=e, time_constraint=50)
+            assert sum(w) == pytest.approx(1.0)
+            assert all(0.0 <= x <= 1.0 for x in w)
+
+    def test_transition_by_time_when_gate_cold(self):
+        """Gate never fires → phase advances on the time budget alone (elapsed=tc)."""
+        t = _curriculum_trainer()
+        for e in range(0, 6):
+            t._curriculum_loss(epoch=e, time_constraint=10)
+        assert t.loss_phase == 1  # B_time < 1 before elapsed=10
+        out = None
+        for e in range(6, 11):
+            out = t._curriculum_loss(epoch=e, time_constraint=10)
+        assert t.loss_phase == 2  # crossed at epoch 10 (B_time>=1, elapsed>5)
+        assert out == pytest.approx(P2)  # transition returns END
+
+    def test_early_transition_by_sustained_gate(self):
+        """3 consecutive gate passes (past min_time) advance the phase well before
+        the time budget (tc=20) would have."""
+        t = _curriculum_trainer()
+        t.metrics.sub_gate = 0.95
+        for e in range(0, 6):
+            t._curriculum_loss(epoch=e, time_constraint=20)
+        assert t.loss_phase == 1  # elapsed not yet > min_time at epoch 5
+        t._curriculum_loss(epoch=6, time_constraint=20)
+        assert t.loss_phase == 2  # elapsed=6>5 and consecutive>=3
+
+    def test_non_consecutive_gate_does_not_transition(self):
+        """Alternating pass/fail must never reach a streak of 3 (the +=/= bug)."""
+        t = _curriculum_trainer(min_time_per_phase=2)
+        for e in range(0, 20):
+            t.metrics.sub_gate = 0.95 if e % 2 == 0 else 0.0  # never two in a row
+            t._curriculum_loss(epoch=e, time_constraint=50)
+        assert t.loss_phase == 1
+        assert t.consecutive_epochs <= 1
+
+    def test_high_coverage_does_not_extrapolate_past_end(self):
+        """coverage=1.0 → gate/0.9≈1.11; B must clamp to 1 so no negative weights."""
+        t = _curriculum_trainer(min_time_per_phase=10)
+        t.metrics.sub_gate = 1.0
+        w = t._curriculum_loss(epoch=0, time_constraint=20)
+        assert w == pytest.approx(P2)  # exactly END, not beyond it
+        assert all(x >= 0.0 for x in w)
+
+    def test_early_exit_reanchors_next_phase_clock(self):
+        """The phase_start_epoch fix: after an early phase-1 exit, phase 2's clock
+        restarts from the transition epoch — so a hot genus gate can also exit
+        early. With the old nominal offset, phase 2's elapsed would go negative and
+        stall until the original fixed schedule caught up."""
+        t = _curriculum_trainer()
+        t.metrics.sub_gate = 0.95
+        for e in range(0, 7):
+            t._curriculum_loss(epoch=e, time_constraint=20)
+        assert t.loss_phase == 2
+        assert t.phase_start_epoch == 6  # anchored to the actual transition epoch
+
+        t.metrics.sub_gate = 0.0
+        t.metrics.genus_gate = 0.95
+        for e in range(7, 13):
+            t._curriculum_loss(epoch=e, time_constraint=20)
+        # elapsed measured from epoch 6, so by epoch 12 (elapsed=6>5, streak>=3)
+        # phase 2 also exits early — acceleration compounds instead of stalling.
+        assert t.loss_phase == 3
+
+    def test_phase3_short_circuits_to_end_state(self):
+        t = _curriculum_trainer()
+        t.loss_phase = 3
+        w = t._curriculum_loss(epoch=0, time_constraint=10)
+        assert w == pytest.approx(P3)

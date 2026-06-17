@@ -9,6 +9,8 @@ from sqlalchemy import (
     String,
     func,
     DateTime,
+    Text,
+    ARRAY,
 )
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -213,7 +215,7 @@ class InatClassificationDataset(Base):
     The observations have been ranked by UIQM with a max sample count per taxon of 300.
     These observations are clustered and then entered into this table where they will be leveraged
     in the CV Classification.
-    Species, genus, subfamily integers all added for top-3 classification.
+    Species, genus, family integers all added for top-3 classification.
     """
 
     __tablename__ = "inat_classification_dataset"
@@ -233,13 +235,18 @@ class InatClassificationDataset(Base):
     ancestry: Mapped[str | None] = mapped_column(String)
     species: Mapped[int | None] = mapped_column(Integer)
     genus: Mapped[int | None] = mapped_column(Integer)
-    subfamily: Mapped[int | None] = mapped_column(Integer)
+    family: Mapped[int | None] = mapped_column(Integer)
     cluster: Mapped[int | None] = mapped_column(Integer)
     train: Mapped[bool | None] = mapped_column(Boolean)
+    # True for val rows moved out of train to give a sparse taxon some val coverage
+    # (IID — same regions as train, NOT held-out geography). False/None = pure
+    # geographic val or a train row. Lets eval report geographic vs topped-up macro
+    # separately so the headline number stays honest.
+    val_topup: Mapped[bool | None] = mapped_column(Boolean)
     proposed_bbox: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
     conf: Mapped[float | None] = mapped_column(Float)
     annotation: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
-    zero_indexed_subfamily: Mapped[int | None] = mapped_column(Integer)
+    zero_indexed_family: Mapped[int | None] = mapped_column(Integer)
     zero_indexed_genus: Mapped[int | None] = mapped_column(Integer)
     zero_indexed_species: Mapped[int | None] = mapped_column(Integer)
 
@@ -283,6 +290,27 @@ class InatObjDetectionDataset(Base):
         Index("ix_inat_obj_detection_dataset_train", "train"),
         Index("ix_inat_obj_detection_dataset_uiqm", "uiqm"),
     )
+
+
+class AppTaxa(Base):
+    __tablename__ = "app_taxa"
+
+    taxon_id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    zero_indexed_species: Mapped[int | None] = mapped_column(Integer)
+    species: Mapped[str] = mapped_column(String)
+    genus: Mapped[str] = mapped_column(String)
+    family: Mapped[str] = mapped_column(String)
+    description: Mapped[str | None] = mapped_column(Text)
+    common_name: Mapped[str | None] = mapped_column(String)
+    # Enrichment columns — nullable so a row can exist before/independent of a
+    # successful LLM enrichment pass (filled later by the null-guarded retry).
+    location: Mapped[list[str] | None] = mapped_column(ARRAY(String))
+    depth: Mapped[str | None] = mapped_column(String)
+    filename: Mapped[str | None] = mapped_column(String)
+    # Dataset-derived image count per species (refreshed each pipeline run).
+    img_count: Mapped[int | None] = mapped_column(Integer)
+
+    __table_args__ = (Index("ix_app_taxa_taxon_id", "taxon_id"),)
 
 
 class LilaImageQuality(Base):

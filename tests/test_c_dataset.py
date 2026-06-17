@@ -68,7 +68,7 @@ def seeded_db(session_factory, monkeypatch):
                 filename=f"{uuid}.jpg",
                 zero_indexed_species=0,
                 zero_indexed_genus=0,
-                zero_indexed_subfamily=0,
+                zero_indexed_family=0,
             )
             # Leaving the attribute unset stores SQL NULL (never-processed
             # rows); setting it to None stores JSON null (no-detection rows).

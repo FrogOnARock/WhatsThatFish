@@ -17,10 +17,10 @@ TAXONOMY = pd.DataFrame(
     {
         "species_idx": [0, 1, 2, 3, 4],
         "genus_idx": [0, 0, 1, 2, 3],
-        "subfamily_idx": [0, 0, 0, 1, 2],
+        "family_idx": [0, 0, 0, 1, 2],
         "species_name": ["sp_a", "sp_b", "sp_c", "sp_d", "sp_e"],
         "genus_name": ["ge_a", "ge_a", "ge_b", "ge_c", "ge_d"],
-        "subfamily_name": ["sf_a", "sf_a", "sf_a", "sf_b", "sf_c"],
+        "family_name": ["sf_a", "sf_a", "sf_a", "sf_b", "sf_c"],
     }
 )
 
@@ -75,12 +75,12 @@ class TestHierarchicalConsistency:
         logits = {
             "species": _one_hot_logits([0, 1, 0, 0], 5),
             "genus": _one_hot_logits([0, 0, 1, 3], 4),
-            "subfamily": _one_hot_logits([0, 0, 0, 0], 3),
+            "family": _one_hot_logits([0, 0, 0, 0], 3),
         }
         targets = {
             "species": torch.tensor([0, 1, 2, 3]),
             "genus": torch.tensor([0, 0, 1, 2]),
-            "subfamily": torch.tensor([0, 0, 0, 1]),
+            "family": torch.tensor([0, 0, 0, 1]),
         }
         out = m._hierarchical_consistency(logits, targets)
         assert out["species_wrong_genus_right"] == 0.5
@@ -91,12 +91,12 @@ class TestHierarchicalConsistency:
         logits = {
             "species": _one_hot_logits(labels, 5),
             "genus": _one_hot_logits(labels, 4),
-            "subfamily": _one_hot_logits(labels, 3),
+            "family": _one_hot_logits(labels, 3),
         }
         targets = {k: torch.tensor(labels) for k in logits}
         out = m._hierarchical_consistency(logits, targets)
         assert out["species_wrong_genus_right"] == 1.0
-        assert out["genus_wrong_subfamily_right"] == 1.0
+        assert out["genus_wrong_family_right"] == 1.0
 
 
 # ════════════════════════════════════════════════════════════════════════════════
@@ -109,11 +109,11 @@ def _feed_two_batches(m):
         m.update(
             out_species=_one_hot_logits(labels, 5),
             out_genus=_one_hot_logits([min(l, 3) for l in labels], 4),
-            out_subfamily=_one_hot_logits([min(l, 2) for l in labels], 3),
+            out_family=_one_hot_logits([min(l, 2) for l in labels], 3),
             target={
                 "species": torch.tensor(labels),
                 "genus": torch.tensor([min(l, 3) for l in labels]),
-                "subfamily": torch.tensor([min(l, 2) for l in labels]),
+                "family": torch.tensor([min(l, 2) for l in labels]),
             },
         )
 
@@ -129,8 +129,8 @@ class TestComputeLifecycle:
             "top5_species",
             "top3_genus",
             "species_wrong_genus_right",
-            "species_wrong_subfamily_right",
-            "genus_wrong_subfamily_right",
+            "species_wrong_family_right",
+            "genus_wrong_family_right",
         } <= set(out)
 
     def test_compute_writes_all_three_report_files(self, tmp_path):

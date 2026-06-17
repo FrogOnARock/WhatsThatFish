@@ -39,6 +39,9 @@ dependencies = [
     "hdbscan>=0.8.43",
     "plotly>=6.7.0",
     "ruff>=0.15.15",
+    "fastapi>=0.137.1",
+    "uvicorn[standard]>=0.49.0",
+    "anthropic>=0.109.2",
 ]
 
 [tool.setuptools.packages.find]

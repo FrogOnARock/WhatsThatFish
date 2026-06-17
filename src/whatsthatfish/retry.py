@@ -5,6 +5,8 @@ Three retry domains:
     s3_retry   — AWS S3 (boto3): ClientError, ConnectionError, ConnectionClosedError, tarfile.ReadError
     gcs_retry  — GCS (sync google-cloud-storage): ClientError, ServerError
     transfer_retry — async aiohttp + GCS: 429/5xx HTTP errors, connector errors, GCS transient errors
+    llm_retry  — Anthropic: RateLimitError (429), APIConnectionError, APITimeoutError,
+                 InternalServerError (5xx, incl. 529 overloaded)
 
 Each decorator uses exponential backoff with 5 attempts.
 """
@@ -12,6 +14,7 @@ Each decorator uses exponential backoff with 5 attempts.
 import tarfile
 
 import aiohttp
+import anthropic
 from botocore.exceptions import (
     ClientError as BotoClientError,
     ConnectionError as BotoConnectionError,
@@ -76,6 +79,22 @@ gcs_retry = retry(
     retry=(
         retry_if_exception_type(GCSClientError)
         | retry_if_exception_type(GCSServerError)
+    ),
+    wait=wait_exponential(multiplier=1, min=4, max=60),
+    stop=stop_after_attempt(5),
+    before_sleep=_log_retry,
+)
+
+
+# ── Anthropic LLM (sync) ──────────────────────────────────────────────
+# InternalServerError covers any 5xx, including 529 "overloaded". Permanent
+# 4xx (BadRequest/Auth/etc.) are NOT retried — they won't fix themselves.
+llm_retry = retry(
+    retry=(
+        retry_if_exception_type(anthropic.RateLimitError)
+        | retry_if_exception_type(anthropic.APIConnectionError)
+        | retry_if_exception_type(anthropic.APITimeoutError)
+        | retry_if_exception_type(anthropic.InternalServerError)
     ),
     wait=wait_exponential(multiplier=1, min=4, max=60),
     stop=stop_after_attempt(5),

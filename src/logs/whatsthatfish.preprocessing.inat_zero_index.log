@@ -64,3 +64,9 @@
 2026-06-04 16:44:50,228 - INFO - Retrieving classification subfamily, genus, species.
 2026-06-04 16:44:50,228 - INFO - Zero indexing subfamily, genus, species for load to inat_classification_dataset.
 2026-06-04 16:44:50,228 - INFO - Loading: zero indexed classes to inat_classification_dataset.
+2026-06-15 09:43:48,490 - INFO - Retrieving classification subfamily, genus, species.
+2026-06-15 09:43:49,266 - INFO - Zero indexing subfamily, genus, species for load to inat_classification_dataset.
+2026-06-15 09:43:51,111 - INFO - Loading: zero indexed classes to inat_classification_dataset.
+2026-06-15 19:55:21,609 - INFO - Retrieving classification family, genus, species.
+2026-06-15 19:55:22,365 - INFO - Zero indexing family, genus, species for load to inat_classification_dataset.
+2026-06-15 19:55:24,031 - INFO - Loading: zero indexed classes to inat_classification_dataset.

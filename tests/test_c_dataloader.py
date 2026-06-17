@@ -16,8 +16,13 @@ def _img(c: int = 3, h: int = 224, w: int = 224) -> torch.Tensor:
     return torch.rand(c, h, w)
 
 
-def _label(species: int = 0, genus: int = 1, subfamily: int = 2) -> dict:
-    return {"species": species, "genus": genus, "subfamily": subfamily}
+def _label(species: int = 0, genus: int = 1, family: int = 2, topup: int = 0) -> dict:
+    return {
+        "species": species,
+        "genus": genus,
+        "family": family,
+        "topup": topup,
+    }
 
 
 def _batch(n: int = 4, **label_kwargs) -> list:
@@ -35,17 +40,28 @@ class TestCollateFn:
         imgs, _ = collate_fn(batch)
         assert imgs.shape == (4, 3, 224, 224)
 
-    def test_labels_dict_has_three_keys(self):
+    def test_labels_dict_has_expected_keys(self):
         batch = _batch(2)
         _, labels = collate_fn(batch)
-        assert set(labels.keys()) == {"species", "genus", "subfamily"}
+        assert set(labels.keys()) == {"species", "genus", "family", "topup"}
+
+    def test_topup_flag_preserved(self):
+        batch = [(_img(), _label(topup=0)), (_img(), _label(topup=1))]
+        _, labels = collate_fn(batch)
+        assert labels["topup"].tolist() == [0, 1]
+
+    def test_topup_defaults_to_zero_when_absent(self):
+        # Legacy labels without a topup key must collate as geographic (0).
+        batch = [(_img(), {"species": 1, "genus": 2, "family": 3})]
+        _, labels = collate_fn(batch)
+        assert labels["topup"].tolist() == [0]
 
     def test_each_label_tensor_length_matches_batch(self):
         batch = _batch(3)
         _, labels = collate_fn(batch)
         assert labels["species"].shape == (3,)
         assert labels["genus"].shape == (3,)
-        assert labels["subfamily"].shape == (3,)
+        assert labels["family"].shape == (3,)
 
     def test_species_values_preserved(self):
         batch = [
@@ -61,10 +77,10 @@ class TestCollateFn:
         _, labels = collate_fn(batch)
         assert labels["genus"].tolist() == [0, 1, 2]
 
-    def test_subfamily_values_preserved(self):
-        batch = [(_img(), _label(subfamily=i * 10)) for i in range(4)]
+    def test_family_values_preserved(self):
+        batch = [(_img(), _label(family=i * 10)) for i in range(4)]
         _, labels = collate_fn(batch)
-        assert labels["subfamily"].tolist() == [0, 10, 20, 30]
+        assert labels["family"].tolist() == [0, 10, 20, 30]
 
     def test_image_dtype_preserved(self):
         batch = _batch(2)
@@ -72,7 +88,7 @@ class TestCollateFn:
         assert imgs.dtype == torch.float32
 
     def test_single_item_batch(self):
-        batch = [(_img(), _label(species=7, genus=2, subfamily=0))]
+        batch = [(_img(), _label(species=7, genus=2, family=0))]
         imgs, labels = collate_fn(batch)
         assert imgs.shape == (1, 3, 224, 224)
         assert labels["species"].item() == 7
@@ -94,7 +110,7 @@ class TestCollateFnUltralytics:
         result = collate_fn_ultralytics(batch)
         assert set(result["cls"].keys()) == {"cls"}
         assert "genus" not in result["cls"]
-        assert "subfamily" not in result["cls"]
+        assert "family" not in result["cls"]
 
     def test_cls_tensor_length_matches_batch(self):
         batch = _batch(5)
@@ -102,6 +118,6 @@ class TestCollateFnUltralytics:
         assert result["cls"]["cls"].shape == (5,)
 
     def test_cls_values_are_species_labels(self):
-        batch = [(_img(), _label(species=i, genus=99, subfamily=88)) for i in range(3)]
+        batch = [(_img(), _label(species=i, genus=99, family=88)) for i in range(3)]
         result = collate_fn_ultralytics(batch)
         assert result["cls"]["cls"].tolist() == [0, 1, 2]

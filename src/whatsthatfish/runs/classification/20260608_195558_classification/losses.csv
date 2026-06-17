@@ -1,2 +1,0 @@
-epoch,lr,train_species,train_genus,train_subfamily,train_total,val_loss
-0,0.000372,5.718042,5.924306,7.458006,5.953918,5.315616

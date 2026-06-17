@@ -11,7 +11,7 @@ from scipy.spatial import ConvexHull
 from matplotlib.patches import Polygon
 from matplotlib.collections import PatchCollection
 import matplotlib
-
+from collections import defaultdict
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -257,13 +257,24 @@ class InatPreparation:
             row["cluster"] = int(labels[i])
         return rows
 
-    def assign_split(self, rows: list[dict], val_floor: int = 20) -> list[dict]:
+    def assign_split(
+        self, rows: list[dict], val_floor: int = 20, min_train: int = 50
+    ) -> list[dict]:
         """
-        Randomly assigns clusters to train/val (80/20 cluster split), then audits
-        per-taxon val coverage and top-ups any taxon below val_floor by moving
-        randomly-chosen photos from train → val.
+        Geographic 80/20 cluster split, then an OBSERVATION-DISJOINT top-up that gives
+        sparsely-covered taxa some validation support without leaking near-duplicates.
 
-        train=True → training, train=False → validation (matches ClassificationDataset query).
+        Two-tier semantics written onto every row:
+          train=True                         → training
+          train=False, val_topup=False       → pure held-out geographic val (honest)
+          train=False, val_topup=True        → moved from train to meet val_floor (IID,
+                                               same regions as train — NOT generalization)
+
+        The top-up moves WHOLE observations (all photos of an observation_uuid) so no
+        observation ever straddles train/val — this is what kills the duplicate-photo
+        leakage the per-photo top-up was introducing. Geographic assignment already
+        keeps an observation intact (one obs = one lat/lon = one cluster), so after
+        this every observation is wholly on one side.
         """
         from collections import defaultdict
 
@@ -277,63 +288,95 @@ class InatPreparation:
         logger.info(f"Val clusters ({len(val_clusters)}): {sorted(val_clusters)}")
 
         for row in rows:
-            row["train"] = False if row["cluster"] in val_clusters else True
+            row["train"] = row["cluster"] not in val_clusters
+            row["val_topup"] = False  # geographic val (and train) until topped up
 
-        def _build_indexes(rows):
-            train_idx, val_idx = defaultdict(list), defaultdict(list)
-            for i, row in enumerate(rows):
-                (train_idx if row["train"] else val_idx)[row["taxon_id"]].append(i)
-            return train_idx, val_idx
+        def _train_counts(rows):
+            train_ct, val_ct = defaultdict(int), defaultdict(int)
+            for row in rows:
+                (train_ct if row["train"] else val_ct)[row["taxon_id"]] += 1
+            return train_ct, val_ct
 
-        taxon_train_index, taxon_val_index = _build_indexes(rows)
+        train_ct, val_ct = _train_counts(rows)
 
+        # Drop taxa that can't field a real training set (also drops val-only taxa,
+        # whose train_ct is 0).
         drop_taxon_ids = {
             taxon_id
-            for taxon_id, indices in taxon_train_index.items()
-            if len(indices) < 50
-        } | (set(taxon_val_index.keys()) - set(taxon_train_index.keys()))
-
-        rows = [row for row in rows if row["taxon_id"] not in drop_taxon_ids]
-        logger.info(f"Dropped {len(drop_taxon_ids)} taxa with <50 train examples.")
-
-        taxon_train_index, taxon_val_index = _build_indexes(rows)
-
-        all_taxon_ids = set(taxon_train_index.keys()) | set(taxon_val_index.keys())
-        index_val_deficient = {
-            taxon_id: len(taxon_val_index.get(taxon_id, []))
-            for taxon_id in all_taxon_ids
-            if len(taxon_val_index.get(taxon_id, [])) < val_floor
+            for taxon_id in set(train_ct) | set(val_ct)
+            if train_ct.get(taxon_id, 0) < min_train
         }
+        rows = [row for row in rows if row["taxon_id"] not in drop_taxon_ids]
+        logger.info(f"Dropped {len(drop_taxon_ids)} taxa with <{min_train} train rows.")
 
-        index_to_move = []
-        for idx, val in index_val_deficient.items():
-            to_move = val_floor - val
-            indices = taxon_train_index.get(idx)
-            if not indices:
+        # Group remaining TRAIN rows by taxon → observation, so we can move whole obs.
+        train_obs: dict[int, dict[str, list[dict]]] = defaultdict(
+            lambda: defaultdict(list)
+        )
+        val_ct = defaultdict(int)
+        for row in rows:
+            if row["train"]:
+                train_obs[row["taxon_id"]][row["observation_uuid"]].append(row)
+            else:
+                val_ct[row["taxon_id"]] += 1
+
+        moved_obs = moved_photos = topped_taxa = 0
+        for taxon_id, obs_map in train_obs.items():
+            need = val_floor - val_ct.get(taxon_id, 0)
+            if need <= 0:
                 continue
-            index_to_move.extend(
-                rng.choice(
-                    indices, size=min(to_move, len(indices)), replace=False
-                ).tolist()
-            )
-
-        # Move the selected training rows into validation (train=False = val)
-        for idx in index_to_move:
-            rows[idx]["train"] = False
+            train_remaining = sum(len(g) for g in obs_map.values())
+            obs_uuids = list(obs_map.keys())
+            # Deterministic shuffle of whole observations for this taxon.
+            order = rng.permutation(len(obs_uuids))
+            moved_here = False
+            for j in order:
+                if need <= 0:
+                    break
+                group = obs_map[obs_uuids[j]]
+                # Never let the top-up starve training below the floor.
+                if train_remaining - len(group) < min_train:
+                    continue
+                for row in group:
+                    row["train"] = False
+                    row["val_topup"] = True
+                train_remaining -= len(group)
+                need -= len(group)
+                moved_obs += 1
+                moved_photos += len(group)
+                moved_here = True
+            topped_taxa += int(moved_here)
 
         val_count = sum(1 for r in rows if not r["train"])
+        topup_count = sum(1 for r in rows if r["val_topup"])
         logger.info(
-            f"Split complete — train: {len(rows) - val_count}, val: {val_count}"
+            f"Top-up moved {moved_photos} photos / {moved_obs} whole observations "
+            f"across {topped_taxa} taxa (no observation straddles the split)."
+        )
+        logger.info(
+            f"Split complete — train: {len(rows) - val_count}, val: {val_count} "
+            f"({val_count - topup_count} geographic, {topup_count} topped-up)."
         )
         return rows
 
-    def split_taxa(self, row: dict[str, str]) -> dict[str, str]:
-        split = row["ancestry"].split("/")
-        row["species"], row["genus"], row["subfamily"] = (
-            row["taxon_id"],
-            int(split[-1]),
-            int(split[-2]),
-        )
+    def split_taxa(
+        self, row: dict[str, str], family_set: set[int], genus_set: set[int]
+    ) -> dict[str, str]:
+        # Default to None so every row has uniform keys (the bulk insert requires
+        # it) and a species lacking a family/genus rank in inat_taxa doesn't KeyError.
+        row["family"] = None
+        row["genus"] = None
+
+        for anc in row["ancestry"].split("/"):
+            if not anc:
+                continue
+            anc = int(anc)
+            if anc in family_set:
+                row["family"] = anc
+            if anc in genus_set:
+                row["genus"] = anc
+
+        row["species"] = row["taxon_id"]
         return row
 
     @db_retry
@@ -341,7 +384,7 @@ class InatPreparation:
         """
         Retrieve the relevant iNaturalist observations with:
         longitude and latitude for geographic clustering -> required for the train test split
-        ancestry + taxon_id -> required to split into Subfamily, Genus, Species
+        ancestry + taxon_id -> required to split into Family, Genus, Species
         photo_id + extension -> together form the URL for GCP GET Request
         uiqm -> required for weighted sampling based on image quality
         is_underwater -> filter to ensure we're leveraging the underwater images as defined by CLIP
@@ -355,6 +398,7 @@ class InatPreparation:
             select(
                 InatTaxa.ancestry,
                 InatClipContext.photo_uuid,
+                InatFilteredObservations.observation_uuid,
                 InatFilteredObservations.photo_id,
                 InatFilteredObservations.extension,
                 InatFilteredObservations.taxon_id,
@@ -392,6 +436,7 @@ class InatPreparation:
         cte = stmt.cte("ranked")
         outer = select(
             cte.c.photo_uuid,
+            cte.c.observation_uuid,
             func.concat(cte.c.photo_id, ".", cte.c.extension).label("filename"),
             cte.c.longitude,
             cte.c.latitude,
@@ -411,6 +456,7 @@ class InatPreparation:
         return_list = [
             {
                 "photo_uuid": row.photo_uuid,
+                "observation_uuid": row.observation_uuid,
                 "filename": row.filename,
                 "longitude": row.longitude,
                 "latitude": row.latitude,
@@ -426,9 +472,30 @@ class InatPreparation:
         return return_list
 
     @db_retry
+    def retrieve_family_genus(self):
+
+        def _build_stmt(label: str):
+            return select(InatTaxa.taxon_id.label(label)).where(InatTaxa.rank == label)
+
+        ancestry_dict = {}
+        session_factory = get_session_factory()
+        with session_factory() as session:
+            for label in ["family", "genus"]:
+                rows = session.execute(_build_stmt(label)).all()
+                ancestry_dict[label] = [row[0] for row in rows]
+
+        return ancestry_dict
+
+    @db_retry
     def load(self, rows) -> bool:
         # 47533 in ancestry → coral; excluded from classification, included in OD
-        classification_rows = [r for r in rows if "47533" not in r["ancestry"]]
+        classification_rows = [
+            r for r in rows if "47533" not in r["ancestry"] and r["family"]
+        ]
+        # observation_uuid is used only for the observation-disjoint top-up grouping;
+        # it has no column on inat_classification_dataset, so drop it before insert.
+        for r in classification_rows:
+            r.pop("observation_uuid", None)
         od_rows = [
             {
                 "photo_uuid": r["photo_uuid"],
@@ -458,11 +525,35 @@ class InatPreparation:
             session.commit()
         return True
 
+    def count_genus_family(self, rows):
+        total = len(rows)
+        genus = 0
+        family = 0
+        for row in rows:
+            if row["genus"]:
+                genus += 1
+            if row["family"]:
+                family += 1
+
+        logger.info(
+            f"""
+            Total rows: {total}\n
+            Total Genus: {genus}, pct: {genus / total:.4f}\n
+            Total Family: {family}, pct: {family / total:.4f}"""
+        )
+
     def run(self):
         load_dotenv()
         Path.mkdir(self.kmeans_path, exist_ok=True)
         rows = self.retrieve_sampled()
-        ancestry_incl_rows = [self.split_taxa(row) for row in rows]
+        ancestry_dict = self.retrieve_family_genus()
+        # Build membership sets ONCE — not per row — for O(1) ancestry matching.
+        family_set = set(ancestry_dict["family"])
+        genus_set = set(ancestry_dict["genus"])
+        ancestry_incl_rows = [
+            self.split_taxa(row, family_set, genus_set) for row in rows
+        ]
+        self.count_genus_family(ancestry_incl_rows)
         clustered_rows = self.kmeans_clustering(ancestry_incl_rows, search=False)
         split_rows = self.assign_split(clustered_rows)
         self.load(split_rows)
