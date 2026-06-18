@@ -1,6 +1,6 @@
 # ── Param Space ──────────────────────────────────────────────────────
 # Each parameter entry requires: type (uniform | loguniform | choice | randint),
-# min, and max. The loader in od_training.py maps these to ray.tune distributions.
+# min, and max. The loader in models/detection.py maps these to ray.tune distributions.
 
 lila:
   lr0:

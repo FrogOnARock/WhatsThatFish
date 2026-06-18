@@ -1,5 +1,5 @@
 """
-Tests for CustomResnetTrainer bookkeeping: checkpointing, loss CSV,
+Tests for Classifier bookkeeping: checkpointing, loss CSV,
 experiment registry, and best-model tracking in the train loop.
 
 Pure — no DB or dataloaders. The trainer is constructed via object.__new__
@@ -12,8 +12,8 @@ import pytest
 import torch
 from torch import optim
 
-from whatsthatfish.models.c_custom_resnet import BasicBlock, CustomResnet
-from whatsthatfish.training.oc_training import CustomResnetTrainer
+from whatsthatfish.models.architecture.custom_resnet import BasicBlock, CustomResnet
+from whatsthatfish.models.classifier import Classifier
 
 NUM_LABELS = [5, 4, 3]
 
@@ -21,9 +21,9 @@ NUM_LABELS = [5, 4, 3]
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
 
-def _bare_trainer(tmp_path) -> CustomResnetTrainer:
+def _bare_trainer(tmp_path) -> Classifier:
     """Trainer with all attributes train()/_save_checkpoint need, no DB."""
-    t = object.__new__(CustomResnetTrainer)
+    t = object.__new__(Classifier)
     t.device = torch.device("cpu")
     t.model = CustomResnet(block=BasicBlock, layers=[1, 1, 1, 1], num_class=NUM_LABELS)
     t.optimizer = optim.AdamW(t.model.parameters(), lr=1e-3)
@@ -112,7 +112,7 @@ class TestTrainLoopCheckpointing:
         t = _bare_trainer(tmp_path)
         t._init_loss_csv()
         _stub_train_loop(t, val_losses=[1.0, 0.4, 0.7])
-        t.train()
+        t._train_loop()
 
         best = torch.load(t.output_dir / "best.pt", weights_only=False)
         last = torch.load(t.output_dir / "last.pt", weights_only=False)
@@ -125,7 +125,7 @@ class TestTrainLoopCheckpointing:
         t = _bare_trainer(tmp_path)
         t._init_loss_csv()
         _stub_train_loop(t, val_losses=[1.0, 0.4, 0.7])
-        t.train()
+        t._train_loop()
 
         with open(t.experiments_csv) as f:
             rows = list(csv.DictReader(f))
@@ -138,7 +138,7 @@ class TestTrainLoopCheckpointing:
         t = _bare_trainer(tmp_path)
         t._init_loss_csv()
         _stub_train_loop(t, val_losses=[1.0, 0.4, 0.7])
-        t.train()
+        t._train_loop()
 
         with open(t.output_dir / "losses.csv") as f:
             rows = list(csv.DictReader(f))
@@ -227,18 +227,18 @@ class _FakeMetrics:
     """Stand-in for ClassificationMetrics exposing only the two gate fields the
     scheduler reads (per-class coverage, updated after each eval)."""
 
-    def __init__(self, sub_gate: float = 0.0, genus_gate: float = 0.0):
-        self.sub_gate = sub_gate
+    def __init__(self, fam_gate: float = 0.0, genus_gate: float = 0.0):
+        self.fam_gate = fam_gate
         self.genus_gate = genus_gate
 
 
-def _curriculum_trainer(min_time_per_phase: int = 5) -> CustomResnetTrainer:
+def _curriculum_trainer(min_time_per_phase: int = 5) -> Classifier:
     """Minimal trainer carrying only the attributes _curriculum_loss touches.
 
     `min_time_per_phase` is now a trainer attribute (read as self.min_time_per_phase),
     not a _curriculum_loss kwarg — set it here per test.
     """
-    t = object.__new__(CustomResnetTrainer)
+    t = object.__new__(Classifier)
     t.loss_phase = 1
     t.consecutive_epochs = 0
     t.phase_start_epoch = 0
@@ -267,7 +267,7 @@ class TestCurriculumLoss:
         """Invariant: lerp of two sum-1 vectors stays sum-1, and clamping holds it."""
         t = _curriculum_trainer(min_time_per_phase=99)
         for e in range(0, 20):
-            t.metrics.sub_gate = 0.5 if e % 2 else 0.0
+            t.metrics.fam_gate = 0.5 if e % 2 else 0.0
             w = t._curriculum_loss(epoch=e, time_constraint=50)
             assert sum(w) == pytest.approx(1.0)
             assert all(0.0 <= x <= 1.0 for x in w)
@@ -288,7 +288,7 @@ class TestCurriculumLoss:
         """3 consecutive gate passes (past min_time) advance the phase well before
         the time budget (tc=20) would have."""
         t = _curriculum_trainer()
-        t.metrics.sub_gate = 0.95
+        t.metrics.fam_gate = 0.95
         for e in range(0, 6):
             t._curriculum_loss(epoch=e, time_constraint=20)
         assert t.loss_phase == 1  # elapsed not yet > min_time at epoch 5
@@ -299,7 +299,7 @@ class TestCurriculumLoss:
         """Alternating pass/fail must never reach a streak of 3 (the +=/= bug)."""
         t = _curriculum_trainer(min_time_per_phase=2)
         for e in range(0, 20):
-            t.metrics.sub_gate = 0.95 if e % 2 == 0 else 0.0  # never two in a row
+            t.metrics.fam_gate = 0.95 if e % 2 == 0 else 0.0  # never two in a row
             t._curriculum_loss(epoch=e, time_constraint=50)
         assert t.loss_phase == 1
         assert t.consecutive_epochs <= 1
@@ -307,7 +307,7 @@ class TestCurriculumLoss:
     def test_high_coverage_does_not_extrapolate_past_end(self):
         """coverage=1.0 → gate/0.9≈1.11; B must clamp to 1 so no negative weights."""
         t = _curriculum_trainer(min_time_per_phase=10)
-        t.metrics.sub_gate = 1.0
+        t.metrics.fam_gate = 1.0
         w = t._curriculum_loss(epoch=0, time_constraint=20)
         assert w == pytest.approx(P2)  # exactly END, not beyond it
         assert all(x >= 0.0 for x in w)
@@ -318,13 +318,13 @@ class TestCurriculumLoss:
         early. With the old nominal offset, phase 2's elapsed would go negative and
         stall until the original fixed schedule caught up."""
         t = _curriculum_trainer()
-        t.metrics.sub_gate = 0.95
+        t.metrics.fam_gate = 0.95
         for e in range(0, 7):
             t._curriculum_loss(epoch=e, time_constraint=20)
         assert t.loss_phase == 2
         assert t.phase_start_epoch == 6  # anchored to the actual transition epoch
 
-        t.metrics.sub_gate = 0.0
+        t.metrics.fam_gate = 0.0
         t.metrics.genus_gate = 0.95
         for e in range(7, 13):
             t._curriculum_loss(epoch=e, time_constraint=20)

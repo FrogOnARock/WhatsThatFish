@@ -1,38 +1,31 @@
-"""Train or tune the YOLO11 fish detector across the LILA → LC1 → LC2 curriculum.
+"""The YOLO11 fish detector as one facade: .train(), .tune(), .predict().
 
-Each dataset stage reads the weights produced by the previous one (see _WEIGHTS)
-and emits its own best checkpoint. Two run types: Ray Tune hyperparameter search,
-or a full training run that copies out the winning weights.
+`Detector` configures one curriculum stage (LILA → LC1 → LC2) and exposes the
+same lifecycle verbs as the classifier side. Each stage reads the weights the
+previous one produced (see _WEIGHTS) and emits its own best checkpoint. It wraps
+the Ultralytics `YOLO` object, which already provides train/tune/predict — this
+class just pins the per-stage config, weights and (for tuning) the param space.
 """
 
 import argparse
 import logging
 from pathlib import Path
+from enum import Enum
+from dataclasses import dataclass
+import shutil
+
 import matplotlib
 
 matplotlib.use("Agg")
 from ultralytics import YOLO
 from dotenv import load_dotenv
-from ray import tune
 import yaml
-from enum import Enum
-from dataclasses import dataclass
-import shutil
 
-from ..models.loaders.od_dataloader import CustomDetectionTrainer
+from .loaders.od_dataloader import CustomDetectionTrainer
 
 load_dotenv()
 
 logger = logging.getLogger(__name__)
-
-# Maps YAML type strings to ray.tune distribution constructors.
-# Add entries here when new distribution types are needed in param_space_config.yaml.
-_TUNE_FNS = {
-    "uniform": tune.uniform,
-    "loguniform": tune.loguniform,
-    "choice": tune.choice,
-    "randint": tune.randint,
-}
 
 
 def load_param_space(path: Path, dataset: str) -> dict:
@@ -44,7 +37,17 @@ def load_param_space(path: Path, dataset: str) -> dict:
       fixed                           — requires a scalar under 'value';
                                         passed through as a constant (not sampled)
     Raises ValueError if the dataset key is not found in the config.
+    ray.tune is imported lazily so a .predict()-only import stays slim.
     """
+    from ray import tune
+
+    tune_fns = {
+        "uniform": tune.uniform,
+        "loguniform": tune.loguniform,
+        "choice": tune.choice,
+        "randint": tune.randint,
+    }
+
     with open(path) as f:
         raw = yaml.safe_load(f)
     space = raw.get(dataset)
@@ -58,7 +61,7 @@ def load_param_space(path: Path, dataset: str) -> dict:
         elif v["type"] == "choice":
             result[k] = tune.choice(v["values"])
         else:
-            result[k] = _TUNE_FNS[v["type"]](float(v["min"]), float(v["max"]))
+            result[k] = tune_fns[v["type"]](float(v["min"]), float(v["max"]))
     return result
 
 
@@ -75,12 +78,12 @@ class TrainType(str, Enum):
     TUNE = "tune"
 
 
-class ObjectDetectionTrain:
-    """Configures and runs one detector training/tuning stage for a given dataset.
+class Detector:
+    """Configure and run one detector stage (`lila`, `lc1`, or `lc2`).
 
-    Resolves the per-dataset config, weights and param space up front, so that
-    `run()` simply dispatches to a Ray Tune search or a full training run. The
-    LILA → LC1 → LC2 chaining is encoded in _WEIGHTS (input → output checkpoint).
+    Resolves the per-dataset config, weights and param space up front, so the
+    lifecycle methods stay thin. The LILA → LC1 → LC2 chaining is encoded in
+    _WEIGHTS (input → output checkpoint).
     """
 
     # Input weights and output filename per dataset
@@ -92,30 +95,22 @@ class ObjectDetectionTrain:
 
     def __init__(
         self,
-        dataset: Dataset,
-        train_type: TrainType,
+        dataset: Dataset = Dataset.LILA,
         config_path: str = Path(__file__).parent.parent / "config",
         class_config: str = "class_config.yaml",
         weights_path: str = Path(__file__).parent.parent / "weights",
         param_tuning_path: str = "param_space_config.yaml",
         restore_path: str = None,
     ):
-
         self.config_path = Path(config_path)
-        self.dataset = dataset.value
-        self.train_type = train_type.value
+        self.dataset = dataset.value if isinstance(dataset, Dataset) else dataset
         self.train_config_path = self.config_path / f"{self.dataset}_train_config.yaml"
         self.class_config = self.config_path / class_config
         self.param_path = self.config_path / param_tuning_path
         self.weights_path = Path(weights_path)
         self.restore_path = restore_path
         self.input_weights, self.output_weights = self._WEIGHTS[self.dataset]
-        self.tune_param_space = load_param_space(self.param_path, self.dataset)
-        logger.info(
-            "ObjectDetectionTrain initialised: dataset=%s train_type=%s",
-            self.dataset,
-            self.train_type,
-        )
+        logger.info("Detector initialised: dataset=%s", self.dataset)
 
     def train_fn(self, config, epochs: int = 20, img_size: int = 640):
         """One Ray Tune trial: train YOLO with a sampled hyperparameter set.
@@ -142,20 +137,24 @@ class ObjectDetectionTrain:
             verbose=False,
         )
 
-    def tune_model(self, num_samples: int = 5):
+    def tune(self, num_samples: int = 5):
         """Run (or resume) the Ray Tune search, maximizing validation mAP50.
 
         Each trial gets a full GPU; failures are tolerated up to a limit so one
         bad sample doesn't kill the sweep. With a restore_path it resumes an
         existing experiment's unfinished trials instead of starting fresh.
+        ray.tune is imported lazily so .predict() callers don't pull it in.
         """
+        from ray import tune
+
+        param_space = load_param_space(self.param_path, self.dataset)
         failure_config = tune.FailureConfig(max_failures=3, fail_fast=False)
 
         if self.restore_path and Path(self.restore_path).exists():
             tuner = tune.Tuner.restore(
                 self.restore_path,
                 trainable=tune.with_resources(self.train_fn, {"gpu": 1}),
-                param_space=self.tune_param_space,
+                param_space=param_space,
                 resume_unfinished=True,
                 resume_errored=False,
                 restart_errored=False,
@@ -168,16 +167,16 @@ class ObjectDetectionTrain:
                     mode="max",
                     num_samples=num_samples,
                 ),
-                param_space=self.tune_param_space,
+                param_space=param_space,
                 run_config=tune.RunConfig(
-                    failure_config=failure_config, name=f"{self.train_type}_experiment"
+                    failure_config=failure_config, name=f"{self.dataset}_experiment"
                 ),
             )
 
         results = tuner.fit()
         return results
 
-    def train_final(self):
+    def train(self):
         """Full training run on the whole dataset, using the post-tuning config.
 
         Trains from the stage's input weights and copies the best checkpoint to
@@ -204,12 +203,28 @@ class ObjectDetectionTrain:
         shutil.copy(best_pt, dest)
         logger.info("Saved best weights → %s", dest)
 
-    def run(self):
-        """Dispatch to tuning or full training based on the configured run type."""
-        if self.train_type == "tune":
-            self.tune_model()
-        elif self.train_type == "full":
-            self.train_final()
+    def predict(self, source, weights: Path = None, conf: float = 0.25):
+        """Run detection on images/video, returning Ultralytics Results.
+
+        Loads this stage's output weights by default (e.g. lc2_best.pt) — pass
+        `weights` to override. For the single best-box contract the classifier
+        handoff needs, see inference.bbox_inference.BoundingBoxInference.
+        """
+        w = Path(weights) if weights else self.weights_path / self.output_weights
+        model = YOLO(model=w)
+        return model.predict(source, conf=conf, verbose=False)
+
+
+def main(**kwargs):
+    """CLI entry point: dispatch to a Ray Tune search or a full training run."""
+    detector = Detector(
+        dataset=Dataset(kwargs["dataset"]),
+        restore_path=kwargs.get("restore_path"),
+    )
+    if kwargs.get("type") == "tune":
+        detector.tune()
+    else:
+        detector.train()
 
 
 if __name__ == "__main__":
@@ -250,10 +265,4 @@ if __name__ == "__main__":
         help="Path to an existing Ray Tune experiment directory to resume (tune mode only)",
     )
     args = parser.parse_args()
-
-    od_train = ObjectDetectionTrain(
-        dataset=Dataset(args.dataset),
-        train_type=TrainType(args.type),
-        restore_path=args.restore_path,
-    )
-    od_train.run()
+    main(dataset=args.dataset, type=args.type, restore_path=args.restore_path)

@@ -25,7 +25,7 @@ import pytest
 import torch
 from PIL import Image
 
-from whatsthatfish.models.c_custom_resnet import BasicBlock, CustomResnet
+from whatsthatfish.models.architecture.custom_resnet import BasicBlock, CustomResnet
 from whatsthatfish.transforms.letterbox_resize import LetterboxResize
 from whatsthatfish.transforms.five_channel_conversion import AddMultiChannel
 
