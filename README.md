@@ -9,7 +9,7 @@ WhatsThisFish detects and identifies fish in underwater images. It combines two 
 The system is built as four layers:
 
 1. **Data pipeline** (`etl/`, `preprocessing/`) — S3/GCS ingestion, quality scoring, underwater context classification, train/val splitting.
-2. **Models & training** (`models/`, `training/`) — detector and classifier datasets, dataloaders, architectures, and trainers.
+2. **Models** (`models/`) — architectures, datasets, dataloaders, and one lifecycle facade per model (`Classifier`, `Detector`) exposing `train()` / `tune()` / `predict()`.
 3. **Evaluation** (`evaluation/`) — hierarchical classification metrics and reports.
 4. **Product** (`serving/`, `frontend/`) — FastAPI read API + React SPA species catalogue.
 
@@ -44,13 +44,13 @@ whatsthatfish/
 │   │   ├── letterbox_resize.py           # Aspect-preserving square pad (PIL→PIL)
 │   │   ├── five_channel_conversion.py    # AddMultiChannel: PIL → (5,H,W) tensor
 │   │   └── lcn_gradient_map.py           # Scharr gradient + local contrast normalization
-│   ├── models/
-│   │   ├── c_custom_resnet.py            # CustomResnet: 5ch ResNet-34, 3 heads (progressive|parallel)
+│   ├── models/                          # architectures, data, and lifecycle facades
+│   │   ├── architecture/
+│   │   │   └── custom_resnet.py          # CustomResnet: 5ch ResNet-34, 3 heads (progressive|parallel)
 │   │   ├── datasets/                     # ObjectDetectionDataset · ClassificationDataset
-│   │   └── loaders/                      # od_dataloader (+CustomDetectionTrainer) · c_dataloader
-│   ├── training/
-│   │   ├── od_training.py                # YOLO11l: Ray Tune HPO + full train (lila/lc1/lc2)
-│   │   └── oc_training.py                # Classifier: CustomResnetTrainer + CustomResnetTuner
+│   │   ├── loaders/                      # od_dataloader (+CustomDetectionTrainer) · c_dataloader
+│   │   ├── classifier.py                 # Classifier: train() / tune() / predict() (merged trainer+tuner)
+│   │   └── detection.py                  # Detector: train() / tune() / predict() over YOLO11l
 │   ├── inference/
 │   │   ├── bbox_inference.py             # BoundingBoxInference: best-confidence YOLO box
 │   │   └── inat_bbox_proposal.py         # Bbox proposal pipeline (classification | detection modes)
@@ -81,11 +81,11 @@ YOLO11l fine-tuned for binary fish/no-fish detection, then progressively adapted
 - **LC2** — same images sampled by `uiqm × conf`. Fine-tunes `lc1_best.pt` → `lc2_best.pt`. **Not yet run.**
 - **Coral negatives** — Anthozoa images (taxon 47533) are forced as `conf=1.0` empty-annotation negatives in detection-mode bbox proposal, without inference.
 
-`_WEIGHTS` in `od_training.py` maps each stage to `(input, output)`: `lila`→(`yolo11l.pt`,`od_best.pt`), `lc1`→(`od_best.pt`,`lc1_best.pt`), `lc2`→(`lc1_best.pt`,`lc2_best.pt`).
+`_WEIGHTS` in `models/detection.py` (`Detector`) maps each stage to `(input, output)`: `lila`→(`yolo11l.pt`,`od_best.pt`), `lc1`→(`od_best.pt`,`lc1_best.pt`), `lc2`→(`lc1_best.pt`,`lc2_best.pt`). Run with `python -m whatsthatfish.models.detection --dataset lc1 --type tune|full`.
 
 ### Stage 2 — Hierarchical Classifier
 
-`CustomResnet`: ResNet-34-style BasicBlock backbone, **5-channel input** (RGB + Scharr gradient + LCN), three taxonomic heads computed **family → genus → species**.
+`CustomResnet` (`models/architecture/custom_resnet.py`): ResNet-34-style BasicBlock backbone, **5-channel input** (RGB + Scharr gradient + LCN), three taxonomic heads computed **family → genus → species**. Driven by the `Classifier` facade (`models/classifier.py`) — `train()` / `tune()` / `predict()` over one `_fit()` core, so a full run is just tuning with a single fixed config.
 
 - **Head topology (toggle `head_mode`)**:
   - `progressive` (default) — each head's logits are projected to a 64-dim bottleneck and concatenated onto the pooled features feeding the next, finer head; **parent logits are detached** so a child's loss never backprops into its parent.
@@ -94,8 +94,8 @@ YOLO11l fine-tuned for binary fish/no-fish detection, then progressively adapted
 - **Curriculum loss weighting** (3 phases): `[0,0,1]` species-only → `[0,0.6,0.4]` +genus → `[0.6,0.3,0.1]` all three; transitions gated by time **and** performance gates from `cls_metrics.py`. Val loss always uses phase-3 weights so `best.pt` selection is comparable across phases.
 - **Per-head loss** — inverse-frequency class-weighted CrossEntropy + `label_smoothing=0.1`.
 - **Discriminative LRs** — pretrained variants use two optimizer groups (head/stem fast, backbone ~10× slower) under OneCycleLR; progressive backbone unfreeze after `freeze_epochs` (BN held in eval during warmup). From-scratch uses a single group.
-- **Tuner** — `CustomResnetTuner`: in-process random search over `cls_model_param_space_config.yaml` (no Ray — a 2nd CUDA worker OOM'd the single GPU); lowest val loss wins.
-- **Status** — trainer and tuner fully implemented; the prior tuning-forwarding caveat is **fixed** (`train_fn` now forwards `head_lr`/`backbone_lr`/`weight_decay`/`freeze_epochs`). Currently mid-LR-sweep on the pretrained progressive variant; best run so far: species Top-1 **0.745**, Top-3 **0.858**, genus Top-1 **0.774**, family Top-1 **0.762** (species-only phase, geographic val).
+- **Tuning** — `Classifier.tune()`: in-process random search over `cls_model_param_space_config.yaml` (no Ray workers — a 2nd CUDA process OOM'd the single GPU); each trial runs the **same `_fit()`** as `train()` on a fresh model/optimizer/scheduler/metrics, so no state bleeds between trials; lowest val loss wins. Run with `python -m whatsthatfish.models.classifier --type tune|full`.
+- **Status** — facade complete (merged trainer + tuner; tuning forwarding resolved — `tune()` passes the full sampled config through `_fit`). Currently mid-LR-sweep on the pretrained progressive variant; best run so far: species Top-1 **0.745**, Top-3 **0.858**, genus Top-1 **0.774**, family Top-1 **0.762** (species-only phase, geographic val). (`freeze_epochs` is honored but not yet in the param space, so add it there to sweep it.)
 
 ### Data Pipeline
 
@@ -183,13 +183,13 @@ docker compose -f docker-compose.test.yml up -d                 # integration (P
 - UIQM scoring, CLIP underwater context, COCO→YOLO conversion, geographic KMeans split, 0-indexed labels
 - `ObjectDetectionDataset`/`ClassificationDataset` + dataloaders; all 5-channel transforms
 - **YOLO11l detector trained** (`od_best.pt`, mAP@0.5 0.774) and **LC1 fine-tune** (`lc1_best.pt`)
-- `CustomResnet` (progressive/parallel heads, 5ch stem inflation) + `oc_training.py` (curriculum, discriminative LRs, tuner)
+- `CustomResnet` (progressive/parallel heads, 5ch stem inflation) + `Classifier` facade (`models/classifier.py`: curriculum, discriminative LRs, merged train/tune/predict)
 - `cls_metrics.py` hierarchical metrics + HTML/sunburst/PR reports
 - `BoundingBoxInference`, two-mode `inat_bbox_proposal.py`, per-dataset YOLO configs + Ray Tune spaces
 - FastAPI serving (`/health`, `/species`, `/image`), `app_taxa` catalogue with LLM enrichment, React frontend scaffold
 
 ### In Progress
-- **Classifier LR sweep** (`oc_training.py --type tune`) on the pretrained progressive variant
+- **Classifier LR sweep** (`python -m whatsthatfish.models.classifier --type tune`) on the pretrained progressive variant
 - Bbox proposals (detection mode) populating `inat_obj_detection_dataset.annotation`
 
 ### Not Started
