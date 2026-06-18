@@ -21,7 +21,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import select, func
 
 from ..database.config import get_session_factory
-from .schemas import SpeciesCatalogue, SpeciesEntry
+from .schemas import SpeciesCatalogue, SpeciesEntry, ModelPrediction
 from ..database.models import AppTaxa
 from .utils import StorageConstructor
 from ..config import _get_logger
@@ -88,3 +88,10 @@ def list_species() -> SpeciesCatalogue:
     with _session_factory() as session:
         entries = query_species(session)
     return SpeciesCatalogue(species=entries, total=len(entries))
+
+
+@app.get("/predict", response_model=ModelPrediction)
+def get_prediction(img: bytes | list[bytes]) -> ModelPrediction:
+    """Run detector → crop → classifier on uploaded image bytes and return the
+    best box plus predicted species. WIP — implementation owned by the author."""
+    raise NotImplementedError

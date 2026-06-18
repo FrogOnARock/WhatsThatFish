@@ -49,3 +49,17 @@ class SpeciesInfo(BaseModel):
         description="The average depth that species is found at in comma separated meters and feet metrics.  e.g., '1-5 meters, 0-15 feet'"
     )
 
+
+class ModelPrediction(BaseModel):
+    """One detector→classifier result: the best box (xyxy + wh + conf) and the
+    predicted zero-indexed species id."""
+
+    x: float
+    x2: float
+    y: float
+    y2: float
+    conf: float
+    w: float
+    h: float
+    species: int
+
