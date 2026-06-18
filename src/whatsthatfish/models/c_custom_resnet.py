@@ -71,8 +71,14 @@ class CustomResnet(nn.Module):
         proj_dim: int = 64,
         batch_norm=None,
         pretrained: bool = False,
+        head_mode: str = "progressive",
     ):
         super().__init__()
+        if head_mode not in ("progressive", "parallel"):
+            raise ValueError(
+                f"head_mode must be 'progressive' or 'parallel', got {head_mode!r}"
+            )
+        self.head_mode = head_mode
         self.batch_norm = batch_norm if batch_norm is not None else nn.BatchNorm2d
         self.in_planes = in_planes
         # Variant flag: True -> backbone comes from load_pretrained() and
@@ -111,17 +117,28 @@ class CustomResnet(nn.Module):
 
         self.avg_pool = nn.AdaptiveAvgPool2d((1, 1))
         self.proj_dim = proj_dim
-        # Progressive coarse->fine heads: family (parent) -> genus -> species.
-        # Each child concatenates a low-dim (proj_dim) projection of its parent's
-        # logits onto the 512-dim pooled features. The projection is a bottleneck
-        # so the child uses coarse class STRUCTURE as a prior rather than memorizing
-        # parent logit magnitudes. Parent logits are detached in forward() so a
-        # child's loss never backprops into / destabilizes its parent head.
-        self.fc_family = nn.Linear(512, num_class[2])
-        self.proj_family = nn.Linear(num_class[2], proj_dim)
-        self.fc_genus = nn.Linear(512 + proj_dim, num_class[1])
-        self.proj_genus = nn.Linear(num_class[1], proj_dim)
-        self.fc_species = nn.Linear(512 + proj_dim, num_class[0])
+        # Two head topologies, toggled by head_mode (ablation: does the hierarchy
+        # actually lift species, given we report parents by marginalizing species?):
+        #
+        #   progressive — coarse->fine heads family -> genus -> species. Each child
+        #     concatenates a low-dim (proj_dim) projection of its parent's logits onto
+        #     the 512-dim pooled features so the child uses coarse class STRUCTURE as a
+        #     prior. Parent logits are detached in forward() so a child's loss never
+        #     backprops into / destabilizes its parent head.
+        #
+        #   parallel — three independent linear heads off the shared 512-dim pooled
+        #     features. No parent->child conditioning, no projections; the coarse heads
+        #     act purely as auxiliary supervision on the trunk.
+        if self.head_mode == "progressive":
+            self.fc_family = nn.Linear(512, num_class[2])
+            self.proj_family = nn.Linear(num_class[2], proj_dim)
+            self.fc_genus = nn.Linear(512 + proj_dim, num_class[1])
+            self.proj_genus = nn.Linear(num_class[1], proj_dim)
+            self.fc_species = nn.Linear(512 + proj_dim, num_class[0])
+        else:  # parallel
+            self.fc_family = nn.Linear(512, num_class[2])
+            self.fc_genus = nn.Linear(512, num_class[1])
+            self.fc_species = nn.Linear(512, num_class[0])
 
         self._init_weights()
 
@@ -131,13 +148,10 @@ class CustomResnet(nn.Module):
             # Backbone is loaded in load_pretrained(); only (re)init the classifier
             # heads here so we don't clobber the pretrained conv/bn weights. The
             # stem (variant A, in_dim=5) is handled by _inflate_stem, not here.
-            for head in (
-                self.fc_species,
-                self.fc_genus,
-                self.fc_family,
-                self.proj_family,
-                self.proj_genus,
-            ):
+            heads = [self.fc_species, self.fc_genus, self.fc_family]
+            if self.head_mode == "progressive":
+                heads += [self.proj_family, self.proj_genus]
+            for head in heads:
                 nn.init.normal_(head.weight, std=0.01)
                 nn.init.constant_(head.bias, 0)
             return
@@ -175,13 +189,17 @@ class CustomResnet(nn.Module):
             "fc_genus.bias",
             "fc_family.weight",
             "fc_family.bias",
-            # Progressive-head projections — new params absent from the torchvision
-            # r34 donor, so they legitimately land in missing_keys here.
-            "proj_family.weight",
-            "proj_family.bias",
-            "proj_genus.weight",
-            "proj_genus.bias",
         }
+        if self.head_mode == "progressive":
+            # Progressive-head projections — new params absent from the torchvision
+            # r34 donor, so they legitimately land in missing_keys here. Parallel
+            # heads have no projections, so they must NOT be expected-missing.
+            expected_missing |= {
+                "proj_family.weight",
+                "proj_family.bias",
+                "proj_genus.weight",
+                "proj_genus.bias",
+            }
         if self.in_dim == 5:
             expected_missing.add("conv1.weight")
 
@@ -259,14 +277,19 @@ class CustomResnet(nn.Module):
         out = self.avg_pool(out)
         out = torch.flatten(out, 1)
 
-        # Coarse->fine chain. Compute order is family -> genus -> species so each
-        # parent's logits can condition its child. .detach() severs the gradient so
-        # the child's loss cannot flow back into the parent head (the parent learns
-        # only from its own loss); the child still learns its projection freely.
-        out_family = self.fc_family(out)
-        proj_sub = self.proj_family(out_family.detach())
-        out_genus = self.fc_genus(torch.cat([out, proj_sub], dim=1))
-        proj_gen = self.proj_genus(out_genus.detach())
-        out_species = self.fc_species(torch.cat([out, proj_gen], dim=1))
+        if self.head_mode == "progressive":
+            # Coarse->fine chain. Compute order is family -> genus -> species so each
+            # parent's logits can condition its child. .detach() severs the gradient so
+            # the child's loss cannot flow back into the parent head (the parent learns
+            # only from its own loss); the child still learns its projection freely.
+            out_family = self.fc_family(out)
+            proj_sub = self.proj_family(out_family.detach())
+            out_genus = self.fc_genus(torch.cat([out, proj_sub], dim=1))
+            proj_gen = self.proj_genus(out_genus.detach())
+            out_species = self.fc_species(torch.cat([out, proj_gen], dim=1))
+        else:  # parallel — independent heads, no parent->child conditioning
+            out_family = self.fc_family(out)
+            out_genus = self.fc_genus(out)
+            out_species = self.fc_species(out)
 
         return out_species, out_genus, out_family

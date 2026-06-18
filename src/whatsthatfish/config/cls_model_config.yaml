@@ -10,8 +10,9 @@ warmup_pct: 0.05      # NOTE: trainer reads `warmup_pct` and now passes it to On
 loss_weights: [0.0, 0.0, 1.0]
 loss_weights_p2: [0.0, 0.6, 0.4]
 loss_weights_p3: [0.6, 0.3, 0.1]
-max_lr: 0.003476679693190392
+max_lr: 0.0007963020940738236
 min_time_per_phase: 8
+grad_clip: 1.0        # global grad-norm clip; <= 0 disables. Tames hot-LR divergence at backbone unfreeze.
 
 # ── Model variant (the A/B/C comparative harness) ────────────────────────────
 # Run the three under otherwise-identical config to isolate pretraining + channels:
@@ -21,8 +22,13 @@ min_time_per_phase: 8
 pretrained: true
 in_dim: 5
 layers: [8, 8, 12, 6]
+# Head topology ablation:
+#   progressive — family->genus->species, each child fed its parent's detached logits
+#   parallel    — three independent heads off the shared pooled features (coarse heads
+#                 act only as auxiliary trunk supervision; report parents by marginalizing species)
+head_mode: progressive
 
 # ── Fine-tune schedule (pretrained variants only; ignored when pretrained=false) ──
-backbone_lr: 0.0001   # ~10x lower than the heads so pretrained features aren't wrecked
-head_lr: 0.001        # heads (+ inflated stem) move fast
+backbone_lr: 0.000793295218564101   # ~10x lower than the heads so pretrained features aren't wrecked
+head_lr: 0.002406778647802217        # heads (+ inflated stem) move fast
 freeze_epochs: 3      # Phase A: backbone frozen, train heads/stem; then unfreeze at backbone_lr

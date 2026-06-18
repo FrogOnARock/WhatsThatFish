@@ -23,18 +23,13 @@ from sqlalchemy import select, func
 from ..database.config import get_session_factory
 from .schemas import SpeciesCatalogue, SpeciesEntry
 from ..database.models import AppTaxa
+from .utils import StorageConstructor
+from ..config import _get_logger
 
 load_dotenv()
-app = FastAPI(title="WhatsThisFish API", version="0.1.0")
+logger = _get_logger("uvicorn.error")
 
-# Where the example images live. Local-disk for prototyping (zero GCS egress);
-# override with IMAGE_DIR in prod to point at a GCS-mounted path / swap this for
-# a redirect-to-signed-URL endpoint. This is the ONE place storage location is
-# decided — the frontend only ever knows `${API_BASE}/images/<filename>`.
-_IMAGE_DIR = Path(
-    os.getenv("IMAGE_DIR", Path(__file__).parents[1] / "data/classification_images")
-)
-app.mount("/images", StaticFiles(directory=_IMAGE_DIR), name="images")
+app = FastAPI(title="WhatsThisFish API", version="0.1.0")
 
 # Vite dev server origin. When we deploy, add the Cloudflare Pages domain here
 # (or front both behind one domain to avoid CORS entirely — see hosting notes).
@@ -74,6 +69,12 @@ def query_species(session: Session) -> list[SpeciesEntry]:
         )
         for row in rows
     ]
+
+@app.get("/image/{filename}")
+def get_image(filename: str):
+    storage = StorageConstructor().constructor()
+    url = storage.retrieve_image(filename=filename)
+    return url
 
 
 @app.get("/species", response_model=SpeciesCatalogue)

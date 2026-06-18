@@ -43,6 +43,11 @@ def _bare_trainer(tmp_path) -> CustomResnetTrainer:
     # freeze/unfreeze branches are no-ops for these checkpoint/CSV tests.
     t.pretrained = False
     t.freeze_epochs = 0
+    # Discriminative-LR + topology + clip fields the registry now records.
+    t.head_lr = 1e-3
+    t.backbone_lr = 1e-4
+    t.head_mode = "progressive"
+    t.grad_clip = 1.0
     return t
 
 
@@ -163,6 +168,40 @@ class TestCsvBookkeeping:
         with open(t.experiments_csv) as f:
             lines = f.readlines()
         assert len(lines) == 3  # header + 2 rows
+
+    def test_register_experiment_logs_pretrained_lr_knobs(self, tmp_path):
+        """The registry must record the LRs that actually drove the run."""
+        t = _bare_trainer(tmp_path)
+        t.pretrained = True
+        t.head_lr = 0.0024
+        t.backbone_lr = 0.0003
+        t._register_experiment({"top1_species": 0.5}, best_val_loss=0.4)
+        with open(t.experiments_csv) as f:
+            rows = list(csv.DictReader(f))
+        assert rows[0]["pretrained"] == "True"
+        assert rows[0]["head_lr"] == "0.0024"
+        assert rows[0]["backbone_lr"] == "0.0003"
+        assert rows[0]["grad_clip"] == "1.0"
+        assert rows[0]["top1_species"] == "0.5"
+
+    def test_register_experiment_archives_old_schema(self, tmp_path):
+        """A pre-existing registry with a different header is archived, not mangled."""
+        t = _bare_trainer(tmp_path)
+        # Simulate the legacy schema (old no-op-LR columns).
+        t.experiments_csv.write_text(
+            "model_version,timestamp,epochs,lr,max_lr,weight_decay\n"
+            "old_run,2026-06-13,20,1e-5,1e-3,0.01\n"
+        )
+        t._register_experiment({"top1_species": 0.5}, best_val_loss=0.4)
+
+        # Old file preserved under an archive name; new file has the new header.
+        archives = list(tmp_path.glob("experiments_legacy_*.csv"))
+        assert len(archives) == 1
+        assert "old_run" in archives[0].read_text()
+        with open(t.experiments_csv) as f:
+            lines = f.readlines()
+        assert lines[0].startswith("model_version,timestamp,epochs,pretrained,head_mode,")
+        assert len(lines) == 2  # new header + the one new row
 
 
 # ════════════════════════════════════════════════════════════════════════════════

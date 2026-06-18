@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import { getSpeciesLibrary } from "../api/client";
 import type { SpeciesEntry } from "../api/types";
 import StatPill from "../components/history/StatPill";
-import {LibraryCard} from "../components/history/LibraryCard";
-import LibraryPanel from "../components/history/LibraryPanel";
+import {LibraryCard} from "../components/library/LibraryCard";
+import LibraryPanel from "../components/library/LibraryPanel";
 
 
 interface SortOption {

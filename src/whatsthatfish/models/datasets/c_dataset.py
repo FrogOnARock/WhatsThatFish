@@ -17,6 +17,7 @@ class ClassificationDataset(Dataset):
         split: str = "train",
         transform=None,
         tuning: bool = False,
+        max_samples: int | None = None,
         local_base_dir: str = None,
         min_bbox_count: int = 100,
         crop_margin: float = 0.15,
@@ -36,6 +37,13 @@ class ClassificationDataset(Dataset):
         # prepare_inat.assign_split: train=True → training, train=False → validation
         self.split = split == "train"
         self.tuning = tuning
+        # Per-class UIQM-rank cap. An explicit max_samples always wins (used by the
+        # data-quality sweep to vary the train tail). Otherwise tuning defaults to
+        # top-100 for TRAIN (cheap epochs) and leaves VAL UNCAPPED so the sweep is
+        # scored on the full UIQM-range geographic val, not a top-20 "easy exam".
+        if max_samples is None and tuning and self.split:
+            max_samples = 100
+        self.max_samples = max_samples
         # Exclude taxa the detector failed on: keep only taxa where at least
         # min_bbox_count images received a proposed bbox. `!= "null"` excludes
         # both JSON null (bbox proposal ran, no detection) and SQL NULL
@@ -85,12 +93,12 @@ class ClassificationDataset(Dataset):
             cte.c.row_num,
         )
 
-        if self.tuning:
-            max_samples = 100 if self.split else 20
-            # Filter on the CTE column, not outer.c.* — accessing .c on a Select
-            # coerces it into an anonymous subquery (anon_1) and adds it as a second
-            # FROM element alongside `data`, producing the cartesian-product warning.
-            outer = outer.where(cte.c.row_num <= max_samples)
+        if self.max_samples is not None:
+            # Keep only each class's top-N rows by UIQM (row_num is the UIQM-desc
+            # rank from the CTE). Filter on cte.c.* — accessing .c on the outer
+            # Select coerces it into an anonymous subquery and adds a second FROM
+            # element, producing a cartesian-product warning.
+            outer = outer.where(cte.c.row_num <= self.max_samples)
 
         with self.session_factory() as session:
             self.data = session.execute(outer).all()

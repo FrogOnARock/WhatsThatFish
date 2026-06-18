@@ -5,7 +5,7 @@ renamed here must be renamed there (and vice versa), since the SPA deserialises
 exactly these shapes.
 """
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, HttpUrl
 
 
 class SpeciesEntry(BaseModel):
@@ -43,3 +43,4 @@ class SpeciesInfo(BaseModel):
     depth: str = Field(
         description="The average depth that species is found at in comma separated meters and feet metrics.  e.g., '1-5 meters, 0-15 feet'"
     )
+

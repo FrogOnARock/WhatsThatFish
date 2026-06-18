@@ -1,37 +1,57 @@
 # ── Classification Param Space ──────────────────────────────────────────────────────
-# Each parameter entry requires: type (uniform | loguniform | choice | randint),
-# min, and max. The loader in od_training.py maps these to ray.tune distributions.
+# Each numeric entry requires: type (uniform | loguniform | randint) + min + max.
+# 'fixed' passes a scalar through unchanged; 'choice' takes a 'values' list.
+#
+# THIS ROUND = honest LR sweep (pretrained / variant A), ~10 trials:
+#   - Sweep ONLY head_lr × backbone_lr (the two knobs that actually drive a
+#     pretrained run). Everything else is fixed so a bad trial can't be blamed
+#     on weight_decay / curriculum / architecture drift.
+#   - Ranges are clamped to the STABILITY box read off TRAIN loss (val-independent):
+#     head-peak >~3e-3 detonated training at the backbone unfreeze. grad clipping
+#     (grad_clip=1.0) now backstops the hot edge, so the upper corners are safe to probe.
+#   - Scored on the honest val (c_dataset no longer caps val at top-20 UIQM).
 
 
 classification:
-  # Fine-tuning on iNat pseudo-labels — lower lr + weight_decay vs. LILA scratch training
+  # NO-OPS in pretrained mode (optimizer uses head_lr/backbone_lr; OneCycle max_lr
+  # is [head_lr, backbone_lr]). Kept as fixed so train_fn's config[...] lookups don't
+  # KeyError; their values are irrelevant for variant A.
   lr:
-    type: loguniform
-    min: 1e-5
-    max: 1e-3
-  weight_decay:
-    type: loguniform
-    min: 1e-4
-    max: 1e-2
-  min_time_per_phase:
     type: fixed
-    value: 5
+    value: 1.0e-3   # decimal point REQUIRED — bare `1e-3` parses as a YAML string
+  max_lr:
+    type: fixed
+    value: 3.0e-3
+  # Held CONSTANT this round to isolate the LR axes. Candidate for its own sweep
+  # later, once the LR cell is known.
+  weight_decay:
+    type: fixed
+    value: 1.0e-3
   warmup_pct:
     type: fixed
     value: 0.05
-  max_lr:
-    type: loguniform
-    min: 1e-3
-    max: 5e-2
-  # Peak head LR caps at 1e-2 — above this, OneCycleLR drives AdamW into
-  # divergence (a 1e-1 ceiling let trials sample ~0.09 → loss exploded).
+  # Lowered from 5 → 3: at 20 tuning epochs this hands species ~14 epochs (vs ~10),
+  # so the species metric separates trials instead of being uniformly undertrained.
+  min_time_per_phase:
+    type: fixed
+    value: 3
+  # ── The only two swept axes ──────────────────────────────────────────────
+  # head_lr capped at the train-loss divergence boundary (was 1e-2 — that range
+  # spent half its draws in the detonation zone).
   head_lr:
     type: loguniform
     min: 1e-3
-    max: 1e-2
-  # Backbone kept BELOW the heads: pretrained features are fragile, so the body
-  # moves slowly while the randomly-init heads adapt faster (was 1e-2, too hot).
+    max: 3e-3
+  # backbone_lr floor raised 1e-5 → 1e-4: below that the pretrained body barely
+  # adapts to the underwater/5ch domain (wasted draws). First HONEST read on this
+  # axis — it was never even logged before the registry fix.
   backbone_lr:
     type: loguniform
-    min: 1e-5
+    min: 1e-4
     max: 1e-3
+  # head_mode: NOT swept (option A). Fixed to 'progressive' in cls_model_config.yaml,
+  # so train_fn won't forward it and no trial is confounded by an architecture flip.
+  # Uncomment to run the progressive-vs-parallel ablation as a separate sweep.
+  # head_mode:
+  #   type: choice
+  #   values: ["progressive", "parallel"]

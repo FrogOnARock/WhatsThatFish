@@ -3,10 +3,9 @@
    camelCase SpeciesEntry the UI uses. This mapping IS the anti-corruption
    boundary: backend field renames are absorbed here, not in components. */
 import type { SpeciesEntry } from "./types";
-
+import { API_BASE } from "./config";
 // Override at build/deploy time with VITE_API_BASE (e.g. the Cloud Run URL).
 // Defaults to the local uvicorn dev server.
-const API_BASE = import.meta.env.VITE_API_BASE ?? "http://localhost:8080";
 
 /** Raw wire shape from GET /species (snake_case, matches serving/schemas.py). */
 interface SpeciesEntryWire {
@@ -47,3 +46,4 @@ export async function getSpeciesLibrary(): Promise<SpeciesEntry[]> {
     depth: s.depth
   }));
 }
+

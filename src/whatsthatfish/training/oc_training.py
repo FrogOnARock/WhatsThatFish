@@ -59,6 +59,10 @@ class CustomResnetTrainer:
             # Tunable parameters - pretrained
             self.backbone_lr = kwargs.get("backbone_lr", data.get("backbone_lr", 1e-4))
             self.head_lr = kwargs.get("head_lr", data.get("head_lr", 1e-3))
+            # Global grad-norm clip — caps the per-step update so a hot-LR trial
+            # degrades gracefully instead of exploding (the species-loss=577 blow-up
+            # at the backbone unfreeze). <= 0 disables clipping.
+            self.grad_clip = kwargs.get("grad_clip", data.get("grad_clip", 1.0))
 
             # Fixed parameters
             self.loss_weights = data.get("loss_weights", [0.0, 0.0, 1.0])
@@ -70,6 +74,11 @@ class CustomResnetTrainer:
             self.in_dim = data.get("in_dim", 5)
             self.layers = data.get("layers", [8, 8, 12, 6])
             self.freeze_epochs = data.get("freeze_epochs", 0)
+            # Head topology — tunable so the progressive-vs-parallel ablation can run
+            # through the same search path as the LR sweep.
+            self.head_mode = kwargs.get(
+                "head_mode", data.get("head_mode", "progressive")
+            )
             self.model_version = data.get(
                 "model_version", datetime.now().strftime("%Y%m%d_%H%M%S")
             )
@@ -107,7 +116,6 @@ class CustomResnetTrainer:
                 )
                 weight_dict[lbl] = [float(r.weight) for r in rows]
 
-        # TODO when tuning we'll need to add in max-samples
         self.train_dataloader = class_dataloader(
             split="train", batch=self.batch_size, tuning=tuning
         )
@@ -129,6 +137,7 @@ class CustomResnetTrainer:
             num_class=self.num_labels,
             in_dim=self.in_dim,
             pretrained=self.pretrained,
+            head_mode=self.head_mode,
         ).to(device=self.device)
         if self.pretrained:
             self.model.load_pretrained()
@@ -180,9 +189,12 @@ class CustomResnetTrainer:
             self.model.fc_species,
             self.model.fc_genus,
             self.model.fc_family,
-            self.model.proj_family,
-            self.model.proj_genus,
         ]
+        # Progressive mode adds the two parent->child projection layers (also
+        # randomly-init, so they belong with the fast head group); parallel mode
+        # has none.
+        if self.model.head_mode == "progressive":
+            modules.extend([self.model.proj_family, self.model.proj_genus])
         if self.model.in_dim == 5:
             modules.extend([self.model.conv1, self.model.bn1])
 
@@ -247,43 +259,82 @@ class CustomResnetTrainer:
             )
 
     def _register_experiment(self, final_metrics: dict, best_val_loss: float):
+        # `pretrained` disambiguates which LR knobs actually drove the run:
+        #   pretrained=True  → optimizer uses head_lr/backbone_lr; OneCycle max_lr is
+        #                      [head_lr, backbone_lr]. lr/max_lr are NO-OPS here.
+        #   pretrained=False → optimizer uses lr; OneCycle max_lr is max_lr.
+        #                      head_lr/backbone_lr are unused.
+        # All are logged regardless so the registry is self-describing for both arms.
         header = [
             "model_version",
             "timestamp",
             "epochs",
+            "pretrained",
+            "head_mode",
             "lr",
             "max_lr",
+            "head_lr",
+            "backbone_lr",
             "weight_decay",
+            "freeze_epochs",
+            "grad_clip",
             "batch_size",
             "loss_weights",
+            "top1_species",
             "top3_species",
             "top5_species",
+            "top1_genus",
             "top3_genus",
+            "top1_family",
             "species_wrong_genus_right",
             "best_val_loss",
         ]
-        write_header = not self.experiments_csv.exists()
+        row = [
+            self.model_version,
+            datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            self.epochs,
+            self.pretrained,
+            self.head_mode,
+            self.lr,
+            self.max_lr,
+            self.head_lr,
+            self.backbone_lr,
+            self.weight_decay,
+            self.freeze_epochs,
+            self.grad_clip,
+            self.batch_size,
+            self.loss_weights,
+            final_metrics.get("top1_species"),
+            final_metrics.get("top3_species"),
+            final_metrics.get("top5_species"),
+            final_metrics.get("top1_genus"),
+            final_metrics.get("top3_genus"),
+            final_metrics.get("top1_family"),
+            final_metrics.get("species_wrong_genus_right"),
+            f"{best_val_loss:.6f}",
+        ]
+
+        # Schema migration: if an existing registry has a different header, archive
+        # it so we never append mismatched columns onto the old (no-op-LR) schema.
+        expected = ",".join(header)
+        write_header = True
+        if self.experiments_csv.exists():
+            lines = self.experiments_csv.read_text().splitlines()
+            first_line = lines[0] if lines else ""
+            if first_line == expected:
+                write_header = False
+            elif first_line:
+                archive = self.experiments_csv.with_name(
+                    f"experiments_legacy_{datetime.now():%Y%m%d_%H%M%S}.csv"
+                )
+                self.experiments_csv.rename(archive)
+                logger.info(f"Registry schema changed; archived old CSV → {archive}")
+
         with open(self.experiments_csv, "a", newline="") as f:
             w = csv.writer(f)
             if write_header:
                 w.writerow(header)
-            w.writerow(
-                [
-                    self.model_version,
-                    datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                    self.epochs,
-                    self.lr,
-                    self.max_lr,
-                    self.weight_decay,
-                    self.batch_size,
-                    self.loss_weights,
-                    final_metrics.get("top3_species"),
-                    final_metrics.get("top5_species"),
-                    final_metrics.get("top3_genus"),
-                    final_metrics.get("species_wrong_genus_right"),
-                    f"{best_val_loss:.6f}",
-                ]
-            )
+            w.writerow(row)
         logger.info(f"Experiment registered → {self.experiments_csv}")
 
     def _save_checkpoint(self, epoch: int, val_loss: float, filename: str):
@@ -381,6 +432,11 @@ class CustomResnetTrainer:
                 + loss_family * loss_weights[2]
             )
             loss.backward()
+            # Clip BEFORE stepping so the optimizer never sees an exploding grad.
+            if self.grad_clip and self.grad_clip > 0:
+                torch.nn.utils.clip_grad_norm_(
+                    self.model.parameters(), max_norm=self.grad_clip
+                )
             self.optimizer.step()
             self.lr_scheduler.step()
 
@@ -516,7 +572,17 @@ def load_param_space(path: Path, dataset: str) -> dict:
     result = {}
     for k, v in space.items():
         if v["type"] == "fixed":
-            result[k] = v["value"]
+            # PyYAML parses unpointed sci-notation (`1e-3`) as a STRING, not a float
+            # (its float regex needs a dot: `1.0e-3`). Coerce numeric-looking fixed
+            # values so a config typo can't feed a string into AdamW/OneCycleLR;
+            # genuine strings (e.g. head_mode="progressive") fall through unchanged.
+            val = v["value"]
+            if isinstance(val, str):
+                try:
+                    val = float(val)
+                except ValueError:
+                    pass
+            result[k] = val
         elif v["type"] == "choice":
             result[k] = tune.choice(v["values"])
         else:
@@ -530,11 +596,21 @@ class CustomResnetTuner:
         restore_path: Path = None,
         param_space: Path = Path(__file__).parents[1]
         / "config/cls_model_param_space_config.yaml",
-        experiments: int = 3,
+        experiments: int = 7,
+        base_config: Path = Path(__file__).parents[1]
+        / "config/cls_model_config.yaml",
+        out_config: Path = Path(__file__).parents[1]
+        / "config/tuned_cls_model_config.yaml",
     ):
         self.restore_path = restore_path
         self.param_space = load_param_space(param_space, "classification")
         self.experiments = experiments
+        # Base config supplies the non-tuned fields (model variant, loss weights,
+        # batch size...); the winning trial's sampled values overlay it. Kept
+        # separate from cls_model_config.yaml until the pattern's proven, then
+        # promoted by hand.
+        self.base_config = base_config
+        self.out_config = out_config
 
     def _sample_config(self) -> dict:
         """Draw one config from the param space. ray.tune search-space objects
@@ -545,7 +621,40 @@ class CustomResnetTuner:
             for k, v in self.param_space.items()
         }
 
+    def _write_tuned_config(self, best: tuple):
+        """Overlay the winning trial's sampled hyperparameters onto the base config
+        and write a complete, runnable YAML to out_config. The result is drop-in:
+        point CustomResnetTrainer at it, or promote it by copying into
+        cls_model_config.yaml once the search pattern is trusted."""
+        val_loss, config, metrics = best
+        with open(self.base_config) as f:
+            merged = yaml.safe_load(f) or {}
+        # dict.update keeps base ordering for existing keys and appends new ones
+        # (e.g. head_mode if it isn't already in the base config).
+        merged.update(config)
+
+        header = (
+            f"# ── Tuned classification config (auto-generated) ───────────────────\n"
+            f"# Best of {self.experiments} trials — val_loss={val_loss:.6f}, "
+            f"top1_species={metrics.get('top1_species')}, "
+            f"top3_species={metrics.get('top3_species')}\n"
+            f"# Generated: {datetime.now():%Y-%m-%d %H:%M:%S}\n"
+            f"# Tuned keys overlaid onto {self.base_config.name}; review, then copy "
+            f"into cls_model_config.yaml to promote.\n\n"
+        )
+        with open(self.out_config, "w") as f:
+            f.write(header)
+            yaml.safe_dump(merged, f, sort_keys=False, default_flow_style=False)
+        logger.info(f"Tuned config written → {self.out_config}")
+
     def train_fn(self, config: dict):
+        # Only forward head_mode when the param space actually samples it (option B,
+        # mixed search). If it's absent (option A, fixed sweep), DON'T pass it — a
+        # kwarg would override the value set in cls_model_config.yaml, defeating the
+        # whole point of fixing it there.
+        extra = {}
+        if "head_mode" in config:
+            extra["head_mode"] = config["head_mode"]
         model = CustomResnetTrainer(
             tuning=True,
             backbone_lr=config["backbone_lr"],
@@ -555,6 +664,7 @@ class CustomResnetTuner:
             warmup_pct=config["warmup_pct"],
             max_lr=config["max_lr"],
             min_time_per_phase=config["min_time_per_phase"],
+            **extra,
         )
         result = model.train()
         return result
@@ -590,6 +700,7 @@ class CustomResnetTuner:
                 )
 
         logger.info(f"Search complete — best val_loss={best[0]:.4f}, config={best[1]}")
+        self._write_tuned_config(best)
         return best
 
 
