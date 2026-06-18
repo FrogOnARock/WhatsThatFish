@@ -1,3 +1,11 @@
+"""Torch Dataset feeding the YOLO11 detector across the LILA → LC1 → LC2 curriculum.
+
+One class, three back-ends: `lila` reads COCO→YOLO boxes from the lila_yolo
+table; `lc1`/`lc2` read pseudo-labelled iNat boxes from inat_obj_detection_dataset.
+Yields (image_tensor, label_tensor, file_name) with boxes normalized to the
+post-transform canvas.
+"""
+
 import logging
 import numpy as np
 from pathlib import Path
@@ -14,6 +22,14 @@ logger = logging.getLogger(__name__)
 
 
 class ObjectDetectionDataset(Dataset):
+    """Detector training set for one curriculum stage (`lila`, `lc1`, or `lc2`).
+
+    Picks its query, image directory and sample cap from `dataset`. The LC stages
+    cap at 100K rows and skip JSONB-null annotations (rows not yet bbox-proposed);
+    LC1 additionally pre-sorts by UIQM descending. UIQM/conf columns are surfaced
+    so the dataloader can build its weighted sampler.
+    """
+
     def __init__(
         self,
         dataset: str,
@@ -83,6 +99,7 @@ class ObjectDetectionDataset(Dataset):
             query = query.limit(self.max_samples)
 
         self.data = self.session.execute(query).all()
+        self.session.close()
         count_positive = sum(
             [
                 any([ann["class_id"] for ann in record.annotation if ann["class_id"]])
@@ -102,7 +119,11 @@ class ObjectDetectionDataset(Dataset):
 
     @property
     def labels(self):
-        # TODO what the fuck? Review tomorrow
+        """Per-record {bboxes, cls} view of the annotations, in normalized cxcywh.
+
+        Used by Ultralytics-side machinery that wants labels up front. Negative
+        (fish-free) records collapse to a single zero box with cls=1.
+        """
         return [
             {
                 "bboxes": np.array([[0, 0, 0, 0]])
@@ -131,6 +152,13 @@ class ObjectDetectionDataset(Dataset):
         return len(self.data)
 
     def __getitem__(self, idx):
+        """Load one image and its fish boxes as (image_tensor, label_tensor, file_name).
+
+        Keeps only positive (class_id==0) boxes. Boxes are de-normalized to the
+        original pixel size, run through the joint image+box transform, then
+        re-normalized against the transformed canvas so labels track any resize/
+        crop. label_tensor is (N, 5) [cls, cx, cy, w, h], empty (0, 5) for negatives.
+        """
         record = self.data[idx]
         labels = [
             [

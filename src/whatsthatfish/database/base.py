@@ -1,3 +1,9 @@
+"""Declarative base shared by every ORM model.
+
+The naming convention pins deterministic names on indexes and constraints so
+auto-generated migrations stay stable instead of churning on random labels.
+"""
+
 from sqlalchemy import MetaData
 from sqlalchemy.orm import DeclarativeBase
 
@@ -11,4 +17,6 @@ naming_convention = {
 
 
 class Base(DeclarativeBase):
+    """Common declarative base; all models subclass this to share one MetaData."""
+
     metadata = MetaData(naming_convention=naming_convention)

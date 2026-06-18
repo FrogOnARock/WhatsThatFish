@@ -1,3 +1,10 @@
+"""Preprocessing pipeline entrypoint and routing.
+
+PreProcessingFactory wires up the individual preprocessing steps (UIQM scoring,
+underwater context, COCO→YOLO annotation conversion, classification dataset
+prep, app catalogue) and runs them in the right order for a chosen --type.
+"""
+
 import argparse
 from enum import Enum
 from pathlib import Path
@@ -47,6 +54,14 @@ class SourceDataset(str, Enum):
 
 
 class PreProcessingFactory:
+    """Builds and runs preprocessing steps for a chosen pipeline type.
+
+    Holds the shared GCS client, DB session factory, and config that the
+    individual step runners need; `run()` dispatches on `type` to execute one
+    step (or the whole `all` sequence). `source_dataset` only matters for
+    scoring (inat / lila / both).
+    """
+
     def __init__(
         self, type: Dataset, source_dataset: SourceDataset = SourceDataset.BOTH
     ):
@@ -63,6 +78,12 @@ class PreProcessingFactory:
         )
 
     def _dest_table(self, dataset: str, runner: str):
+        """Pick the ORM table a runner writes to for the given dataset.
+
+        LILA always lands in LilaImageQuality; iNat splits by runner — scoring
+        → InatImageQuality, original-heuristic context → InatCaptureContext,
+        CLIP context → InatClipContext.
+        """
         if dataset == "lila":
             return LilaImageQuality
         if dataset == "inat":
@@ -76,6 +97,7 @@ class PreProcessingFactory:
         raise ValueError(f"Unknown dataset: {dataset!r}")
 
     def _load_score_runner(self, dataset: str, source: str):
+        """Wire up a UIQM ScoreRunner with its crash-recovery progress tracker."""
 
         dest_table = self._dest_table(dataset, runner="scoring")
         logger.info(
@@ -98,6 +120,7 @@ class PreProcessingFactory:
         )
 
     def _load_context_runner(self, dataset: str, source: str):
+        """Wire up the heuristic (non-CLIP) underwater ContextRunner + tracker."""
 
         dest_table = self._dest_table(dataset, runner="context_orig")
         logger.info(
@@ -120,6 +143,7 @@ class PreProcessingFactory:
         )
 
     def _load_clip_context_runner(self, dataset: str, source: str):
+        """Wire up the CLIP underwater classifier (ClipModel) + tracker."""
 
         dest_table = self._dest_table(dataset, runner="context_clip")
         logger.info(
@@ -152,6 +176,12 @@ class PreProcessingFactory:
         return BuildAppTaxa(session_factory=self.session_factory)
 
     async def run(self):
+        """Dispatch on `self.type` and execute the matching step(s).
+
+        `all` runs the full ordered chain (CLIP context → UIQM scoring →
+        annotation conversion → classification prep → zero-index → app taxa);
+        other types run just their step. Raises on an unknown type.
+        """
         logger.info(f"PreProcessingFactory.run() starting — type={self.type}")
 
         if self.type == "all":

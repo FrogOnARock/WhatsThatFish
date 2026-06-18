@@ -1,3 +1,16 @@
+"""Run the trained detector over iNaturalist images to propose bounding boxes.
+
+Two modes, distinguished by their target table and image source:
+  - classification: writes crop bboxes into inat_classification_dataset so the
+    classifier can be fed tight fish crops at train time.
+  - detection: builds LC1/LC2 detector training data in inat_obj_detection_dataset.
+    Coral (Anthozoa) frames are forced in as conf=1.0 empty-annotation negatives
+    without inference; everything else gets a real YOLO pass.
+
+Results are streamed to a CSV write-ahead log first, then flushed to Postgres,
+so a crashed run can be replayed via --wal-only.
+"""
+
 import argparse
 import csv
 import json
@@ -27,6 +40,13 @@ _MODELS = ("od_best.pt", "lc1_best.pt", "lc2_best.pt")
 
 
 class InatBoundingBox:
+    """Orchestrates a bbox-proposal run: pick images, infer, log, persist.
+
+    Mode selects both the source image folder and the destination table, and in
+    detection mode also enables coral-negative forcing. The whole run goes through
+    a CSV WAL before touching the database so it survives interruption.
+    """
+
     def __init__(
         self,
         mode: str,
@@ -65,6 +85,12 @@ class InatBoundingBox:
         )
 
     def write_to_db(self, max_params: int = 65535):
+        """Flush the CSV WAL into the target table as a chunked upsert.
+
+        Re-parses the JSON columns, then upserts on photo_uuid (updating bbox,
+        conf and annotation) in chunks sized to stay under Postgres' bind-param
+        limit. Idempotent, so replaying a WAL is safe.
+        """
         logger.info("Writing WAL to database: %s", self.data_path / self.wal_path)
         with open(self.data_path / self.wal_path, "r") as file_path:
             reader = csv.DictReader(file_path)
@@ -101,6 +127,9 @@ class InatBoundingBox:
         logger.info("Database write complete")
 
     def annotation_normalization(self, row: dict[str, float]):
+        """Convert a pixel xyxy box into YOLO-style normalized center/width/height
+        (fractions of image w/h), the format the detector training data expects.
+        """
         return {
             "norm_center_x": ((row["x1"] + row["x2"]) / 2) / row["w"],
             "norm_center_y": ((row["y1"] + row["y2"]) / 2) / row["h"],
@@ -109,7 +138,12 @@ class InatBoundingBox:
         }
 
     def log_bbox(self, data: list[tuple[str, dict[str, float]]]):
+        """Append a batch of inference results to the WAL.
 
+        Each (photo_uuid, box) pair becomes a row carrying the proposed bbox,
+        its normalized annotation and confidence; a None box (no detection) is
+        written as empty fields. Writes the header on first write.
+        """
         out_data = [
             {
                 "photo_uuid": row[0],
@@ -179,6 +213,11 @@ class InatBoundingBox:
     def run_inference(
         self, img_dict: list[dict[str, str]], batch_size: int = 64, current_batch=0
     ):
+        """Read image files in batches, run the detector, and WAL the boxes.
+
+        Loads each batch's bytes from disk, infers, logs how many frames had a
+        detection, then writes the results to the WAL before moving on.
+        """
         total = len(img_dict)
         logger.info(
             "Starting inference on %d images (batch_size=%d)", total, batch_size
@@ -206,6 +245,12 @@ class InatBoundingBox:
             current_batch += batch_size
 
     def _select_photo_uuid(self, file_list: list[str]):
+        """Map on-disk filenames back to their photo_uuid via the target table.
+
+        In detection mode it also joins through to the taxon ancestry and flags
+        coral (Anthozoa) frames, so they can later be routed to forced negatives
+        instead of inference.
+        """
         with self.session_factory() as session:
             if self.mode == "detection":
                 rows = session.execute(
@@ -243,6 +288,12 @@ class InatBoundingBox:
                 ]
 
     def run_bbox_proposals(self):
+        """Drive a full proposal pass over the mode's image folder.
+
+        Lists the images, resolves their photo_uuids, and in detection mode
+        splits coral (forced negatives, no inference) from fish (real YOLO pass);
+        classification mode just runs inference over everything.
+        """
         filename_list = os.listdir(self.data_path / self.img_folder)
         logger.info(
             "Found %d images in %s",
@@ -266,6 +317,10 @@ class InatBoundingBox:
             self.run_inference(img_dict)
 
     def run_fine_tune_bboxes(self):
+        """End-to-end entry point: open a fresh WAL, run all proposals, then
+        flush the WAL to the database. The two-step (WAL then DB) is what makes
+        an interrupted run recoverable via --wal-only.
+        """
         logger.info(
             "Starting bbox proposal run, WAL: %s", self.data_path / self.wal_path
         )

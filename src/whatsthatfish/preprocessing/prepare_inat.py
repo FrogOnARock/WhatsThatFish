@@ -1,3 +1,14 @@
+"""Builds the iNaturalist classification and object-detection training sets.
+
+The headline job is an honest, generalization-testing train/val split: cluster
+observations geographically by lat/lon (KMeans, GPU via cuml for the full fit),
+hold out whole clusters for validation so the model is tested on regions it never
+trained on, then top up sparse taxa with whole observations to keep duplicate
+photos off the split boundary. Taxa are tagged with family/genus/species from the
+iNat ancestry, and the result is written to inat_classification_dataset (coral
+excluded) and inat_obj_detection_dataset (coral included as negatives).
+"""
+
 from typing import Any
 
 import numpy as np
@@ -34,12 +45,24 @@ logger = _get_logger(__name__)
 
 
 class InatPreparation:
+    """Orchestrates the geographic split and dataset population for iNat.
+
+    End to end: pull sampled observations, tag family/genus from ancestry,
+    KMeans-cluster by location, assign a generalization-honest train/val split,
+    and write the classification + OD tables. The `run()` method drives the
+    whole pipeline; `kmeans_search` toggles re-sweeping k vs. reusing a cached k.
+    """
+
     def __init__(self, session_factory: sessionmaker, kmeans_search: bool = True):
         self.session = session_factory
         self.kmeans_search = kmeans_search
         self.kmeans_path = Path(__file__).parents[2] / "kmeans_search"
 
     def _plot_kmeans_search(self, results: dict, best_k: int):
+        """Save side-by-side silhouette-vs-k and elbow (inertia)-vs-k plots.
+
+        Visual confirmation of the chosen k for the geographic clustering sweep.
+        """
         ks = sorted(results.keys())
         silhouettes = [results[k]["silhouette"] for k in ks]
         inertias = [results[k]["inertia"] for k in ks]
@@ -67,6 +90,11 @@ class InatPreparation:
     def _visualize_clusters(
         self, coords_radians: np.ndarray, labels: np.ndarray, k: int, filename: str
     ):
+        """Plot the clusters on a lat/lon canvas as colour-coded convex hulls.
+
+        A quick sanity check that geographic clusters look spatially coherent
+        (each cluster's points drawn as a hull, labelled at its centroid).
+        """
         cmap = plt.get_cmap("tab20" if k <= 20 else "hsv")
         fig, ax = plt.subplots(figsize=(16, 8))
 
@@ -231,6 +259,12 @@ class InatPreparation:
         return coords_radians[selected_idx]
 
     def kmeans_clustering(self, rows, search: bool):
+        """Cluster rows geographically and tag each with its cluster id.
+
+        Coordinates are converted to radians, k is either re-swept on a spatial
+        subsample (when `search`) or read from the cached best_k.txt, then the
+        full dataset is fit on GPU (cuKMeans). Each row gets a "cluster" key.
+        """
         lat_lon_pairs = [[row["latitude"], row["longitude"]] for row in rows]
         lat_lon = np.array(lat_lon_pairs, dtype=np.float32)
         coords_radians = np.radians(lat_lon)
@@ -362,6 +396,12 @@ class InatPreparation:
     def split_taxa(
         self, row: dict[str, str], family_set: set[int], genus_set: set[int]
     ) -> dict[str, str]:
+        """Tag a row with its family/genus/species taxon ids from ancestry.
+
+        Walks the slash-delimited ancestry, matching each ancestor against the
+        family/genus membership sets; species is just the row's own taxon_id.
+        Missing ranks stay None so every row keeps a uniform set of keys.
+        """
         # Default to None so every row has uniform keys (the bulk insert requires
         # it) and a species lacking a family/genus rank in inat_taxa doesn't KeyError.
         row["family"] = None
@@ -473,6 +513,10 @@ class InatPreparation:
 
     @db_retry
     def retrieve_family_genus(self):
+        """Return {'family': [...], 'genus': [...]} of all taxon ids at each rank.
+
+        Used to build the membership sets that split_taxa matches ancestry against.
+        """
 
         def _build_stmt(label: str):
             return select(InatTaxa.taxon_id.label(label)).where(InatTaxa.rank == label)
@@ -488,6 +532,12 @@ class InatPreparation:
 
     @db_retry
     def load(self, rows) -> bool:
+        """Truncate and repopulate the classification + OD dataset tables.
+
+        Coral (taxon 47533 in ancestry) is excluded from classification but kept
+        in the OD set as a negative; classification additionally requires a family
+        tag. Both tables are TRUNCATEd then bulk-inserted in one transaction.
+        """
         # 47533 in ancestry → coral; excluded from classification, included in OD
         classification_rows = [
             r for r in rows if "47533" not in r["ancestry"] and r["family"]
@@ -526,6 +576,7 @@ class InatPreparation:
         return True
 
     def count_genus_family(self, rows):
+        """Log how many rows carry a genus / family tag — a coverage sanity check."""
         total = len(rows)
         genus = 0
         family = 0
@@ -543,6 +594,7 @@ class InatPreparation:
         )
 
     def run(self):
+        """Drive the full pipeline: retrieve → tag taxa → cluster → split → load."""
         load_dotenv()
         Path.mkdir(self.kmeans_path, exist_ok=True)
         rows = self.retrieve_sampled()

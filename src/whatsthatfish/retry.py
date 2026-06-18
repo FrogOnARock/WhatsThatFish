@@ -42,6 +42,7 @@ logger = _get_logger("retry")
 
 
 def _log_retry(retry_state):
+    """tenacity before-sleep hook — logs which call failed and how long until the next try."""
     logger.warning(
         f"[{retry_state.fn.__qualname__}] "
         f"Attempt {retry_state.attempt_number} failed: "

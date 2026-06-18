@@ -1,3 +1,10 @@
+"""Builds the app_taxa catalogue served to the app.
+
+Joins the classification dataset to taxon names, picks a representative image
+per species, and enriches each species with an LLM-generated common name,
+description, location, and depth (via Anthropic Claude) before upserting.
+"""
+
 import os
 from concurrent.futures import ThreadPoolExecutor
 
@@ -17,6 +24,13 @@ logger = _get_logger(__name__)
 
 
 class BuildAppTaxa:
+    """Assembles and LLM-enriches the per-species app_taxa catalogue.
+
+    `run()` fetches one catalogue row per species, fills missing descriptive
+    fields via Claude (concurrently), and upserts in chunks — COALESCE-merging
+    so a failed enrichment leaves existing good data untouched.
+    """
+
     def __init__(self, session_factory: sessionmaker):
 
         self.session = session_factory
@@ -25,6 +39,12 @@ class BuildAppTaxa:
         self.client = anthropic.Anthropic(api_key=os.getenv("ANT_KEY"))
 
     def _cte(self):
+        """Fetch one catalogue row per species, joined to taxon names + counts.
+
+        Resolves species/genus/family names via per-rank CTEs, left-joins any
+        existing app_taxa enrichment, and picks the single highest-UIQM image
+        per taxon (DISTINCT ON taxon_id ordered by uiqm desc) as its thumbnail.
+        """
 
         species_stmt = select(InatTaxa.taxon_id, InatTaxa.name).where(
             InatTaxa.rank == "species"
@@ -92,6 +112,11 @@ class BuildAppTaxa:
 
     @llm_retry
     def _get_descriptions(self, species: str):
+        """Ask Claude for a species' common name, description, location, depth.
+
+        Uses tool-calling with the SpeciesInfo schema to force a structured
+        response; returns the four fields as a tuple. Retried on failure.
+        """
 
         response = self.client.messages.create(
             model="claude-sonnet-4-6",
@@ -119,6 +144,11 @@ class BuildAppTaxa:
         return info.common_name, info.description, info.location, info.depth
 
     def _upsert(self, taxa: list[dict[str, Any]]):
+        """Upsert a batch into app_taxa, keyed on taxon_id.
+
+        Dataset-derived columns are always overwritten; enrichment columns are
+        COALESCE-merged so an incoming NULL never clobbers an existing value.
+        """
 
         stmt = insert(AppTaxa).values(taxa)
         stmt = stmt.on_conflict_do_update(
@@ -150,6 +180,13 @@ class BuildAppTaxa:
         logger.info("Upserted batch of %d rows into app_taxa.", len(taxa))
 
     def run(self, batch_size: int = 50, max_workers: int = 8):
+        """Build the catalogue: enrich missing rows per chunk, then upsert each.
+
+        Only rows lacking a description are sent to the LLM (threaded up to
+        `max_workers`); a failed enrichment is logged and left NULL to retry on
+        the next run. Chunked upserts bound how much progress a late failure
+        can cost.
+        """
         load_dotenv()
         logger.info(
             "Starting AppTaxa build (batch_size=%d, max_workers=%d).",

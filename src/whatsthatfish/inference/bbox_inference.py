@@ -1,3 +1,10 @@
+"""Thin wrapper around a trained YOLO detector.
+
+Takes raw image bytes (single or batched), runs detection, and returns the
+single highest-confidence box per image, clipped to the image bounds. Returns
+None for an image with no detections so callers can treat it as a negative.
+"""
+
 import io
 import logging
 
@@ -8,12 +15,25 @@ logger = logging.getLogger(__name__)
 
 
 class BoundingBoxInference:
+    """Loads a YOLO detect model once and serves best-box predictions.
+
+    The classifier pipeline only ever wants the most confident fish per frame,
+    so this collapses YOLO's full detection set down to that one box.
+    """
+
     def __init__(self, model: str, conf: float):
         logger.info("Loading YOLO model from %s (conf=%.2f)", model, conf)
         self.model = YOLO(model, task="detect")
         self.conf = conf
 
     def infer(self, data: bytes | list[bytes]):
+        """Run detection and return the top-confidence box per image.
+
+        Accepts one image's bytes or a list of them; always returns a list
+        aligned to the input. Each entry is a dict of the best box (xyxy clipped
+        to image bounds, plus conf and original w/h), or None when nothing was
+        detected above the confidence threshold.
+        """
 
         imgs_to_infer = []
         w = []

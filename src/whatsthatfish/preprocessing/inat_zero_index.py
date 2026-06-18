@@ -1,3 +1,10 @@
+"""Assign contiguous 0-based class indices to family/genus/species labels.
+
+The classifier's three heads need dense integer targets; this maps each
+taxon name to a stable index and writes them back to the classification
+dataset table.
+"""
+
 from ..database.models import InatClassificationDataset
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
@@ -8,6 +15,12 @@ logger = _get_logger(__name__)
 
 
 class ZeroIndexClassification:
+    """Builds and persists 0-based label indices for the classifier's heads.
+
+    Pulls each row's family/genus/species, maps them to contiguous indices,
+    and upserts the three index columns back onto inat_classification_dataset.
+    """
+
     def __init__(self, session_factory: sessionmaker):
         self.session = session_factory
 
@@ -34,6 +47,11 @@ class ZeroIndexClassification:
         ]
 
     def _zero_index(self, rows):
+        """Map each rank's distinct taxa to sorted, contiguous 0-based indices.
+
+        Sorting (not bare set ordering) makes the taxon→index map reproducible
+        across runs; each row gains zero_indexed_{family,genus,species}.
+        """
         logger.info(
             "Zero indexing family, genus, species for load to inat_classification_dataset."
         )
@@ -53,6 +71,7 @@ class ZeroIndexClassification:
         return rows
 
     def _update_classification_dataset(self, rows):
+        """Upsert the three index columns onto each row, keyed by photo_uuid."""
         logger.info("Loading: zero indexed classes to inat_classification_dataset.")
         rows_to_insert = [
             {
@@ -78,6 +97,7 @@ class ZeroIndexClassification:
             session.commit()
 
     def run(self):
+        """Read taxa, build the index maps, and write them back to the table."""
         rows = self._select_classification_taxa()
         zero_indexed = self._zero_index(rows)
         self._update_classification_dataset(zero_indexed)

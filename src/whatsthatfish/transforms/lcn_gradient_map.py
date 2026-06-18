@@ -1,10 +1,19 @@
+"""Extra image channels for the classifier: Scharr gradient and local contrast.
+
+Both feed AddMultiChannel as channels 4 and 5. Each returns a uint8 [0,255] map
+the same H×W as the input grayscale image.
+"""
+
 import numpy as np
 import cv2
 
 
 def local_contrast_normalization(image: np.ndarray):
-    """
-    Local contrast normalization calculation applied to get
+    """Local contrast normalization: emphasise texture independent of brightness.
+
+    Subtracts a Gaussian-blurred local mean, then divides by the local standard
+    deviation (also Gaussian-estimated, floored at 1e-4), and min-max rescales to
+    uint8. Flat images with no contrast return all zeros.
     """
 
     # Apply the Gaussian blur to get weighted average for local regions in image

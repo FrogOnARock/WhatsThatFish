@@ -1,3 +1,9 @@
+"""App configuration (loaded from YAML) and the shared logger factory.
+
+Config is parsed once into frozen dataclasses and cached as a singleton, so
+every module sees the same S3/GCS/YOLO settings without re-reading the file.
+"""
+
 from dataclasses import dataclass
 import yaml
 from pathlib import Path
@@ -8,6 +14,8 @@ import sys
 
 @dataclass
 class S3Config:
+    """iNaturalist S3 access settings: base URL, bucket, and dataset/output path maps."""
+
     base_url: str
     bucket: str
     datasets: dict[str, str]
@@ -16,22 +24,29 @@ class S3Config:
 
 @dataclass
 class GCSConfig:
+    """GCS target settings: bucket name and the named prefixes (training/validation/etc.)."""
+
     bucket: str
     prefixes: dict[str, str]
 
 
 @dataclass
 class YoloConfig:
+    """YOLO dataset paths keyed by split/curriculum stage."""
+
     data_paths: dict[str, str]
 
 
 @dataclass
 class AppConfig:
+    """Bundles the S3 and GCS configs that the data pipelines need."""
+
     s3: S3Config
     gcs: GCSConfig
 
     @classmethod
     def from_yaml(cls, path: str = "config/data_config.yaml") -> "AppConfig":
+        """Parse the data-config YAML into an AppConfig."""
         with open(path) as f:
             raw = yaml.safe_load(f)
 
@@ -43,10 +58,13 @@ class AppConfig:
 
 @dataclass
 class ModelConfig:
+    """Holds the YOLO model/dataset config loaded from yolo_config.yaml."""
+
     yolo: YoloConfig
 
     @classmethod
     def from_yaml(cls, path: str = "config/yolo_config.yaml") -> "ModelConfig":
+        """Parse the yolo-config YAML into a ModelConfig."""
         with open(path) as f:
             raw = yaml.safe_load(f)
 
@@ -61,6 +79,7 @@ _model_config = None
 
 
 def get_config(path: str | None = None) -> AppConfig:
+    """Return the cached AppConfig, loading it from the default path on first call."""
     global _config
     if _config is None:
         if path is None:
@@ -70,6 +89,7 @@ def get_config(path: str | None = None) -> AppConfig:
 
 
 def get_model_config(path: str | None = None) -> ModelConfig:
+    """Return the cached ModelConfig, loading it from the default path on first call."""
     global _model_config
     if _model_config is None:
         if path is None:
@@ -79,10 +99,10 @@ def get_model_config(path: str | None = None) -> ModelConfig:
 
 
 def _get_logger(name: str):
-    """
+    """Return a named logger that writes to both a per-name log file and stdout.
 
-    Probably should just move this up
-    :return:
+    Handlers are attached only once per name, so repeated calls reuse the same
+    configured logger rather than duplicating output.
     """
     logging_path = Path(__file__).parents[1] / "logs" / f"{name}.log"
     logger = logging.getLogger(name)

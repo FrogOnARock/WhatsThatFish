@@ -1,9 +1,17 @@
+"""Train and tune the 5-channel ResNet-34 hierarchical fish classifier.
+
+CustomResnetTrainer runs a 3-phase taxonomic curriculum (family → +genus → all
+three heads), with discriminative LRs (fast heads/stem, ~10x slower backbone),
+OneCycleLR, and a progressive backbone unfreeze after a warmup. CustomResnetTuner
+wraps it in an in-process random search over the param-space YAML (no Ray workers,
+to stay within a single GPU's memory).
+"""
+
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 from dotenv import load_dotenv
-from numba.scripts.generate_lower_listing import description
 from torch import nn
 from torch import optim
 import torch
@@ -27,6 +35,13 @@ logger = _get_logger(__name__)
 
 
 class CustomResnetTrainer:
+    """Owns the full classifier training loop, model, optimizer and metrics.
+
+    Reads its hyperparameters from the YAML config (overridable by kwargs during
+    tuning), builds the class-weighted losses and discriminative optimizer, and
+    drives the curriculum, checkpointing and the per-run/global CSV registries.
+    """
+
     def __init__(
         self,
         config: Path = Path(__file__).parents[1] / "config/cls_model_config.yaml",
@@ -73,7 +88,9 @@ class CustomResnetTrainer:
             self.pretrained = data.get("pretrained", False)
             self.in_dim = data.get("in_dim", 5)
             self.layers = data.get("layers", [8, 8, 12, 6])
-            self.freeze_epochs = data.get("freeze_epochs", 0)
+            self.freeze_epochs = kwargs.get(
+                "freeze_epochs", data.get("freeze_epochs", 0)
+            )
             # Head topology — tunable so the progressive-vs-parallel ablation can run
             # through the same search path as the LR sweep.
             self.head_mode = kwargs.get(
@@ -231,6 +248,7 @@ class CustomResnetTrainer:
             p.requires_grad = flag
 
     def _init_loss_csv(self):
+        """Create this run's per-epoch losses.csv with its header if absent."""
         loss_csv = self.output_dir / "losses.csv"
         if not loss_csv.exists():
             with open(loss_csv, "w", newline="") as f:
@@ -247,6 +265,8 @@ class CustomResnetTrainer:
                 )
 
     def _log_losses(self, epoch: int, train_losses: tuple, val_loss: float):
+        """Append one epoch's LR, per-head/total train losses and val loss to
+        losses.csv for later plotting."""
         lr = self.lr_scheduler.get_last_lr()[0]
         with open(self.output_dir / "losses.csv", "a", newline="") as f:
             csv.writer(f).writerow(
@@ -259,6 +279,10 @@ class CustomResnetTrainer:
             )
 
     def _register_experiment(self, final_metrics: dict, best_val_loss: float):
+        """Append this run's config and headline metrics to the global
+        experiments.csv registry so runs are comparable at a glance. If the
+        header schema has changed, the old file is archived first.
+        """
         # `pretrained` disambiguates which LR knobs actually drove the run:
         #   pretrained=True  → optimizer uses head_lr/backbone_lr; OneCycle max_lr is
         #                      [head_lr, backbone_lr]. lr/max_lr are NO-OPS here.
@@ -364,7 +388,15 @@ class CustomResnetTrainer:
                 m.eval()
 
     def _curriculum_loss(self, epoch: int, time_constraint: int = None) -> list[float]:
+        """Return this epoch's [family, genus, species] loss weights for the
+        taxonomic curriculum.
 
+        The schedule walks family-only → +genus → all three, ramping the weights
+        between phase endpoints. A phase advances once it has run a minimum time
+        AND either the time ramp completes or the performance gate (family/genus
+        recall+F1) has held for several epochs — so a model that learns the level
+        quickly moves on early rather than waiting out the fixed schedule.
+        """
         if self.loss_phase == 3:
             return self.loss_weights_3
 
@@ -374,8 +406,8 @@ class CustomResnetTrainer:
         START = self.loss_weights if self.loss_phase == 1 else self.loss_weights_2
         END = self.loss_weights_2 if self.loss_phase == 1 else self.loss_weights_3
 
-        s_gate, g_gate = self.metrics.sub_gate, self.metrics.genus_gate
-        gate = s_gate if self.loss_phase == 1 else g_gate
+        f_gate, g_gate = self.metrics.fam_gate, self.metrics.genus_gate
+        gate = f_gate if self.loss_phase == 1 else g_gate
         self.consecutive_epochs = self.consecutive_epochs + 1 if gate >= 0.9 else 0
 
         phase_local = elapsed / time_constraint
@@ -396,7 +428,14 @@ class CustomResnetTrainer:
         return (np.array(START) * (1 - B) + np.array(END) * B).tolist()
 
     def train_one_epoch(self, epoch: int):
+        """Run one training epoch under the current curriculum loss weights.
 
+        Combines the three class-weighted head losses by this epoch's curriculum
+        weights, clips gradients before stepping (guarding the backbone-unfreeze
+        blow-up), and steps OneCycleLR per batch. During the frozen warmup it
+        re-pins backbone BatchNorm to eval. Returns the mean per-head and total
+        training losses.
+        """
         self.model.train()
         # Phase A: while the backbone is frozen (epoch < freeze_epochs), re-apply the
         # BN eval after model.train() reset it. Once epoch >= freeze_epochs this is
@@ -459,7 +498,13 @@ class CustomResnetTrainer:
         )
 
     def eval_one_epoch(self, epoch: int) -> dict:
+        """Evaluate on the val split and return val loss plus the full metric set.
 
+        Val loss is always scored with the fixed phase-3 weights (not the drifting
+        curriculum weights) so best.pt selection compares the same final objective
+        every epoch. Feeds each batch into ClassificationMetrics for the macro/
+        hierarchical reports.
+        """
         self.model.eval()
         test_loss = 0.0
         num_batches = len(self.val_dataloader)
@@ -496,7 +541,13 @@ class CustomResnetTrainer:
         return {"val_loss": test_loss, **self.metrics.compute(epoch)}
 
     def train(self):
+        """Run the full training loop over all epochs.
 
+        Each epoch trains, evaluates, checkpoints last.pt and (on val improvement)
+        best.pt, and unfreezes the backbone once the warmup freeze_epochs elapses.
+        Registers the run in experiments.csv at the end and returns the best val
+        loss + its metrics so the in-process tuner can rank trials.
+        """
         start_time = time.perf_counter()
         best_val_loss = float("inf")
         final_metrics = {}
@@ -591,6 +642,14 @@ def load_param_space(path: Path, dataset: str) -> dict:
 
 
 class CustomResnetTuner:
+    """In-process random search over the classifier's hyperparameter space.
+
+    Samples configs from the param-space YAML, trains each serially in this
+    process (deliberately avoiding Ray's per-trial workers, which OOM'd the single
+    GPU), tracks the lowest-val-loss trial, and writes the winner overlaid onto
+    the base config as a runnable tuned YAML.
+    """
+
     def __init__(
         self,
         restore_path: Path = None,
@@ -648,6 +707,11 @@ class CustomResnetTuner:
         logger.info(f"Tuned config written → {self.out_config}")
 
     def train_fn(self, config: dict):
+        """Train one trial: build a trainer from the sampled config and run it.
+
+        Forwards the sampled hyperparameters as kwargs (so they override the YAML),
+        returning (best_val_loss, metrics) for the search to rank by.
+        """
         # Only forward head_mode when the param space actually samples it (option B,
         # mixed search). If it's absent (option A, fixed sweep), DON'T pass it — a
         # kwarg would override the value set in cls_model_config.yaml, defeating the
@@ -705,6 +769,7 @@ class CustomResnetTuner:
 
 
 def main(**kwargs):
+    """CLI entry point: run a tuning search or a single full training run."""
     load_dotenv()
     if kwargs.get("type", None) == "tune":
         logger.info("Starting tuning of classification model.")

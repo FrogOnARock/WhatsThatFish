@@ -5,6 +5,14 @@ import warnings
 
 
 class BasicBlock(nn.Module):
+    """The ResNet-34 residual unit: two 3x3 conv→BN→ReLU stages with a skip.
+
+    No expansion factor is needed since ResNet-34 uses only basic blocks (no
+    bottlenecks). When the block changes spatial size or channel count (the
+    first block of a layer group), `downsample` projects the identity branch so
+    the skip addition stays dimension-aligned.
+    """
+
     # Block expansion not required given only implementing resnet-34 with basic block.
 
     def __init__(
@@ -61,6 +69,18 @@ class BasicBlock(nn.Module):
 
 
 class CustomResnet(nn.Module):
+    """5-channel ResNet-34 with a 3-level hierarchical classifier (family/genus/species).
+
+    The trunk is a standard ResNet-34, but the stem takes `in_dim` channels
+    (default 5: RGB + Scharr gradient + LCN) instead of 3, and three FC heads
+    hang off the shared 512-dim pooled features. `head_mode` toggles how the
+    heads relate: "progressive" conditions each finer head on a low-dim
+    projection of its (detached) parent's logits; "parallel" runs three
+    independent heads as plain auxiliary supervision. `pretrained` swaps the
+    trunk for torchvision ImageNet weights (see load_pretrained / _inflate_stem).
+    `num_class` is ordered [species, genus, family].
+    """
+
     def __init__(
         self,
         block: Type[BasicBlock],
@@ -236,6 +256,12 @@ class CustomResnet(nn.Module):
     def _make_layer(
         self, block: Type[BasicBlock], layer: int, stride: int, planes: int
     ):
+        """Stack `layer` BasicBlocks into one ResNet stage at `planes` channels.
+
+        Only the first block carries the stride and (if shape changes) a
+        downsample projection on its skip; the rest run stride-1 at constant
+        width. Updates self.in_planes so the next stage chains on correctly.
+        """
         downsample = None
         if stride != 1 or self.in_planes != planes:
             downsample = nn.Sequential(
@@ -263,6 +289,12 @@ class CustomResnet(nn.Module):
         return nn.Sequential(*layers)
 
     def forward(self, x):
+        """Run the trunk, then emit the three heads as (species, genus, family).
+
+        Note the return order is fine→coarse even though progressive mode
+        computes them coarse→fine internally (so each parent can condition its
+        child). Raw logits, no softmax.
+        """
 
         out = self.conv1(x)
         out = self.bn1(out)

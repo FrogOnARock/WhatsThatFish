@@ -1,3 +1,11 @@
+"""CLIP-based underwater-vs-above-water context classifier for iNat photos.
+
+Uses CLIP ViT-B/32 zero-shot: each image's embedding is compared against a
+prototype for "above water" and one for "underwater" (each averaged over a set
+of prompts). Coral-reef prompts are included so coral frames classify as
+underwater. The argmax (0=above, 1=underwater) is written to inat_clip_context.
+"""
+
 import os
 import asyncio
 import torch
@@ -22,6 +30,13 @@ _BATCH_SIZE = 10_000
 
 
 class ClipModel:
+    """Async CLIP zero-shot underwater classifier over GCS-stored iNat photos.
+
+    Downloads images concurrently from GCS, scores each against the two text
+    prototypes, and records the predicted label via a WAL-backed progress
+    tracker so the (large) run is crash-safe and resumable.
+    """
+
     def __init__(
         self,
         progress_tracker: ScoringProgressTracker,
@@ -80,6 +95,11 @@ class ClipModel:
         ]
 
     def _tokenize_text(self):
+        """Encode the prompt sets into two normalized class prototype vectors.
+
+        Each class's prompt embeddings are averaged then re-normalized, giving
+        one "above water" and one "underwater" anchor stacked for comparison.
+        """
         above_water_text = clip.tokenize(self.above_water_prompts).to(self.device)
         under_water_text = clip.tokenize(self.underwater_prompts).to(self.device)
 
@@ -100,6 +120,7 @@ class ClipModel:
         return image
 
     def _similarity_score(self, image, text):
+        """Softmax over cosine similarity to the two prototypes (above/under)."""
         similarity_scores = (image @ text.T).softmax(dim=-1)
         return similarity_scores
 
@@ -111,6 +132,10 @@ class ClipModel:
         )
 
     async def _inference(self, row: dict[str, Any], text, gcs_storage):
+        """Download one photo, classify it, and record the predicted label.
+
+        Semaphore-gated so only `concurrency` downloads/encodes run at once.
+        """
         async with self._semaphore:
             photo_uuid = row.get("photo_uuid")
             identifier = row.get("filename")
@@ -135,6 +160,7 @@ class ClipModel:
 
     @db_retry
     def _select_all_uploads(self):
+        """All iNat photo identifiers known to be uploaded to GCS (candidates)."""
         logger.debug("[ClipModel] Querying SuccessfulUploads for source='inat'")
         with self._session_factory() as session:
             ids = (
@@ -153,6 +179,7 @@ class ClipModel:
 
     @db_retry
     def _select_files(self, photo_ids) -> list[dict[str, Any]]:
+        """Resolve photo IDs to {photo_uuid, filename} rows for GCS download."""
         logger.debug(f"[ClipModel] Fetching filenames for {len(photo_ids):,} photo IDs")
         with self._session_factory() as session:
             rows = session.execute(
@@ -178,6 +205,12 @@ class ClipModel:
             return result
 
     async def run(self):
+        """Score every not-yet-done iNat photo in resumable, compacted batches.
+
+        Skips photos already recorded by the tracker, encodes the prompts once,
+        then classifies in batches of `_BATCH_SIZE` with a fresh GCS client per
+        batch, compacting the WAL after each.
+        """
         logger.info("[ClipModel] Starting CLIP context scoring run")
 
         files = self._select_all_uploads()

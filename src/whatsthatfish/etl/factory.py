@@ -1,3 +1,9 @@
+"""Top-level ETL orchestration — the one entry point for building datasets.
+
+`DataFactory` wires the iNaturalist, LILA, and photo-transfer stages together
+and runs whichever subset the chosen `Dataset` selects.
+"""
+
 import asyncio
 from enum import Enum
 from pathlib import Path
@@ -11,12 +17,16 @@ from .photo_transfer import PhotoTransferPipeline
 
 
 class Dataset(str, Enum):
+    """Which pipeline(s) to run: everything, the iNat classification set, or LILA detection."""
+
     ALL = "all"
     CLASSIFICATION = "classification"
     DETECTION = "detection"
 
 
 class DataFactory:
+    """Builds and runs the ingestion stages off a single shared config/session/GCS setup."""
+
     def __init__(self):
         self.config = get_config()
         self.data_path = Path(__file__).parents[1] / "data" / "etl"
@@ -25,6 +35,7 @@ class DataFactory:
         self.gcs = GCSClient(self.config.gcs)
 
     def _build_inat(self) -> INaturalistDataset:
+        """Construct the iNaturalist S3-ingestion stage (taxa/observations/photos → Postgres)."""
         return INaturalistDataset(
             config=self.config.s3,
             session_factory=self.session_factory,
@@ -32,6 +43,7 @@ class DataFactory:
         )
 
     def _build_lila(self) -> LilaDataset:
+        """Construct the LILA detection-dataset stage (sample, download, GCS upload)."""
         return LilaDataset(
             gcs=self.gcs,
             data_path=str(self.data_path),
@@ -40,6 +52,7 @@ class DataFactory:
         )
 
     def _build_photo_transfer(self) -> PhotoTransferPipeline:
+        """Construct the async S3→GCS classification-photo transfer stage."""
         return PhotoTransferPipeline(
             gcs_config=self.config.gcs,
             s3_config=self.config.s3,
@@ -75,6 +88,7 @@ class DataFactory:
 
 
 def main():
+    """CLI entry point — runs the classification pipeline by default."""
     factory = DataFactory()
     factory.run(dataset=Dataset.CLASSIFICATION)
 

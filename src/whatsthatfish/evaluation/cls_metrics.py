@@ -1,3 +1,12 @@
+"""Hierarchical evaluation metrics for the family/genus/species classifier.
+
+Accumulates each eval batch's logits and targets, then at epoch end computes the
+headline macro Top-1/3/5 numbers (split out by geographic vs IID-top-up val),
+per-class precision/recall/F1, hierarchical-consistency rates and the curriculum
+gates the trainer reads — and writes an HTML table, a taxonomy sunburst and
+per-head PR curves for inspection.
+"""
+
 import torch
 import numpy as np
 import pandas as pd
@@ -37,7 +46,7 @@ class ClassificationMetrics:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         sf = session_factory or get_session_factory()
         self._taxonomy = self._load_taxonomy(sf)
-        self.sub_gate = 0.0
+        self.fam_gate = 0.0
         self.genus_gate = 0.0
         self.reset()
 
@@ -46,6 +55,7 @@ class ClassificationMetrics:
     # ------------------------------------------------------------------
 
     def reset(self):
+        """Clear the accumulated logits/targets/top-up buffers for a new epoch."""
         self._logits: dict[str, list] = {"species": [], "genus": [], "family": []}
         self._targets: dict[str, list] = {"species": [], "genus": [], "family": []}
         # Per-sample topped-up flag (1 = IID top-up, 0 = geographic val).
@@ -58,6 +68,12 @@ class ClassificationMetrics:
         out_family: torch.Tensor,
         target: dict,
     ):
+        """Stash one batch's head logits and targets (on CPU) for epoch-end compute.
+
+        Also records each sample's top-up flag (IID rare-class coverage vs true
+        geographic val); callers that omit it have the whole batch treated as
+        geographic.
+        """
         self._logits["species"].append(out_species.cpu())
         self._logits["genus"].append(out_genus.cpu())
         self._logits["family"].append(out_family.cpu())
@@ -77,6 +93,13 @@ class ClassificationMetrics:
     # ------------------------------------------------------------------
 
     def compute(self, epoch: int) -> dict:
+        """Compute every metric for the accumulated epoch and emit the reports.
+
+        Builds the micro top-k numbers, the macro blocks (all / geographic /
+        topped-up), per-class tables, hierarchical consistency and the curriculum
+        gates; writes the HTML table, sunburst and PR curves; then resets the
+        buffers and returns the flat metric dict the trainer logs.
+        """
         logits = {k: torch.cat(v) for k, v in self._logits.items()}
         targets = {k: torch.cat(v) for k, v in self._targets.items()}
 
@@ -129,7 +152,7 @@ class ClassificationMetrics:
 
         consistency = self._hierarchical_consistency(logits, targets)
 
-        self.sub_gate, self.genus_gate = self._lc_gate(metrics_dfs)
+        self.fam_gate, self.genus_gate = self._lc_gate(metrics_dfs)
         self._html_table(metrics_dfs, topk, macro, geo, tu, counts, consistency, epoch)
         self._sunburst(metrics_dfs, epoch)
         self._pr_curves(logits, targets, epoch)
@@ -142,13 +165,19 @@ class ClassificationMetrics:
     # ------------------------------------------------------------------
 
     def _lc_gate(self, metrics_df: dict) -> tuple[float, float]:
+        """Curriculum performance gates: fraction of family (and genus) classes
+        that have cleared recall>0.6 and F1>0.6.
 
-        sub_df = metrics_df["family"]
+        The trainer reads these to decide a level is 'learned' and advance the
+        loss curriculum. Returned as (family_gate, genus_gate); the trainer stores
+        the family gate in its `fam_gate` attribute.
+        """
+        fam_df = metrics_df["family"]
         genus_df = metrics_df["genus"]
 
         family_gate = len(
-            sub_df[(sub_df["recall"] > 0.6) & (sub_df["f1"] > 0.6)]
-        ) / len(sub_df)
+            fam_df[(fam_df["recall"] > 0.6) & (fam_df["f1"] > 0.6)]
+        ) / len(fam_df)
 
         genus_gate = len(
             genus_df[(genus_df["recall"] > 0.6) & (genus_df["f1"] > 0.6)]
@@ -163,6 +192,8 @@ class ClassificationMetrics:
     def _per_class_metrics(
         self, logits: torch.Tensor, targets: torch.Tensor
     ) -> pd.DataFrame:
+        """Per-class accuracy/precision/recall/F1/support for one head, over only
+        the classes that actually appear in this split's targets."""
         preds = logits.argmax(dim=1).numpy()
         y = targets.numpy()
         classes = np.unique(y)
@@ -188,6 +219,8 @@ class ClassificationMetrics:
     def _top_k_accuracy(
         self, logits: torch.Tensor, targets: torch.Tensor, k: int
     ) -> float:
+        """Micro (sample-weighted) top-k accuracy: fraction of samples whose true
+        class is among the head's top-k predictions."""
         top_k = torch.topk(logits, k, dim=1).indices
         # Check if any of the tensors are equal to each other: [0, 0, 1, 0, 0] & [0, 0, 1, 0, 0] for example.
         correct = top_k.eq(targets.unsqueeze(1).expand_as(top_k))
@@ -270,6 +303,9 @@ class ClassificationMetrics:
     # ------------------------------------------------------------------
 
     def _sunburst(self, metrics_dfs: dict, epoch: int):
+        """Write an interactive family→genus→species sunburst HTML where sector
+        size is the val sample count and color is F1, so weak taxonomic branches
+        stand out at a glance."""
         species_f1 = metrics_dfs["species"].set_index("class_idx")[["f1", "support"]]
         genus_f1 = metrics_dfs["genus"].set_index("class_idx")["f1"].to_dict()
         family_f1 = metrics_dfs["family"].set_index("class_idx")["f1"].to_dict()
@@ -337,6 +373,9 @@ class ClassificationMetrics:
         logger.info(f"Sunburst → {out}")
 
     def _pr_curves(self, logits: dict, targets: dict, epoch: int):
+        """Save a 3-panel PNG of macro-averaged precision-recall curves (one per
+        head), each interpolated onto a common recall grid and labelled with its
+        macro average precision."""
         # Note: species head iterates 1500 classes — expect ~30-60s on CPU.
         fig, axes = plt.subplots(1, 3, figsize=(18, 6))
         recall_grid = np.linspace(0, 1, 200)
@@ -387,6 +426,13 @@ class ClassificationMetrics:
         consistency: dict,
         epoch: int,
     ):
+        """Write the per-epoch metrics HTML report.
+
+        Joins taxon names onto each head's per-class table and renders sortable
+        DataTables, headed by the micro top-k summary and the three macro blocks
+        (geographic headline with targets, topped-up, all-val) plus the
+        hierarchical-consistency line.
+        """
         species_df = (
             metrics_dfs["species"]
             .merge(

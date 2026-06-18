@@ -1,3 +1,11 @@
+"""Torch Dataset for the hierarchical species classifier.
+
+Reads detector-cropped iNat images from local disk and serves each as a
+transformed tensor plus its family/genus/species labels. Only taxa with enough
+proposed crops survive, so the classifier never trains on a full frame it would
+not see at inference time.
+"""
+
 from concurrent.futures.thread import ThreadPoolExecutor
 from pathlib import Path
 from PIL import Image
@@ -12,6 +20,16 @@ load_dotenv()
 
 
 class ClassificationDataset(Dataset):
+    """Cropped-fish classification set, one split (train/val) per instance.
+
+    Queries inat_classification_dataset, dropping taxa with fewer than
+    `min_bbox_count` proposed crops and any rows the detector missed. Each item
+    is the margin-expanded crop run through the supplied transform, with
+    hierarchical labels and a `topup` flag distinguishing geographic val rows
+    from IID top-up rows. `tuning` caps train to the top-100 UIQM crops per class
+    for cheap sweep epochs while leaving val uncapped.
+    """
+
     def __init__(
         self,
         split: str = "train",
@@ -127,6 +145,7 @@ class ClassificationDataset(Dataset):
         return image.crop((int(x1), int(y1), int(x2), int(y2)))
 
     def _get_one_photo(self, idx):
+        """Load, crop and transform one record into (img_tensor, label dict)."""
         record = self.data[idx]
         image_pil = Image.open(self.local_base_dir / record.filename).convert("RGB")
         image_pil = self._crop_with_margin(image_pil, record.proposed_bbox)

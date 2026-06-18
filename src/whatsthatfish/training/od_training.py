@@ -1,3 +1,10 @@
+"""Train or tune the YOLO11 fish detector across the LILA → LC1 → LC2 curriculum.
+
+Each dataset stage reads the weights produced by the previous one (see _WEIGHTS)
+and emits its own best checkpoint. Two run types: Ray Tune hyperparameter search,
+or a full training run that copies out the winning weights.
+"""
+
 import argparse
 import logging
 from pathlib import Path
@@ -69,6 +76,13 @@ class TrainType(str, Enum):
 
 
 class ObjectDetectionTrain:
+    """Configures and runs one detector training/tuning stage for a given dataset.
+
+    Resolves the per-dataset config, weights and param space up front, so that
+    `run()` simply dispatches to a Ray Tune search or a full training run. The
+    LILA → LC1 → LC2 chaining is encoded in _WEIGHTS (input → output checkpoint).
+    """
+
     # Input weights and output filename per dataset
     _WEIGHTS: dict[str, tuple[str, str]] = {
         "lila": ("yolo11l.pt", "od_best.pt"),
@@ -104,6 +118,12 @@ class ObjectDetectionTrain:
         )
 
     def train_fn(self, config, epochs: int = 20, img_size: int = 640):
+        """One Ray Tune trial: train YOLO with a sampled hyperparameter set.
+
+        Capped to max_samples=8000 so trials stay short, and reports back through
+        Ultralytics' metrics (the tuner reads mAP50 from these). Not used by the
+        full run, which trains on the whole dataset instead.
+        """
         logger.info("tune trial starting: %s", config)
         CustomDetectionTrainer.max_samples = 8000
         CustomDetectionTrainer.dataset = self.dataset
@@ -123,7 +143,12 @@ class ObjectDetectionTrain:
         )
 
     def tune_model(self, num_samples: int = 5):
+        """Run (or resume) the Ray Tune search, maximizing validation mAP50.
 
+        Each trial gets a full GPU; failures are tolerated up to a limit so one
+        bad sample doesn't kill the sweep. With a restore_path it resumes an
+        existing experiment's unfinished trials instead of starting fresh.
+        """
         failure_config = tune.FailureConfig(max_failures=3, fail_fast=False)
 
         if self.restore_path and Path(self.restore_path).exists():
@@ -153,6 +178,12 @@ class ObjectDetectionTrain:
         return results
 
     def train_final(self):
+        """Full training run on the whole dataset, using the post-tuning config.
+
+        Trains from the stage's input weights and copies the best checkpoint to
+        this stage's output name (e.g. lc1_best.pt) so the next stage can pick it
+        up. No sample cap here.
+        """
         logger.info(
             "Starting full training run: dataset=%s weights=%s",
             self.dataset,
@@ -174,6 +205,7 @@ class ObjectDetectionTrain:
         logger.info("Saved best weights → %s", dest)
 
     def run(self):
+        """Dispatch to tuning or full training based on the configured run type."""
         if self.train_type == "tune":
             self.tune_model()
         elif self.train_type == "full":

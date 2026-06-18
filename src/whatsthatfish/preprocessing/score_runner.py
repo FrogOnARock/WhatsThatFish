@@ -1,3 +1,16 @@
+"""Async orchestration for the preprocessing scoring pipelines.
+
+Two runners pull images from GCS, score them, and persist results with the
+same WAL + Postgres crash-recovery pattern used by the photo transfer:
+
+    ContextRunner — heuristic underwater/capture-context classification (iNat)
+    ScoreRunner   — UIQM image quality scoring (iNat underwater photos, or LILA)
+
+Both batch their work, run downloads + scoring under a concurrency semaphore,
+and compact completed results into Postgres at batch boundaries so an
+interrupted run resumes from the WAL rather than re-scoring everything.
+"""
+
 import asyncio
 import csv
 import io
@@ -247,6 +260,14 @@ class ScoringProgressTracker:
 
 
 class ContextRunner:
+    """Runs heuristic underwater/capture-context classification over iNat photos.
+
+    Streams uploaded iNat images from GCS, scores each with the channel-mean +
+    chromaticity heuristic (ContextScorer), and records the verdict via the
+    progress tracker. Concurrency is bounded by a semaphore; results are
+    compacted to Postgres per batch so the run is resumable.
+    """
+
     def __init__(
         self,
         gcs_config: GCSConfig,
@@ -277,6 +298,11 @@ class ContextRunner:
     async def _context_with_tracking(
         self, row: dict[str, str], gcs_storage: GCSAsyncStorage
     ):
+        """Download one image, classify its capture context, and record it.
+
+        Skips rows the scorer rejects (returns a ValueError) so a single bad
+        image doesn't abort the batch. Retried on transient transfer failures.
+        """
         async with self._semaphore:
             identifier = row.get("filename")
             path = self._gcs_config.prefixes.get("gcs_train")
@@ -303,6 +329,7 @@ class ContextRunner:
 
     @db_retry
     def _select_all_uploads(self):
+        """Return the set of iNat photo IDs already uploaded to GCS — the scoring candidates."""
         logger.debug("[ContextRunner] Querying SuccessfulUploads for source='inat'")
         with self._session_factory() as session:
             ids = (
@@ -321,6 +348,10 @@ class ContextRunner:
 
     @db_retry
     def _select_files(self, photo_ids) -> list[dict[str, Any]]:
+        """Resolve photo IDs to {photo_uuid, filename} rows for GCS lookup.
+
+        The filename is reconstructed as photo_id.extension to match the GCS key.
+        """
         logger.debug(
             f"[ContextRunner] Fetching filenames for {len(photo_ids):,} photo IDs"
         )
@@ -348,6 +379,12 @@ class ContextRunner:
             return result
 
     async def run(self):
+        """Score every not-yet-done uploaded iNat image for capture context.
+
+        Loads prior progress, subtracts it from the candidate set, then works
+        through the remainder in batches — compacting to Postgres after each so
+        a crash resumes from the WAL. Per-task failures are logged, not fatal.
+        """
         logger.info(f"[ContextRunner/{self._dataset}] Starting context scoring run")
 
         files = self._select_all_uploads()
@@ -406,6 +443,14 @@ class ContextRunner:
 
 
 class ScoreRunner:
+    """Runs UIQM image-quality scoring over iNat or LILA images.
+
+    For iNat, only photos CLIP flagged as underwater are scored (UIQM is an
+    underwater measure); for LILA, every successfully uploaded image. Scores
+    are recorded via the progress tracker and compacted per batch so the run
+    is resumable.
+    """
+
     def __init__(
         self,
         gcs_config: GCSConfig,
@@ -433,6 +478,10 @@ class ScoreRunner:
         )
 
     def _get_blob_details(self, row) -> tuple[str, str]:
+        """Resolve the (filename, GCS prefix) for a row based on dataset.
+
+        iNat images live under the training prefix, LILA under object_detection.
+        """
 
         if self._dataset == "inat":
             identifier = row.get("filename")
@@ -451,6 +500,11 @@ class ScoreRunner:
     async def _scoring_with_tracking(
         self, row: dict[str, str], gcs_storage: GCSAsyncStorage
     ):
+        """Download one image, compute its UIQM sub-scores, and record them.
+
+        The record's key differs per dataset (photo_uuid for iNat, file_name for
+        LILA) to match the destination quality table. Retried on transfer error.
+        """
         async with self._semaphore:
             identifier, path = self._get_blob_details(row)
             blob = await self._get_blob(path, identifier, gcs_storage)
@@ -477,6 +531,10 @@ class ScoreRunner:
 
     @db_retry
     def _select_files(self, files) -> list[dict[str, Any]]:
+        """Resolve iNat photo UUIDs to {photo_uuid, filename, photo_id} rows.
+
+        The filename is reconstructed as photo_id.extension to match the GCS key.
+        """
         logger.debug(
             f"[ScoreRunner/inat] Fetching file rows for {len(files):,} photo UUIDs"
         )
@@ -507,6 +565,11 @@ class ScoreRunner:
             return result
 
     def _select_all_uploads(self, dataset: str) -> set[str]:
+        """Return the candidate set to score for this dataset.
+
+        For iNat that's the CLIP-flagged underwater photos (UIQM only makes
+        sense underwater); for LILA it's everything uploaded under that source.
+        """
         with self._session_factory() as session:
             if dataset == "inat":
                 logger.debug(
@@ -540,6 +603,12 @@ class ScoreRunner:
             return set(ids)
 
     async def run(self):
+        """Score every not-yet-done candidate image for UIQM quality.
+
+        Loads prior progress, subtracts it from the candidate set, then works
+        through the remainder in batches — compacting to Postgres after each so
+        a crash resumes from the WAL. Per-task failures are logged, not fatal.
+        """
         logger.info(f"[ScoreRunner/{self._dataset}] Starting UIQM scoring run")
 
         files = self._select_all_uploads(self._dataset)

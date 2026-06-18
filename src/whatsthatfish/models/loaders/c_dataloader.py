@@ -1,3 +1,11 @@
+"""DataLoader builder for the hierarchical species classifier.
+
+Wraps ClassificationDataset with the train/val transform pipelines (letterbox →
+augment → 5-channel conversion) and a UIQM-weighted sampler on train, and offers
+two collates: our hierarchical-label dict, or a slim species-only dict for the
+Ultralytics classifier path.
+"""
+
 from torch.utils.data import DataLoader, WeightedRandomSampler
 import torch
 from torchvision.transforms import v2
@@ -7,6 +15,11 @@ from ...transforms.letterbox_resize import LetterboxResize
 
 
 def collate_fn(original_batch):
+    """Stack the batch into (images, label dict) with all three taxonomic levels.
+
+    The label dict carries family/genus/species index tensors plus the per-sample
+    `topup` flag so eval can split geographic vs IID val macro accuracy.
+    """
 
     img = torch.stack([item[0] for item in original_batch])
     labels = {
@@ -20,6 +33,7 @@ def collate_fn(original_batch):
 
 
 def collate_fn_ultralytics(original_batch):
+    """Species-only collate matching the Ultralytics classifier's {img, cls} format."""
 
     img = torch.stack([item[0] for item in original_batch])
     labels = {"cls": torch.tensor([item[1].get("species") for item in original_batch])}
@@ -29,6 +43,14 @@ def collate_fn_ultralytics(original_batch):
 def class_dataloader(
     mode: str = "custom", split: str = "train", batch: int = 16, tuning: bool = False
 ):
+    """Build the classifier DataLoader for a split.
+
+    Train applies the full augmentation stack (rotation, elastic, flip, jitter,
+    sharpness) between letterbox and 5-channel conversion, plus a UIQM-weighted
+    sampler; val is letterbox → 5-channel only. `mode` selects our hierarchical
+    collate ("custom") or the slim Ultralytics species-only one. Output tensors
+    are (5, 320, 320).
+    """
 
     base_transform = [
         LetterboxResize(320),

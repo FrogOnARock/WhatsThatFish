@@ -45,6 +45,7 @@ _session_factory = get_session_factory()
 
 @app.get("/health")
 def health() -> dict[str, str]:
+    """Liveness probe — a cheap 200 so Cloud Run knows the container is up."""
     return {"status": "ok"}
 
 
@@ -53,7 +54,6 @@ def query_species(session: Session) -> list[SpeciesEntry]:
 
     rows = session.execute(select(AppTaxa)).scalars().all()
 
-    print(len(rows))
     return [
         SpeciesEntry(
             species_id=row.zero_indexed_species,
@@ -72,6 +72,11 @@ def query_species(session: Session) -> list[SpeciesEntry]:
 
 @app.get("/image/{filename}")
 def get_image(filename: str):
+    """Serve a catalogue image by filename via the environment-appropriate backend.
+
+    Locally this returns the file directly; on Cloud Run it redirects to a
+    signed GCS URL — the caller doesn't need to know which.
+    """
     storage = StorageConstructor().constructor()
     url = storage.retrieve_image(filename=filename)
     return url
@@ -79,6 +84,7 @@ def get_image(filename: str):
 
 @app.get("/species", response_model=SpeciesCatalogue)
 def list_species() -> SpeciesCatalogue:
+    """Endpoint backing the frontend's Species Library — the full catalogue plus a count."""
     with _session_factory() as session:
         entries = query_species(session)
     return SpeciesCatalogue(species=entries, total=len(entries))

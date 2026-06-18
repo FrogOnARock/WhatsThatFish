@@ -1,3 +1,11 @@
+"""Dataloader and Ultralytics trainer glue for the YOLO11 detector.
+
+Bridges our ObjectDetectionDataset into the Ultralytics training loop: a collate
+that emits the flat batch dict Ultralytics expects, a builder that wires UIQM
+(×conf for LC stages) weighted sampling and augmentation, and Trainer/Validator
+subclasses that swap in our dataloader and skip Ultralytics' redundant /255.
+"""
+
 from copy import copy
 import torch
 from torch.utils.data import DataLoader
@@ -9,6 +17,13 @@ from ...models.datasets.od_dataset import ObjectDetectionDataset
 
 
 def object_detection_collate(original_batch):
+    """Collate per-image (img, label, file) tuples into Ultralytics' batch dict.
+
+    Stacks images and flattens variable-length boxes across the batch into the
+    parallel `batch_idx`/`cls`/`bboxes` tensors Ultralytics' loss expects, plus
+    the `im_file`/`ori_shape`/`ratio_pad` bookkeeping the validator reads.
+    Images with no boxes simply contribute nothing to the flattened label arrays.
+    """
 
     img = torch.stack([item[0] for item in original_batch])
     batch_idx = []
@@ -36,6 +51,13 @@ def object_detection_collate(original_batch):
 def od_dataloader(
     mode: str, dataset: str, batch_size: int = 16, max_samples: int = None
 ):
+    """Build a detector DataLoader for the given split and curriculum dataset.
+
+    Train mode adds colour/flip/scale jitter and a WeightedRandomSampler whose
+    weights are UIQM (and ×conf for LC1/LC2) — biasing each epoch toward higher
+    quality / higher confidence boxes. Val mode is plain resize, no sampler. The
+    no-op `reset` attribute is attached so Ultralytics can call it harmlessly.
+    """
     base_transform = [
         v2.Resize(size=(640, 640)),
         v2.ToImage(),
@@ -84,6 +106,8 @@ def od_dataloader(
 
 
 class CustomDetectionValidator(DetectionValidator):
+    """Validator that undoes our already-[0,1] images for the parent's /255."""
+
     def preprocess(self, batch):
         # images are already [0,1] from ToTensor(); scale up so parent's /255 restores [0,1]
         batch["img"] = batch["img"] * 255
@@ -91,6 +115,14 @@ class CustomDetectionValidator(DetectionValidator):
 
 
 class CustomDetectionTrainer(DetectionTrainer):
+    """Ultralytics DetectionTrainer wired to our dataset, dataloader and validator.
+
+    `dataset`/`max_samples` are set on the instance before training to pick the
+    curriculum stage. Overrides feed our weighted dataloader, move batches to the
+    device without re-normalizing (images arrive already in [0,1]), and use the
+    matching CustomDetectionValidator.
+    """
+
     max_samples: int = None
     dataset: str = "lila"
 

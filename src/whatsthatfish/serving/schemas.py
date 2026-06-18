@@ -35,6 +35,11 @@ class SpeciesCatalogue(BaseModel):
 
 
 class SpeciesInfo(BaseModel):
+    """The LLM-enriched fields for a species — common name, blurb, range, depth.
+
+    The field descriptions double as the prompt contract the LLM fills in.
+    """
+
     common_name: str = Field(description="Common English name, e.g. 'Clownfish'")
     description: str = Field(description="A 100 word description of the species")
     location: list[str] = Field(

@@ -11,6 +11,12 @@ load_dotenv()
 
 
 class GCSClient:
+    """Thin wrapper around google-cloud-storage: auth plus a skip-existing bulk upload.
+
+    Authenticates from a service-account key (env `GCS_SECRET`) when present,
+    otherwise falls back to ambient default credentials.
+    """
+
     def __init__(self, config):
         self.key_path = os.environ.get("GCS_SECRET")
         self.config = config
@@ -18,14 +24,11 @@ class GCSClient:
 
     @gcs_retry
     def get_gcs_client(self) -> gcs.Client:
-        """
-        Create an authenticated GCS client.
+        """Create an authenticated GCS client.
 
-        Priority:
-            1. Explicit key path passed as argument
-            2. GCS_SERVICE_ACCOUNT_KEY environment variable
-            3. GOOGLE_APPLICATION_CREDENTIALS environment variable
-            4. Default credentials (gcloud auth application-default login)
+        Uses the service-account key at `GCS_SECRET` (resolved in `__init__`) when
+        that env var is set, raising if the file is missing. Otherwise falls back
+        to ambient default credentials (e.g. gcloud application-default login).
         """
         # Check explicit path or env var
         key_file = self.key_path

@@ -1,3 +1,10 @@
+"""COCO→YOLO annotation conversion for the LILA detection dataset.
+
+Reads COCO-style absolute bboxes from Postgres, normalizes them to YOLO
+center-xywh, groups them per image, and writes both the lila_yolo table and
+the per-image .txt label files Ultralytics expects.
+"""
+
 import os
 from enum import Enum
 from pathlib import Path
@@ -21,12 +28,24 @@ class RuntimeConfig(str, Enum):
 
 
 class AnnotationConverter:
+    """Converts LILA COCO bboxes into YOLO labels (table + .txt files).
+
+    `run()` drives one of three modes (convert / write_text / all): convert
+    normalizes and upserts to lila_yolo; write_text materializes the per-image
+    label files from that table.
+    """
+
     def __init__(self, session_factory: sessionmaker):
         self._session_factory = session_factory
         self.config = get_model_config().yolo
 
     @db_retry
     def _retrieve_annotations(self) -> pl.DataFrame:
+        """Pull every collected image left-joined to its COCO bboxes.
+
+        Outer join so negative images (no annotations) survive with null bbox
+        columns — they become background labels downstream.
+        """
 
         with self._session_factory() as session:
             rows = session.execute(
@@ -64,6 +83,7 @@ class AnnotationConverter:
             return df
 
     def _convert_annotations(self, df: pl.DataFrame) -> pl.DataFrame:
+        """Convert absolute COCO xywh (top-left) to normalized YOLO center-xywh."""
 
         df = df.with_columns(
             ((pl.col("x") + pl.col("w") / 2) / pl.col("width")).alias("norm_center_x"),
@@ -80,6 +100,12 @@ class AnnotationConverter:
 
     @db_retry
     def _write_annotations(self, df: pl.DataFrame, batch_size: int = 5_000):
+        """Group bboxes per image and batch-insert new images into lila_yolo.
+
+        Skips images already present (idempotent resume), tags each bbox with
+        class_id 0 (fish) or 1 (background, no category), and stores all bboxes
+        for an image as one JSONB `annotation` list.
+        """
 
         existing = set(self._check_converted())
         df = df.filter(~pl.col("file_name").is_in(existing))
@@ -131,6 +157,12 @@ class AnnotationConverter:
 
     @db_retry
     def _write_text(self):
+        """Materialize lila_yolo rows into per-image YOLO .txt label files.
+
+        Routes each file into the train or val label dir by its `is_train`
+        flag. Fish bboxes (class_id 0) are written as label lines; background
+        images get an empty file (no objects).
+        """
 
         with self._session_factory() as session:
             rows = session.execute(select(LilaYolo))
@@ -156,10 +188,9 @@ class AnnotationConverter:
                         f.write(
                             f"{ann['class_id']} {ann['norm_center_x']} {ann['norm_center_y']} {ann['norm_width']} {ann['norm_height']}\n"
                         )
-                    else:
-                        f.write("")
 
     def run(self, runtime_config: RuntimeConfig = RuntimeConfig.CONVERT):
+        """Run the requested stage: convert to lila_yolo, write .txt, or both."""
 
         if runtime_config == "convert":
             df = self._retrieve_annotations()
