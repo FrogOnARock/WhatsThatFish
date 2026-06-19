@@ -211,7 +211,7 @@ class Detector:
         handoff needs, see inference.bbox_inference.BoundingBoxInference.
         """
         w = Path(weights) if weights else self.weights_path / self.output_weights
-        model = YOLO(model=w)
+        model = YOLO(model=w, task="detect")
         return model.predict(source, conf=conf, verbose=False)
 
 

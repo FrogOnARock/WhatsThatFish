@@ -19,26 +19,12 @@
      habitat: string,               // habitat/range blurb
    }
 
-   TODO(you): when the FastAPI/Cloud Run endpoint exists, implement here:
-     export async function identify(file: File): Promise<Prediction> {
-       const body = new FormData();
-       body.append("image", file);
-       const res = await fetch(`${API_BASE}/identify`, { method: "POST", body });
-       ...map server response → Prediction (incl. pixel bbox → percent)...
-     }
    Decide: how to surface `underwater_confidence` and the no-detection /
    coral-negative cases the prototype never designed. */
-
-export {
-  identify,
-  identifySample,
-  getFieldLog,
-  SAMPLE_FISH,
-  DEFAULT_PREDICTION_KEY,
-} from "./mock";
-
 // First REAL backend call — not from ./mock. Lives in ./species (fetches FastAPI).
+
 export { getSpeciesLibrary } from "./species";
+export { getPrediction } from "./prediction";
 
 export type {
   BBox,

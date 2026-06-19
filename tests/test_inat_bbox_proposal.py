@@ -16,7 +16,7 @@ import pytest
 from PIL import Image
 
 from whatsthatfish.inference.inat_bbox_proposal import InatBoundingBox
-
+from whatsthatfish.models.detection import Dataset
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -69,7 +69,7 @@ def tmp_inat(tmp_path):
         obj = InatBoundingBox(
             mode="classification",
             img_folder_path="images",
-            model_path="fake.pt",
+            model_path=Dataset.LC1,
             conf=0.25,
             data_path=tmp_path,
             wal_path="bbox_wal.csv",

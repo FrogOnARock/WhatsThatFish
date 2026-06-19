@@ -112,8 +112,14 @@ class TestSpeciesCatalogue:
             session_factory,
             [
                 _row(taxon_id=4001, zero_indexed_species=0),
-                _row(taxon_id=3001, zero_indexed_species=1, species="Thalassoma lunare"),
-                _row(taxon_id=3002, zero_indexed_species=2, species="Amphiprion ocellaris"),
+                _row(
+                    taxon_id=3001, zero_indexed_species=1, species="Thalassoma lunare"
+                ),
+                _row(
+                    taxon_id=3002,
+                    zero_indexed_species=2,
+                    species="Amphiprion ocellaris",
+                ),
             ],
         )
         body = client.get("/species").json()

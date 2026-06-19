@@ -5,7 +5,8 @@ renamed here must be renamed there (and vice versa), since the SPA deserialises
 exactly these shapes.
 """
 
-from pydantic import BaseModel, Field, HttpUrl
+from pydantic import BaseModel, Field
+from typing import Annotated
 
 
 class SpeciesEntry(BaseModel):
@@ -26,6 +27,7 @@ class SpeciesEntry(BaseModel):
     location: list[str]
     filename: str
     depth: str
+
 
 class SpeciesCatalogue(BaseModel):
     """Envelope so we can add catalogue-level metadata without reshaping the list."""
@@ -50,16 +52,33 @@ class SpeciesInfo(BaseModel):
     )
 
 
-class ModelPrediction(BaseModel):
+class Bbox(BaseModel):
+    """A single response that contains the bounding box for the uploaded or sampled image"""
+
+    x: float
+    y: float
+    x2: float
+    y2: float
+
+
+class Candidate(BaseModel):
+    """
+    The candidate predictions, along with their softmaxed probabilities
+    """
+
+    name: str
+    index: int
+    conf: float
+    summary: str | None
+    common: str | None
+    habitat: list[str] | None
+
+
+class Prediction(BaseModel):
     """One detector→classifier result: the best box (xyxy + wh + conf) and the
     predicted zero-indexed species id."""
 
-    x: float
-    x2: float
-    y: float
-    y2: float
-    conf: float
-    w: float
-    h: float
-    species: int
-
+    bbox: list[Bbox]
+    species: list[Candidate]
+    genus: list[Candidate]
+    family: list[Candidate]

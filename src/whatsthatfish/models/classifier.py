@@ -686,8 +686,7 @@ class Classifier:
         best = None  # (val_loss, config, metrics)
         for i in range(self.experiments):
             config = {
-                k: (v.sample() if hasattr(v, "sample") else v)
-                for k, v in space.items()
+                k: (v.sample() if hasattr(v, "sample") else v) for k, v in space.items()
             }
             logger.info(f"Trial {i + 1}/{self.experiments} — config: {config}")
 
@@ -755,9 +754,27 @@ class Classifier:
         out_species, out_genus, out_family = model(batch)
         return [
             {
-                "species": int(out_species[i].argmax()),
-                "genus": int(out_genus[i].argmax()),
-                "family": int(out_family[i].argmax()),
+                "species": [
+                    index.item() for index in torch.topk(out_species[i], k=3).indices
+                ],
+                "genus": [
+                    index.item() for index in torch.topk(out_genus[i], k=3).indices
+                ],
+                "family": [
+                    index.item() for index in torch.topk(out_family[i], k=3).indices
+                ],
+                "species_prob": [
+                    prob.item()
+                    for prob in torch.topk(out_species[i], k=3).values.softmax(dim=0)
+                ],
+                "genus_prob": [
+                    prob.item()
+                    for prob in torch.topk(out_genus[i], k=3).values.softmax(dim=0)
+                ],
+                "family_prob": [
+                    prob.item()
+                    for prob in torch.topk(out_family[i], k=3).values.softmax(dim=0)
+                ],
             }
             for i in range(batch.shape[0])
         ]

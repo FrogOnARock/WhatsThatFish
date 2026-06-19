@@ -30,6 +30,7 @@ from ..database.models import (
 )
 from .bbox_inference import BoundingBoxInference
 from ..database.config import get_session_factory
+from ..models.detection import Dataset
 
 _CORAL_TAXON = "47533"
 
@@ -51,7 +52,7 @@ class InatBoundingBox:
         self,
         mode: str,
         img_folder_path: str = None,
-        model_path: str = "od_best.pt",
+        model_path: Dataset = Dataset.LC1,
         conf: float = 0.25,
         data_path: Path = Path(__file__).parents[1] / "data",
         wal_path: str = "bbox_wal.csv",
@@ -61,9 +62,7 @@ class InatBoundingBox:
         if mode not in _MODES:
             raise ValueError(f"mode must be one of {_MODES}, got {mode!r}")
 
-        self.model = BoundingBoxInference(
-            model=str(Path(__file__).parents[1] / "weights" / model_path), conf=conf
-        )
+        self.model = BoundingBoxInference(model=model_path, conf=conf)
         self.session_factory = get_session_factory()
         self.img_folder = (
             img_folder_path

@@ -4,8 +4,9 @@
 import { useCallback, useState, useRef } from "react";
 import DropZone from "../components/DropZone";
 import ResultsView, { type ImageState } from "../components/ResultsView";
-import { identify, identifySample, SAMPLE_FISH } from "../api/client";
+import { getPrediction } from "../api/client";
 import type { Prediction } from "../api/types";
+
 
 export type RequestState =
     { status: "analyzing" } |
@@ -54,7 +55,7 @@ export default function MainPage() {
       size: `${(file.size / (1024 * 1024)).toFixed(1)} MB`,
       url,
     });
-    runInference(() => identify(file));
+    runInference(() => getPrediction(file));
   }, [runInference]);
 
   const handleRetry = useCallback(() => {

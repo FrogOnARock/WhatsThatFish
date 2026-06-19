@@ -200,7 +200,9 @@ class TestCsvBookkeeping:
         assert "old_run" in archives[0].read_text()
         with open(t.experiments_csv) as f:
             lines = f.readlines()
-        assert lines[0].startswith("model_version,timestamp,epochs,pretrained,head_mode,")
+        assert lines[0].startswith(
+            "model_version,timestamp,epochs,pretrained,head_mode,"
+        )
         assert len(lines) == 2  # new header + the one new row
 
 

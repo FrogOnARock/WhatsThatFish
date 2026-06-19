@@ -21,12 +21,11 @@ uv.lock
 /src/preprocessing/images/
 /src/preprocessing/notebooks/images.txt
 /src/data/
-/runs
+**/runs/
 **/runs/*/*/weights/
 **/data/
-**/runs/
-**/best.pt
-**/last.pt
+*.pt
+
 
 # Frontend
 node_modules/

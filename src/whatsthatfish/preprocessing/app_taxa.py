@@ -65,6 +65,8 @@ class BuildAppTaxa:
             select(
                 InatClassificationDataset.taxon_id,
                 InatClassificationDataset.zero_indexed_species,
+                InatClassificationDataset.zero_indexed_genus,
+                InatClassificationDataset.zero_indexed_family,
                 InatClassificationDataset.filename,
                 AppTaxa.description,
                 AppTaxa.location,
@@ -97,6 +99,8 @@ class BuildAppTaxa:
             {
                 "taxon_id": row.taxon_id,
                 "zero_indexed_species": row.zero_indexed_species,
+                "zero_indexed_genus": row.zero_indexed_genus,
+                "zero_indexed_family": row.zero_indexed_family,
                 "filename": row.filename,
                 "species": row.species,
                 "genus": row.genus,
@@ -156,6 +160,8 @@ class BuildAppTaxa:
             set_={
                 # Refresh group — dataset-derived, always overwrite with latest.
                 "zero_indexed_species": stmt.excluded.zero_indexed_species,
+                "zero_indexed_genus": stmt.excluded.zero_indexed_genus,
+                "zero_indexed_family": stmt.excluded.zero_indexed_family,
                 "filename": stmt.excluded.filename,
                 "species": stmt.excluded.species,
                 "genus": stmt.excluded.genus,

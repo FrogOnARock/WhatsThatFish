@@ -1,0 +1,37 @@
+# ── Tuned classification config (auto-generated) ───────────────────
+# Best of 7 trials — val_loss=4.375401, top1_species=0.7484, top3_species=0.8599
+# Generated: 2026-06-19 11:17:44
+# Tuned keys overlaid onto cls_model_config.yaml; review, then copy into cls_model_config.yaml to promote.
+
+epochs: 50
+batch_size: 16
+patience: 10
+lr: 0.001
+weight_decay: 0.001
+warmup_pct: 0.05
+loss_weights:
+- 0.0
+- 0.0
+- 1.0
+loss_weights_p2:
+- 0.0
+- 0.6
+- 0.4
+loss_weights_p3:
+- 0.6
+- 0.3
+- 0.1
+max_lr: 0.003
+min_time_per_phase: 3
+grad_clip: 1.0
+pretrained: true
+in_dim: 5
+layers:
+- 8
+- 8
+- 12
+- 6
+head_mode: progressive
+backbone_lr: 0.00010298878451465967
+head_lr: 0.0012270248446372832
+freeze_epochs: 3

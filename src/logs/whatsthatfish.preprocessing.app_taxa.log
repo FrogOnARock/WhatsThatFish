@@ -82,3 +82,36 @@
 2026-06-16 18:07:17,337 - INFO - Upserted batch of 50 rows into app_taxa.
 2026-06-16 18:07:29,722 - INFO - Upserted batch of 14 rows into app_taxa.
 2026-06-16 18:07:29,722 - INFO - AppTaxa run complete — 1314 enriched, 0 failed (will retry next run).
+2026-06-19 10:19:31,146 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-19 10:19:32,599 - INFO - Retrieved 1464 catalogue rows for AppTaxa.
+2026-06-19 10:19:32,652 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,678 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,705 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,730 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,756 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,781 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,808 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,837 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,864 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,890 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,918 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,941 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,970 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:32,997 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,014 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,037 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,056 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,082 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,109 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,140 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,166 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,193 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,215 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,241 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,261 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,288 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,316 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,337 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,363 - INFO - Upserted batch of 50 rows into app_taxa.
+2026-06-19 10:19:33,376 - INFO - Upserted batch of 14 rows into app_taxa.
+2026-06-19 10:19:33,376 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).

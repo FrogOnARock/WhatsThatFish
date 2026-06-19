@@ -4,13 +4,13 @@
 epochs: 50
 batch_size: 16        # NOTE: trainer reads `batch_size` (was `batch`, silently ignored → always 16)
 patience: 10
-lr: 3.6357083163555596e-05
-weight_decay: 0.001962818847922508
+lr: 0.001
+weight_decay: 0.001
 warmup_pct: 0.05      # NOTE: trainer reads `warmup_pct` and now passes it to OneCycleLR pct_start (was the 0.3 default)
 loss_weights: [0.0, 0.0, 1.0]
 loss_weights_p2: [0.0, 0.6, 0.4]
 loss_weights_p3: [0.6, 0.3, 0.1]
-max_lr: 0.0007963020940738236
+max_lr: 0.003
 min_time_per_phase: 8
 grad_clip: 1.0        # global grad-norm clip; <= 0 disables. Tames hot-LR divergence at backbone unfreeze.
 
@@ -29,6 +29,6 @@ layers: [8, 8, 12, 6]
 head_mode: progressive
 
 # ── Fine-tune schedule (pretrained variants only; ignored when pretrained=false) ──
-backbone_lr: 0.000793295218564101   # ~10x lower than the heads so pretrained features aren't wrecked
-head_lr: 0.002406778647802217        # heads (+ inflated stem) move fast
+backbone_lr: 0.00010298878451465967   # ~10x lower than the heads so pretrained features aren't wrecked
+head_lr: 0.0012270248446372832        # heads (+ inflated stem) move fast
 freeze_epochs: 3      # Phase A: backbone frozen, train heads/stem; then unfreeze at backbone_lr

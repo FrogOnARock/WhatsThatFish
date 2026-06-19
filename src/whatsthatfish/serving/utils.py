@@ -9,6 +9,7 @@ from starlette.responses import RedirectResponse
 from ..etl.gcs_client import GCSClient
 from ..config import get_config
 
+
 class ImageStorage(ABC):
     """Abstract image source — hides whether a frame lives on disk or in GCS.
 
@@ -17,8 +18,7 @@ class ImageStorage(ABC):
     """
 
     @abstractmethod
-    def retrieve_image(self, filename):
-        ...
+    def retrieve_image(self, filename): ...
 
 
 class GCSImage(ImageStorage):
@@ -51,6 +51,7 @@ class LocalImage(ImageStorage):
         """Stream the requested image file back as a JPEG response."""
         return FileResponse(f"{self.folder_path}/{filename}", media_type="image/jpeg")
 
+
 class StorageConstructor:
     """Picks the right image backend for the current environment.
 
@@ -58,7 +59,9 @@ class StorageConstructor:
     otherwise falls back to reading from the local data folder.
     """
 
-    def __init__(self, folder: str = Path(__file__).parents[1] / "data/classification_images"):
+    def __init__(
+        self, folder: str = Path(__file__).parents[1] / "data/classification_images"
+    ):
         self.folder = folder
 
     def constructor(self):
@@ -67,4 +70,3 @@ class StorageConstructor:
             return GCSImage()
         else:
             return LocalImage(folder=self.folder)
-

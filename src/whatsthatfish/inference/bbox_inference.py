@@ -10,6 +10,7 @@ import logging
 
 from PIL import Image
 from ultralytics import YOLO
+from ..models.detection import Detector, Dataset
 
 logger = logging.getLogger(__name__)
 
@@ -21,9 +22,9 @@ class BoundingBoxInference:
     so this collapses YOLO's full detection set down to that one box.
     """
 
-    def __init__(self, model: str, conf: float):
+    def __init__(self, conf: float, model: Dataset = Dataset.LC1):
         logger.info("Loading YOLO model from %s (conf=%.2f)", model, conf)
-        self.model = YOLO(model, task="detect")
+        self.model = Detector(dataset=model)
         self.conf = conf
 
     def infer(self, data: bytes | list[bytes]):
@@ -50,7 +51,7 @@ class BoundingBoxInference:
             h.append(img.size[1])
             imgs_to_infer.append(img)
 
-        results = self.model.predict(imgs_to_infer, conf=self.conf, verbose=False)
+        results = self.model.predict(imgs_to_infer, conf=self.conf)
 
         if len(results) == 1:
             if results[0].boxes is None or len(results[0].boxes) == 0:

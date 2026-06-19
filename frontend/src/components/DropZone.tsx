@@ -1,7 +1,8 @@
 /* Drop zone + sample fish row — the idle/empty state of the main page. */
 import { useEffect, useRef, useState } from "react";
 import FishPlaceholder from "./FishPlaceholder";
-import { SAMPLE_FISH, DEFAULT_PREDICTION_KEY } from "../api/client";
+import { SAMPLE_FISH, SAMPLE, DEFAULT_PREDICTION_KEY } from "../api/prediction";
+import {API_BASE} from "../api/config";
 
 interface DropZoneProps {
   onUpload: (file: File) => void;
@@ -82,10 +83,12 @@ export default function DropZone({ onUpload, onSample }: DropZoneProps) {
           <span className="samples__hint">5 of 1,247 known species</span>
         </header>
         <div className="samples">
-          {SAMPLE_FISH.map((s) => (
+          {SAMPLE_FISH.map((s: SAMPLE) => (
             <button key={s.id} className="sample" onClick={() => onSample(s.id)}>
               <div className="sample__thumb">
-                <FishPlaceholder hue={s.hue} caption={s.caption} />
+               <img src={ `${API_BASE}/image/${s.filename}` } alt={s.label}
+                loading="lazy" onError={() => FishPlaceholder}>
+                </img>
               </div>
               <div className="sample__meta">
                 <span className="sample__name">{s.label}</span>

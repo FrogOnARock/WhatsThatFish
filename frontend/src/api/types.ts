@@ -7,22 +7,23 @@
 export interface BBox {
   x: number;
   y: number;
-  w: number;
-  h: number;
+  x2: number;
+  y2: number;
 }
 
 /** One ranked guess from a classifier head; `conf` is 0–100. */
 export interface Candidate {
   name: string;
+  index: number;
   conf: number;
+  summary: string;
+  common: string;
+  habitat: string
 }
 
 /** A single identification result. `bbox` is null when the detector finds no fish. */
 export interface Prediction {
-  summary: string;
-  common: string;
-  bbox: BBox | null;
-  habitat: string;
+  bbox: BBox[];
   species: Candidate[];
   genus: Candidate[];
   family: Candidate[];

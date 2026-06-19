@@ -13,7 +13,7 @@ import torch
 from PIL import Image
 
 from whatsthatfish.inference.bbox_inference import BoundingBoxInference
-
+from whatsthatfish.models.detection import Dataset
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -38,8 +38,8 @@ class _FakeBoxes:
 
 @pytest.fixture
 def inferrer():
-    with patch("whatsthatfish.inference.bbox_inference.YOLO"):
-        obj = BoundingBoxInference(model="fake.pt", conf=0.25)
+    with patch("whatsthatfish.inference.bbox_inference.Detector"):
+        obj = BoundingBoxInference(model=Dataset.LC1, conf=0.25)
     return obj
 
 

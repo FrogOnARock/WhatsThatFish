@@ -26,7 +26,9 @@ def prep():
     return InatPreparation(session_factory=None, kmeans_search=False)
 
 
-def _make(n_clusters: int = 10, taxa: dict[int, int] | None = None, photos_per_obs: int = 2):
+def _make(
+    n_clusters: int = 10, taxa: dict[int, int] | None = None, photos_per_obs: int = 2
+):
     """Synthetic clustered rows with observation grouping.
 
     taxa: {taxon_id: n_observations}. Each observation lives in exactly ONE
@@ -86,7 +88,10 @@ class TestAssignSplitBasics:
     def test_deterministic_under_fixed_seed(self, prep):
         out_a = prep.assign_split(_make(taxa={1: 60, 2: 60}))
         out_b = prep.assign_split(_make(taxa={1: 60, 2: 60}))
-        key = lambda rs: [(r["taxon_id"], r["observation_uuid"], r["train"], r["val_topup"]) for r in rs]
+        key = lambda rs: [
+            (r["taxon_id"], r["observation_uuid"], r["train"], r["val_topup"])
+            for r in rs
+        ]
         assert key(out_a) == key(out_b)
 
     def test_drops_taxa_below_min_train(self, prep):
@@ -157,4 +162,6 @@ class TestSplitInvariants:
     # fixture suffices.) Replace the skip.
     # ────────────────────────────────────────────────────────────────
     def test_val_floor_coverage(self, prep):
-        pytest.skip("TODO(you): assert top-up reaches val_floor where train pool allows")
+        pytest.skip(
+            "TODO(you): assert top-up reaches val_floor where train pool allows"
+        )

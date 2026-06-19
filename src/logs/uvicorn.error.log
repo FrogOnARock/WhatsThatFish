@@ -3383,3 +3383,526 @@ RuntimeError: File at path /home/frogonarock/PycharmProjects/WhatsThisFish/whats
 2026-06-18 10:46:48,312 - INFO - Started server process [262371]
 2026-06-18 10:46:48,313 - INFO - Waiting for application startup.
 2026-06-18 10:46:48,313 - INFO - Application startup complete.
+2026-06-18 11:16:59,400 - INFO - Shutting down
+2026-06-18 11:16:59,501 - INFO - Waiting for application shutdown.
+2026-06-18 11:16:59,501 - INFO - Application shutdown complete.
+2026-06-18 11:16:59,501 - INFO - Finished server process [262371]
+2026-06-18 11:17:03,239 - INFO - Started server process [428231]
+2026-06-18 11:17:03,242 - INFO - Waiting for application startup.
+2026-06-18 11:17:03,242 - INFO - Application startup complete.
+2026-06-18 11:21:38,254 - INFO - Shutting down
+2026-06-18 11:21:38,354 - INFO - Waiting for application shutdown.
+2026-06-18 11:21:38,355 - INFO - Application shutdown complete.
+2026-06-18 11:21:38,355 - INFO - Finished server process [428231]
+2026-06-18 11:21:40,054 - INFO - Started server process [454723]
+2026-06-18 11:21:40,054 - INFO - Waiting for application startup.
+2026-06-18 11:21:40,054 - INFO - Application startup complete.
+2026-06-18 11:35:02,849 - INFO - Shutting down
+2026-06-18 11:35:02,951 - INFO - Waiting for application shutdown.
+2026-06-18 11:35:02,952 - INFO - Application shutdown complete.
+2026-06-18 11:35:02,952 - INFO - Finished server process [454723]
+2026-06-18 11:35:06,407 - INFO - Started server process [528255]
+2026-06-18 11:35:06,407 - INFO - Waiting for application startup.
+2026-06-18 11:35:06,407 - INFO - Application startup complete.
+2026-06-18 11:48:59,031 - INFO - Shutting down
+2026-06-18 11:48:59,131 - INFO - Waiting for application shutdown.
+2026-06-18 11:48:59,132 - INFO - Application shutdown complete.
+2026-06-18 11:48:59,132 - INFO - Finished server process [528255]
+2026-06-18 11:49:03,453 - INFO - Started server process [604284]
+2026-06-18 11:49:03,453 - INFO - Waiting for application startup.
+2026-06-18 11:49:03,453 - INFO - Application startup complete.
+2026-06-18 11:52:29,713 - INFO - Shutting down
+2026-06-18 11:52:29,814 - INFO - Waiting for application shutdown.
+2026-06-18 11:52:29,814 - INFO - Application shutdown complete.
+2026-06-18 11:52:29,814 - INFO - Finished server process [604284]
+2026-06-18 11:52:32,221 - INFO - Started server process [624079]
+2026-06-18 11:52:32,221 - INFO - Waiting for application startup.
+2026-06-18 11:52:32,221 - INFO - Application startup complete.
+2026-06-18 11:53:12,728 - INFO - Shutting down
+2026-06-18 11:53:12,831 - INFO - Waiting for application shutdown.
+2026-06-18 11:53:12,831 - INFO - Application shutdown complete.
+2026-06-18 11:53:12,831 - INFO - Finished server process [624079]
+2026-06-18 11:53:15,760 - INFO - Started server process [628107]
+2026-06-18 11:53:15,761 - INFO - Waiting for application startup.
+2026-06-18 11:53:15,761 - INFO - Application startup complete.
+2026-06-18 12:00:39,540 - INFO - Shutting down
+2026-06-18 12:00:39,640 - INFO - Waiting for application shutdown.
+2026-06-18 12:00:39,641 - INFO - Application shutdown complete.
+2026-06-18 12:00:39,641 - INFO - Finished server process [628107]
+2026-06-18 12:00:46,273 - INFO - Started server process [670581]
+2026-06-18 12:00:46,273 - INFO - Waiting for application startup.
+2026-06-18 12:00:46,274 - INFO - Application startup complete.
+2026-06-18 12:04:55,267 - INFO - Shutting down
+2026-06-18 12:04:55,367 - INFO - Waiting for application shutdown.
+2026-06-18 12:04:55,367 - INFO - Application shutdown complete.
+2026-06-18 12:04:55,367 - INFO - Finished server process [670581]
+2026-06-18 12:04:57,899 - INFO - Started server process [696194]
+2026-06-18 12:04:57,899 - INFO - Waiting for application startup.
+2026-06-18 12:04:57,899 - INFO - Application startup complete.
+2026-06-18 12:06:58,431 - INFO - Shutting down
+2026-06-18 12:06:58,531 - INFO - Waiting for application shutdown.
+2026-06-18 12:06:58,531 - INFO - Application shutdown complete.
+2026-06-18 12:06:58,531 - INFO - Finished server process [696194]
+2026-06-18 12:07:01,052 - INFO - Started server process [697656]
+2026-06-18 12:07:01,052 - INFO - Waiting for application startup.
+2026-06-18 12:07:01,052 - INFO - Application startup complete.
+2026-06-19 09:12:57,291 - INFO - Shutting down
+2026-06-19 09:12:57,404 - INFO - Waiting for application shutdown.
+2026-06-19 09:12:57,410 - INFO - Application shutdown complete.
+2026-06-19 09:12:57,410 - INFO - Finished server process [697656]
+2026-06-19 09:13:01,305 - INFO - Started server process [3586087]
+2026-06-19 09:13:01,306 - INFO - Waiting for application startup.
+2026-06-19 09:13:01,306 - INFO - Application startup complete.
+2026-06-19 09:13:01,310 - ERROR - Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 62, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1162, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1220, in handle
+    await super().handle(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 339, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/serving/app.py", line 95, in list_species
+    entries = query_species(session)
+              ^^^^^^^^^^^^^^^^^^^^^^
+TypeError: query_species() missing 1 required positional argument: 'species'
+2026-06-19 09:18:52,593 - INFO - Shutting down
+2026-06-19 09:18:52,694 - INFO - Waiting for application shutdown.
+2026-06-19 09:18:52,694 - INFO - Application shutdown complete.
+2026-06-19 09:18:52,694 - INFO - Finished server process [3586087]
+2026-06-19 09:18:59,471 - INFO - Started server process [3606106]
+2026-06-19 09:18:59,472 - INFO - Waiting for application startup.
+2026-06-19 09:18:59,473 - INFO - Application startup complete.
+2026-06-19 09:20:30,210 - INFO - Shutting down
+2026-06-19 09:20:30,311 - INFO - Waiting for application shutdown.
+2026-06-19 09:20:30,312 - INFO - Application shutdown complete.
+2026-06-19 09:20:30,312 - INFO - Finished server process [3606106]
+2026-06-19 09:20:36,254 - INFO - Started server process [3615268]
+2026-06-19 09:20:36,255 - INFO - Waiting for application startup.
+2026-06-19 09:20:36,255 - INFO - Application startup complete.
+2026-06-19 09:22:37,657 - INFO - Shutting down
+2026-06-19 09:22:37,757 - INFO - Waiting for application shutdown.
+2026-06-19 09:22:37,757 - INFO - Application shutdown complete.
+2026-06-19 09:22:37,757 - INFO - Finished server process [3615268]
+2026-06-19 09:22:43,833 - INFO - Started server process [3627070]
+2026-06-19 09:22:43,833 - INFO - Waiting for application startup.
+2026-06-19 09:22:43,833 - INFO - Application startup complete.
+2026-06-19 09:26:50,011 - INFO - Shutting down
+2026-06-19 09:26:50,112 - INFO - Waiting for application shutdown.
+2026-06-19 09:26:50,112 - INFO - Application shutdown complete.
+2026-06-19 09:26:50,112 - INFO - Finished server process [3627070]
+2026-06-19 09:26:56,184 - INFO - Started server process [3650740]
+2026-06-19 09:26:56,185 - INFO - Waiting for application startup.
+2026-06-19 09:26:56,185 - INFO - Application startup complete.
+2026-06-19 09:27:25,951 - INFO - Shutting down
+2026-06-19 09:27:26,051 - INFO - Waiting for application shutdown.
+2026-06-19 09:27:26,051 - INFO - Application shutdown complete.
+2026-06-19 09:27:26,052 - INFO - Finished server process [3650740]
+2026-06-19 09:27:32,156 - INFO - Started server process [3654284]
+2026-06-19 09:27:32,156 - INFO - Waiting for application startup.
+2026-06-19 09:27:32,156 - INFO - Application startup complete.
+2026-06-19 09:29:21,652 - INFO - Shutting down
+2026-06-19 09:29:21,753 - INFO - Waiting for application shutdown.
+2026-06-19 09:29:21,753 - INFO - Application shutdown complete.
+2026-06-19 09:29:21,753 - INFO - Finished server process [3654284]
+2026-06-19 09:29:28,955 - INFO - Started server process [3673782]
+2026-06-19 09:29:28,956 - INFO - Waiting for application startup.
+2026-06-19 09:29:28,956 - INFO - Application startup complete.
+2026-06-19 10:06:42,542 - INFO - Shutting down
+2026-06-19 10:06:42,643 - INFO - Waiting for application shutdown.
+2026-06-19 10:06:42,643 - INFO - Application shutdown complete.
+2026-06-19 10:06:42,643 - INFO - Finished server process [3673782]
+2026-06-19 10:44:27,225 - INFO - Started server process [4077869]
+2026-06-19 10:44:27,225 - INFO - Waiting for application startup.
+2026-06-19 10:44:27,226 - INFO - Application startup complete.
+2026-06-19 10:46:29,745 - INFO - Shutting down
+2026-06-19 10:46:29,845 - INFO - Waiting for application shutdown.
+2026-06-19 10:46:29,846 - INFO - Application shutdown complete.
+2026-06-19 10:46:29,846 - INFO - Finished server process [4077869]
+2026-06-19 10:46:36,134 - INFO - Started server process [4090312]
+2026-06-19 10:46:36,138 - INFO - Waiting for application startup.
+2026-06-19 10:46:36,138 - INFO - Application startup complete.
+2026-06-19 10:49:09,691 - INFO - Shutting down
+2026-06-19 10:49:09,793 - INFO - Waiting for application shutdown.
+2026-06-19 10:49:09,793 - INFO - Application shutdown complete.
+2026-06-19 10:49:09,794 - INFO - Finished server process [4090312]
+2026-06-19 10:49:15,902 - INFO - Started server process [4105704]
+2026-06-19 10:49:15,906 - INFO - Waiting for application startup.
+2026-06-19 10:49:15,908 - INFO - Application startup complete.
+2026-06-19 11:02:14,764 - INFO - Shutting down
+2026-06-19 11:02:14,867 - INFO - Waiting for application shutdown.
+2026-06-19 11:02:14,868 - INFO - Application shutdown complete.
+2026-06-19 11:02:14,868 - INFO - Finished server process [4105704]
+2026-06-19 11:02:20,647 - INFO - Started server process [4174478]
+2026-06-19 11:02:20,648 - INFO - Waiting for application startup.
+2026-06-19 11:02:20,648 - INFO - Application startup complete.
+2026-06-19 11:02:23,371 - INFO - Shutting down
+2026-06-19 11:02:23,474 - INFO - Waiting for application shutdown.
+2026-06-19 11:02:23,475 - INFO - Application shutdown complete.
+2026-06-19 11:02:23,475 - INFO - Finished server process [4174478]
+2026-06-19 11:02:29,394 - INFO - Started server process [4175331]
+2026-06-19 11:02:29,394 - INFO - Waiting for application startup.
+2026-06-19 11:02:29,394 - INFO - Application startup complete.
+2026-06-19 11:05:36,433 - INFO - Shutting down
+2026-06-19 11:05:36,534 - INFO - Waiting for application shutdown.
+2026-06-19 11:05:36,534 - INFO - Application shutdown complete.
+2026-06-19 11:05:36,534 - INFO - Finished server process [4175331]
+2026-06-19 11:05:42,690 - INFO - Started server process [4193776]
+2026-06-19 11:05:42,692 - INFO - Waiting for application startup.
+2026-06-19 11:05:42,692 - INFO - Application startup complete.
+2026-06-19 11:06:40,376 - INFO - Shutting down
+2026-06-19 11:06:40,476 - INFO - Waiting for application shutdown.
+2026-06-19 11:06:40,476 - INFO - Application shutdown complete.
+2026-06-19 11:06:40,476 - INFO - Finished server process [4193776]
+2026-06-19 11:06:47,278 - INFO - Started server process [6167]
+2026-06-19 11:06:47,278 - INFO - Waiting for application startup.
+2026-06-19 11:06:47,278 - INFO - Application startup complete.
+2026-06-19 11:08:36,664 - INFO - Shutting down
+2026-06-19 11:08:36,764 - INFO - Waiting for application shutdown.
+2026-06-19 11:08:36,764 - INFO - Application shutdown complete.
+2026-06-19 11:08:36,764 - INFO - Finished server process [6167]
+2026-06-19 11:08:44,565 - INFO - Started server process [17352]
+2026-06-19 11:08:44,565 - INFO - Waiting for application startup.
+2026-06-19 11:08:44,565 - INFO - Application startup complete.
+2026-06-19 11:17:41,820 - INFO - Shutting down
+2026-06-19 11:17:41,920 - INFO - Waiting for application shutdown.
+2026-06-19 11:17:41,920 - INFO - Application shutdown complete.
+2026-06-19 11:17:41,921 - INFO - Finished server process [17352]
+2026-06-19 11:17:44,594 - INFO - Started server process [66638]
+2026-06-19 11:17:44,594 - INFO - Waiting for application startup.
+2026-06-19 11:17:44,594 - INFO - Application startup complete.
+2026-06-19 11:20:16,557 - INFO - Shutting down
+2026-06-19 11:20:16,658 - INFO - Waiting for application shutdown.
+2026-06-19 11:20:16,658 - INFO - Application shutdown complete.
+2026-06-19 11:20:16,658 - INFO - Finished server process [66638]
+2026-06-19 11:20:19,012 - INFO - Started server process [68458]
+2026-06-19 11:20:19,012 - INFO - Waiting for application startup.
+2026-06-19 11:20:19,012 - INFO - Application startup complete.
+2026-06-19 11:22:05,071 - INFO - Shutting down
+2026-06-19 11:22:05,172 - INFO - Waiting for application shutdown.
+2026-06-19 11:22:05,172 - INFO - Application shutdown complete.
+2026-06-19 11:22:05,172 - INFO - Finished server process [68458]
+2026-06-19 11:22:07,505 - INFO - Started server process [69703]
+2026-06-19 11:22:07,505 - INFO - Waiting for application startup.
+2026-06-19 11:22:07,506 - INFO - Application startup complete.
+2026-06-19 11:27:56,633 - INFO - Shutting down
+2026-06-19 11:27:56,734 - INFO - Waiting for application shutdown.
+2026-06-19 11:27:56,734 - INFO - Application shutdown complete.
+2026-06-19 11:27:56,735 - INFO - Finished server process [69703]
+2026-06-19 11:27:59,070 - INFO - Started server process [73927]
+2026-06-19 11:27:59,070 - INFO - Waiting for application startup.
+2026-06-19 11:27:59,070 - INFO - Application startup complete.
+2026-06-19 11:31:50,921 - INFO - Shutting down
+2026-06-19 11:31:51,021 - INFO - Waiting for application shutdown.
+2026-06-19 11:31:51,021 - INFO - Application shutdown complete.
+2026-06-19 11:31:51,021 - INFO - Finished server process [73927]
+2026-06-19 11:31:53,312 - INFO - Started server process [78179]
+2026-06-19 11:31:53,312 - INFO - Waiting for application startup.
+2026-06-19 11:31:53,312 - INFO - Application startup complete.
+2026-06-19 11:38:48,946 - INFO - Shutting down
+2026-06-19 11:38:49,046 - INFO - Waiting for application shutdown.
+2026-06-19 11:38:49,046 - INFO - Application shutdown complete.
+2026-06-19 11:38:49,046 - INFO - Finished server process [78179]
+2026-06-19 11:38:56,201 - INFO - Started server process [104813]
+2026-06-19 11:38:56,201 - INFO - Waiting for application startup.
+2026-06-19 11:38:56,202 - INFO - Application startup complete.
+2026-06-19 11:40:48,611 - INFO - Shutting down
+2026-06-19 11:40:48,713 - INFO - Waiting for application shutdown.
+2026-06-19 11:40:48,713 - INFO - Application shutdown complete.
+2026-06-19 11:40:48,713 - INFO - Finished server process [104813]
+2026-06-19 11:40:54,386 - INFO - Started server process [116311]
+2026-06-19 11:40:54,386 - INFO - Waiting for application startup.
+2026-06-19 11:40:54,386 - INFO - Application startup complete.
+2026-06-19 11:40:54,399 - ERROR - Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 62, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1162, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1220, in handle
+    await super().handle(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 339, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/serving/app.py", line 182, in list_species
+    entries = service.get_species()
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/serving/service.py", line 11, in get_species
+    rows = repo.query_species()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/serving/repository.py", line 15, in query_species
+    return self.session.execute(select(query)).scalars().all()
+                                ^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/_selectable_constructors.py", line 538, in select
+    return Select(*entities)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/selectable.py", line 5404, in __init__
+    coercions.expect(
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 425, in expect
+    return impl._implicit_coercions(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 489, in _implicit_coercions
+    self._raise_for_expected(element, argname, resolved)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 1133, in _raise_for_expected
+    return super()._raise_for_expected(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 696, in _raise_for_expected
+    super()._raise_for_expected(
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 519, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: Column expression, FROM clause, or other columns clause element expected, got <sqlalchemy.sql.selectable.Select object at 0x7fe4d714e300>. To create a FROM clause from a <class 'sqlalchemy.sql.selectable.Select'> object, use the .subquery() method. (Background on this error at: https://sqlalche.me/e/20/89ve)
+2026-06-19 11:40:54,410 - ERROR - Exception in ASGI application
+Traceback (most recent call last):
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/uvicorn/protocols/http/httptools_impl.py", line 421, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/uvicorn/middleware/proxy_headers.py", line 62, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/applications.py", line 1162, in __call__
+    await super().__call__(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 96, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 154, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/routing.py", line 680, in app
+    await route.handle(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1220, in handle
+    await super().handle(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 143, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 129, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 683, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 339, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/serving/app.py", line 182, in list_species
+    entries = service.get_species()
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/serving/service.py", line 11, in get_species
+    rows = repo.query_species()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/serving/repository.py", line 15, in query_species
+    return self.session.execute(select(query)).scalars().all()
+                                ^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/_selectable_constructors.py", line 538, in select
+    return Select(*entities)
+           ^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/selectable.py", line 5404, in __init__
+    coercions.expect(
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 425, in expect
+    return impl._implicit_coercions(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 489, in _implicit_coercions
+    self._raise_for_expected(element, argname, resolved)
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 1133, in _raise_for_expected
+    return super()._raise_for_expected(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 696, in _raise_for_expected
+    super()._raise_for_expected(
+  File "/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/.venv/lib/python3.12/site-packages/sqlalchemy/sql/coercions.py", line 519, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: Column expression, FROM clause, or other columns clause element expected, got <sqlalchemy.sql.selectable.Select object at 0x7fe4d848cef0>. To create a FROM clause from a <class 'sqlalchemy.sql.selectable.Select'> object, use the .subquery() method. (Background on this error at: https://sqlalche.me/e/20/89ve)
+2026-06-19 11:41:53,225 - INFO - Shutting down
+2026-06-19 11:41:53,325 - INFO - Waiting for application shutdown.
+2026-06-19 11:41:53,326 - INFO - Application shutdown complete.
+2026-06-19 11:41:53,326 - INFO - Finished server process [116311]
+2026-06-19 11:41:59,780 - INFO - Started server process [122600]
+2026-06-19 11:41:59,781 - INFO - Waiting for application startup.
+2026-06-19 11:41:59,781 - INFO - Application startup complete.
+2026-06-19 12:14:50,276 - INFO - Shutting down
+2026-06-19 12:14:50,376 - INFO - Waiting for application shutdown.
+2026-06-19 12:14:50,376 - INFO - Application shutdown complete.
+2026-06-19 12:14:50,376 - INFO - Finished server process [122600]
+2026-06-19 12:14:56,961 - INFO - Started server process [312442]
+2026-06-19 12:14:56,961 - INFO - Waiting for application startup.
+2026-06-19 12:14:56,961 - INFO - Application startup complete.
+2026-06-19 13:40:42,942 - INFO - Shutting down
+2026-06-19 13:40:43,047 - INFO - Waiting for application shutdown.
+2026-06-19 13:40:43,049 - INFO - Application shutdown complete.
+2026-06-19 13:40:43,049 - INFO - Finished server process [312442]
+2026-06-19 13:40:46,087 - INFO - Started server process [815047]
+2026-06-19 13:40:46,087 - INFO - Waiting for application startup.
+2026-06-19 13:40:46,087 - INFO - Application startup complete.
+2026-06-19 13:53:12,023 - INFO - Shutting down
+2026-06-19 13:53:12,123 - INFO - Waiting for application shutdown.
+2026-06-19 13:53:12,126 - INFO - Application shutdown complete.
+2026-06-19 13:53:12,127 - INFO - Finished server process [815047]
+2026-06-19 13:53:17,973 - INFO - Started server process [876261]
+2026-06-19 13:53:17,973 - INFO - Waiting for application startup.
+2026-06-19 13:53:17,973 - INFO - Application startup complete.
+2026-06-19 14:09:35,976 - INFO - Shutting down
+2026-06-19 14:09:36,076 - INFO - Waiting for application shutdown.
+2026-06-19 14:09:36,076 - INFO - Application shutdown complete.
+2026-06-19 14:09:36,076 - INFO - Finished server process [876261]
+2026-06-19 14:15:15,694 - INFO - Uvicorn running on http://127.0.0.1:8080 (Press CTRL+C to quit)
+2026-06-19 14:15:15,694 - INFO - Started reloader process [1002308] using WatchFiles
+2026-06-19 14:15:18,094 - INFO - Started server process [1002361]
+2026-06-19 14:15:18,094 - INFO - Waiting for application startup.
+2026-06-19 14:15:18,094 - INFO - Application startup complete.
+2026-06-19 14:19:32,489 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/app.py'. Reloading...
+2026-06-19 14:19:32,573 - INFO - Shutting down
+2026-06-19 14:19:32,673 - INFO - Waiting for application shutdown.
+2026-06-19 14:19:32,673 - INFO - Application shutdown complete.
+2026-06-19 14:19:32,673 - INFO - Finished server process [1002361]
+2026-06-19 15:12:41,606 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/app.py'. Reloading...
+2026-06-19 15:15:02,269 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/service.py', 'whatsthatfish/inference/class_inference.py'. Reloading...
+2026-06-19 15:24:43,626 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/service.py', 'whatsthatfish/inference/class_inference.py'. Reloading...
+2026-06-19 15:25:46,222 - WARNING - WatchFiles detected changes in 'whatsthatfish/models/classifier.py', 'whatsthatfish/inference/inat_bbox_proposal.py', 'whatsthatfish/serving/schemas.py', 'whatsthatfish/serving/app.py', 'whatsthatfish/serving/repository.py', 'whatsthatfish/inference/class_inference.py', 'whatsthatfish/serving/service.py', 'whatsthatfish/serving/utils.py'. Reloading...
+2026-06-19 15:26:50,214 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/app.py'. Reloading...
+2026-06-19 15:28:49,929 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/app.py'. Reloading...
+2026-06-19 16:13:12,330 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/service.py'. Reloading...
+2026-06-19 16:15:39,636 - WARNING - WatchFiles detected changes in 'whatsthatfish/models/classifier.py', 'whatsthatfish/serving/service.py'. Reloading...
+2026-06-19 16:15:40,589 - WARNING - WatchFiles detected changes in 'whatsthatfish/models/classifier.py', 'whatsthatfish/serving/app.py'. Reloading...
+2026-06-19 16:18:38,694 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/service.py', 'whatsthatfish/serving/app.py'. Reloading...
+2026-06-19 16:23:26,987 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/service.py', 'whatsthatfish/serving/repository.py'. Reloading...
+2026-06-19 16:52:51,822 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/service.py'. Reloading...
+2026-06-19 16:53:57,975 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/service.py', 'whatsthatfish/serving/repository.py'. Reloading...
+2026-06-19 16:54:43,062 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/repository.py'. Reloading...
+2026-06-19 16:59:04,084 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/service.py', 'whatsthatfish/serving/app.py'. Reloading...
+2026-06-19 17:07:53,256 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/app.py'. Reloading...
+2026-06-19 17:08:00,430 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/app.py'. Reloading...

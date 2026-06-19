@@ -5,6 +5,7 @@ import ClassificationCard from "./ClassificationCard";
 import type {TaxonKey} from "../api/types";
 import type { RequestState } from "../pages/MainPage";
 import ImageCard from "./ImageCard";
+import { SAMPLE_FISH } from "../api/prediction";
 
 /** A taxonomy head as presented in the results column. */
 export interface Taxon {
@@ -134,7 +135,8 @@ export default function ResultsView({ image, request, onReset, onRetry }: Result
     );
   }
 
-  const bbox = request.prediction.bbox;
+
+  const bbox = request.prediction.bbox[0];
   const speciesTop = request.prediction.species[0];
 
   return (
@@ -162,8 +164,8 @@ export default function ResultsView({ image, request, onReset, onRetry }: Result
           <div className="meta-strip">
             <div className="meta-card">
               <div className="meta-card__label">Habitat & range</div>
-              <h4 className="meta-card__title">{request.prediction.summary}</h4>
-              <p className="meta-card__body">{request.prediction.habitat}</p>
+              <h4 className="meta-card__title">{speciesTop.summary}</h4>
+              <p className="meta-card__body">{speciesTop.habitat}</p>
             </div>
             <div className="meta-card">
               <div className="meta-card__label">Where did you see it?</div>
@@ -215,8 +217,8 @@ export default function ResultsView({ image, request, onReset, onRetry }: Result
                 <ClassificationCard
                     key={t.key}
                     taxon={t}
-                    predictions={request.prediction[t.key]}
-                    common={request.prediction.common}
+                    predictions={speciesTop.name}
+                    common={speciesTop.common}
                 />
             ))}
           </div>

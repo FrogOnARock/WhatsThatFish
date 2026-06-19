@@ -297,6 +297,8 @@ class AppTaxa(Base):
 
     taxon_id: Mapped[int] = mapped_column(Integer, primary_key=True)
     zero_indexed_species: Mapped[int | None] = mapped_column(Integer)
+    zero_indexed_genus: Mapped[int | None] = mapped_column(Integer)
+    zero_indexed_family: Mapped[int | None] = mapped_column(Integer)
     species: Mapped[str] = mapped_column(String)
     genus: Mapped[str] = mapped_column(String)
     family: Mapped[str] = mapped_column(String)
