@@ -7,9 +7,10 @@ import {API_BASE} from "../api/config";
 interface DropZoneProps {
   onUpload: (file: File) => void;
   onSample: (id: string) => void;
+  speciesCount?: number;
 }
 
-export default function DropZone({ onUpload, onSample }: DropZoneProps) {
+export default function DropZone({ onUpload, onSample, speciesCount }: DropZoneProps) {
   const [hot, setHot] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -80,7 +81,9 @@ export default function DropZone({ onUpload, onSample }: DropZoneProps) {
       <section>
         <header className="samples__head">
           <h3 className="samples__title">— or try one of these</h3>
-          <span className="samples__hint">5 of 1,247 known species</span>
+          <span className="samples__hint">
+            {SAMPLE_FISH.length} of {speciesCount ? speciesCount.toLocaleString() : "…"} known species
+          </span>
         </header>
         <div className="samples">
           {SAMPLE_FISH.map((s: SAMPLE) => (

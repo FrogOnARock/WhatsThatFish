@@ -56,9 +56,6 @@ class ZeroIndexClassification:
             "Zero indexing family, genus, species for load to inat_classification_dataset."
         )
         # sorted() — not bare set() — so the taxon→index map is reproducible across
-        # runs instead of depending on Python's per-process hash seed. Safe for the
-        # from-scratch reindex we do today; a future warm-start path must instead seed
-        # from the checkpoint's pinned map and only append new taxa (never re-sort all).
         family_list = sorted(set(r["family"] for r in rows))
         genus_list = sorted(set(r["genus"] for r in rows))
         species_list = sorted(set(r["species"] for r in rows))

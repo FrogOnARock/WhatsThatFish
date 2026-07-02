@@ -1,49 +1,42 @@
 import FishPlaceholder from "../FishPlaceholder";
-import type { Ghost, LogSpecies } from "../../api/types";
+import AuthedImage from "../AuthedImage";
+import type { FieldSpecies } from "../../api/history";
 
-interface SpeciesCardProps {
-  sp: LogSpecies;
-  active: boolean;
-  onSelect: (id: string) => void;
+function firstPhotoId(sp: FieldSpecies): string | null {
+  for (const s of sp.sightings) if (s.photos.length) return s.photos[0].id;
+  return null;
 }
 
-export function SpeciesCard({ sp, active, onSelect }: SpeciesCardProps) {
+interface SpeciesCardProps {
+  sp: FieldSpecies;
+  no: number;
+  active: boolean;
+  onSelect: (taxonId: number) => void;
+}
+
+export function SpeciesCard({ sp, no, active, onSelect }: SpeciesCardProps) {
+  const photo = firstPhotoId(sp);
   return (
     <button
       className={`pdx-card ${active ? "pdx-card--active" : ""}`}
-      onClick={() => onSelect(sp.id)}
+      onClick={() => onSelect(sp.taxonId)}
     >
-      <div className="pdx-card__no">№ {String(sp.no).padStart(3, "0")}</div>
+      <div className="pdx-card__no">№ {String(no).padStart(3, "0")}</div>
       <div className="pdx-card__thumb">
-        <FishPlaceholder hue={sp.hue} caption={sp.caption} />
+        {photo ? (
+          <AuthedImage photoId={photo} className="pdx-card__img" />
+        ) : (
+          <FishPlaceholder hue={sp.taxonId % 360} caption={sp.species ?? ""} />
+        )}
       </div>
       <div className="pdx-card__body">
-        <div className="pdx-card__common">{sp.common}</div>
+        <div className="pdx-card__common">{sp.commonName ?? sp.species ?? "Unknown"}</div>
         <div className="pdx-card__sci">{sp.species}</div>
       </div>
       <div className="pdx-card__count">
-        <span className="pdx-card__count-num">{sp.sightings.length}</span>
+        <span className="pdx-card__count-num">{sp.sightingCount}</span>
         <span className="pdx-card__count-lbl">seen</span>
       </div>
     </button>
-  );
-}
-
-interface GhostCardProps {
-  ghost: Ghost;
-}
-
-export function GhostCard({ ghost }: GhostCardProps) {
-  return (
-    <div className="pdx-card pdx-card--ghost" aria-disabled>
-      <div className="pdx-card__no">№ {String(ghost.no).padStart(3, "0")}</div>
-      <div className="pdx-card__thumb pdx-card__thumb--ghost">
-        <span className="pdx-card__qmark">?</span>
-      </div>
-      <div className="pdx-card__body">
-        <div className="pdx-card__common">Undiscovered</div>
-        <div className="pdx-card__sci">{ghost.hint}</div>
-      </div>
-    </div>
   );
 }

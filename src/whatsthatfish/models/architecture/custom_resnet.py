@@ -111,6 +111,10 @@ class CustomResnet(nn.Module):
             )
             layers = [3, 4, 6, 3]
 
+        # The EFFECTIVE block counts actually built (after the pretrained override
+        # above). A checkpoint's `arch` must record THIS, not the requested value,
+        # or reload rebuilds a different graph than the weights were saved from.
+        self.layers = layers
         self.in_dim = in_dim
         self.pretrained = pretrained
 

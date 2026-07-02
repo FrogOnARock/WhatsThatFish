@@ -14,6 +14,19 @@ from ...transforms.five_channel_conversion import AddMultiChannel
 from ...transforms.letterbox_resize import LetterboxResize
 
 
+class NumpyToTensor:
+    """Compose step: wrap AddMultiChannel's (5,H,W) numpy output into a float tensor.
+
+    AddMultiChannel is numpy-native (for the torch-free serving path); the training
+    pipeline needs tensors for the collate's `torch.stack`, so this is the last
+    step after it. A module-level class (not a lambda) so it pickles for DataLoader
+    workers.
+    """
+
+    def __call__(self, arr):
+        return torch.from_numpy(arr).float()
+
+
 def collate_fn(original_batch):
     """Stack the batch into (images, label dict) with all three taxonomic levels.
 
@@ -55,6 +68,7 @@ def class_dataloader(
     base_transform = [
         LetterboxResize(320),
         AddMultiChannel(),
+        NumpyToTensor(),
     ]
 
     if split == "train":
@@ -66,7 +80,9 @@ def class_dataloader(
             v2.ColorJitter(brightness=0.4, contrast=0.2, hue=0.015, saturation=0.3),
             v2.RandomAdjustSharpness(sharpness_factor=2, p=0.5),
         ]
-        transforms = [LetterboxResize(320)] + add_transforms + [AddMultiChannel()]
+        transforms = (
+            [LetterboxResize(320)] + add_transforms + [AddMultiChannel(), NumpyToTensor()]
+        )
         transforms_composed = v2.Compose(transforms)
         class_dataset = ClassificationDataset(
             split=split, transform=transforms_composed, tuning=tuning

@@ -48,6 +48,10 @@ def _bare_trainer(tmp_path) -> Classifier:
     t.backbone_lr = 1e-4
     t.head_mode = "progressive"
     t.grad_clip = 1.0
+    # Architecture fields the self-describing checkpoint records (must match the
+    # CustomResnet built above so a reload rebuilds the same graph).
+    t.layers = [1, 1, 1, 1]
+    t.in_dim = 5
     return t
 
 
@@ -86,10 +90,17 @@ class TestSaveCheckpoint:
             "lr_scheduler",
             "num_labels",
             "model_version",
+            "arch",
         }
         assert ckpt["epoch"] == 4
         assert ckpt["val_loss"] == 0.5
         assert ckpt["num_labels"] == NUM_LABELS
+        # Self-describing arch block — predict() rebuilds the graph from this.
+        assert ckpt["arch"] == {
+            "layers": [1, 1, 1, 1],
+            "in_dim": 5,
+            "head_mode": "progressive",
+        }
 
     def test_model_state_loads_into_fresh_model(self, tmp_path):
         """num_labels in the checkpoint is enough to rebuild the model for serving."""

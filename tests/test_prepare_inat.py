@@ -144,24 +144,22 @@ class TestSplitInvariants:
         out = prep.assign_split(_make(taxa={1: 80, 2: 80}))
         assert all(r["train"] is False for r in out if r["val_topup"])
 
-    # ────────────────────────────────────────────────────────────────
-    # HIGHLIGHTED FOR YOU — the val-coverage guarantee.
-    #
-    # `assign_split(val_floor=20)` tops up sparsely-covered taxa toward
-    # `val_floor` validation photos — BUT it refuses to starve training below
-    # `min_train` (see the `train_remaining - len(group) < min_train` guard).
-    #
-    # So the guarantee is conditional: "every surviving taxon reaches val_floor
-    # val photos UNLESS doing so would drop train below min_train." Only you
-    # know whether the headline metric should count topped-up rows at all, or
-    # report geographic-val coverage separately.
-    #
-    # Build a fixture where one taxon naturally lands below val_floor in the
-    # geographic split but has plenty of spare train observations, then assert
-    # the top-up lifted it to >= val_floor. (Use a small val_floor so a modest
-    # fixture suffices.) Replace the skip.
-    # ────────────────────────────────────────────────────────────────
+    # Val-coverage guarantee — a taxon below val_floor geographically, but with a
+    # deep train pool, is topped up to val_floor (without starving train below
+    # min_train). 20 observations × 2 photos over 10 clusters → 4 photos in each
+    # cluster; with 2 val clusters the geographic split yields only 8 val photos
+    # (< val_floor=10), and ~32 train photos (≫ min_train=10) of headroom for the
+    # top-up to move whole observations across.
     def test_val_floor_coverage(self, prep):
-        pytest.skip(
-            "TODO(you): assert top-up reaches val_floor where train pool allows"
+        out = prep.assign_split(
+            _make(taxa={1: 20}, n_clusters=10, photos_per_obs=2),
+            val_floor=10,
+            min_train=10,
         )
+        geo_val = sum(1 for r in out if not r["train"] and not r["val_topup"])
+        total_val = sum(1 for r in out if not r["train"])
+        train = sum(1 for r in out if r["train"])
+
+        assert geo_val < 10, "geographic split alone should fall short of val_floor"
+        assert total_val >= 10, "top-up should lift coverage to val_floor"
+        assert train >= 10, "top-up must not starve training below min_train"

@@ -1,17 +1,13 @@
-/* Root — routes between What's That Fish? and History. Other pages stub to a
-   gentle "coming soon" view so the sidebar still functions. */
+/* Root — routes between the workspace pages by sidebar selection. */
 import { useState } from "react";
 import Sidebar, { type PageId } from "./components/Sidebar";
 import MainPage from "./pages/MainPage";
 import HistoryPage from "./pages/HistoryPage";
-import ComingSoon from "./pages/ComingSoon";
-import SpeciesLibrary from "./pages/LibraryPage"
-
-const STUBS: Partial<Record<PageId, { title: string; hint: string }>> = {
-  saved:    { title: "Saved",           hint: "Pin notable encounters and study them later." },
-  settings: { title: "Settings",        hint: "Model, units, sync and account preferences." },
-  about:    { title: "About",           hint: "Model card, dataset notes, credits." },
-};
+import DivesPage from "./pages/DivesPage";
+import SettingsPage from "./pages/SettingsPage";
+import SpeciesLibrary from "./pages/LibraryPage";
+import LoginPage from "./pages/LoginPage";
+import AccountPage from "./pages/AccountPage";
 
 export default function App() {
   const [page, setPage] = useState<PageId>("whats-that-fish");
@@ -20,7 +16,10 @@ export default function App() {
   if (page === "whats-that-fish") body = <MainPage />;
   else if (page === "library")    body = <SpeciesLibrary />;
   else if (page === "history")    body = <HistoryPage />;
-  else                            body = <ComingSoon {...STUBS[page]!} />;
+  else if (page === "dives")      body = <DivesPage />;
+  else if (page === "settings")   body = <SettingsPage />;
+  else if (page === "login")      body = <LoginPage onNavigate={setPage} />;
+  else                            body = <AccountPage onNavigate={setPage} />;
 
   return (
     <div className="app">

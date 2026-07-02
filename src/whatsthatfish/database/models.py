@@ -12,11 +12,13 @@ from sqlalchemy import (
     Text,
     ARRAY,
 )
-from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql.schema import UniqueConstraint
 from .base import Base
 from typing import Any
+from datetime import datetime
+import uuid
 
 
 class InatTaxa(Base):
@@ -40,12 +42,7 @@ class InatTaxa(Base):
 
 
 class InatFilteredObservations(Base):
-    """Pre-filtered iNaturalist photo records for models training.
-
-    Populated by lazy-scanning local parquets (taxa, observations, photos),
-    filtering to in-scope taxa (Actinopterygii + Chondrichthyes),
-    research-grade observations, and active taxa, then bulk inserting.
-    """
+    """Pre-filtered iNaturalist photo records for models training."""
 
     __tablename__ = "inat_filtered_observations"
 
@@ -125,20 +122,7 @@ class LilaCollectedImages(Base):
 class InatCaptureContext(Base):
     """Underwater vs above-water classification for iNaturalist images.
 
-    iNat fish observations include underwater dive shots, fishing-deck photos,
-    aquarium shots, market photos, and lab specimens. For a dive-companion
-    classifier we want to filter to underwater captures only — UIQM does not
-    solve this (it actively rewards above-water lighting/color).
-
     Stores raw per-channel means alongside the derived `is_underwater` verdict
-    so the threshold can be re-tuned (or the heuristic upgraded to CLIP) via
-    UPDATE statements rather than re-scoring 1M images.
-
-    Score columns are nullable: a row with NULL means/verdict represents an
-    image that was attempted but unscoreable (corrupt file, etc.).
-
-    Capture-context filter is applied *before* UIQM filtering during
-    per-class downsampling — see preprocessing/working_notes.md.
     """
 
     __tablename__ = "inat_capture_context"
@@ -160,10 +144,6 @@ class InatCaptureContext(Base):
 class InatClipContext(Base):
     """Underwater vs above-water classification for iNaturalist images.
 
-    iNat fish observations include underwater dive shots, fishing-deck photos,
-    aquarium shots, market photos, and lab specimens. For a dive-companion
-    classifier we want to filter to underwater captures only.
-
     Previously we had leveraged a heuristic to determine what was underwater and abovewater.
     We now leverage a CLIP models to no-shot predict whether an image is one of the above classes
     the outputs of that are stored here.
@@ -182,17 +162,7 @@ class InatClipContext(Base):
 
 
 class InatImageQuality(Base):
-    """UIQM quality scores for iNaturalist images.
-
-    Mirrors LilaImageQuality structurally so cross-source distribution
-    queries (UNION ALL with a source literal) are straightforward, but
-    keyed on photo_uuid since that is the natural identifier in the
-    iNat source table.
-
-    Score columns are nullable: a row with NULL scores represents a
-    photo that was attempted but unscoreable (corrupt file, too small,
-    etc.) — distinct from "not yet scored," which means no row exists.
-    """
+    """UIQM quality scores for iNaturalist images."""
 
     __tablename__ = "inat_image_quality"
 
@@ -238,10 +208,6 @@ class InatClassificationDataset(Base):
     family: Mapped[int | None] = mapped_column(Integer)
     cluster: Mapped[int | None] = mapped_column(Integer)
     train: Mapped[bool | None] = mapped_column(Boolean)
-    # True for val rows moved out of train to give a sparse taxon some val coverage
-    # (IID — same regions as train, NOT held-out geography). False/None = pure
-    # geographic val or a train row. Lets eval report geographic vs topped-up macro
-    # separately so the headline number stays honest.
     val_topup: Mapped[bool | None] = mapped_column(Boolean)
     proposed_bbox: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
     conf: Mapped[float | None] = mapped_column(Float)
@@ -267,9 +233,6 @@ class InatObjDetectionDataset(Base):
     Populated by InatPreparation alongside inat_classification_dataset.
     All rows go here (fish + coral negatives); inat_classification_dataset
     receives only the non-coral subset.
-
-    proposed_bbox, conf, annotation are nullable — filled later by the
-    detection-mode bbox proposal run using the trained LC2 model.
     """
 
     __tablename__ = "inat_obj_detection_dataset"
@@ -304,12 +267,9 @@ class AppTaxa(Base):
     family: Mapped[str] = mapped_column(String)
     description: Mapped[str | None] = mapped_column(Text)
     common_name: Mapped[str | None] = mapped_column(String)
-    # Enrichment columns — nullable so a row can exist before/independent of a
-    # successful LLM enrichment pass (filled later by the null-guarded retry).
     location: Mapped[list[str] | None] = mapped_column(ARRAY(String))
     depth: Mapped[str | None] = mapped_column(String)
     filename: Mapped[str | None] = mapped_column(String)
-    # Dataset-derived image count per species (refreshed each pipeline run).
     img_count: Mapped[int | None] = mapped_column(Integer)
 
     __table_args__ = (Index("ix_app_taxa_taxon_id", "taxon_id"),)
@@ -321,10 +281,6 @@ class LilaImageQuality(Base):
     Populated by a one-time scoring pass over locally available LILA images.
     Sub-scores (uicm, uism, uiconm) are kept alongside the composite so that
     threshold experiments can re-weight components without re-scoring.
-
-    Score columns are nullable: a row with NULL scores represents an image
-    that was attempted but unscoreable (corrupt file, too small, etc.) —
-    distinct from "not yet scored," which means no row exists.
     """
 
     __tablename__ = "lila_image_quality"
@@ -363,3 +319,183 @@ class SuccessfulUploads(Base):
         UniqueConstraint("identifier", "source", name="uq_identifier_source"),
         Index("ix_successful_uploads_source", "source"),
     )
+
+
+# ── Phase 3: user observation tracking ──────────────────────────────────────
+# iNat-style normalization: a dive (one place + time) groups observations (one
+# taxon each), and each observation has photos (evidence, classified per-photo).
+# UUID PKs for user-generated rows so ids are unguessable and client-mintable.
+
+
+class User(Base):
+    """An authenticated user. Identity comes from Google via GCP Identity
+    Platform; we key our own row on the OIDC subject so the app data (dives,
+    observations) has a stable local owner independent of the token issuer."""
+
+    __tablename__ = "users"
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    google_subject_id: Mapped[str] = mapped_column(String(255), unique=True)
+    email: Mapped[str | None] = mapped_column(String(320))
+    display_name: Mapped[str | None] = mapped_column(String(255))
+    avatar_url: Mapped[str | None] = mapped_column(Text)
+    # App-owned profile fields. These are NOT touched by the Google claims sync
+    # (upsert_from_claims), so a user's chosen name/units survive every re-login.
+    preferred_name: Mapped[str | None] = mapped_column(String(255))
+    unit_system: Mapped[str] = mapped_column(
+        String(10), server_default="metric", nullable=False
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+    last_login_at: Mapped[datetime | None] = mapped_column(DateTime)
+
+    dives: Mapped[list["Dive"]] = relationship(
+        back_populates="user", cascade="all, delete-orphan", passive_deletes=True
+    )
+    observations: Mapped[list["Observation"]] = relationship(
+        back_populates="user", cascade="all, delete-orphan", passive_deletes=True
+    )
+
+
+class DiveSite(Base):
+    """A deduplicated named location. `name` is the proper-cased display form;
+    `name_key` is the normalized (lower/trimmed) dedup key carrying the UNIQUE
+    constraint, so a site-search can surface near-duplicates before insert."""
+
+    __tablename__ = "dive_sites"
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    name: Mapped[str] = mapped_column(String(255))
+    name_key: Mapped[str] = mapped_column(String(255), unique=True)
+    lat: Mapped[float | None] = mapped_column(Float)
+    lng: Mapped[float | None] = mapped_column(Float)
+    created_by_user_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL")
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+
+    created_by: Mapped["User | None"] = relationship()
+    dives: Mapped[list["Dive"]] = relationship(back_populates="site")
+
+
+class Dive(Base):
+    """One dive: a place + time that groups many observations. Location (site +
+    optional GPS) lives here, normalized once per dive rather than per sighting."""
+
+    __tablename__ = "dives"
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE")
+    )
+    site_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("dive_sites.id", ondelete="SET NULL")
+    )
+    gps_lat: Mapped[float | None] = mapped_column(Float)
+    gps_lng: Mapped[float | None] = mapped_column(Float)
+    dived_at: Mapped[datetime | None] = mapped_column(DateTime)
+    notes: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+
+    user: Mapped["User"] = relationship(back_populates="dives")
+    site: Mapped["DiveSite | None"] = relationship(back_populates="dives")
+    observations: Mapped[list["Observation"]] = relationship(
+        back_populates="dive", cascade="all, delete-orphan", passive_deletes=True
+    )
+
+    __table_args__ = (Index("ix_dives_user_id_dived_at", "user_id", "dived_at"),)
+
+
+class Observation(Base):
+    """One taxon encounter within a dive. The model's per-photo guesses live on
+    ObservationPhoto; this row carries the user's chosen ID — `corrected_taxon_id`
+    overrides `predicted_taxon_id` (the seam for the deferred taxa picker).
+
+    Taxon refs are the **stable iNat `taxon_id`**, NOT the model's zero-index
+    (which re-numbers on retraining and would corrupt history). They FK the full
+    `inat_taxa` (~44K, superset of the trained `app_taxa`), so a correction can
+    range over the whole in-scope taxonomy — the classifier's zero-index is
+    translated to a taxon_id via `app_taxa` at save time.
+
+    `user_id` is denormalized off the dive so ownership scoping is a single filter.
+    Depth lives here (it varies by sighting within a dive)."""
+
+    __tablename__ = "observations"
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    dive_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("dives.id", ondelete="CASCADE")
+    )
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE")
+    )
+    predicted_taxon_id: Mapped[int | None] = mapped_column(
+        BigInteger, ForeignKey("inat_taxa.taxon_id")
+    )
+    # The EFFECTIVE label — always set (defaults to predicted_taxon_id on save),
+    # so history groups on one column with no COALESCE. label_status records the
+    # provenance for training reliability:
+    #   predicted  — saved, model's guess unvalidated
+    #   confirmed  — user validated the prediction as correct
+    #   corrected  — user changed it to corrected_taxon_id (a suggested id)
+    corrected_taxon_id: Mapped[int] = mapped_column(
+        BigInteger, ForeignKey("inat_taxa.taxon_id"), nullable=False
+    )
+    label_status: Mapped[str] = mapped_column(
+        String(20), server_default="predicted", nullable=False
+    )
+    confidence: Mapped[float | None] = mapped_column(Float)
+    depth_m: Mapped[float | None] = mapped_column(Float)
+    observed_at: Mapped[datetime | None] = mapped_column(DateTime)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+
+    dive: Mapped["Dive"] = relationship(back_populates="observations")
+    user: Mapped["User"] = relationship(back_populates="observations")
+    predicted_taxon: Mapped["InatTaxa | None"] = relationship(
+        foreign_keys=[predicted_taxon_id]
+    )
+    corrected_taxon: Mapped["InatTaxa | None"] = relationship(
+        foreign_keys=[corrected_taxon_id]
+    )
+    photos: Mapped[list["ObservationPhoto"]] = relationship(
+        back_populates="observation", cascade="all, delete-orphan", passive_deletes=True
+    )
+
+    __table_args__ = (Index("ix_observations_user_id", "user_id"),)
+
+
+class ObservationPhoto(Base):
+    """A photo as evidence for an observation. Each photo is independently run
+    through the detector→classifier pipeline, so its own box + top guess are
+    stored here. `predicted_taxon_id` is the stable iNat taxon_id (translated from
+    the model's zero-index). `image_path` is the GCS key under contributions/{user_id}/."""
+
+    __tablename__ = "observation_photos"
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    observation_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("observations.id", ondelete="CASCADE")
+    )
+    image_path: Mapped[str] = mapped_column(String(512))
+    bbox: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
+    predicted_taxon_id: Mapped[int | None] = mapped_column(
+        BigInteger, ForeignKey("inat_taxa.taxon_id")
+    )
+    confidence: Mapped[float | None] = mapped_column(Float)
+    width: Mapped[int | None] = mapped_column(Integer)
+    height: Mapped[int | None] = mapped_column(Integer)
+    created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
+
+    observation: Mapped["Observation"] = relationship(back_populates="photos")
+    predicted_taxon: Mapped["InatTaxa | None"] = relationship()
+
+    __table_args__ = (Index("ix_observation_photos_observation_id", "observation_id"),)

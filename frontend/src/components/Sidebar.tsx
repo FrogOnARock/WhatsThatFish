@@ -1,13 +1,21 @@
-/* Sidebar: brand + nav. Active page lifted up to App. */
+/* Sidebar: brand + nav + account footer. Active page lifted up to App. */
+import { useAuth } from "../auth/AuthContext";
 
-/** Every page the sidebar can route to (matches App's page state). */
+/** Every page the sidebar can route to (matches App's page state). `login` and
+    `account` aren't nav items — they're reached from the footer. */
 export type PageId =
   | "whats-that-fish"
   | "history"
-  | "saved"
+  | "dives"
   | "library"
   | "settings"
-  | "about";
+  | "login"
+  | "account";
+
+function initials(name: string | null): string {
+  if (!name) return "··";
+  return name.split(" ").map((p) => p[0]).slice(0, 2).join("").toUpperCase();
+}
 
 interface NavItem {
   id: PageId;
@@ -18,11 +26,10 @@ interface NavItem {
 
 const NAV: NavItem[] = [
   { id: "whats-that-fish", label: "What's That Fish?", group: "main" },
-  { id: "history",         label: "History",           group: "main", count: 12 },
-  { id: "saved",           label: "Saved",             group: "main", count: 6 },
+  { id: "history",         label: "Field Log",         group: "main" },
+  { id: "dives",           label: "Dive Log",          group: "main" },
   { id: "library",         label: "Species Library",   group: "main" },
   { id: "settings",        label: "Settings",          group: "secondary" },
-  { id: "about",           label: "About",             group: "secondary" },
 ];
 
 interface SidebarProps {
@@ -33,6 +40,7 @@ interface SidebarProps {
 export default function Sidebar({ active, onNavigate }: SidebarProps) {
   const main = NAV.filter((n) => n.group === "main");
   const secondary = NAV.filter((n) => n.group === "secondary");
+  const { user, status } = useAuth();
 
   const renderItem = (item: NavItem) => (
     <button
@@ -63,13 +71,36 @@ export default function Sidebar({ active, onNavigate }: SidebarProps) {
       <div className="sidebar__section-label">Account</div>
       <nav className="nav">{secondary.map(renderItem)}</nav>
 
-      <div className="sidebar__footer">
-        <div className="sidebar__avatar">CM</div>
-        <div>
-          <div className="sidebar__user-name">Diver</div>
-          <div className="sidebar__user-meta">offline · 24 ids</div>
+      {status === "signed-in" && user ? (
+        <button
+          className={`sidebar__footer sidebar__footer--button ${active === "account" ? "sidebar__footer--active" : ""}`}
+          onClick={() => onNavigate("account")}
+        >
+          <div className="sidebar__avatar">
+            {user.avatarUrl ? (
+              <img src={user.avatarUrl} alt="" referrerPolicy="no-referrer" />
+            ) : (
+              initials(user.preferredName ?? user.displayName)
+            )}
+          </div>
+          <div>
+            <div className="sidebar__user-name">
+              {user.preferredName ?? user.displayName ?? "Diver"}
+            </div>
+            <div className="sidebar__user-meta">{user.email ?? "signed in"}</div>
+          </div>
+        </button>
+      ) : (
+        <div className="sidebar__footer">
+          <button
+            className="sidebar__signin"
+            onClick={() => onNavigate("login")}
+            disabled={status === "loading"}
+          >
+            {status === "loading" ? "…" : "Sign in with Google"}
+          </button>
         </div>
-      </div>
+      )}
     </aside>
   );
 }

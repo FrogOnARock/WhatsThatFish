@@ -30,6 +30,7 @@ import yaml
 from dotenv import load_dotenv
 
 from .architecture.custom_resnet import CustomResnet, BasicBlock
+from .postprocess import build_predictions
 from ..config import _get_logger
 
 logger = _get_logger(__name__)
@@ -206,6 +207,10 @@ class Classifier:
         self.metrics = ClassificationMetrics(
             output_dir=self.output_dir,
             session_factory=self._session(),
+            # Throttle the heavy sunburst + PR-curve writers (O(N_val × n_classes)
+            # host RAM) to every N epochs; the per-class table + gates still run
+            # every epoch. Set plot_every=1 in the YAML for the old behaviour.
+            plot_every=self._pick(overrides, "plot_every", 5),
         )
         self._init_loss_csv()
 
@@ -424,6 +429,9 @@ class Classifier:
     def _save_checkpoint(self, epoch: int, val_loss: float, filename: str):
         # Full training state so a preempted run can resume; for serving/ONNX
         # export load only checkpoint["model"].
+        # `arch` makes the checkpoint self-describing: predict() rebuilds the
+        # exact graph from these values instead of a (mutable, A/B/C-shared)
+        # config YAML that can drift out from under old weights.
         torch.save(
             {
                 "epoch": epoch,
@@ -433,6 +441,15 @@ class Classifier:
                 "lr_scheduler": self.lr_scheduler.state_dict(),
                 "num_labels": self.num_labels,
                 "model_version": self.model_version,
+                # Read arch from the MODEL, not self.* — CustomResnet may override
+                # the requested layers (pretrained forces [3,4,6,3]), and the
+                # checkpoint must record what was ACTUALLY built so predict()
+                # rebuilds the matching graph.
+                "arch": {
+                    "layers": self.model.layers,
+                    "in_dim": self.model.in_dim,
+                    "head_mode": self.model.head_mode,
+                },
             },
             self.output_dir / filename,
         )
@@ -598,7 +615,13 @@ class Classifier:
         test_loss /= num_batches
         logger.info(f"Epoch {epoch} val loss: {test_loss:.4f}")
 
-        return {"val_loss": test_loss, **self.metrics.compute(epoch)}
+        # Force the heavy plots on the final epoch so the run always ends with a
+        # full report regardless of the plot_every cadence.
+        force_plots = epoch == self.epochs - 1
+        return {
+            "val_loss": test_loss,
+            **self.metrics.compute(epoch, force_plots=force_plots),
+        }
 
     def _train_loop(self):
         """Run the epoch loop over an already-built run (model/opt/sched/metrics).
@@ -667,9 +690,26 @@ class Classifier:
 
     def train(self):
         """Full training run on the configured hyperparameters. Returns
-        (best_val_loss, best_metrics)."""
+        (best_val_loss, best_metrics), and gates promotion of the best checkpoint."""
         self._prepare_data(tuning=False)
-        return self._fit(tuning=False)
+        val_loss, metrics = self._fit(tuning=False)
+
+        # Post-train promotion gate on the best-epoch GEOGRAPHIC macro metrics:
+        # bootstrap floor is species Top-1; with an incumbent, all six geo metrics
+        # must hold within epsilon. Local store by default; inject GCS on the VM.
+        from .promotion import (
+            PromotionStore,
+            gate_and_promote,
+            CLASSIFIER_FLOOR,
+            CLASSIFIER_KEYS,
+        )
+
+        best_ckpt = self.output_dir / "best.pt"
+        store = PromotionStore(_WEIGHTS_DIR / "promoted")
+        gate_and_promote(
+            "classifier", metrics, best_ckpt, CLASSIFIER_FLOOR, CLASSIFIER_KEYS, store
+        )
+        return val_loss, metrics
 
     def tune(self):
         """In-process random search over the param-space YAML.
@@ -736,48 +776,44 @@ class Classifier:
         Loads the architecture from this Classifier's config and the checkpoint's
         num_labels, so it needs no DB and none of the training stack.
         """
+        model = self._load_for_predict(weights)
+        batch = self._to_batch(images).to(self.device)
+        with torch.no_grad():
+            out_species, out_genus, out_family = model(batch)
+        # Shared numpy postprocess (same code the ONNX backend uses) so the
+        # top-3 + softmax-over-3 reduction is single-source and ONNX-vs-torch
+        # parity isolates the graph, not the postprocessing.
+        return build_predictions(
+            out_species.detach().cpu().numpy(),
+            out_genus.detach().cpu().numpy(),
+            out_family.detach().cpu().numpy(),
+        )
+
+    def _load_for_predict(self, weights=None):
         weights = Path(weights) if weights else _WEIGHTS_DIR / "classifier_best.pt"
         ckpt = torch.load(weights, map_location=self.device, weights_only=False)
 
+        # The checkpoint's own `arch` is authoritative — it cannot drift from the
+        # weights it was saved with. Fall back to the config YAML only for legacy
+        # checkpoints saved before `arch` was persisted.
+        arch = ckpt.get("arch", {})
+        layers = arch.get("layers", self._config_data.get("layers", [3, 4, 6, 3]))
+        in_dim = arch.get("in_dim", self._config_data.get("in_dim", 5))
+        head_mode = arch.get(
+            "head_mode", self._config_data.get("head_mode", "progressive")
+        )
+
         model = CustomResnet(
             block=BasicBlock,
-            layers=self._config_data.get("layers", [3, 4, 6, 3]),
+            layers=layers,
             num_class=ckpt["num_labels"],
-            in_dim=self._config_data.get("in_dim", 5),
+            in_dim=in_dim,
             pretrained=False,
-            head_mode=self._config_data.get("head_mode", "progressive"),
+            head_mode=head_mode,
         ).to(self.device)
         model.load_state_dict(ckpt["model"])
         model.eval()
-
-        batch = self._to_batch(images).to(self.device)
-        out_species, out_genus, out_family = model(batch)
-        return [
-            {
-                "species": [
-                    index.item() for index in torch.topk(out_species[i], k=3).indices
-                ],
-                "genus": [
-                    index.item() for index in torch.topk(out_genus[i], k=3).indices
-                ],
-                "family": [
-                    index.item() for index in torch.topk(out_family[i], k=3).indices
-                ],
-                "species_prob": [
-                    prob.item()
-                    for prob in torch.topk(out_species[i], k=3).values.softmax(dim=0)
-                ],
-                "genus_prob": [
-                    prob.item()
-                    for prob in torch.topk(out_genus[i], k=3).values.softmax(dim=0)
-                ],
-                "family_prob": [
-                    prob.item()
-                    for prob in torch.topk(out_family[i], k=3).values.softmax(dim=0)
-                ],
-            }
-            for i in range(batch.shape[0])
-        ]
+        return model
 
     def _to_batch(self, images) -> torch.Tensor:
         """Coerce predict() input into a (B, in_dim, H, W) float tensor. PIL inputs
@@ -791,8 +827,29 @@ class Classifier:
         letterbox = LetterboxResize(320)
         to_channels = AddMultiChannel()
         seq = images if isinstance(images, (list, tuple)) else [images]
-        return torch.stack([to_channels(letterbox(img)) for img in seq])
+        return torch.stack([torch.from_numpy(to_channels(letterbox(img))).float() for img in seq])
 
+    def export(self, weights=None, out=_WEIGHTS_DIR / "classifier.onnx", int8=False):
+        """Export the classifier to ONNX (FP32), optionally emitting an INT8 variant.
+
+        Dumb by design: it only *produces* artifacts. The release gate (FP32 parity
+        + INT8 accuracy) lives in the test suite, not here. Returns
+        {"fp32": Path, "int8": Path | None} so callers/tests can point at both.
+        """
+        out = Path(out)
+        model = self._load_for_predict(weights)
+        dummy_5ch = torch.randn(1, 5, 320, 320, device=self.device)
+        torch.onnx.export(
+            model, dummy_5ch, str(out),
+            input_names=["input"], output_names=["species", "genus", "family"],
+            dynamic_axes={"input": {0: "batch"}, "species": {0: "batch"}, "genus": {0: "batch"}, "family": {0: "batch"}}, opset_version=17,
+        )
+        int8_path = None
+        if int8:
+            from .onnx_utils import quantize_dynamic_int8
+
+            int8_path = quantize_dynamic_int8(out)
+        return {"fp32": out, "int8": int8_path}
 
 def load_param_space(path: Path, dataset: str) -> dict:
     """Load a ray.tune param space from the structured YAML config.
@@ -842,12 +899,16 @@ def load_param_space(path: Path, dataset: str) -> dict:
 
 
 def main(**kwargs):
-    """CLI entry point: run a tuning search or a single full training run."""
+    """CLI entry point: run a tuning search, a full training run, or an ONNX export."""
     load_dotenv()
     clf = Classifier()
-    if kwargs.get("type", None) == "tune":
+    run_type = kwargs.get("type", None)
+    if run_type == "tune":
         logger.info("Starting tuning of classification model.")
         clf.tune()
+    elif run_type == "export":
+        paths = clf.export(int8=kwargs.get("int8", False))
+        logger.info("Exported classifier: %s", paths)
     else:
         clf.train()
 
@@ -860,10 +921,16 @@ if __name__ == "__main__":
         epilog=(
             "Examples of the use of this module:\n"
             "Hyperparameter tuning: --type tune\n"
-            "Full retraining/training: --type full"
+            "Full retraining/training: --type full\n"
+            "Export to ONNX (+ optional INT8): --type export [--int8]"
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    parser.add_argument("--type", choices=["tune", "full"], default="full")
+    parser.add_argument("--type", choices=["tune", "full", "export"], default="full")
+    parser.add_argument(
+        "--int8",
+        action="store_true",
+        help="On export, also emit a dynamic-INT8 quantized ONNX variant.",
+    )
     args = parser.parse_args()
-    main(type=args.type)
+    main(type=args.type, int8=args.int8)

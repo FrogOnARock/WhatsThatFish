@@ -37,7 +37,7 @@ class ClassificationDataset(Dataset):
         tuning: bool = False,
         max_samples: int | None = None,
         local_base_dir: str = None,
-        min_bbox_count: int = 100,
+        min_bbox_count: int = 10,
         crop_margin: float = 0.15,
     ):
 
@@ -114,8 +114,6 @@ class ClassificationDataset(Dataset):
         if self.max_samples is not None:
             # Keep only each class's top-N rows by UIQM (row_num is the UIQM-desc
             # rank from the CTE). Filter on cte.c.* — accessing .c on the outer
-            # Select coerces it into an anonymous subquery and adds a second FROM
-            # element, producing a cartesian-product warning.
             outer = outer.where(cte.c.row_num <= self.max_samples)
 
         with self.session_factory() as session:

@@ -17,6 +17,4 @@ naming_convention = {
 
 
 class Base(DeclarativeBase):
-    """Common declarative base; all models subclass this to share one MetaData."""
-
     metadata = MetaData(naming_convention=naming_convention)

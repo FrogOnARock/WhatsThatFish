@@ -21,10 +21,10 @@ export default function ImageCard({ image, overlay, barAction }: ImageCardProps)
   return (
     <div className="image-card">
       <div className="image-card__viewport">
-        {image.kind === "sample" ? (
-          <FishPlaceholder hue={image.hue} caption={image.caption} large />
+        {image.url ? (
+          <img src={image.url} alt={image.caption ?? "fish"} />
         ) : (
-          <img src={image.url} alt="uploaded" />
+          <FishPlaceholder hue={image.hue} caption={image.caption} large />
         )}
         {overlay}
       </div>

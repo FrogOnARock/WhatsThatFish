@@ -60,7 +60,9 @@ def _crop_and_transform(img: Image.Image, det: dict) -> torch.Tensor:
     """
     crop = img.crop((det["x1"], det["y1"], det["x2"], det["y2"]))
     letterboxed = LetterboxResize(320)(crop)
-    tensor = AddMultiChannel()(letterboxed)
+    # AddMultiChannel now emits an (5,H,W) numpy array (numpy-native for the
+    # torch-free serving path); the torch handoff wraps it back into a tensor.
+    tensor = torch.from_numpy(AddMultiChannel()(letterboxed))
     return tensor
 
 
@@ -114,20 +116,26 @@ class TestCropToClassifier:
         det = None
         assert det is None  # contract: caller guards None before cropping
 
-    # ────────────────────────────────────────────────────────────────
-    # HIGHLIGHTED FOR YOU — the bbox-clipping contract.
-    #
-    # BoundingBoxInference already clips boxes to image bounds (x1=max(0,·),
-    # x2=min(w,·)). When crop_export.py exists, decide + assert its contract:
-    #
-    #   - A box flush against the edge (x1=0, x2=w) must still crop to a valid,
-    #     non-empty region and survive the 320 letterbox.
-    #   - Should you PAD the crop to a square/margin before letterboxing (to
-    #     keep fish aspect ratio), or feed the raw crop straight in? That choice
-    #     changes what the classifier sees — it's a modelling decision, yours.
-    #
-    # Build a flush-to-edge detection, run _crop_and_transform, and assert the
-    # region/shape you intend. Replace the skip below.
-    # ────────────────────────────────────────────────────────────────
+    # Edge-flush crop contract — DECIDED: feed the RAW crop straight into the 320
+    # letterbox (no pre-pad). LetterboxResize is already aspect-ratio-preserving
+    # (symmetric zero-pad to square), so the fish aspect ratio is kept without an
+    # extra padding step. A box flush against the image edge (x1=0, y1=0, y2=h)
+    # must still crop a valid non-empty region, survive the letterbox, and
+    # classify.
     def test_edge_flush_bbox_contract(self, classifier):
-        pytest.skip("TODO(you): assert the edge-flush crop + padding contract")
+        img = _synthetic_image(800, 600)
+        # Flush left + top + bottom edges; tall, non-square region.
+        det = _detection(0, 0, 400, 600, 800, 600)
+        tensor = _crop_and_transform(img, det)
+        assert tensor.shape == (5, 320, 320)
+        assert torch.isfinite(tensor).all()  # no NaN/inf from a degenerate crop
+
+        with torch.no_grad():
+            species, genus, family = classifier(tensor.unsqueeze(0))
+        assert species.shape == (1, NUM_CLASS[0])
+
+    def test_full_frame_box_is_valid(self, classifier):
+        """The extreme flush case: the box IS the whole image (x1=0,y1=0,x2=w,y2=h)."""
+        img = _synthetic_image(800, 600)
+        tensor = _crop_and_transform(img, _detection(0, 0, 800, 600, 800, 600))
+        assert tensor.shape == (5, 320, 320)

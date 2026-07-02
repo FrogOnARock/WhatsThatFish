@@ -4,23 +4,21 @@ import { API_BASE } from "./config";
 // Defaults to the local uvicorn dev server.
 
 export async function getPrediction(file: File): Promise<Prediction> {
-  const body = new FormData();
-  body.append("image", file);
-  const res = await fetch(`${API_BASE}/prediction/${body}`);
-  if (!res.ok) {
-    throw new Error(`GET /prediction failed: ${res.status} ${res.statusText}`);
-  }
-  return await res.json();
+      const body = new FormData();
+      body.append("img", file);
+      const res = await fetch(`${API_BASE}/predict`, { method: "POST", body });
+      if (!res.ok) {
+        throw new Error(`POST /prediction failed: ${res.status} ${res.statusText}`);
+      }
+      return await res.json();
 }
 
 export async function getPredictionSample(file: string): Promise<Prediction> {
-  const body = new FormData();
-  body.append("image", file);
-  const res = await fetch(`${API_BASE}/prediction`);
-  if (!res.ok) {
-    throw new Error(`GET /prediction failed: ${res.status} ${res.statusText}`);
-  }
-  return await res.json();
+    const res = await fetch(`${API_BASE}/predict/sample/${file}`);
+    if (!res.ok) {
+        throw new Error(`GET /prediction failed: ${res.status} ${res.statusText}`);
+    }
+    return await res.json();
 }
 
 
@@ -55,7 +53,7 @@ export const SAMPLE_FISH: SAMPLE[] = [
     },
     {
       id: "5",
-      filename: "184204723.jpg",
-      label: "Black-tail Triplefin"
+      filename: "399338408.jpg",
+      label: "Camouflage Grouper"
     }
     ]

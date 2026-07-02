@@ -5,7 +5,8 @@ import ClassificationCard from "./ClassificationCard";
 import type {TaxonKey} from "../api/types";
 import type { RequestState } from "../pages/MainPage";
 import ImageCard from "./ImageCard";
-import { SAMPLE_FISH } from "../api/prediction";
+import SaveObservationModal from "./SaveObservationModal";
+import { useAuth } from "../auth/AuthContext";
 
 /** A taxonomy head as presented in the results column. */
 export interface Taxon {
@@ -56,8 +57,12 @@ interface ResultsViewProps {
 export default function ResultsView({ image, request, onReset, onRetry }: ResultsViewProps) {
   const [showBox, setShowBox] = useState(true);
   const [location, setLocation] = useState("");
+  const { user } = useAuth();
+  const depthExample = (user?.unitSystem ?? "metric") === "imperial" ? "40 ft" : "12 m";
   const [saved, setSaved] = useState(false);
   const [reported, setReported] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
+  const [modal, setModal] = useState<null | "save" | "report">(null);
 
   if (!request) {
     return null
@@ -138,40 +143,56 @@ export default function ResultsView({ image, request, onReset, onRetry }: Result
 
   const bbox = request.prediction.bbox[0];
   const speciesTop = request.prediction.species[0];
+  const detected = request.prediction.detected;
+  // The selected guess, or the top guess when nothing is selected. The `?? speciesTop`
+  // fallback makes this ALWAYS a Candidate — so every field below is a plain
+  // string/string[], never `Candidate | undefined` (and never a stray boolean from
+  // a per-field ternary). Read summary/habitat/common straight off it.
+  const speciesActive =
+      request.prediction.species.find((s) => `${s.index}` === active) ?? speciesTop;
 
   return (
       <div className="results">
         <div className="results__left">
           <ImageCard image={image} overlay={
-            showBox && bbox && speciesTop && (
-                <div
-                className="bbox"
-                style={{
-                  left: `${bbox.x}%`,
-                  top: `${bbox.y}%`,
-                  width: `${bbox.w}%`,
-                  height: `${bbox.h}%`,
-                }}
-            >
-              <span className="bbox__tag">
-                {speciesTop.name} · {speciesTop.conf.toFixed(1)}%
-                </span>
-            </div>)
+            <>
+              {showBox && bbox && speciesTop && (
+                  <div
+                  className="bbox"
+                  style={{
+                    left: `${bbox.x}%`,
+                    top: `${bbox.y}%`,
+                    width: `${bbox.w}%`,
+                    height: `${bbox.h}%`,
+                  }}
+              >
+                <span className="bbox__tag">
+                  {speciesActive.name} · {(speciesActive.conf * 100).toFixed(1)}%
+                  </span>
+              </div>)}
+              {!detected && (
+                  <div className="standard_msg">
+                    No fish detected — species identified from the full image. Treat as a low-confidence guess.
+                  </div>)}
+            </>
           } barAction={
-            <Toggle on={showBox} onChange={setShowBox}>Bounding box</Toggle>
+            // No box to toggle when nothing was detected.
+            detected && <Toggle on={showBox} onChange={setShowBox}>Bounding box</Toggle>
           }/>
 
           <div className="meta-strip">
             <div className="meta-card">
-              <div className="meta-card__label">Habitat & range</div>
-              <h4 className="meta-card__title">{speciesTop.summary}</h4>
-              <p className="meta-card__body">{speciesTop.habitat}</p>
+              <div className="meta-card__label">Description & Habitat</div>
+              <h4 className="meta-card__body">{speciesActive.summary}</h4>
+              <p className="meta-card__chips">{speciesActive.habitat.map((loc) => (
+                <span key={loc} className="meta-card__chip">{loc}</span>
+              ))}</p>
             </div>
             <div className="meta-card">
               <div className="meta-card__label">Where did you see it?</div>
               <input
                   type="text"
-                  placeholder="e.g. Tulamben, Bali · 12 m · house reef"
+                  placeholder={`e.g. Tulamben, Bali · ${depthExample} · house reef`}
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
               />
@@ -182,30 +203,6 @@ export default function ResultsView({ image, request, onReset, onRetry }: Result
             </div>
           </div>
 
-          <div className="actions-row">
-            <div className="actions-row__meta">
-              inference · 184 ms · YOLOv11 + CustomResnet · img 640×480
-            </div>
-            <div className="actions-row__buttons">
-              <button className="btn btn--ghost btn--sm" onClick={onReset}>
-                ← Try another
-              </button>
-              <button
-                  className="btn btn--coral-ghost btn--sm"
-                  onClick={() => setReported(true)}
-                  disabled={reported}
-              >
-                {reported ? "Reported · thanks" : "Report wrong ID"}
-              </button>
-              <button
-                  className="btn btn--foam btn--sm"
-                  onClick={() => setSaved(true)}
-                  disabled={saved}
-              >
-                {saved ? "Saved to history ✓" : "Save to history"}
-              </button>
-            </div>
-          </div>
         </div>
 
           <div className="results__right">
@@ -217,11 +214,62 @@ export default function ResultsView({ image, request, onReset, onRetry }: Result
                 <ClassificationCard
                     key={t.key}
                     taxon={t}
-                    predictions={speciesTop.name}
-                    common={speciesTop.common}
+                    prediction={
+                        t.key === "species" ? request.prediction.species :
+                        t.key === "genus" ? request.prediction.genus :
+                        request.prediction.family
+                      }
+                    active={active}
+                    onSelect={setActive}
+                    common={speciesActive.common}
                 />
             ))}
+            <div className="actions-row">
+              <div className="actions-row__meta">
+                inference · 184 ms · YOLOv11 + CustomResnet · img 640×480
+              </div>
+              <div className="actions-row__buttons">
+                <button className="btn btn--ghost btn--sm" onClick={onReset}>
+                  ← Try another
+                </button>
+                {/* Samples are demo images — they must never enter a user's field
+                    log, so only real uploads get the save/report actions. */}
+                {image.kind === "sample" ? (
+                  <span className="actions-row__note">
+                    Sample image — upload your own dive photo to log it.
+                  </span>
+                ) : (
+                  <>
+                    <button
+                        className="btn btn--coral-ghost btn--sm"
+                        onClick={() => setModal("report")}
+                        disabled={reported}
+                    >
+                      {reported ? "Reported · thanks" : "Report wrong ID"}
+                    </button>
+                    <button
+                        className="btn btn--foam btn--sm"
+                        onClick={() => setModal("save")}
+                        disabled={saved}
+                    >
+                      {saved ? "Saved to history ✓" : "Save to history"}
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
           </div>
+
+        {modal && (
+          <SaveObservationModal
+            mode={modal}
+            image={image}
+            prediction={request.prediction}
+            selectedSpecies={speciesActive}
+            onClose={() => setModal(null)}
+            onSaved={() => (modal === "report" ? setReported(true) : setSaved(true))}
+          />
+        )}
       </div>
   );
 }

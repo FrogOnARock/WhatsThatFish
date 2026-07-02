@@ -119,9 +119,6 @@ class LilaDataset:
         with open(json_path, "r") as f:
             coco = json.load(f)
 
-        # Parse images — extract only the columns we need.
-        # Some sources include extra fields (habitat_type, visibility, etc.)
-        # which cause schema inference failures if included.
         images_raw = [
             {
                 "id": img["id"],
@@ -266,7 +263,7 @@ class LilaDataset:
             f"max neg/source: {max_neg_per_source:,}"
         )
 
-        # ── Phase 1: Per-source capping with train/val stratification ────
+        # Per-source capping with train/val stratification
         sampled_parts: list[pl.DataFrame] = []
 
         for source in sources:
@@ -290,7 +287,7 @@ class LilaDataset:
 
         adj_images_df = pl.concat(sampled_parts)
 
-        # ── Phase 2: Per-image rebalancing ─────────────────────────────
+        # Phase 2: Per-image rebalancing
         # Iterate one image at a time, always targeting the most
         # overrepresented source. Removes excess or adds missing
         # positives/negatives until we hit 1:1 pos/neg ratio.

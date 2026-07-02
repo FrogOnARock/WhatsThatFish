@@ -1,14 +1,22 @@
 from pathlib import Path
 from io import BytesIO
 from PIL import Image
+from ..transforms.five_channel_conversion import AddMultiChannel
+from ..transforms.letterbox_resize import LetterboxResize
 
 from ..models.classifier import Classifier
+from ..models.postprocess import build_predictions
 
 
-class ClassInference:
-    def __init__(self, model: Path = None, crop_margin: float = 0.15):
-        self.weights = model
-        self.model = Classifier()
+def preprocess_numpy(imgs):
+    seq = imgs if isinstance(imgs, (list, tuple)) else [imgs]
+    letterbox = LetterboxResize(320)
+    to_channels = AddMultiChannel()
+    return [to_channels(letterbox(img)) for img in seq]
+
+
+class BaseClassInference:
+    def __init__(self, crop_margin: float = 0.15):
         self.crop_margin = crop_margin
 
     def _crop_with_margin(self, image, bbox):
@@ -42,9 +50,34 @@ class ClassInference:
             img = Image.open(BytesIO(data)).convert("RGB")
             imgs_to_infer.append(img)
 
-        imgs_to_crop = list(zip(imgs_to_infer, bbox))
-        cropped_images = [
-            self._crop_with_margin(img[0], img[1]) for img in imgs_to_crop
+        # A None box means the detector found no fish. Rather than failing, fall
+        # back to classifying the full frame — out-of-distribution (the model is
+        # trained on crops), so the caller flags these as low-trust downstream.
+        prepared_images = [
+            self._crop_with_margin(img, box) if box is not None else img
+            for img, box in zip(imgs_to_infer, bbox)
         ]
-        results = self.model.predict(images=cropped_images, weights=self.weights)
-        return results
+        return self._run(prepared_images)
+
+    def _run(self, prepared_images):
+        ...
+
+class ClassInference(BaseClassInference):
+
+    def __init__(self, model: Path = None):
+        super().__init__()
+        self.weights = model
+        self.model = Classifier()
+
+    def _run(self, prepared_images):
+        return self.model.predict(images=prepared_images, weights=self.weights)
+
+class OnnxClassInference(BaseClassInference):
+    def __init__(self, onnx_path):
+        super().__init__()
+        self.session = onnx_path
+
+    def _run(self, prepared_images):
+        batch = preprocess_numpy(prepared_images)
+        species, genus, family = self.session.run(None, {"input": batch})
+        return build_predictions(species, genus, family)

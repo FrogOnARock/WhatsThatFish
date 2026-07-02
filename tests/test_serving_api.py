@@ -17,25 +17,10 @@ Why patch `_session_factory`?
 """
 
 import pytest
-from fastapi.testclient import TestClient
 
-from whatsthatfish.serving import app as app_module
 from whatsthatfish.database.models import AppTaxa
 
-
-@pytest.fixture
-def client(session_factory):
-    """A TestClient whose endpoints read from the test Postgres.
-
-    `session_factory` (from conftest) creates tables and truncates after each
-    test, so every test starts from an empty `app_taxa`.
-    """
-    original = app_module._session_factory
-    app_module._session_factory = session_factory
-    try:
-        yield TestClient(app_module.app)
-    finally:
-        app_module._session_factory = original
+# `client` + `session_factory` come from conftest (the patched-app TestClient).
 
 
 def _seed_app_taxa(session_factory, rows: list[dict]):
@@ -126,22 +111,30 @@ class TestSpeciesCatalogue:
         assert body["total"] == 3
         assert len(body["species"]) == 3
 
-    # ────────────────────────────────────────────────────────────────
-    # TODO(you): enrichment-null contract — YOUR design decision.
-    #
-    # AppTaxa's enrichment columns (description, common_name, location,
-    # depth, filename) are nullable — a row can exist BEFORE the LLM
-    # enrichment pass fills them. But SpeciesEntry currently types
-    # `common_name: str`, `location: list[str]`, `depth: str` as NON-optional.
-    #
-    # So: what should /species do for a row whose enrichment is still NULL?
-    #   (a) 500 (Pydantic validation error) — current behaviour, probably wrong
-    #   (b) omit un-enriched species from the catalogue
-    #   (c) coerce NULL → "" / [] in the query or schema
-    #
-    # Seed a row with description=None etc., decide the contract, then assert
-    # it here. This is the call I shouldn't make for you — it shapes what the
-    # frontend has to handle.
-    # ────────────────────────────────────────────────────────────────
+    # Enrichment-null contract — DECIDED: option (c), coerce NULL → ""/[]/0.
+    # A trained species (has zero_indexed_species + core taxonomy) can exist in
+    # app_taxa before the LLM enrichment pass fills common_name/description/
+    # location/depth/filename. It must stay VISIBLE in the catalogue with blank
+    # enrichment — not 500 (Pydantic), not omitted. Keeps the SPA's non-null
+    # SpeciesEntry contract stable.
     def test_unenriched_species_contract(self, client, session_factory):
-        pytest.skip("TODO(you): decide + assert the NULL-enrichment contract")
+        _seed_app_taxa(
+            session_factory,
+            [_row(
+                common_name=None, description=None, location=None,
+                depth=None, filename=None, img_count=None,
+            )],
+        )
+        resp = client.get("/species")
+        assert resp.status_code == 200  # not a 500
+        body = resp.json()
+        assert body["total"] == 1  # not omitted
+        entry = body["species"][0]
+        # Core taxonomy survives; enrichment is coerced to blanks.
+        assert entry["name"] == "Carcharhinus melanopterus"
+        assert entry["common_name"] == ""
+        assert entry["description"] == ""
+        assert entry["location"] == []
+        assert entry["depth"] == ""
+        assert entry["filename"] == ""
+        assert entry["image_count"] == 0

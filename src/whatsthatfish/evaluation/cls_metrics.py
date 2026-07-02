@@ -7,6 +7,8 @@ gates the trainer reads — and writes an HTML table, a taxonomy sunburst and
 per-head PR curves for inspection.
 """
 
+import gc
+
 import torch
 import numpy as np
 import pandas as pd
@@ -18,7 +20,6 @@ from sklearn.metrics import (
     average_precision_score,
     precision_recall_curve,
 )
-from sklearn.preprocessing import label_binarize
 from sqlalchemy import select
 from sqlalchemy.orm import aliased, sessionmaker
 
@@ -41,13 +42,24 @@ class ClassificationMetrics:
       - pr_curves_epoch_{n}.png — macro-averaged PR curves for each head
     """
 
-    def __init__(self, output_dir: Path, session_factory: sessionmaker = None):
+    def __init__(
+        self,
+        output_dir: Path,
+        session_factory: sessionmaker = None,
+        plot_every: int = 5,
+    ):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         sf = session_factory or get_session_factory()
         self._taxonomy = self._load_taxonomy(sf)
         self.fam_gate = 0.0
         self.genus_gate = 0.0
+        # The sunburst + PR-curve writers are O(N_val × n_classes) in host RAM;
+        # run them every `plot_every` epochs (and on the forced final epoch) so a
+        # large class set doesn't OOM the box every epoch. The lightweight
+        # per-class table + curriculum gates still run every epoch. plot_every=1
+        # restores the old every-epoch behaviour.
+        self.plot_every = max(1, int(plot_every))
         self.reset()
 
     # ------------------------------------------------------------------
@@ -92,13 +104,14 @@ class ClassificationMetrics:
     # Entry point
     # ------------------------------------------------------------------
 
-    def compute(self, epoch: int) -> dict:
+    def compute(self, epoch: int, force_plots: bool = False) -> dict:
         """Compute every metric for the accumulated epoch and emit the reports.
 
         Builds the micro top-k numbers, the macro blocks (all / geographic /
         topped-up), per-class tables, hierarchical consistency and the curriculum
-        gates; writes the HTML table, sunburst and PR curves; then resets the
-        buffers and returns the flat metric dict the trainer logs.
+        gates; writes the HTML table every epoch, and the heavy sunburst + PR
+        curves every `plot_every` epochs (or when `force_plots`, e.g. the final
+        epoch); then resets the buffers and returns the flat metric dict.
         """
         logits = {k: torch.cat(v) for k, v in self._logits.items()}
         targets = {k: torch.cat(v) for k, v in self._targets.items()}
@@ -154,8 +167,11 @@ class ClassificationMetrics:
 
         self.fam_gate, self.genus_gate = self._lc_gate(metrics_dfs)
         self._html_table(metrics_dfs, topk, macro, geo, tu, counts, consistency, epoch)
-        self._sunburst(metrics_dfs, epoch)
-        self._pr_curves(logits, targets, epoch)
+        # Heavy O(N_val × n_classes) writers — throttled to avoid OOM on large
+        # class sets. The table + gates above already ran (cheap, every epoch).
+        if force_plots or epoch % self.plot_every == 0:
+            self._sunburst(metrics_dfs, epoch)
+            self._pr_curves(logits, targets, epoch)
 
         self.reset()
         return {**topk, **macro, **geo, **tu, **consistency}
@@ -240,9 +256,13 @@ class ClassificationMetrics:
         return round(torch.stack(per_class).mean().item(), 4)
 
     def _macro_block(self, logits: dict, targets: dict, mask, prefix: str) -> dict:
-        """The four target metrics (macro Top-1 species/genus/family + Top-3
-        species), optionally restricted to a per-sample boolean `mask`. Returns None
-        for a metric when the masked subset is empty (e.g. no topped-up rows)."""
+        """The six gated macro metrics (Top-1 + Top-3 for species/genus/family),
+        optionally restricted to a per-sample boolean `mask`. Returns None for a
+        metric when the masked subset is empty (e.g. no topped-up rows).
+
+        Top-3 genus/family were added alongside species so the promotion gate can
+        cover all six (`promotion.CLASSIFIER_KEYS`); the four defined eval targets
+        remain species Top-1/Top-3, genus Top-1, family Top-1."""
 
         def m(head: str, k: int):
             lg, tg = logits[head], targets[head]
@@ -256,7 +276,9 @@ class ClassificationMetrics:
             f"{prefix}_top1_species": m("species", 1),
             f"{prefix}_top3_species": m("species", 3),
             f"{prefix}_top1_genus": m("genus", 1),
+            f"{prefix}_top3_genus": m("genus", 3),
             f"{prefix}_top1_family": m("family", 1),
+            f"{prefix}_top3_family": m("family", 3),
         }
 
     def _hierarchical_consistency(self, logits: dict, targets: dict) -> dict:
@@ -382,20 +404,25 @@ class ClassificationMetrics:
 
         for ax, head in zip(axes, ("species", "genus", "family")):
             y = targets[head].numpy()
-            probs = torch.softmax(logits[head], dim=1).numpy()
+            probs = torch.softmax(logits[head], dim=1).numpy()  # (N, C)
             classes = np.unique(y)
-            y_bin = label_binarize(y, classes=np.arange(probs.shape[1]))
 
-            ap = average_precision_score(
-                y_bin[:, classes], probs[:, classes], average="macro"
-            )
-
-            all_precision = []
+            # Per-class binary mask (N,) instead of a dense (N, C) one-hot — the
+            # label_binarize + matrix average_precision_score were the host-RAM
+            # blow-up on large class sets. Macro AP = mean of per-class APs.
+            all_precision, ap_per_class = [], []
             for c in classes:
-                p, r, _ = precision_recall_curve(y_bin[:, c], probs[:, c])
+                y_c = (y == c).astype(np.int8)
+                prob_c = probs[:, c]
+                p, r, _ = precision_recall_curve(y_c, prob_c)
                 all_precision.append(np.interp(recall_grid, r[::-1], p[::-1]))
+                ap_per_class.append(average_precision_score(y_c, prob_c))
 
+            ap = float(np.mean(ap_per_class))
             mean_p = np.mean(all_precision, axis=0)
+            # Free the big (N, C) prob array before the next head.
+            del probs
+            gc.collect()
             ax.plot(
                 recall_grid, mean_p, lw=2, color="#1f77b4", label=f"macro AP = {ap:.3f}"
             )

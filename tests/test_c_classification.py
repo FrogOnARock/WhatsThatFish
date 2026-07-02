@@ -125,6 +125,26 @@ class TestCustomResnet:
         out = model(x)
         assert len(out) == 3
 
+    def test_effective_layers_recorded(self):
+        """self.layers must reflect the layers actually BUILT, so a checkpoint's
+        `arch` can't drift from the weights. Non-pretrained keeps the request."""
+        m = CustomResnet(
+            block=BasicBlock, layers=[2, 3, 4, 2], num_class=[50, 10, 5], in_dim=5
+        )
+        assert m.layers == [2, 3, 4, 2]
+
+    def test_pretrained_overrides_layers_and_records_effective(self):
+        """pretrained forces the backbone to [3,4,6,3]; self.layers must record
+        that override (not the requested deep layers) — the state-dict-mismatch
+        bug was arch saving the requested value while the model built [3,4,6,3].
+        (__init__ does NOT download weights; load_pretrained() does.)"""
+        with pytest.warns(UserWarning):
+            m = CustomResnet(
+                block=BasicBlock, layers=[8, 8, 12, 6], num_class=[50, 10, 5],
+                in_dim=5, pretrained=True,
+            )
+        assert m.layers == [3, 4, 6, 3]
+
     def test_outputs_are_logits_not_probs(self, small_model):
         """Heads should output raw logits — values outside [0,1] are expected."""
         x = torch.randn(4, 5, 224, 224)

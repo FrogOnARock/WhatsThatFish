@@ -115,3 +115,211 @@
 2026-06-19 10:19:33,363 - INFO - Upserted batch of 50 rows into app_taxa.
 2026-06-19 10:19:33,376 - INFO - Upserted batch of 14 rows into app_taxa.
 2026-06-19 10:19:33,376 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 10:55:59,917 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 10:55:59,918 - INFO - AppTaxa run complete — 2 enriched, 0 failed (will retry next run).
+2026-06-24 10:55:59,919 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 10:55:59,919 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 10:55:59,920 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 10:55:59,920 - INFO - AppTaxa run complete — 1 enriched, 0 failed (will retry next run).
+2026-06-24 10:55:59,921 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 10:55:59,924 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 10:55:59,924 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 10:55:59,925 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 10:55:59,927 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 10:55:59,927 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 10:55:59,930 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 10:55:59,932 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 10:55:59,932 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 10:55:59,936 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 10:55:59,936 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 10:55:59,939 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 10:55:59,941 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 10:55:59,943 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 10:55:59,945 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 10:55:59,946 - INFO - Starting AppTaxa build (batch_size=20, max_workers=8).
+2026-06-24 10:55:59,950 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 10:58:48,065 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 10:58:48,066 - INFO - Retrieved 0 catalogue rows for AppTaxa.
+2026-06-24 10:58:48,070 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:02:04,121 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:02:04,122 - INFO - AppTaxa run complete — 2 enriched, 0 failed (will retry next run).
+2026-06-24 11:02:04,122 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:02:04,122 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:02:04,123 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:02:04,123 - INFO - AppTaxa run complete — 1 enriched, 0 failed (will retry next run).
+2026-06-24 11:02:04,124 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:02:04,124 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:02:04,124 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:02:04,125 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:02:04,126 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:02:04,126 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:02:04,127 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:02:04,127 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:02:04,127 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:02:04,128 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:02:04,128 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:02:04,128 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:02:04,128 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:02:04,129 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:02:04,129 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:02:04,130 - INFO - Starting AppTaxa build (batch_size=20, max_workers=8).
+2026-06-24 11:02:04,130 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:03:16,935 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:03:16,935 - INFO - AppTaxa run complete — 2 enriched, 0 failed (will retry next run).
+2026-06-24 11:03:16,936 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:03:16,936 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:03:16,937 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:03:16,937 - INFO - AppTaxa run complete — 1 enriched, 0 failed (will retry next run).
+2026-06-24 11:03:16,938 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:03:16,938 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:03:16,938 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:03:16,939 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:03:16,939 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:03:16,940 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:03:16,940 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:03:16,941 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:03:16,941 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:03:16,941 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:03:16,941 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:03:16,942 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:03:16,942 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:03:16,943 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:03:16,943 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:03:16,944 - INFO - Starting AppTaxa build (batch_size=20, max_workers=8).
+2026-06-24 11:03:16,944 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:03:40,091 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:03:40,092 - INFO - Retrieved 0 catalogue rows for AppTaxa.
+2026-06-24 11:03:40,092 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:05:28,932 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:05:28,933 - INFO - Retrieved 0 catalogue rows for AppTaxa.
+2026-06-24 11:05:28,934 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:08:54,918 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:08:54,919 - INFO - AppTaxa run complete — 2 enriched, 0 failed (will retry next run).
+2026-06-24 11:08:54,920 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:08:54,923 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:08:54,924 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:08:54,929 - INFO - AppTaxa run complete — 1 enriched, 0 failed (will retry next run).
+2026-06-24 11:08:54,931 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:08:54,933 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:08:54,933 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:08:54,935 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:08:54,943 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:08:54,943 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:08:54,945 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:08:54,952 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:08:54,952 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:08:54,954 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:08:54,954 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:08:54,957 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:08:54,957 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:08:54,959 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:08:54,959 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:08:54,963 - INFO - Starting AppTaxa build (batch_size=20, max_workers=8).
+2026-06-24 11:08:54,963 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:11:43,303 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:11:43,304 - INFO - Retrieved 0 catalogue rows for AppTaxa.
+2026-06-24 11:11:43,304 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:13:36,227 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:13:36,230 - INFO - AppTaxa run complete — 2 enriched, 0 failed (will retry next run).
+2026-06-24 11:13:36,232 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:13:36,232 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:13:36,233 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:13:36,240 - INFO - AppTaxa run complete — 1 enriched, 0 failed (will retry next run).
+2026-06-24 11:13:36,242 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:13:36,245 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:13:36,246 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:13:36,248 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:13:36,250 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:13:36,250 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:13:36,252 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:13:36,255 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:13:36,255 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:13:36,256 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:13:36,257 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:13:36,258 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:13:36,258 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:13:36,259 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:13:36,259 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:13:36,263 - INFO - Starting AppTaxa build (batch_size=20, max_workers=8).
+2026-06-24 11:13:36,263 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:16:22,691 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:16:22,693 - INFO - Retrieved 0 catalogue rows for AppTaxa.
+2026-06-24 11:16:22,693 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:20:21,595 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:20:21,600 - INFO - AppTaxa run complete — 2 enriched, 0 failed (will retry next run).
+2026-06-24 11:20:21,602 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:20:21,602 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:20:21,606 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:20:21,608 - INFO - AppTaxa run complete — 1 enriched, 0 failed (will retry next run).
+2026-06-24 11:20:21,609 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:20:21,610 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:20:21,610 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:20:21,611 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:20:21,619 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:20:21,619 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:20:21,620 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-06-24 11:20:21,624 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-06-24 11:20:21,624 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-06-24 11:20:21,625 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:20:21,625 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:20:21,626 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:20:21,630 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:20:21,631 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:20:21,631 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:20:21,632 - INFO - Starting AppTaxa build (batch_size=20, max_workers=8).
+2026-06-24 11:20:21,632 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-06-24 11:23:14,305 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-06-24 11:23:14,306 - INFO - Retrieved 0 catalogue rows for AppTaxa.
+2026-06-24 11:23:14,306 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 16:03:35,436 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 16:03:35,436 - INFO - AppTaxa run complete — 2 enriched, 0 failed (will retry next run).
+2026-07-01 16:03:35,438 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 16:03:35,438 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 16:03:35,439 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 16:03:35,439 - INFO - AppTaxa run complete — 1 enriched, 0 failed (will retry next run).
+2026-07-01 16:03:35,440 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 16:03:35,441 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-07-01 16:03:35,441 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-07-01 16:03:35,442 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 16:03:35,443 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-07-01 16:03:35,443 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-07-01 16:03:35,444 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 16:03:35,445 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-07-01 16:03:35,445 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-07-01 16:03:35,446 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-07-01 16:03:35,446 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 16:03:35,447 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-07-01 16:03:35,447 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 16:03:35,449 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-07-01 16:03:35,449 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 16:03:35,450 - INFO - Starting AppTaxa build (batch_size=20, max_workers=8).
+2026-07-01 16:03:35,450 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 16:05:20,086 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-07-01 16:05:20,087 - INFO - Retrieved 0 catalogue rows for AppTaxa.
+2026-07-01 16:05:20,087 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 18:25:50,043 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 18:25:50,043 - INFO - AppTaxa run complete — 2 enriched, 0 failed (will retry next run).
+2026-07-01 18:25:50,044 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 18:25:50,044 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 18:25:50,045 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 18:25:50,045 - INFO - AppTaxa run complete — 1 enriched, 0 failed (will retry next run).
+2026-07-01 18:25:50,046 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 18:25:50,046 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-07-01 18:25:50,046 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-07-01 18:25:50,046 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 18:25:50,048 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-07-01 18:25:50,048 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-07-01 18:25:50,048 - INFO - Starting AppTaxa build (batch_size=100, max_workers=8).
+2026-07-01 18:25:50,049 - WARNING - Enrichment failed for Species 2 (taxon 2); leaving NULL for retry: api down
+2026-07-01 18:25:50,049 - INFO - AppTaxa run complete — 2 enriched, 1 failed (will retry next run).
+2026-07-01 18:25:50,052 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-07-01 18:25:50,052 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 18:25:50,053 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-07-01 18:25:50,053 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 18:25:50,053 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-07-01 18:25:50,054 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 18:25:50,054 - INFO - Starting AppTaxa build (batch_size=20, max_workers=8).
+2026-07-01 18:25:50,054 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).
+2026-07-01 18:27:25,065 - INFO - Starting AppTaxa build (batch_size=50, max_workers=8).
+2026-07-01 18:27:25,066 - INFO - Retrieved 0 catalogue rows for AppTaxa.
+2026-07-01 18:27:25,066 - INFO - AppTaxa run complete — 0 enriched, 0 failed (will retry next run).

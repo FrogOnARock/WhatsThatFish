@@ -1,0 +1,14 @@
+# Vite / Node
+node_modules
+dist
+dist-ssr
+
+# Local env (per-developer; never commit)
+*.local
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*

@@ -17,6 +17,11 @@ from .models import (  # noqa: F401 — registers all mappers with Base.metadata
     LilaImageQuality,
     LilaYolo,
     SuccessfulUploads,
+    User,
+    DiveSite,
+    Dive,
+    Observation,
+    ObservationPhoto,
 )
 
 __all__ = [
@@ -36,4 +41,9 @@ __all__ = [
     "LilaImageQuality",
     "LilaYolo",
     "SuccessfulUploads",
+    "User",
+    "DiveSite",
+    "Dive",
+    "Observation",
+    "ObservationPhoto",
 ]

@@ -29,6 +29,9 @@ def _bare_metrics(tmp_path) -> ClassificationMetrics:
     m = object.__new__(ClassificationMetrics)
     m.output_dir = tmp_path
     m._taxonomy = TAXONOMY
+    # plot_every=1 → write the heavy reports every epoch (the lifecycle tests
+    # assert the files appear); normally set from config (default 5).
+    m.plot_every = 1
     m.reset()
     return m
 

@@ -1,5 +1,5 @@
 """
-Tests for AddMultiChannel: PIL Image -> (5, H, W) float32 tensor.
+Tests for AddMultiChannel: PIL Image -> (5, H, W) float32 numpy array.
 
 Channel layout: 0-2 RGB [0,1], 3 Scharr gradient [0,1], 4 LCN [0,1].
 No infrastructure required — all tests use in-memory PIL fixtures.
@@ -7,7 +7,6 @@ No infrastructure required — all tests use in-memory PIL fixtures.
 
 import numpy as np
 import pytest
-import torch
 from PIL import Image
 
 from whatsthatfish.transforms.five_channel_conversion import AddMultiChannel
@@ -55,7 +54,7 @@ class TestOutputFormat:
 
     def test_output_dtype(self, transform, step_edge_pil):
         out = transform(step_edge_pil)
-        assert out.dtype == torch.float32
+        assert out.dtype == np.float32
 
     def test_values_in_unit_range(self, transform, random_pil):
         out = transform(random_pil)
@@ -73,8 +72,8 @@ class TestRGBChannels:
         """RGB channels should equal the original pixel values divided by 255."""
         arr = np.array(random_pil.convert("RGB"), dtype=np.float32) / 255.0
         out = transform(random_pil)
-        expected = torch.from_numpy(arr.transpose(2, 0, 1))
-        assert torch.allclose(out[:3], expected, atol=1e-5)
+        expected = arr.transpose(2, 0, 1)
+        assert np.allclose(out[:3], expected, atol=1e-5)
 
     def test_uniform_rgb_is_constant(self, transform, uniform_pil):
         out = transform(uniform_pil)

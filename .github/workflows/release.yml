@@ -1,0 +1,84 @@
+name: Release
+
+# Model-release gate. On a v* tag we export the ONNX artifacts, run the
+# weights-only gate suite (parity + INT8 degradation), publish the degradation
+# report, and — only if the gate is green — promote the artifacts into the
+# serving image. Export happens FIRST; the tests validate the produced files;
+# promotion is gated on the tests. (See PHASE_4_PRODUCTION.md §D.)
+#
+# Two tiers, by marker:
+#   * `release and not accuracy` — weights-only (parity, INT8 agreement,
+#     degradation). Runs here: needs the trained weights but no val dataset.
+#   * `release and accuracy`     — Recall/mAP + macro Top-1 on the full val
+#     split. Needs the DB + image corpus, so it runs in a data-bearing env
+#     (Cloud SQL job / training VM post-train), NOT here. See TODO at the end.
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write   # for GCP Workload Identity Federation (keyless auth)
+
+jobs:
+  release-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: setup-python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: install-dependencies
+        # NOTE: torch here is the CUDA wheel; for faster CI consider a CPU index
+        # (--extra-index-url https://download.pytorch.org/whl/cpu).
+        run: pip install -e ".[dev]"
+
+      # ── pull trained weights (not committed to git) from GCS ───────────────
+      # TODO: configure GCP auth. Weights (classifier_best.pt, lc1_best.pt) live
+      # in GCS, not the repo. Uses Workload Identity Federation (no key file).
+      - name: gcp-auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_SA_EMAIL }}
+
+      - name: pull-weights
+        env:
+          WEIGHTS_PREFIX: ${{ vars.WEIGHTS_GCS_PREFIX }}
+        run: |
+          mkdir -p src/whatsthatfish/weights
+          gcloud storage cp "$WEIGHTS_PREFIX/classifier_best.pt" src/whatsthatfish/weights/
+          gcloud storage cp "$WEIGHTS_PREFIX/lc1_best.pt" src/whatsthatfish/weights/
+
+      # ── export the artifacts (dumb export + INT8) ──────────────────────────
+      - name: export-onnx
+        run: |
+          python -m whatsthatfish.models.classifier --type export --int8
+          python -m whatsthatfish.models.detection --dataset lc1 --type export --int8
+
+      # ── the gate: weights-only tier ────────────────────────────────────────
+      - name: release-gate
+        run: python -m pytest -m "release and not accuracy" -q
+
+      # ── publish the INT8 degradation report ──────────────────────
+      - name: upload-degradation-report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: int8-degradation-report
+          path: runs/onnx_eval/int8_degradation_report.json
+          if-no-files-found: warn
+
+      # ── promotion — only runs if every prior step succeeded ────────────────
+      # TODO: build the serving image (COPY the .onnx files in), push to Artifact
+      # Registry, deploy Cloud Run. Blocked on the Dockerfile + registry + Cloud
+      # Run infra (PHASE_4_PRODUCTION.md §B). Placeholder until those exist.
+      - name: promote-artifacts
+        run: |
+          echo "TODO: docker build (bundle *.onnx) -> Artifact Registry -> Cloud Run deploy"

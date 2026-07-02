@@ -13,7 +13,7 @@ from pathlib import Path
 from enum import Enum
 from dataclasses import dataclass
 import shutil
-
+import numpy as np
 import matplotlib
 
 matplotlib.use("Agg")
@@ -76,6 +76,8 @@ class Dataset(str, Enum):
 class TrainType(str, Enum):
     FULL = "full"
     TUNE = "tune"
+    EVAL = "eval"
+    EXPORT = "export"
 
 
 class Detector:
@@ -203,6 +205,127 @@ class Detector:
         shutil.copy(best_pt, dest)
         logger.info("Saved best weights → %s", dest)
 
+        # Post-train promotion gate: evaluate on the fixed val split, then promote
+        # to the store ONLY if it clears the targets and doesn't regress vs the
+        # incumbent. Local store by default; inject a GCS-backed store on the VM.
+        from .promotion import (
+            PromotionStore,
+            gate_and_promote,
+            DETECTOR_FLOOR,
+            DETECTOR_KEYS,
+        )
+
+        results, _ = self.evaluate(weights=dest)
+        store = PromotionStore(self.weights_path / "promoted")
+        gate_and_promote(
+            f"detector_{self.dataset}", results, dest, DETECTOR_FLOOR, DETECTOR_KEYS, store
+        )
+        return results
+
+    def recall_at_conf(self, box, conf: float = 0.15) -> float:
+
+        r_curve = box.r_curve
+        if r_curve is None or r_curve.size == 0:
+            raise RuntimeError(
+                "Val set produced no ground-truth labels — cannot evaluate. "
+                "Is inat_obj_detection_dataset populated / annotation IS NOT NULL non-empty?"
+            )
+        px = box.px
+        idx = int(np.argmin(np.abs(px - conf)))
+        return float(r_curve.mean(0)[idx])
+
+
+    def evaluate(self, weights: Path = None, conf: float = 0.001, img_size: int = 640):
+        """Validate this stage's detector on its DB-driven val split.
+
+        Reuses the CustomDetectionValidator (same [0,1]-image handling as training)
+        with the val-mode dataloader, so the split matches what training validated
+        on.
+
+        We retain conf = 0.001 to measure the entire curve, while indexing the curve to
+        find the recall@0.5 at conf=0.15 to record the recall at our survey mode confidence.
+
+        Returns the DetMetrics object from the validator. Read:
+          metrics.box.map50  -> mAP@0.5
+          metrics.box.map    -> mAP@0.5:0.95
+          metrics.box.mr     -> mean Recall@0.5 at this conf
+        """
+        from copy import copy
+        from ultralytics.cfg import get_cfg
+        from ultralytics.utils import DEFAULT_CFG
+        from .loaders.od_dataloader import CustomDetectionValidator, od_dataloader
+
+        w = Path(weights) if weights else self.weights_path / self.output_weights
+        model = YOLO(model=w, task="detect")
+
+        val_loader = od_dataloader(
+            dataset=self.dataset, mode="val", batch_size=16, max_samples=None
+        )
+        # `data` is needed even though we supply the dataloader: standalone
+        # validation parses it for metadata only — nc/names (init_metrics) and
+        # channels (warmup). The image paths (/dev/null) are never read because
+        # self.dataloader is already set, so get_dataloader() is skipped.
+        args = get_cfg(
+            DEFAULT_CFG,
+            overrides={
+                "conf": conf,
+                "imgsz": img_size,
+                "data": str(self.class_config),
+            },
+        )
+        save_dir = self.weights_path.parent / "runs" / "detect" / f"{self.dataset}_eval"
+        save_dir.mkdir(parents=True, exist_ok=True)
+
+        validator = CustomDetectionValidator(
+            dataloader=val_loader, save_dir=save_dir, args=copy(args)
+        )
+        validator(model=model.model)
+        box = validator.metrics.box
+        results = {
+            "mAP@0.5": box.map50,
+            "Recall@0.5": self.recall_at_conf(box),
+            "mAP@0.5:0.95": box.map,
+        }
+        targets = {"mAP@0.5": 0.75, "mAP@0.5:0.95": 0.50, "Recall@0.5": 0.90}
+        passed = {k: results[k] >= targets[k] for k in targets}
+        for k in targets:
+            logger.info(
+                "%s = %.4f (target %.2f) %s",
+                k,
+                results[k],
+                targets[k],
+                "PASS" if passed[k] else "FAIL",
+            )
+
+        return results, passed
+
+    def export(self, weights=None, img_size: int = 640, int8: bool = False):
+        """Export the detector to ONNX (FP32, NMS baked in), optionally emitting INT8.
+
+        Dumb by design: it only *produces* artifacts. The release gate (Recall/mAP
+        accuracy via `evaluate()`, ONNX parity, INT8 degradation) lives in the test
+        suite, not here — so a failing model can't sneak past by calling export.
+        Returns {"fp32": Path, "int8": Path | None}.
+        """
+        w = Path(weights) if weights else self.weights_path / self.output_weights
+        model = YOLO(model=w, task="detect")
+        fp32_path = Path(
+            model.export(
+                format="onnx",
+                nms=True,
+                dynamic=True,
+                simplify=True,
+                opset=17,
+                imgsz=img_size,
+            )
+        )
+        int8_path = None
+        if int8:
+            from .onnx_utils import quantize_dynamic_int8
+
+            int8_path = quantize_dynamic_int8(fp32_path)
+        return {"fp32": fp32_path, "int8": int8_path}
+
     def predict(self, source, weights: Path = None, conf: float = 0.25):
         """Run detection on images/video, returning Ultralytics Results.
 
@@ -223,6 +346,10 @@ def main(**kwargs):
     )
     if kwargs.get("type") == "tune":
         detector.tune()
+    elif kwargs.get("type") == "eval":
+        _, _ = detector.evaluate()
+    elif kwargs.get("type") == "export":
+        detector.export(int8=kwargs.get("int8", False))
     else:
         detector.train()
 
@@ -239,6 +366,10 @@ if __name__ == "__main__":
             "  Hyperparameter tune on LILA:  --dataset lila --type tune\n"
             "  Full training run on LC1:     --dataset lc1 --type full\n"
             "  Full training run on LC2:     --dataset lc2 --type full\n"
+            "  Evaluated training run on LC1: --dataset lc1 --type eval\n"
+            "  Evaluated training run on LC2: --dataset lc2 --type eval\n"
+            "  Export latest model to ONNX: --dataset lc1 --type export\n"
+            "  Export to ONNX + INT8 quantized variant: --dataset lc1 --type export --int8\n"
             "  Resume a tune from a Ray checkpoint:\n"
             "    --dataset lila --type tune --restore-path /path/to/ray/results\n"
         ),
@@ -256,7 +387,13 @@ if __name__ == "__main__":
         choices=[t.value for t in TrainType],
         required=True,
         metavar="TYPE",
-        help=f"Run type. Choices: {', '.join(t.value for t in TrainType)}. 'tune' runs Ray hyperparameter search; 'full' trains with config defaults",
+        help=f"Run type. Choices: {', '.join(t.value for t in TrainType)}. 'tune' runs Ray hyperparameter search; 'full' trains with config defaults; "
+        f"'eval' runs evaluation @ desired conf level; 'export' exports the model to ONNX distribution",
+    )
+    parser.add_argument(
+        "--int8",
+        action="store_true",
+        help="On export, also emit a dynamic-INT8 quantized ONNX variant.",
     )
     parser.add_argument(
         "--restore-path",
@@ -265,4 +402,9 @@ if __name__ == "__main__":
         help="Path to an existing Ray Tune experiment directory to resume (tune mode only)",
     )
     args = parser.parse_args()
-    main(dataset=args.dataset, type=args.type, restore_path=args.restore_path)
+    main(
+        dataset=args.dataset,
+        type=args.type,
+        restore_path=args.restore_path,
+        int8=args.int8,
+    )

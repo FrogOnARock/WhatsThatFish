@@ -2,13 +2,28 @@
    These formalise the shapes documented in client.ts: the two-stage pipeline
    (YOLO bbox → CustomResnet's species/genus/family heads). */
 
-/** Bounding box as PERCENT of rendered image dims (serving converts YOLO
-    x1y1x2y2 pixels → %). */
+/** The signed-in user. camelCase here; the backend's /auth/me returns snake_case
+    (display_name / avatar_url), mapped at the client seam (api/auth.ts). */
+export type UnitSystem = "metric" | "imperial";
+
+export interface UserProfile {
+  id: string;
+  email: string | null;
+  displayName: string | null;
+  avatarUrl: string | null;
+  /** App-owned override for the Google name; not clobbered by login sync. */
+  preferredName: string | null;
+  unitSystem: UnitSystem;
+}
+
+/** Bounding box as PERCENT of the original image dims — top-left (x, y) plus
+    width/height (serving converts the detector's x1y1x2y2 pixels → xywh %).
+    Maps 1:1 to CSS left/top/width/height. */
 export interface BBox {
   x: number;
   y: number;
-  x2: number;
-  y2: number;
+  w: number;
+  h: number;
 }
 
 /** One ranked guess from a classifier head; `conf` is 0–100. */
@@ -18,15 +33,18 @@ export interface Candidate {
   conf: number;
   summary: string;
   common: string;
-  habitat: string
+  habitat: string[]
 }
 
-/** A single identification result. `bbox` is null when the detector finds no fish. */
+/** A single identification result. When `detected` is false the detector found
+    no fish: `bbox` is empty, but the classifier still ran on the full frame, so
+    the candidate lists are populated (low-trust, out-of-distribution). */
 export interface Prediction {
   bbox: BBox[];
   species: Candidate[];
   genus: Candidate[];
   family: Candidate[];
+  detected: boolean;
 }
 
 /** Keys of a Prediction that hold a top-3 candidate list (one per head). */

@@ -1222,3 +1222,471 @@
 2026-06-19 17:27:25,706 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_10.html
 2026-06-19 17:27:25,771 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_10.html
 2026-06-19 17:31:01,908 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_10.png
+2026-06-19 17:59:47,250 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_11.html
+2026-06-19 17:59:47,340 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_11.html
+2026-06-19 18:03:17,473 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_11.png
+2026-06-19 18:31:51,630 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_12.html
+2026-06-19 18:31:51,732 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_12.html
+2026-06-19 18:35:26,935 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_12.png
+2026-06-19 19:04:04,751 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_13.html
+2026-06-19 19:04:04,847 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_13.html
+2026-06-19 19:07:42,933 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_13.png
+2026-06-19 19:36:32,253 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_14.html
+2026-06-19 19:36:32,356 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_14.html
+2026-06-19 19:40:10,955 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_14.png
+2026-06-19 20:08:46,492 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_15.html
+2026-06-19 20:08:46,572 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_15.html
+2026-06-19 20:12:19,814 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_15.png
+2026-06-19 20:40:48,554 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_16.html
+2026-06-19 20:40:48,637 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_16.html
+2026-06-19 20:44:24,520 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_16.png
+2026-06-19 21:12:53,792 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_17.html
+2026-06-19 21:12:53,868 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_17.html
+2026-06-19 21:16:33,678 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_17.png
+2026-06-19 21:45:02,110 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_18.html
+2026-06-19 21:45:02,187 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_18.html
+2026-06-19 21:48:39,952 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_18.png
+2026-06-19 22:17:08,395 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_19.html
+2026-06-19 22:17:08,470 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_19.html
+2026-06-19 22:20:47,308 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_19.png
+2026-06-19 22:49:15,734 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/metrics_epoch_20.html
+2026-06-19 22:49:15,802 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/sunburst_epoch_20.html
+2026-06-19 22:52:49,086 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_113437_classification/pr_curves_epoch_20.png
+2026-06-19 23:50:25,020 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_0.html
+2026-06-19 23:50:25,134 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_0.html
+2026-06-19 23:53:41,645 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_0.png
+2026-06-20 00:21:43,609 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_1.html
+2026-06-20 00:21:43,675 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_1.html
+2026-06-20 00:24:59,397 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_1.png
+2026-06-20 00:53:01,573 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_2.html
+2026-06-20 00:53:01,640 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_2.html
+2026-06-20 00:56:17,408 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_2.png
+2026-06-20 01:24:28,772 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_3.html
+2026-06-20 01:24:28,846 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_3.html
+2026-06-20 01:27:44,539 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_3.png
+2026-06-20 01:56:00,527 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_4.html
+2026-06-20 01:56:00,592 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_4.html
+2026-06-20 01:59:16,003 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_4.png
+2026-06-20 02:27:25,169 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_5.html
+2026-06-20 02:27:25,245 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_5.html
+2026-06-20 02:30:41,727 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_5.png
+2026-06-20 02:58:51,244 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_6.html
+2026-06-20 02:58:51,314 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_6.html
+2026-06-20 03:02:07,435 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_6.png
+2026-06-20 03:30:17,222 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_7.html
+2026-06-20 03:30:17,286 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_7.html
+2026-06-20 03:33:33,247 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_7.png
+2026-06-20 04:01:43,458 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_8.html
+2026-06-20 04:01:43,524 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_8.html
+2026-06-20 04:04:59,930 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_8.png
+2026-06-20 04:33:10,123 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_9.html
+2026-06-20 04:33:10,189 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_9.html
+2026-06-20 04:36:25,927 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_9.png
+2026-06-20 05:04:34,731 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_10.html
+2026-06-20 05:04:34,797 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_10.html
+2026-06-20 05:07:50,633 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_10.png
+2026-06-20 05:36:00,572 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_11.html
+2026-06-20 05:36:00,636 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_11.html
+2026-06-20 05:39:16,784 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_11.png
+2026-06-20 06:07:26,026 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_12.html
+2026-06-20 06:07:26,091 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_12.html
+2026-06-20 06:10:42,585 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_12.png
+2026-06-20 06:38:55,974 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_13.html
+2026-06-20 06:38:56,039 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_13.html
+2026-06-20 06:42:11,954 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_13.png
+2026-06-20 07:10:22,863 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_14.html
+2026-06-20 07:10:22,925 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_14.html
+2026-06-20 07:13:38,776 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_14.png
+2026-06-20 07:42:09,156 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_15.html
+2026-06-20 07:42:09,221 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_15.html
+2026-06-20 07:45:25,553 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_15.png
+2026-06-20 08:13:36,361 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_16.html
+2026-06-20 08:13:36,427 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_16.html
+2026-06-20 08:16:52,827 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_16.png
+2026-06-20 08:45:04,490 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_17.html
+2026-06-20 08:45:04,557 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_17.html
+2026-06-20 08:48:20,747 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_17.png
+2026-06-20 09:16:33,848 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_18.html
+2026-06-20 09:16:33,914 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_18.html
+2026-06-20 09:19:49,498 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_18.png
+2026-06-20 09:48:08,440 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_19.html
+2026-06-20 09:48:08,508 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_19.html
+2026-06-20 09:51:25,082 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_19.png
+2026-06-20 10:19:42,636 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_20.html
+2026-06-20 10:19:42,702 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_20.html
+2026-06-20 10:22:58,102 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_20.png
+2026-06-20 10:51:25,388 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_21.html
+2026-06-20 10:51:25,462 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_21.html
+2026-06-20 10:54:41,553 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_21.png
+2026-06-20 11:22:53,528 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_22.html
+2026-06-20 11:22:53,592 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_22.html
+2026-06-20 11:26:08,610 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_22.png
+2026-06-20 11:54:23,018 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_23.html
+2026-06-20 11:54:23,083 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_23.html
+2026-06-20 11:57:38,684 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_23.png
+2026-06-20 12:25:58,618 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_24.html
+2026-06-20 12:25:58,693 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_24.html
+2026-06-20 12:29:14,817 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_24.png
+2026-06-20 12:57:30,529 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_25.html
+2026-06-20 12:57:30,603 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_25.html
+2026-06-20 13:00:47,739 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_25.png
+2026-06-20 13:29:09,059 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_26.html
+2026-06-20 13:29:09,124 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_26.html
+2026-06-20 13:32:26,116 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_26.png
+2026-06-20 14:00:50,864 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_27.html
+2026-06-20 14:00:50,929 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_27.html
+2026-06-20 14:04:07,183 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_27.png
+2026-06-20 14:32:31,167 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_28.html
+2026-06-20 14:32:31,233 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_28.html
+2026-06-20 14:35:47,691 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_28.png
+2026-06-20 15:04:10,939 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_29.html
+2026-06-20 15:04:11,005 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_29.html
+2026-06-20 15:07:27,439 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_29.png
+2026-06-20 15:35:42,014 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_30.html
+2026-06-20 15:35:42,076 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_30.html
+2026-06-20 15:38:59,467 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_30.png
+2026-06-20 16:07:16,643 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_31.html
+2026-06-20 16:07:16,751 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_31.html
+2026-06-20 16:10:33,502 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_31.png
+2026-06-20 16:38:47,384 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_32.html
+2026-06-20 16:38:47,507 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_32.html
+2026-06-20 16:42:04,185 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_32.png
+2026-06-20 17:10:19,790 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_33.html
+2026-06-20 17:10:19,869 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_33.html
+2026-06-20 17:13:37,553 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_33.png
+2026-06-20 17:41:51,226 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_34.html
+2026-06-20 17:41:51,289 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_34.html
+2026-06-20 17:45:07,881 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_34.png
+2026-06-20 18:13:22,654 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_35.html
+2026-06-20 18:13:22,724 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_35.html
+2026-06-20 18:16:39,274 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_35.png
+2026-06-20 18:44:56,836 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_36.html
+2026-06-20 18:44:56,905 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_36.html
+2026-06-20 18:48:13,711 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_36.png
+2026-06-20 19:16:27,589 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_37.html
+2026-06-20 19:16:27,651 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_37.html
+2026-06-20 19:19:44,475 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_37.png
+2026-06-20 19:47:59,062 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_38.html
+2026-06-20 19:47:59,129 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_38.html
+2026-06-20 19:51:15,764 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_38.png
+2026-06-20 20:19:31,100 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_39.html
+2026-06-20 20:19:31,177 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_39.html
+2026-06-20 20:22:47,028 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_39.png
+2026-06-20 20:51:02,961 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_40.html
+2026-06-20 20:51:03,032 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_40.html
+2026-06-20 20:54:20,068 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_40.png
+2026-06-20 21:22:34,368 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_41.html
+2026-06-20 21:22:34,442 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_41.html
+2026-06-20 21:25:51,397 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_41.png
+2026-06-20 21:54:06,626 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_42.html
+2026-06-20 21:54:06,698 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_42.html
+2026-06-20 21:57:23,258 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_42.png
+2026-06-20 22:25:34,729 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_43.html
+2026-06-20 22:25:34,800 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_43.html
+2026-06-20 22:28:50,853 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_43.png
+2026-06-20 22:57:02,309 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_44.html
+2026-06-20 22:57:02,373 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_44.html
+2026-06-20 23:00:19,614 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_44.png
+2026-06-20 23:28:34,426 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_45.html
+2026-06-20 23:28:34,489 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_45.html
+2026-06-20 23:31:51,694 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_45.png
+2026-06-21 00:00:08,559 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_46.html
+2026-06-21 00:00:08,624 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_46.html
+2026-06-21 00:03:24,643 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_46.png
+2026-06-21 00:31:32,266 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_47.html
+2026-06-21 00:31:32,339 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_47.html
+2026-06-21 00:34:48,598 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_47.png
+2026-06-21 01:03:03,566 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_48.html
+2026-06-21 01:03:03,720 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_48.html
+2026-06-21 01:06:20,841 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_48.png
+2026-06-21 01:34:30,811 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/metrics_epoch_49.html
+2026-06-21 01:34:30,898 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/sunburst_epoch_49.html
+2026-06-21 01:37:47,195 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260619_232205_classification/pr_curves_epoch_49.png
+2026-06-23 10:32:34,244 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/metrics_epoch_0.html
+2026-06-23 10:32:34,383 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/sunburst_epoch_0.html
+2026-06-23 10:39:06,275 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/pr_curves_epoch_0.png
+2026-06-23 11:09:12,218 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/metrics_epoch_1.html
+2026-06-23 11:09:12,311 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/sunburst_epoch_1.html
+2026-06-23 11:16:02,805 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/pr_curves_epoch_1.png
+2026-06-23 11:45:26,476 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/metrics_epoch_2.html
+2026-06-23 11:45:26,550 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/sunburst_epoch_2.html
+2026-06-23 11:53:18,255 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/pr_curves_epoch_2.png
+2026-06-23 12:23:06,511 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/metrics_epoch_3.html
+2026-06-23 12:23:06,585 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/sunburst_epoch_3.html
+2026-06-23 12:33:09,999 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/pr_curves_epoch_3.png
+2026-06-23 13:02:57,119 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/metrics_epoch_4.html
+2026-06-23 13:02:57,198 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/sunburst_epoch_4.html
+2026-06-23 13:15:32,367 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/pr_curves_epoch_4.png
+2026-06-23 13:44:52,168 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/metrics_epoch_5.html
+2026-06-23 13:44:52,248 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/sunburst_epoch_5.html
+2026-06-23 13:52:41,072 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/pr_curves_epoch_5.png
+2026-06-23 14:22:07,266 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/metrics_epoch_6.html
+2026-06-23 14:22:07,367 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/sunburst_epoch_6.html
+2026-06-23 14:29:45,925 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/pr_curves_epoch_6.png
+2026-06-23 14:59:06,506 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/metrics_epoch_7.html
+2026-06-23 14:59:06,623 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_100256_classification/sunburst_epoch_7.html
+2026-06-23 15:51:13,321 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/metrics_epoch_0.html
+2026-06-23 15:51:13,445 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/sunburst_epoch_0.html
+2026-06-23 15:58:06,617 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/pr_curves_epoch_0.png
+2026-06-23 16:27:15,395 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/metrics_epoch_1.html
+2026-06-23 16:27:15,474 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/sunburst_epoch_1.html
+2026-06-23 16:31:48,764 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/pr_curves_epoch_1.png
+2026-06-23 17:00:58,266 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/metrics_epoch_2.html
+2026-06-23 17:00:58,347 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/sunburst_epoch_2.html
+2026-06-23 17:05:22,003 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/pr_curves_epoch_2.png
+2026-06-23 17:34:38,703 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/metrics_epoch_3.html
+2026-06-23 17:34:38,782 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/sunburst_epoch_3.html
+2026-06-23 17:39:52,904 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/pr_curves_epoch_3.png
+2026-06-23 18:09:06,529 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/metrics_epoch_4.html
+2026-06-23 18:09:06,612 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/sunburst_epoch_4.html
+2026-06-23 18:13:41,772 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/pr_curves_epoch_4.png
+2026-06-23 18:43:37,548 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/metrics_epoch_5.html
+2026-06-23 18:43:37,629 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/sunburst_epoch_5.html
+2026-06-23 18:54:01,700 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/pr_curves_epoch_5.png
+2026-06-23 19:23:35,453 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/metrics_epoch_6.html
+2026-06-23 19:23:35,622 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_152201_classification/sunburst_epoch_6.html
+2026-06-23 21:26:05,551 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_0.html
+2026-06-23 21:26:05,704 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_0.html
+2026-06-23 21:30:22,224 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_0.png
+2026-06-23 21:59:44,883 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_1.html
+2026-06-23 21:59:44,957 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_1.html
+2026-06-23 22:20:11,560 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_1.png
+2026-06-23 22:49:21,672 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_2.html
+2026-06-23 22:49:21,738 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_2.html
+2026-06-23 22:58:25,377 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_2.png
+2026-06-23 23:27:43,693 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_3.html
+2026-06-23 23:27:43,772 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_3.html
+2026-06-23 23:37:39,791 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_3.png
+2026-06-24 00:07:02,618 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_4.html
+2026-06-24 00:07:02,683 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_4.html
+2026-06-24 00:18:38,041 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_4.png
+2026-06-24 00:47:55,180 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_5.html
+2026-06-24 00:47:55,256 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_5.html
+2026-06-24 00:59:59,217 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_5.png
+2026-06-24 01:29:21,187 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_6.html
+2026-06-24 01:29:21,310 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_6.html
+2026-06-24 01:43:10,413 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_6.png
+2026-06-24 02:12:29,442 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_7.html
+2026-06-24 02:12:29,517 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_7.html
+2026-06-24 02:25:53,403 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_7.png
+2026-06-24 02:55:09,673 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_8.html
+2026-06-24 02:55:09,766 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_8.html
+2026-06-24 03:07:04,062 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_8.png
+2026-06-24 03:36:27,338 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_9.html
+2026-06-24 03:36:27,413 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_9.html
+2026-06-24 03:49:48,023 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_9.png
+2026-06-24 04:19:05,226 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_10.html
+2026-06-24 04:19:05,290 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_10.html
+2026-06-24 04:33:09,332 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/pr_curves_epoch_10.png
+2026-06-24 05:02:28,180 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/metrics_epoch_11.html
+2026-06-24 05:02:28,245 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260623_205628_classification/sunburst_epoch_11.html
+2026-06-24 10:56:44,316 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-5/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-24 10:56:44,490 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-5/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-24 10:56:44,917 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-5/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-24 10:56:44,934 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-5/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-24 10:56:45,008 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-5/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-24 10:56:45,508 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-5/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-24 10:56:45,528 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-5/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-24 10:56:45,565 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-5/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-24 10:56:46,044 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-5/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-24 11:00:02,675 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_0.html
+2026-06-24 11:00:02,823 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_0.html
+2026-06-24 11:02:19,573 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-9/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-24 11:02:19,639 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-9/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-24 11:02:19,811 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-9/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-24 11:02:19,820 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-9/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-24 11:02:19,834 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-9/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-24 11:02:19,992 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-9/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-24 11:02:20,002 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-9/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-24 11:02:20,018 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-9/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-24 11:02:20,339 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-9/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-24 11:03:32,502 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-10/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-24 11:03:32,567 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-10/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-24 11:03:32,745 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-10/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-24 11:03:32,755 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-10/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-24 11:03:32,778 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-10/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-24 11:03:32,942 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-10/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-24 11:03:32,952 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-10/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-24 11:03:32,973 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-10/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-24 11:03:33,300 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-10/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-24 11:06:20,339 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_0.png
+2026-06-24 11:09:37,598 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-13/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-24 11:09:37,918 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-13/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-24 11:09:38,332 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-13/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-24 11:09:38,375 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-13/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-24 11:09:38,441 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-13/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-24 11:09:38,872 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-13/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-24 11:09:38,913 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-13/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-24 11:09:38,988 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-13/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-24 11:09:39,659 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-13/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-24 11:14:18,695 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-14/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-24 11:14:18,840 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-14/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-24 11:14:19,167 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-14/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-24 11:14:19,180 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-14/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-24 11:14:19,203 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-14/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-24 11:14:19,628 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-14/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-24 11:14:19,641 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-14/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-24 11:14:19,669 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-14/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-24 11:14:20,342 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-14/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-24 11:21:03,683 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-15/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-24 11:21:03,762 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-15/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-24 11:21:04,108 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-15/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-24 11:21:04,123 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-15/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-24 11:21:04,156 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-15/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-24 11:21:04,663 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-15/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-24 11:21:04,683 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-15/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-24 11:21:04,750 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-15/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-24 11:21:05,308 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-15/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-24 11:37:22,532 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_1.html
+2026-06-24 11:37:22,628 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_1.html
+2026-06-24 11:56:51,145 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_1.png
+2026-06-24 12:26:03,634 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_2.html
+2026-06-24 12:26:03,705 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_2.html
+2026-06-24 12:30:32,238 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_2.png
+2026-06-24 12:59:48,291 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_3.html
+2026-06-24 12:59:48,363 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_3.html
+2026-06-24 13:16:28,559 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_3.png
+2026-06-24 13:45:41,690 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_4.html
+2026-06-24 13:45:41,769 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_4.html
+2026-06-24 13:50:13,400 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_4.png
+2026-06-24 14:19:31,409 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_5.html
+2026-06-24 14:19:31,482 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_5.html
+2026-06-24 14:25:33,709 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_5.png
+2026-06-24 14:54:55,136 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_6.html
+2026-06-24 14:54:55,255 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_6.html
+2026-06-24 15:08:55,811 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_6.png
+2026-06-24 15:38:14,714 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_7.html
+2026-06-24 15:38:14,787 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_7.html
+2026-06-24 15:47:33,233 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_7.png
+2026-06-24 16:16:50,794 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_8.html
+2026-06-24 16:16:50,863 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_8.html
+2026-06-24 16:28:00,881 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_8.png
+2026-06-24 16:57:19,423 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_9.html
+2026-06-24 16:57:19,497 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_9.html
+2026-06-24 17:04:44,346 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_9.png
+2026-06-24 17:34:03,869 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_10.html
+2026-06-24 17:34:03,945 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_10.html
+2026-06-24 17:43:09,257 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/pr_curves_epoch_10.png
+2026-06-24 18:12:29,163 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/metrics_epoch_11.html
+2026-06-24 18:12:29,238 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260624_102716_classification/sunburst_epoch_11.html
+2026-06-25 18:24:08,717 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-16/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-25 18:24:08,752 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-16/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-25 18:24:08,766 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-16/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-25 18:24:22,211 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-17/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-25 18:24:44,247 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-18/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-25 18:24:44,321 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-18/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-25 18:24:44,772 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-18/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-25 18:24:44,781 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-18/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-25 18:24:44,797 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-18/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-25 18:24:45,184 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-18/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-25 18:24:45,194 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-18/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-25 18:24:45,215 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-18/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-25 18:24:45,589 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-18/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-06-25 19:03:48,861 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_0.html
+2026-06-25 19:03:49,017 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_0.html
+2026-06-25 19:04:05,037 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_0.png
+2026-06-25 19:36:10,955 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_1.html
+2026-06-25 20:08:32,606 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_2.html
+2026-06-25 20:40:23,903 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_3.html
+2026-06-25 21:13:38,438 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_4.html
+2026-06-25 21:46:57,657 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_5.html
+2026-06-25 21:46:57,784 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_5.html
+2026-06-25 21:47:14,025 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_5.png
+2026-06-25 22:19:33,319 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_6.html
+2026-06-25 22:52:37,126 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_7.html
+2026-06-25 23:25:33,666 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_8.html
+2026-06-25 23:58:42,509 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_9.html
+2026-06-26 00:31:42,428 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_10.html
+2026-06-26 00:31:42,517 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_10.html
+2026-06-26 00:31:57,288 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_10.png
+2026-06-26 01:05:03,485 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_11.html
+2026-06-26 01:38:07,643 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_12.html
+2026-06-26 02:11:12,960 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_13.html
+2026-06-26 02:44:17,477 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_14.html
+2026-06-26 03:17:22,928 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_15.html
+2026-06-26 03:17:23,016 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_15.html
+2026-06-26 03:17:38,126 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_15.png
+2026-06-26 03:50:43,953 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_16.html
+2026-06-26 04:23:49,351 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_17.html
+2026-06-26 04:56:53,243 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_18.html
+2026-06-26 05:30:00,666 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_19.html
+2026-06-26 06:03:06,984 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_20.html
+2026-06-26 06:03:07,068 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_20.html
+2026-06-26 06:03:22,097 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_20.png
+2026-06-26 06:36:27,890 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_21.html
+2026-06-26 07:09:32,304 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_22.html
+2026-06-26 07:42:38,823 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_23.html
+2026-06-26 08:15:38,537 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_24.html
+2026-06-26 08:48:49,097 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_25.html
+2026-06-26 08:48:49,169 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_25.html
+2026-06-26 08:49:04,035 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_25.png
+2026-06-26 09:22:19,648 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_26.html
+2026-06-26 09:54:52,758 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_27.html
+2026-06-26 10:27:42,643 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_28.html
+2026-06-26 11:00:44,499 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_29.html
+2026-06-26 11:33:40,843 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_30.html
+2026-06-26 11:33:40,931 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_30.html
+2026-06-26 11:33:55,906 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_30.png
+2026-06-26 12:05:49,150 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_31.html
+2026-06-26 12:38:46,916 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_32.html
+2026-06-26 13:11:42,921 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_33.html
+2026-06-26 13:44:42,110 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_34.html
+2026-06-26 14:17:38,929 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_35.html
+2026-06-26 14:17:39,009 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_35.html
+2026-06-26 14:17:53,828 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_35.png
+2026-06-26 14:50:54,611 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_36.html
+2026-06-26 15:23:59,552 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_37.html
+2026-06-26 15:57:06,264 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_38.html
+2026-06-26 16:30:09,933 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_39.html
+2026-06-26 17:03:21,151 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_40.html
+2026-06-26 17:03:21,235 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_40.html
+2026-06-26 17:03:37,041 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_40.png
+2026-06-26 17:36:46,697 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_41.html
+2026-06-26 18:10:01,138 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_42.html
+2026-06-26 18:43:18,335 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_43.html
+2026-06-26 19:15:51,654 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_44.html
+2026-06-26 19:48:03,649 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_45.html
+2026-06-26 19:48:03,738 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_45.html
+2026-06-26 19:48:20,042 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_45.png
+2026-06-26 20:20:41,318 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_46.html
+2026-06-26 20:53:05,078 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_47.html
+2026-06-26 21:26:28,553 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_48.html
+2026-06-26 21:59:25,457 - INFO - Metrics table → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/metrics_epoch_49.html
+2026-06-26 21:59:25,560 - INFO - Sunburst → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/sunburst_epoch_49.html
+2026-06-26 21:59:41,380 - INFO - PR curves → /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/runs/classification/20260625_183116_classification/pr_curves_epoch_49.png
+2026-06-30 14:03:15,604 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-20/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-06-30 14:03:15,662 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-20/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-06-30 14:03:16,201 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-20/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-06-30 14:03:16,211 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-20/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-06-30 14:03:16,222 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-20/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-06-30 14:03:16,655 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-20/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-06-30 14:03:16,664 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-20/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-06-30 14:03:16,677 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-20/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-06-30 14:03:17,115 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-20/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-07-01 16:03:51,610 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-23/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-07-01 16:03:51,695 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-23/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-07-01 16:03:52,756 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-23/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-07-01 16:03:52,768 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-23/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-07-01 16:03:52,802 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-23/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-07-01 16:03:53,789 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-23/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-07-01 16:03:53,804 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-23/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-07-01 16:03:53,831 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-23/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-07-01 16:03:54,880 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-23/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-07-01 18:25:26,650 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-27/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-07-01 18:25:26,723 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-27/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-07-01 18:25:27,191 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-27/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-07-01 18:25:27,201 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-27/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-07-01 18:25:27,217 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-27/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-07-01 18:25:27,698 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-27/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-07-01 18:25:27,713 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-27/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-07-01 18:25:27,740 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-27/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-07-01 18:25:28,256 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-27/test_compute_resets_state_for_0/pr_curves_epoch_0.png
+2026-07-01 18:26:05,047 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-28/test_compute_returns_topk_and_0/metrics_epoch_0.html
+2026-07-01 18:26:05,101 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-28/test_compute_returns_topk_and_0/sunburst_epoch_0.html
+2026-07-01 18:26:05,728 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-28/test_compute_returns_topk_and_0/pr_curves_epoch_0.png
+2026-07-01 18:26:05,738 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-28/test_compute_writes_all_three_0/metrics_epoch_7.html
+2026-07-01 18:26:05,752 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-28/test_compute_writes_all_three_0/sunburst_epoch_7.html
+2026-07-01 18:26:06,384 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-28/test_compute_writes_all_three_0/pr_curves_epoch_7.png
+2026-07-01 18:26:06,393 - INFO - Metrics table → /tmp/pytest-of-frogonarock/pytest-28/test_compute_resets_state_for_0/metrics_epoch_0.html
+2026-07-01 18:26:06,407 - INFO - Sunburst → /tmp/pytest-of-frogonarock/pytest-28/test_compute_resets_state_for_0/sunburst_epoch_0.html
+2026-07-01 18:26:07,046 - INFO - PR curves → /tmp/pytest-of-frogonarock/pytest-28/test_compute_resets_state_for_0/pr_curves_epoch_0.png

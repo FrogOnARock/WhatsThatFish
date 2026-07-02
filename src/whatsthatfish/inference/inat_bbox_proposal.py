@@ -37,7 +37,7 @@ _CORAL_TAXON = "47533"
 logger = logging.getLogger("BBOX Proposal")
 
 _MODES = ("classification", "detection")
-_MODELS = ("od_best.pt", "lc1_best.pt", "lc2_best.pt")
+_MODELS = ("lila", "lc1", "lc2")
 
 
 class InatBoundingBox:

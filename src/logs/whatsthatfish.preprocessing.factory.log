@@ -666,3 +666,261 @@
 2026-06-04 16:44:27,709 - INFO - Step 5/6: Classification DS Preparation
 2026-06-04 16:44:50,228 - INFO - Step 6/6: Zero Indexed Classification
 2026-06-04 16:44:50,229 - INFO - PreProcessingFactory.run() complete — type=Dataset.ALL
+2026-06-24 10:57:46,650 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 10:57:46,657 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 10:57:46,658 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 10:57:46,663 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 10:57:46,665 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_ORIG, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 10:57:46,665 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_ORIG
+2026-06-24 10:57:46,665 - INFO - Step 1/1: iNat capture context scoring
+2026-06-24 10:57:46,665 - INFO - [Factory] Performing context for inat, loading to <class 'whatsthatfish.database.models.InatCaptureContext'>
+2026-06-24 10:57:46,665 - INFO - PreProcessingFactory.run() complete — type=Dataset.CONTEXT_ORIG
+2026-06-24 10:57:46,667 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 10:57:46,667 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-06-24 10:57:46,667 - INFO - Step 1/2: iNat UIQM scoring
+2026-06-24 10:57:46,667 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 10:57:46,667 - INFO - Step 2/2: LILA UIQM scoring
+2026-06-24 10:57:46,668 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 10:57:46,668 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-06-24 10:57:46,670 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 10:57:46,670 - INFO - PreProcessingFactory.run() starting — type=Dataset.ALL
+2026-06-24 10:57:46,670 - INFO - Step 1/7: iNat capture context scoring
+2026-06-24 10:57:46,670 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-06-24 10:57:46,670 - INFO - Step 2/7: iNat UIQM scoring
+2026-06-24 10:57:46,670 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 10:57:46,671 - INFO - Step 3/7: LILA UIQM scoring
+2026-06-24 10:57:46,671 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 10:57:46,671 - INFO - Step 4/7: Annotation conversion
+2026-06-24 10:57:46,671 - INFO - Step 5/7: Classification DS Preparation
+2026-06-24 10:58:47,993 - INFO - Step 6/7: Zero Indexed Classification
+2026-06-24 10:58:47,997 - INFO - Step 7/7: Retrieving App Meta Data
+2026-06-24 10:58:48,071 - INFO - PreProcessingFactory.run() complete — type=Dataset.ALL
+2026-06-24 11:03:14,397 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:03:14,398 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:03:14,400 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:03:14,401 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:03:14,402 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_ORIG, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:03:14,402 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:03:14,402 - INFO - Step 1/1: iNat capture context scoring
+2026-06-24 11:03:14,402 - INFO - [Factory] Performing context for inat, loading to <class 'whatsthatfish.database.models.InatCaptureContext'>
+2026-06-24 11:03:14,402 - INFO - PreProcessingFactory.run() complete — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:03:14,403 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:03:14,403 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-06-24 11:03:14,403 - INFO - Step 1/2: iNat UIQM scoring
+2026-06-24 11:03:14,403 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:03:14,404 - INFO - Step 2/2: LILA UIQM scoring
+2026-06-24 11:03:14,404 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:03:14,404 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-06-24 11:03:14,405 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:03:14,406 - INFO - PreProcessingFactory.run() starting — type=Dataset.ALL
+2026-06-24 11:03:14,406 - INFO - Step 1/7: iNat capture context scoring
+2026-06-24 11:03:14,406 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-06-24 11:03:14,406 - INFO - Step 2/7: iNat UIQM scoring
+2026-06-24 11:03:14,406 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:03:14,406 - INFO - Step 3/7: LILA UIQM scoring
+2026-06-24 11:03:14,406 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:03:14,406 - INFO - Step 4/7: Annotation conversion
+2026-06-24 11:03:14,406 - INFO - Step 5/7: Classification DS Preparation
+2026-06-24 11:03:40,054 - INFO - Step 6/7: Zero Indexed Classification
+2026-06-24 11:03:40,055 - INFO - Step 7/7: Retrieving App Meta Data
+2026-06-24 11:03:40,093 - INFO - PreProcessingFactory.run() complete — type=Dataset.ALL
+2026-06-24 11:05:01,701 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:05:01,701 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:05:01,702 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:05:01,703 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:05:01,704 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_ORIG, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:05:01,704 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:05:01,704 - INFO - Step 1/1: iNat capture context scoring
+2026-06-24 11:05:01,704 - INFO - [Factory] Performing context for inat, loading to <class 'whatsthatfish.database.models.InatCaptureContext'>
+2026-06-24 11:05:01,704 - INFO - PreProcessingFactory.run() complete — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:05:01,706 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:05:01,706 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-06-24 11:05:01,706 - INFO - Step 1/2: iNat UIQM scoring
+2026-06-24 11:05:01,706 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:05:01,706 - INFO - Step 2/2: LILA UIQM scoring
+2026-06-24 11:05:01,706 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:05:01,706 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-06-24 11:05:01,889 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:05:01,889 - INFO - PreProcessingFactory.run() starting — type=Dataset.ALL
+2026-06-24 11:05:01,889 - INFO - Step 1/7: iNat capture context scoring
+2026-06-24 11:05:01,889 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-06-24 11:05:01,889 - INFO - Step 2/7: iNat UIQM scoring
+2026-06-24 11:05:01,889 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:05:01,889 - INFO - Step 3/7: LILA UIQM scoring
+2026-06-24 11:05:01,889 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:05:01,889 - INFO - Step 4/7: Annotation conversion
+2026-06-24 11:05:01,890 - INFO - Step 5/7: Classification DS Preparation
+2026-06-24 11:05:28,904 - INFO - Step 6/7: Zero Indexed Classification
+2026-06-24 11:05:28,904 - INFO - Step 7/7: Retrieving App Meta Data
+2026-06-24 11:05:28,934 - INFO - PreProcessingFactory.run() complete — type=Dataset.ALL
+2026-06-24 11:07:51,767 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:07:51,769 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:07:51,770 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:07:51,771 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:07:51,773 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_ORIG, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:07:51,773 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:07:51,773 - INFO - Step 1/1: iNat capture context scoring
+2026-06-24 11:07:51,773 - INFO - [Factory] Performing context for inat, loading to <class 'whatsthatfish.database.models.InatCaptureContext'>
+2026-06-24 11:07:51,773 - INFO - PreProcessingFactory.run() complete — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:07:51,779 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:07:51,779 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-06-24 11:07:51,779 - INFO - Step 1/2: iNat UIQM scoring
+2026-06-24 11:07:51,779 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:07:51,780 - INFO - Step 2/2: LILA UIQM scoring
+2026-06-24 11:07:51,780 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:07:51,780 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-06-24 11:07:51,787 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:07:51,788 - INFO - PreProcessingFactory.run() starting — type=Dataset.ALL
+2026-06-24 11:07:51,788 - INFO - Step 1/7: iNat capture context scoring
+2026-06-24 11:07:51,788 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-06-24 11:07:51,788 - INFO - Step 2/7: iNat UIQM scoring
+2026-06-24 11:07:51,788 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:07:51,788 - INFO - Step 3/7: LILA UIQM scoring
+2026-06-24 11:07:51,788 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:07:51,788 - INFO - Step 4/7: Annotation conversion
+2026-06-24 11:07:51,788 - INFO - Step 5/7: Classification DS Preparation
+2026-06-24 11:10:41,530 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:10:41,535 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:10:41,537 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:10:41,541 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:10:41,554 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_ORIG, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:10:41,557 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:10:41,557 - INFO - Step 1/1: iNat capture context scoring
+2026-06-24 11:10:41,557 - INFO - [Factory] Performing context for inat, loading to <class 'whatsthatfish.database.models.InatCaptureContext'>
+2026-06-24 11:10:41,557 - INFO - PreProcessingFactory.run() complete — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:10:41,566 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:10:41,570 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-06-24 11:10:41,570 - INFO - Step 1/2: iNat UIQM scoring
+2026-06-24 11:10:41,570 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:10:41,570 - INFO - Step 2/2: LILA UIQM scoring
+2026-06-24 11:10:41,571 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:10:41,571 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-06-24 11:10:41,578 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:10:41,584 - INFO - PreProcessingFactory.run() starting — type=Dataset.ALL
+2026-06-24 11:10:41,584 - INFO - Step 1/7: iNat capture context scoring
+2026-06-24 11:10:41,584 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-06-24 11:10:41,585 - INFO - Step 2/7: iNat UIQM scoring
+2026-06-24 11:10:41,585 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:10:41,585 - INFO - Step 3/7: LILA UIQM scoring
+2026-06-24 11:10:41,585 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:10:41,585 - INFO - Step 4/7: Annotation conversion
+2026-06-24 11:10:41,585 - INFO - Step 5/7: Classification DS Preparation
+2026-06-24 11:11:43,258 - INFO - Step 6/7: Zero Indexed Classification
+2026-06-24 11:11:43,259 - INFO - Step 7/7: Retrieving App Meta Data
+2026-06-24 11:11:43,305 - INFO - PreProcessingFactory.run() complete — type=Dataset.ALL
+2026-06-24 11:15:21,287 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:15:21,289 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:15:21,292 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:15:21,294 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:15:21,296 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_ORIG, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:15:21,296 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:15:21,296 - INFO - Step 1/1: iNat capture context scoring
+2026-06-24 11:15:21,296 - INFO - [Factory] Performing context for inat, loading to <class 'whatsthatfish.database.models.InatCaptureContext'>
+2026-06-24 11:15:21,297 - INFO - PreProcessingFactory.run() complete — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:15:21,299 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:15:21,300 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-06-24 11:15:21,300 - INFO - Step 1/2: iNat UIQM scoring
+2026-06-24 11:15:21,300 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:15:21,300 - INFO - Step 2/2: LILA UIQM scoring
+2026-06-24 11:15:21,300 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:15:21,300 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-06-24 11:15:21,313 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:15:21,313 - INFO - PreProcessingFactory.run() starting — type=Dataset.ALL
+2026-06-24 11:15:21,313 - INFO - Step 1/7: iNat capture context scoring
+2026-06-24 11:15:21,313 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-06-24 11:15:21,313 - INFO - Step 2/7: iNat UIQM scoring
+2026-06-24 11:15:21,313 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:15:21,314 - INFO - Step 3/7: LILA UIQM scoring
+2026-06-24 11:15:21,314 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:15:21,314 - INFO - Step 4/7: Annotation conversion
+2026-06-24 11:15:21,314 - INFO - Step 5/7: Classification DS Preparation
+2026-06-24 11:16:22,653 - INFO - Step 6/7: Zero Indexed Classification
+2026-06-24 11:16:22,654 - INFO - Step 7/7: Retrieving App Meta Data
+2026-06-24 11:16:22,694 - INFO - PreProcessingFactory.run() complete — type=Dataset.ALL
+2026-06-24 11:22:11,778 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:22:11,779 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:22:11,782 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:22:11,783 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:22:11,785 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_ORIG, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:22:11,785 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:22:11,786 - INFO - Step 1/1: iNat capture context scoring
+2026-06-24 11:22:11,786 - INFO - [Factory] Performing context for inat, loading to <class 'whatsthatfish.database.models.InatCaptureContext'>
+2026-06-24 11:22:11,786 - INFO - PreProcessingFactory.run() complete — type=Dataset.CONTEXT_ORIG
+2026-06-24 11:22:11,788 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:22:11,788 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-06-24 11:22:11,788 - INFO - Step 1/2: iNat UIQM scoring
+2026-06-24 11:22:11,788 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:22:11,789 - INFO - Step 2/2: LILA UIQM scoring
+2026-06-24 11:22:11,789 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:22:11,789 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-06-24 11:22:11,792 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-06-24 11:22:11,792 - INFO - PreProcessingFactory.run() starting — type=Dataset.ALL
+2026-06-24 11:22:11,792 - INFO - Step 1/7: iNat capture context scoring
+2026-06-24 11:22:11,792 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-06-24 11:22:11,792 - INFO - Step 2/7: iNat UIQM scoring
+2026-06-24 11:22:11,792 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-06-24 11:22:11,793 - INFO - Step 3/7: LILA UIQM scoring
+2026-06-24 11:22:11,793 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-06-24 11:22:11,793 - INFO - Step 4/7: Annotation conversion
+2026-06-24 11:22:11,793 - INFO - Step 5/7: Classification DS Preparation
+2026-06-24 11:23:14,266 - INFO - Step 6/7: Zero Indexed Classification
+2026-06-24 11:23:14,268 - INFO - Step 7/7: Retrieving App Meta Data
+2026-06-24 11:23:14,307 - INFO - PreProcessingFactory.run() complete — type=Dataset.ALL
+2026-07-01 16:04:49,747 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 16:04:49,749 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 16:04:49,751 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 16:04:49,753 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 16:04:49,759 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_ORIG, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 16:04:49,759 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_ORIG
+2026-07-01 16:04:49,759 - INFO - Step 1/1: iNat capture context scoring
+2026-07-01 16:04:49,759 - INFO - [Factory] Performing context for inat, loading to <class 'whatsthatfish.database.models.InatCaptureContext'>
+2026-07-01 16:04:49,760 - INFO - PreProcessingFactory.run() complete — type=Dataset.CONTEXT_ORIG
+2026-07-01 16:04:49,762 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 16:04:49,762 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-07-01 16:04:49,762 - INFO - Step 1/2: iNat UIQM scoring
+2026-07-01 16:04:49,762 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-07-01 16:04:49,762 - INFO - Step 2/2: LILA UIQM scoring
+2026-07-01 16:04:49,762 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-07-01 16:04:49,762 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-07-01 16:04:49,765 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 16:04:49,765 - INFO - PreProcessingFactory.run() starting — type=Dataset.ALL
+2026-07-01 16:04:49,765 - INFO - Step 1/7: iNat capture context scoring
+2026-07-01 16:04:49,765 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-07-01 16:04:49,765 - INFO - Step 2/7: iNat UIQM scoring
+2026-07-01 16:04:49,765 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-07-01 16:04:49,765 - INFO - Step 3/7: LILA UIQM scoring
+2026-07-01 16:04:49,765 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-07-01 16:04:49,765 - INFO - Step 4/7: Annotation conversion
+2026-07-01 16:04:49,765 - INFO - Step 5/7: Classification DS Preparation
+2026-07-01 16:05:20,057 - INFO - Step 6/7: Zero Indexed Classification
+2026-07-01 16:05:20,058 - INFO - Step 7/7: Retrieving App Meta Data
+2026-07-01 16:05:20,087 - INFO - PreProcessingFactory.run() complete — type=Dataset.ALL
+2026-07-01 18:27:01,038 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 18:27:01,039 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 18:27:01,040 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 18:27:01,041 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 18:27:01,042 - INFO - PreProcessingFactory initialised — type=Dataset.CONTEXT_ORIG, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 18:27:01,042 - INFO - PreProcessingFactory.run() starting — type=Dataset.CONTEXT_ORIG
+2026-07-01 18:27:01,043 - INFO - Step 1/1: iNat capture context scoring
+2026-07-01 18:27:01,043 - INFO - [Factory] Performing context for inat, loading to <class 'whatsthatfish.database.models.InatCaptureContext'>
+2026-07-01 18:27:01,043 - INFO - PreProcessingFactory.run() complete — type=Dataset.CONTEXT_ORIG
+2026-07-01 18:27:01,044 - INFO - PreProcessingFactory initialised — type=Dataset.SCORING, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 18:27:01,044 - INFO - PreProcessingFactory.run() starting — type=Dataset.SCORING
+2026-07-01 18:27:01,044 - INFO - Step 1/2: iNat UIQM scoring
+2026-07-01 18:27:01,044 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-07-01 18:27:01,044 - INFO - Step 2/2: LILA UIQM scoring
+2026-07-01 18:27:01,044 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-07-01 18:27:01,044 - INFO - PreProcessingFactory.run() complete — type=Dataset.SCORING
+2026-07-01 18:27:01,046 - INFO - PreProcessingFactory initialised — type=Dataset.ALL, source_dataset=SourceDataset.BOTH, data_path=/home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/src/whatsthatfish/data/preprocessing
+2026-07-01 18:27:01,046 - INFO - PreProcessingFactory.run() starting — type=Dataset.ALL
+2026-07-01 18:27:01,046 - INFO - Step 1/7: iNat capture context scoring
+2026-07-01 18:27:01,046 - INFO - [Factory] Performing CLIP context for inat, loading to InatClipContext
+2026-07-01 18:27:01,046 - INFO - Step 2/7: iNat UIQM scoring
+2026-07-01 18:27:01,046 - INFO - [Factory] Performing scoring for inat, loading to InatImageQuality
+2026-07-01 18:27:01,046 - INFO - Step 3/7: LILA UIQM scoring
+2026-07-01 18:27:01,046 - INFO - [Factory] Performing scoring for lila, loading to LilaImageQuality
+2026-07-01 18:27:01,046 - INFO - Step 4/7: Annotation conversion
+2026-07-01 18:27:01,047 - INFO - Step 5/7: Classification DS Preparation
+2026-07-01 18:27:25,035 - INFO - Step 6/7: Zero Indexed Classification
+2026-07-01 18:27:25,036 - INFO - Step 7/7: Retrieving App Meta Data
+2026-07-01 18:27:25,066 - INFO - PreProcessingFactory.run() complete — type=Dataset.ALL

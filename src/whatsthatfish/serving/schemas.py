@@ -5,8 +5,43 @@ renamed here must be renamed there (and vice versa), since the SPA deserialises
 exactly these shapes.
 """
 
+from datetime import datetime
+from typing import Annotated, Literal
+from uuid import UUID
+
 from pydantic import BaseModel, Field
-from typing import Annotated
+
+LabelStatus = Literal["predicted", "confirmed", "corrected"]
+UnitSystem = Literal["metric", "imperial"]
+
+
+class UserProfile(BaseModel):
+    """The authenticated user as the SPA needs it — id plus Google profile bits,
+    plus the app-owned editable fields (preferred_name / unit_system)."""
+
+    id: str
+    email: str | None
+    display_name: str | None
+    avatar_url: str | None
+    preferred_name: str | None = None
+    unit_system: UnitSystem = "metric"
+
+
+class UserSettingsUpdate(BaseModel):
+    """PATCH the signed-in user's app-owned profile. Only provided keys change
+    (exclude_unset). preferred_name='' clears the override; the Google-sourced
+    name/email/avatar are never editable here."""
+
+    preferred_name: str | None = None
+    unit_system: UnitSystem | None = None
+
+
+class UserStats(BaseModel):
+    """Summary counts for the Settings page."""
+
+    dives: int
+    observations: int
+    unique_species: int
 
 
 class SpeciesEntry(BaseModel):
@@ -53,12 +88,14 @@ class SpeciesInfo(BaseModel):
 
 
 class Bbox(BaseModel):
-    """A single response that contains the bounding box for the uploaded or sampled image"""
+    """The detected box as PERCENT of the original image dims — top-left (x, y)
+    plus width/height. Percent (not pixels) so it overlays correctly on the
+    CSS-scaled <img>; xywh (not xyxy) so it maps 1:1 to CSS left/top/width/height."""
 
     x: float
     y: float
-    x2: float
-    y2: float
+    w: float
+    h: float
 
 
 class Candidate(BaseModel):
@@ -75,10 +112,168 @@ class Candidate(BaseModel):
 
 
 class Prediction(BaseModel):
-    """One detector→classifier result: the best box (xyxy + wh + conf) and the
-    predicted zero-indexed species id."""
+    """One detector→classifier result: the best box(es) and the ranked species/
+    genus/family candidates.
+
+    `detected` is False when the detector found no fish: `bbox` is then empty but
+    the classifier still ran on the full frame, so `species`/`genus`/`family` are
+    populated — just out-of-distribution and low-trust. The UI uses this to warn.
+    """
 
     bbox: list[Bbox]
     species: list[Candidate]
     genus: list[Candidate]
     family: list[Candidate]
+    detected: bool
+
+
+# ── History / observation tracking ──────────────────────────────────────────
+
+
+class DiveCreate(BaseModel):
+    """Create a dive. `site_name` resolves-or-creates a deduplicated dive_site;
+    location/time live on the dive (depth is per-observation)."""
+
+    site_name: str | None = None
+    gps_lat: float | None = None
+    gps_lng: float | None = None
+    dived_at: datetime | None = None
+    notes: str | None = None
+
+
+class DiveUpdate(BaseModel):
+    """PATCH a dive — every field optional; only provided keys are changed."""
+
+    site_name: str | None = None
+    gps_lat: float | None = None
+    gps_lng: float | None = None
+    dived_at: datetime | None = None
+    notes: str | None = None
+
+
+class DiveSpecies(BaseModel):
+    """A distinct species logged on a dive — for the dive-detail popup's
+    'what you saw' summary. Keyed on the effective (corrected) taxon."""
+
+    taxon_id: int
+    name: str | None
+    common_name: str | None
+
+
+class SiteOption(BaseModel):
+    """One existing dive site, surfaced by the autocomplete so users reuse a
+    site rather than creating a near-duplicate."""
+
+    id: UUID
+    name: str
+
+
+class DiveOut(BaseModel):
+    id: UUID
+    site_id: UUID | None
+    site_name: str | None
+    gps_lat: float | None
+    gps_lng: float | None
+    dived_at: datetime | None
+    notes: str | None
+    created_at: datetime
+    # Summary fields for the Dive Log table + detail popup.
+    observation_count: int = 0
+    species: list[DiveSpecies] = []
+
+
+class ObservationCreate(BaseModel):
+    """Save an identification. The client sends the model's zero-indices (what it
+    has); the server translates them to stable iNat taxon_ids via app_taxa.
+
+    Effective-label precedence: `corrected_taxon_id` (a real iNat taxon picked
+    from the full species list — the report flow) > `corrected_species_index` (a
+    model candidate the user selected) > the prediction itself.
+    `label_status`: predicted (saved as-is) · confirmed (user validated) ·
+    corrected (user changed it)."""
+
+    dive_id: UUID
+    predicted_species_index: int
+    corrected_species_index: int | None = None
+    corrected_taxon_id: int | None = None
+    label_status: LabelStatus = "predicted"
+    confidence: float | None = None
+    depth_m: float | None = None
+    observed_at: datetime | None = None
+
+
+class ModelStats(BaseModel):
+    """Trained-class counts for the UI (replaces hardcoded numbers)."""
+
+    species: int
+    genera: int
+    families: int
+
+
+class TaxonOption(BaseModel):
+    """One selectable taxon in the correction picker — scientific name + common
+    name where we have it (only the trained subset has common names)."""
+
+    taxon_id: int
+    name: str
+    common_name: str | None
+
+
+class ObservationUpdate(BaseModel):
+    """PATCH a sighting — only the keys the client sends are changed (the service
+    uses exclude_unset, so `depth_m: null` clears it, omitting it leaves it)."""
+
+    corrected_taxon_id: int | None = None
+    label_status: LabelStatus | None = None
+    depth_m: float | None = None
+
+
+class ObservationOut(BaseModel):
+    id: UUID
+    dive_id: UUID
+    predicted_taxon_id: int | None
+    corrected_taxon_id: int
+    label_status: LabelStatus
+    confidence: float | None
+    depth_m: float | None
+    observed_at: datetime | None
+
+
+class PhotoOut(BaseModel):
+    id: UUID
+    observation_id: UUID
+    image_path: str
+    bbox: dict | None
+    confidence: float | None
+    width: int | None
+    height: int | None
+
+
+class HistorySighting(BaseModel):
+    """One observation as shown in the field-log detail panel."""
+
+    observation_id: UUID
+    dive_id: UUID
+    dived_at: datetime | None
+    site_name: str | None
+    depth_m: float | None
+    label_status: LabelStatus
+    photos: list[PhotoOut]
+
+
+class HistorySpecies(BaseModel):
+    """A field-log card: one effective taxon the user has logged, with its
+    sightings. Keyed on corrected_taxon_id (the effective label)."""
+
+    taxon_id: int
+    species: str | None
+    genus: str | None
+    family: str | None
+    common_name: str | None
+    sighting_count: int
+    sightings: list[HistorySighting]
+
+
+class FieldLog(BaseModel):
+    species: list[HistorySpecies]
+    total_species: int

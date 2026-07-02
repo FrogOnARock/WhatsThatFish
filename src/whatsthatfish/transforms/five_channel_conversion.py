@@ -21,11 +21,11 @@ class AddMultiChannel:
         tensor = transform(pil_image) # shape: (5, 640, 640)
     """
 
-    def __call__(self, img: Image.Image) -> torch.Tensor:
+    def __call__(self, img: Image.Image) -> np.ndarray:
         arr = np.array(img.convert("RGB"), dtype=np.uint8)  # (H, W, 3) RGB
         return self.compute_channels(arr)
 
-    def compute_channels(self, arr: np.ndarray) -> torch.Tensor:
+    def compute_channels(self, arr: np.ndarray) -> np.ndarray:
         """Build the 5-channel tensor from a (H, W, 3) uint8 RGB array."""
         rgb = arr[..., :3] / 255
         img_gray = cv2.cvtColor(arr, cv2.COLOR_RGB2GRAY)
@@ -37,4 +37,4 @@ class AddMultiChannel:
         stacked_channels = np.concatenate(
             [rgb, s_gradient[..., np.newaxis], lcn[..., np.newaxis]], axis=2
         )
-        return torch.from_numpy(stacked_channels.transpose(2, 0, 1)).float()
+        return stacked_channels.transpose(2, 0, 1).astype(np.float32)

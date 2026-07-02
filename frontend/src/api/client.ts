@@ -24,7 +24,7 @@
 // First REAL backend call — not from ./mock. Lives in ./species (fetches FastAPI).
 
 export { getSpeciesLibrary } from "./species";
-export { getPrediction } from "./prediction";
+export { getPrediction, getPredictionSample } from "./prediction";
 
 export type {
   BBox,

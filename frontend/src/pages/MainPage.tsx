@@ -1,12 +1,14 @@
 /* Main page — orchestrates idle / analyzing / results states.
    Unlike the prototype (setTimeout), the analyzing state is driven by the
    API promise resolving, so it behaves identically with the real backend. */
-import { useCallback, useState, useRef } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import DropZone from "../components/DropZone";
 import ResultsView, { type ImageState } from "../components/ResultsView";
-import { getPrediction } from "../api/client";
+import { getPrediction, getPredictionSample } from "../api/client";
 import type { Prediction } from "../api/types";
-
+import { SAMPLE_FISH } from "../api/prediction";
+import { API_BASE } from "../api/config";
+import { getStats, type ModelStats } from "../api/stats";
 
 export type RequestState =
     { status: "analyzing" } |
@@ -19,13 +21,20 @@ export default function MainPage() {
   const lastTask = useRef<(() => Promise<Prediction | null>) | null>(null);
   const [image, setImage] = useState<ImageState | null>(null);
   const [request, setRequest] = useState<RequestState | null>(null);
+  const [stats, setStats] = useState<ModelStats | null>(null);
+
+  useEffect(() => {
+    getStats().then(setStats).catch(() => {});
+  }, []);
 
   const  runInference = useCallback(async (task: () => Promise<Prediction | null>) => {
     lastTask.current = task;
     setRequest({ status: "analyzing" });
     try {
       const result = await task();
-      if (result === null || result.bbox === null) {
+      // A result with no detection still carries whole-frame guesses (detected=false),
+      // so it's a success — ResultsView warns. Only a null result is a true no-op.
+      if (result === null) {
         setRequest({status: "no-fish"})
       } else setRequest({status: "success", prediction: result});
     }
@@ -37,14 +46,17 @@ export default function MainPage() {
 
   const handleSample = useCallback((id: string) => {
     const sample = SAMPLE_FISH.find((s) => s.id === id);
+    if (!sample) return;
     setImage({
       kind: "sample",
-      filename: `${id}.jpg`,
+      filename: sample.filename,
       size: "2.3 MB",
-      hue: sample?.hue,
-      caption: sample?.caption,
+      caption: sample.label,
+      // Serve the real sample frame from the backend so the bbox overlays the
+      // actual fish, not the abstract placeholder.
+      url: `${API_BASE}/image/${sample.filename}`,
     });
-    runInference(() => identifySample(id));
+    runInference(() => getPredictionSample(sample.filename));
   }, [runInference]);
 
   const handleUpload = useCallback((file: File) => {
@@ -84,11 +96,15 @@ export default function MainPage() {
           </div>
           <div className="page-header__model">
             <span className="page-header__model-pill">model online · YOLO11 + CustomResnet</span>
-            <span>1,247 classes · last trained 04 Apr 2026</span>
+            <span>
+              {stats
+                ? `${stats.species.toLocaleString()} species · ${stats.genera} genera · ${stats.families} families`
+                : "loading classes…"}
+            </span>
           </div>
         </header>
 
-        {!image && <DropZone onUpload={handleUpload} onSample={handleSample} />}
+        {!image && <DropZone onUpload={handleUpload} onSample={handleSample} speciesCount={stats?.species} />}
         {image && (
           <ResultsView
             image={image}
