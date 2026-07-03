@@ -46,6 +46,12 @@ jobs:
         run: pip install -e ".[train,test]"
 
       - name: run-tests
+        # DATABASE_URL points at the ephemeral service Postgres — the SAME
+        # throwaway DB conftest uses (drop/create per test). NEVER Cloud SQL:
+        # dependencies.py builds a session factory at import, so this must be set,
+        # and it must be the disposable local DB or the fixtures would wipe prod.
+        env:
+          DATABASE_URL: postgresql://test:test@localhost:5433/wtf_test
         # Skip the heavy release gate (ONNX export/parity/INT8/accuracy) — that
         # runs in release.yml on a v* tag, not on every push.
         run: python -m pytest tests/ -m "not release" -q

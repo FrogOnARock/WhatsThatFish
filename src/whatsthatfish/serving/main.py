@@ -10,7 +10,6 @@ it reuses `get_session_factory()` (sync), so endpoints are plain `def` and
 FastAPI runs them in its threadpool. No new DB wiring.
 """
 
-
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -55,7 +54,9 @@ app = FastAPI(title="WhatsThisFish API", version="0.1.0", lifespan=lifespan)
 # ALLOWED_ORIGIN_REGEX additionally covers Pages per-deploy preview subdomains
 # (e.g. https://<hash>.whatsthatfish.pages.dev) which can't be enumerated.
 _DEV_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:5173"]
-_ENV_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+_ENV_ORIGINS = [
+    o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()
+]
 _ORIGIN_REGEX = os.getenv("ALLOWED_ORIGIN_REGEX") or None
 
 app.add_middleware(

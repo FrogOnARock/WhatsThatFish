@@ -151,7 +151,7 @@ class OnnxBoundingBoxInference:
             max(0, (box[0] - pad_x) / gain),
             max(0, (box[1] - pad_y) / gain),
             min(w, (box[2] - pad_x) / gain),
-            min(h, (box[3] - pad_y) / gain)
+            min(h, (box[3] - pad_y) / gain),
         )
 
         return x1, y1, x2, y2
