@@ -851,13 +851,21 @@ class TestPreProcessingFactoryRouting:
         assert mock_runner.call_count == 2  # inat + lila
 
     @pytest.mark.asyncio
+    @patch("whatsthatfish.preprocessing.factory.BuildAppTaxa")
+    @patch("whatsthatfish.preprocessing.factory.ZeroIndexClassification")
+    @patch("whatsthatfish.preprocessing.factory.InatPreparation")
     @patch("whatsthatfish.preprocessing.factory.AnnotationConverter")
     @patch("whatsthatfish.preprocessing.factory.ScoringProgressTracker")
     @patch("whatsthatfish.preprocessing.factory.ScoreRunner")
     @patch("whatsthatfish.preprocessing.factory.ClipModel")
     async def test_all_type_runs_every_pipeline(
-        self, mock_clip, mock_score, mock_tracker, mock_ann, factory_mocks
+        self, mock_clip, mock_score, mock_tracker, mock_ann,
+        mock_prep, mock_zero, mock_app, factory_mocks
     ):
+        # ALL runs 7 steps: 1–4 are async runners, 5–7 (InatPreparation,
+        # ZeroIndexClassification, BuildAppTaxa) are sync. Mock every one so this
+        # asserts *routing* — that ALL dispatches each step — without executing
+        # real DB/KMeans work (which crashes on the empty CI DB).
         mock_clip.return_value.run = AsyncMock()
         mock_score.return_value.run = AsyncMock()
         mock_tracker.return_value.run = AsyncMock()
@@ -867,3 +875,6 @@ class TestPreProcessingFactoryRouting:
         assert mock_score.call_count == 2
         assert mock_clip.call_count == 1
         mock_ann.return_value.run.assert_called_once()
+        mock_prep.return_value.run.assert_called_once()
+        mock_zero.return_value.run.assert_called_once()
+        mock_app.return_value.run.assert_called_once()

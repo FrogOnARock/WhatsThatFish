@@ -84,6 +84,14 @@ def fixtures_dir() -> Path:
     return FIXTURES_DIR
 
 
+@pytest.fixture
+def tracker_dir(tmp_path) -> Path:
+    """Writable, per-test directory for WAL progress files (the crash-recovery
+    tracker's `data_path`). tmp_path is unique per test, so WAL state never
+    bleeds between runs."""
+    return tmp_path
+
+
 # ─── Serving-layer fixtures ───────────────────────────────────────────────────
 # Shared by the Phase 3 API tests (repository/service/route). The serving layer
 # binds `_session_factory = get_session_factory()` in dependencies.py at import

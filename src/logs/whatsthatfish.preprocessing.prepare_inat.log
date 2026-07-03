@@ -700,3 +700,124 @@
 2026-07-01 18:27:08,946 - INFO - Top-up moved 16030 photos / 12285 whole observations across 1123 taxa (no observation straddles the split).
 2026-07-01 18:27:08,946 - INFO - Split complete — train: 430958, val: 65700 (49670 geographic, 16030 topped-up).
 2026-07-01 18:27:09,057 - INFO - load: 496658 total rows → 440698 classification, 496658 OD (includes coral)
+2026-07-03 14:06:46,642 - INFO - Val clusters (2): [0, 7]
+2026-07-03 14:06:46,642 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 14:06:46,643 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 14:06:46,643 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 14:06:46,643 - INFO - Val clusters (2): [0, 7]
+2026-07-03 14:06:46,643 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 14:06:46,643 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 14:06:46,643 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 14:06:46,643 - INFO - Val clusters (2): [0, 7]
+2026-07-03 14:06:46,643 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 14:06:46,643 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 14:06:46,644 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 14:06:46,644 - INFO - Val clusters (2): [0, 7]
+2026-07-03 14:06:46,644 - INFO - Dropped 1 taxa with <50 train rows.
+2026-07-03 14:06:46,644 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 14:06:46,644 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 14:06:46,645 - INFO - Val clusters (2): [0, 7]
+2026-07-03 14:06:46,645 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 14:06:46,645 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 14:06:46,645 - INFO - Split complete — train: 384, val: 96 (96 geographic, 0 topped-up).
+2026-07-03 14:06:46,645 - INFO - Val clusters (2): [0, 7]
+2026-07-03 14:06:46,645 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 14:06:46,645 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 14:06:46,645 - INFO - Split complete — train: 256, val: 64 (64 geographic, 0 topped-up).
+2026-07-03 14:06:46,646 - INFO - Val clusters (2): [0, 7]
+2026-07-03 14:06:46,646 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 14:06:46,646 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 14:06:46,646 - INFO - Split complete — train: 384, val: 96 (96 geographic, 0 topped-up).
+2026-07-03 14:06:46,647 - INFO - Val clusters (2): [0, 7]
+2026-07-03 14:06:46,647 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 14:06:46,647 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 14:06:46,647 - INFO - Split complete — train: 256, val: 64 (64 geographic, 0 topped-up).
+2026-07-03 14:06:46,647 - INFO - Val clusters (2): [0, 7]
+2026-07-03 14:06:46,647 - INFO - Dropped 0 taxa with <10 train rows.
+2026-07-03 14:06:46,647 - INFO - Top-up moved 2 photos / 1 whole observations across 1 taxa (no observation straddles the split).
+2026-07-03 14:06:46,647 - INFO - Split complete — train: 30, val: 10 (8 geographic, 2 topped-up).
+2026-07-03 14:07:09,468 - INFO - Retrieving lat, lon pairs for iNaturalist Observations.
+2026-07-03 14:07:09,481 - INFO - Pairs retrieved.
+2026-07-03 14:08:04,642 - INFO - Retrieving lat, lon pairs for iNaturalist Observations.
+2026-07-03 14:08:04,671 - INFO - Pairs retrieved.
+2026-07-03 17:54:29,901 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:54:29,901 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:54:29,901 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:54:29,901 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 17:54:29,902 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:54:29,902 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:54:29,902 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:54:29,902 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 17:54:29,902 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:54:29,902 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:54:29,902 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:54:29,902 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 17:54:29,903 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:54:29,903 - INFO - Dropped 1 taxa with <50 train rows.
+2026-07-03 17:54:29,903 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:54:29,903 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 17:54:29,903 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:54:29,904 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:54:29,904 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:54:29,904 - INFO - Split complete — train: 384, val: 96 (96 geographic, 0 topped-up).
+2026-07-03 17:54:29,904 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:54:29,904 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:54:29,904 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:54:29,904 - INFO - Split complete — train: 256, val: 64 (64 geographic, 0 topped-up).
+2026-07-03 17:54:29,905 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:54:29,905 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:54:29,905 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:54:29,905 - INFO - Split complete — train: 384, val: 96 (96 geographic, 0 topped-up).
+2026-07-03 17:54:29,905 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:54:29,906 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:54:29,906 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:54:29,906 - INFO - Split complete — train: 256, val: 64 (64 geographic, 0 topped-up).
+2026-07-03 17:54:29,906 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:54:29,906 - INFO - Dropped 0 taxa with <10 train rows.
+2026-07-03 17:54:29,906 - INFO - Top-up moved 2 photos / 1 whole observations across 1 taxa (no observation straddles the split).
+2026-07-03 17:54:29,906 - INFO - Split complete — train: 30, val: 10 (8 geographic, 2 topped-up).
+2026-07-03 17:54:52,516 - INFO - Retrieving lat, lon pairs for iNaturalist Observations.
+2026-07-03 17:54:52,527 - INFO - Pairs retrieved.
+2026-07-03 17:54:52,534 - INFO - 
+            Total rows: 0
+
+            Total Genus: 0, pct: 0.0000
+
+            Total Family: 0, pct: 0.0000
+2026-07-03 17:54:52,534 - INFO - Fitting cuKMeans k=80 on full dataset.
+2026-07-03 17:58:19,531 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:58:19,531 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:58:19,531 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:58:19,531 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 17:58:19,531 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:58:19,531 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:58:19,532 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:58:19,532 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 17:58:19,532 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:58:19,532 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:58:19,532 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:58:19,532 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 17:58:19,532 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:58:19,532 - INFO - Dropped 1 taxa with <50 train rows.
+2026-07-03 17:58:19,532 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:58:19,532 - INFO - Split complete — train: 192, val: 48 (48 geographic, 0 topped-up).
+2026-07-03 17:58:19,533 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:58:19,533 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:58:19,533 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:58:19,533 - INFO - Split complete — train: 384, val: 96 (96 geographic, 0 topped-up).
+2026-07-03 17:58:19,534 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:58:19,534 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:58:19,534 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:58:19,534 - INFO - Split complete — train: 256, val: 64 (64 geographic, 0 topped-up).
+2026-07-03 17:58:19,534 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:58:19,534 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:58:19,534 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:58:19,535 - INFO - Split complete — train: 384, val: 96 (96 geographic, 0 topped-up).
+2026-07-03 17:58:19,535 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:58:19,535 - INFO - Dropped 0 taxa with <50 train rows.
+2026-07-03 17:58:19,535 - INFO - Top-up moved 0 photos / 0 whole observations across 0 taxa (no observation straddles the split).
+2026-07-03 17:58:19,535 - INFO - Split complete — train: 256, val: 64 (64 geographic, 0 topped-up).
+2026-07-03 17:58:19,536 - INFO - Val clusters (2): [0, 7]
+2026-07-03 17:58:19,536 - INFO - Dropped 0 taxa with <10 train rows.
+2026-07-03 17:58:19,536 - INFO - Top-up moved 2 photos / 1 whole observations across 1 taxa (no observation straddles the split).
+2026-07-03 17:58:19,536 - INFO - Split complete — train: 30, val: 10 (8 geographic, 2 topped-up).

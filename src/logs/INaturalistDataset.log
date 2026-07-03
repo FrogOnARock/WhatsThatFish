@@ -1300,3 +1300,198 @@
 2026-07-01 18:26:25,993 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
 2026-07-01 18:26:25,993 - INFO - Inserting 7 new rows (0 already in DB)
 2026-07-01 18:26:25,996 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 14:06:31,151 - INFO - Upserting 9 taxa rows
+2026-07-03 14:06:31,158 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 14:06:32,014 - INFO - Upserting 9 taxa rows
+2026-07-03 14:06:32,021 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 14:06:32,025 - INFO - Upserting 9 taxa rows
+2026-07-03 14:06:32,031 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 14:06:32,878 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 14:06:32,883 - INFO - Found 9 active taxa
+2026-07-03 14:06:32,883 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 14:06:32,896 - INFO - Intermediate observations: 6 rows
+2026-07-03 14:06:32,896 - INFO - Joining photos to observations (streaming)
+2026-07-03 14:06:32,912 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 14:06:32,913 - INFO - Upserting 9 taxa rows
+2026-07-03 14:06:32,922 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 14:06:32,925 - INFO - Found 0 existing photo records in DB
+2026-07-03 14:06:32,927 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 14:06:32,927 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 14:06:32,933 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 14:06:33,804 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 14:06:33,807 - INFO - Found 9 active taxa
+2026-07-03 14:06:33,808 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 14:06:33,811 - INFO - Intermediate observations: 6 rows
+2026-07-03 14:06:33,811 - INFO - Joining photos to observations (streaming)
+2026-07-03 14:06:33,815 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 14:06:33,816 - INFO - Upserting 9 taxa rows
+2026-07-03 14:06:33,819 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 14:06:33,820 - INFO - Found 0 existing photo records in DB
+2026-07-03 14:06:33,820 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 14:06:33,820 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 14:06:33,823 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 14:06:34,686 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 14:06:34,690 - INFO - Found 9 active taxa
+2026-07-03 14:06:34,691 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 14:06:34,696 - INFO - Intermediate observations: 6 rows
+2026-07-03 14:06:34,696 - INFO - Joining photos to observations (streaming)
+2026-07-03 14:06:34,705 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 14:06:34,706 - INFO - Upserting 9 taxa rows
+2026-07-03 14:06:34,715 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 14:06:34,717 - INFO - Found 0 existing photo records in DB
+2026-07-03 14:06:34,719 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 14:06:34,719 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 14:06:34,724 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 14:06:34,724 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 14:06:34,727 - INFO - Found 9 active taxa
+2026-07-03 14:06:34,727 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 14:06:34,732 - INFO - Intermediate observations: 6 rows
+2026-07-03 14:06:34,732 - INFO - Joining photos to observations (streaming)
+2026-07-03 14:06:34,741 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 14:06:34,741 - INFO - Upserting 9 taxa rows
+2026-07-03 14:06:34,745 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 14:06:34,746 - INFO - Found 7 existing photo records in DB
+2026-07-03 14:06:34,747 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 14:06:34,749 - INFO - No new rows to insert — database is up to date
+2026-07-03 14:06:35,679 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 14:06:35,680 - INFO - Found 9 active taxa
+2026-07-03 14:06:35,680 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 14:06:35,681 - INFO - Intermediate observations: 6 rows
+2026-07-03 14:06:35,681 - INFO - Joining photos to observations (streaming)
+2026-07-03 14:06:35,683 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 14:06:35,683 - INFO - Upserting 9 taxa rows
+2026-07-03 14:06:35,687 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 14:06:35,687 - INFO - Found 0 existing photo records in DB
+2026-07-03 14:06:35,688 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 14:06:35,688 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 14:06:35,691 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 17:54:14,773 - INFO - Upserting 9 taxa rows
+2026-07-03 17:54:14,778 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:54:15,653 - INFO - Upserting 9 taxa rows
+2026-07-03 17:54:15,661 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:54:15,662 - INFO - Upserting 9 taxa rows
+2026-07-03 17:54:15,669 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:54:16,548 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 17:54:16,551 - INFO - Found 9 active taxa
+2026-07-03 17:54:16,551 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 17:54:16,555 - INFO - Intermediate observations: 6 rows
+2026-07-03 17:54:16,555 - INFO - Joining photos to observations (streaming)
+2026-07-03 17:54:16,567 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:54:16,567 - INFO - Upserting 9 taxa rows
+2026-07-03 17:54:16,575 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:54:16,578 - INFO - Found 0 existing photo records in DB
+2026-07-03 17:54:16,580 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:54:16,580 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 17:54:16,587 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 17:54:17,450 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 17:54:17,452 - INFO - Found 9 active taxa
+2026-07-03 17:54:17,452 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 17:54:17,454 - INFO - Intermediate observations: 6 rows
+2026-07-03 17:54:17,454 - INFO - Joining photos to observations (streaming)
+2026-07-03 17:54:17,459 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:54:17,460 - INFO - Upserting 9 taxa rows
+2026-07-03 17:54:17,466 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:54:17,467 - INFO - Found 0 existing photo records in DB
+2026-07-03 17:54:17,468 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:54:17,468 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 17:54:17,472 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 17:54:18,321 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 17:54:18,324 - INFO - Found 9 active taxa
+2026-07-03 17:54:18,324 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 17:54:18,327 - INFO - Intermediate observations: 6 rows
+2026-07-03 17:54:18,327 - INFO - Joining photos to observations (streaming)
+2026-07-03 17:54:18,336 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:54:18,337 - INFO - Upserting 9 taxa rows
+2026-07-03 17:54:18,345 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:54:18,347 - INFO - Found 0 existing photo records in DB
+2026-07-03 17:54:18,348 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:54:18,349 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 17:54:18,354 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 17:54:18,354 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 17:54:18,357 - INFO - Found 9 active taxa
+2026-07-03 17:54:18,357 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 17:54:18,362 - INFO - Intermediate observations: 6 rows
+2026-07-03 17:54:18,362 - INFO - Joining photos to observations (streaming)
+2026-07-03 17:54:18,369 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:54:18,370 - INFO - Upserting 9 taxa rows
+2026-07-03 17:54:18,374 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:54:18,374 - INFO - Found 7 existing photo records in DB
+2026-07-03 17:54:18,375 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:54:18,375 - INFO - No new rows to insert — database is up to date
+2026-07-03 17:54:19,244 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 17:54:19,245 - INFO - Found 9 active taxa
+2026-07-03 17:54:19,245 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 17:54:19,246 - INFO - Intermediate observations: 6 rows
+2026-07-03 17:54:19,246 - INFO - Joining photos to observations (streaming)
+2026-07-03 17:54:19,248 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:54:19,249 - INFO - Upserting 9 taxa rows
+2026-07-03 17:54:19,251 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:54:19,252 - INFO - Found 0 existing photo records in DB
+2026-07-03 17:54:19,253 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:54:19,253 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 17:54:19,256 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 17:58:04,433 - INFO - Upserting 9 taxa rows
+2026-07-03 17:58:04,438 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:58:05,295 - INFO - Upserting 9 taxa rows
+2026-07-03 17:58:05,303 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:58:05,304 - INFO - Upserting 9 taxa rows
+2026-07-03 17:58:05,311 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:58:06,166 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 17:58:06,170 - INFO - Found 9 active taxa
+2026-07-03 17:58:06,170 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 17:58:06,174 - INFO - Intermediate observations: 6 rows
+2026-07-03 17:58:06,174 - INFO - Joining photos to observations (streaming)
+2026-07-03 17:58:06,181 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:58:06,181 - INFO - Upserting 9 taxa rows
+2026-07-03 17:58:06,187 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:58:06,188 - INFO - Found 0 existing photo records in DB
+2026-07-03 17:58:06,190 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:58:06,190 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 17:58:06,197 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 17:58:07,052 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 17:58:07,055 - INFO - Found 9 active taxa
+2026-07-03 17:58:07,055 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 17:58:07,058 - INFO - Intermediate observations: 6 rows
+2026-07-03 17:58:07,058 - INFO - Joining photos to observations (streaming)
+2026-07-03 17:58:07,067 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:58:07,067 - INFO - Upserting 9 taxa rows
+2026-07-03 17:58:07,075 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:58:07,077 - INFO - Found 0 existing photo records in DB
+2026-07-03 17:58:07,078 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:58:07,079 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 17:58:07,084 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 17:58:07,946 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 17:58:07,950 - INFO - Found 9 active taxa
+2026-07-03 17:58:07,950 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 17:58:07,955 - INFO - Intermediate observations: 6 rows
+2026-07-03 17:58:07,955 - INFO - Joining photos to observations (streaming)
+2026-07-03 17:58:07,965 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:58:07,965 - INFO - Upserting 9 taxa rows
+2026-07-03 17:58:07,973 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:58:07,974 - INFO - Found 0 existing photo records in DB
+2026-07-03 17:58:07,977 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:58:07,977 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 17:58:07,982 - INFO - Inserted 7 rows (7 in this batch)
+2026-07-03 17:58:07,982 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 17:58:07,984 - INFO - Found 9 active taxa
+2026-07-03 17:58:07,984 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 17:58:07,988 - INFO - Intermediate observations: 6 rows
+2026-07-03 17:58:07,988 - INFO - Joining photos to observations (streaming)
+2026-07-03 17:58:07,995 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:58:07,995 - INFO - Upserting 9 taxa rows
+2026-07-03 17:58:07,999 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:58:08,000 - INFO - Found 7 existing photo records in DB
+2026-07-03 17:58:08,000 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:58:08,001 - INFO - No new rows to insert — database is up to date
+2026-07-03 17:58:08,899 - INFO - Filtering taxa for taxon_ids=[47178, 196614]
+2026-07-03 17:58:08,900 - INFO - Found 9 active taxa
+2026-07-03 17:58:08,900 - INFO - Sinking filtered observations to intermediate parquet
+2026-07-03 17:58:08,902 - INFO - Intermediate observations: 6 rows
+2026-07-03 17:58:08,902 - INFO - Joining photos to observations (streaming)
+2026-07-03 17:58:08,906 - INFO - Dataset complete: 7 photo records in /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:58:08,906 - INFO - Upserting 9 taxa rows
+2026-07-03 17:58:08,909 - INFO - Taxa upsert complete: 9 rows
+2026-07-03 17:58:08,910 - INFO - Found 0 existing photo records in DB
+2026-07-03 17:58:08,911 - INFO - Read 7 rows from /home/frogonarock/PycharmProjects/WhatsThisFish/whatsthatfish/tests/fixtures/dataset.parquet
+2026-07-03 17:58:08,911 - INFO - Inserting 7 new rows (0 already in DB)
+2026-07-03 17:58:08,913 - INFO - Inserted 7 rows (7 in this batch)

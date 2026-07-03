@@ -585,11 +585,15 @@ class InatPreparation:
             if row["family"]:
                 family += 1
 
+        # Guard against an empty dataset (e.g. a minimal CI DB): stats logging
+        # must never crash the pipeline with ZeroDivisionError.
+        genus_pct = genus / total if total else 0.0
+        family_pct = family / total if total else 0.0
         logger.info(
             f"""
             Total rows: {total}\n
-            Total Genus: {genus}, pct: {genus / total:.4f}\n
-            Total Family: {family}, pct: {family / total:.4f}"""
+            Total Genus: {genus}, pct: {genus_pct:.4f}\n
+            Total Family: {family}, pct: {family_pct:.4f}"""
         )
 
     def run(self):

@@ -3627,3 +3627,246 @@
 2026-07-01 18:27:01,037 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
 2026-07-01 18:27:01,037 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
 2026-07-01 18:27:01,037 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 14:07:04,171 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 14:07:04,171 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 14:07:04,171 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 14:07:04,174 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 14:07:04,174 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 14:07:04,174 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 14:07:04,176 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 14:07:04,176 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 14:07:04,177 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 14:07:04,179 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 14:07:04,179 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 14:07:04,179 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 14:07:04,181 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 14:07:04,182 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 14:07:04,182 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 14:07:04,182 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 14:07:04,182 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 14:07:04,182 - INFO - [inat_context] Replayed 3 WAL entries
+2026-07-03 14:07:04,182 - INFO - [inat_context] Total completed (DB + WAL): 3
+2026-07-03 14:07:04,185 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 14:07:04,185 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 14:07:04,185 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 14:07:04,185 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 14:07:04,185 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 14:07:04,185 - INFO - [inat_context] Replayed 1 WAL entries
+2026-07-03 14:07:04,185 - INFO - [inat_context] Total completed (DB + WAL): 1
+2026-07-03 14:07:04,187 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 14:07:04,188 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 14:07:04,188 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 14:07:04,193 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 14:07:04,193 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 14:07:04,193 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 14:07:04,193 - INFO - [inat_context] Compacting 1 WAL entries to DB
+2026-07-03 14:07:04,196 - INFO - [inat_context] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 14:07:05,051 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 14:07:05,053 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 14:07:05,054 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 14:07:05,054 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 14:07:05,059 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 14:07:05,918 - INFO - [lila_scoring] Loading progress from DB table 'lila_image_quality'
+2026-07-03 14:07:05,920 - INFO - [lila_scoring] No prior entries found in DB — starting fresh
+2026-07-03 14:07:05,920 - INFO - [lila_scoring] Total completed (DB + WAL): 0
+2026-07-03 14:07:05,921 - INFO - [lila_scoring] Compacting 1 WAL entries to DB
+2026-07-03 14:07:05,927 - INFO - [lila_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 14:07:06,804 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 14:07:06,805 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 14:07:06,806 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 14:07:06,806 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 14:07:06,811 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 14:07:07,676 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 14:07:07,678 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 14:07:07,678 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 14:07:07,679 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 14:07:07,683 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 14:07:08,556 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 14:07:08,557 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 14:07:08,558 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 14:07:08,558 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 14:07:08,562 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 14:07:08,563 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 14:07:08,568 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 14:07:09,447 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-07-03 14:07:09,447 - INFO - [ContextRunner/inat] 2 uploaded | 1 already done | 1 to score
+2026-07-03 14:07:09,447 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 14:07:09,447 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 14:07:09,448 - INFO - [ContextRunner/inat] Batch 1/1 complete — compacted
+2026-07-03 14:07:09,448 - INFO - [ContextRunner/inat] All context scoring batches complete
+2026-07-03 14:07:09,450 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-07-03 14:07:09,450 - INFO - [ContextRunner/inat] 1 uploaded | 0 already done | 1 to score
+2026-07-03 14:07:09,450 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 14:07:09,450 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 14:07:09,455 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-07-03 14:07:09,456 - INFO - [ScoreRunner/inat] 2 uploaded | 1 already scored | 1 to score
+2026-07-03 14:07:09,456 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 14:07:09,456 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 14:07:09,457 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-07-03 14:07:09,457 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-07-03 14:07:09,458 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-07-03 14:07:09,458 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
+2026-07-03 14:07:09,458 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 14:07:09,458 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 17:54:47,272 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:54:47,272 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:54:47,272 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:54:47,274 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:54:47,275 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:54:47,275 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:54:47,277 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:54:47,277 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:54:47,277 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:54:47,280 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:54:47,280 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:54:47,280 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:54:47,282 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:54:47,282 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:54:47,282 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:54:47,282 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:54:47,283 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:54:47,283 - INFO - [inat_context] Replayed 3 WAL entries
+2026-07-03 17:54:47,283 - INFO - [inat_context] Total completed (DB + WAL): 3
+2026-07-03 17:54:47,285 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:54:47,285 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:54:47,285 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:54:47,285 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:54:47,286 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:54:47,286 - INFO - [inat_context] Replayed 1 WAL entries
+2026-07-03 17:54:47,286 - INFO - [inat_context] Total completed (DB + WAL): 1
+2026-07-03 17:54:47,288 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:54:47,288 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:54:47,288 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:54:47,293 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:54:47,293 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:54:47,294 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:54:47,294 - INFO - [inat_context] Compacting 1 WAL entries to DB
+2026-07-03 17:54:47,295 - INFO - [inat_context] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:54:48,137 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 17:54:48,137 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 17:54:48,138 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 17:54:48,138 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:54:48,140 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:54:48,984 - INFO - [lila_scoring] Loading progress from DB table 'lila_image_quality'
+2026-07-03 17:54:48,986 - INFO - [lila_scoring] No prior entries found in DB — starting fresh
+2026-07-03 17:54:48,986 - INFO - [lila_scoring] Total completed (DB + WAL): 0
+2026-07-03 17:54:48,987 - INFO - [lila_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:54:48,991 - INFO - [lila_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:54:49,847 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 17:54:49,848 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 17:54:49,849 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 17:54:49,849 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:54:49,854 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:54:50,734 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 17:54:50,735 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 17:54:50,736 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 17:54:50,736 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:54:50,742 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:54:51,608 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 17:54:51,610 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 17:54:51,610 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 17:54:51,611 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:54:51,616 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:54:51,617 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:54:51,621 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:54:52,493 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-07-03 17:54:52,493 - INFO - [ContextRunner/inat] 2 uploaded | 1 already done | 1 to score
+2026-07-03 17:54:52,494 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 17:54:52,494 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 17:54:52,494 - INFO - [ContextRunner/inat] Batch 1/1 complete — compacted
+2026-07-03 17:54:52,495 - INFO - [ContextRunner/inat] All context scoring batches complete
+2026-07-03 17:54:52,497 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-07-03 17:54:52,497 - INFO - [ContextRunner/inat] 1 uploaded | 0 already done | 1 to score
+2026-07-03 17:54:52,497 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 17:54:52,497 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 17:54:52,504 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-07-03 17:54:52,504 - INFO - [ScoreRunner/inat] 2 uploaded | 1 already scored | 1 to score
+2026-07-03 17:54:52,504 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 17:54:52,504 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 17:54:52,505 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-07-03 17:54:52,505 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-07-03 17:54:52,507 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-07-03 17:54:52,507 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
+2026-07-03 17:54:52,507 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 17:54:52,507 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 17:58:37,106 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:58:37,107 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,107 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:58:37,109 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:58:37,110 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,110 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:58:37,112 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:58:37,112 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,112 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:58:37,115 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:58:37,115 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,115 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:58:37,117 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:58:37,118 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,118 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:58:37,118 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:58:37,118 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,118 - INFO - [inat_context] Replayed 3 WAL entries
+2026-07-03 17:58:37,118 - INFO - [inat_context] Total completed (DB + WAL): 3
+2026-07-03 17:58:37,121 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:58:37,121 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,121 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:58:37,121 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:58:37,121 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,121 - INFO - [inat_context] Replayed 1 WAL entries
+2026-07-03 17:58:37,121 - INFO - [inat_context] Total completed (DB + WAL): 1
+2026-07-03 17:58:37,123 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:58:37,124 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,124 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:58:37,128 - INFO - [inat_context] Loading progress from DB table 'inat_capture_context'
+2026-07-03 17:58:37,128 - INFO - [inat_context] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,128 - INFO - [inat_context] Total completed (DB + WAL): 0
+2026-07-03 17:58:37,128 - INFO - [inat_context] Compacting 1 WAL entries to DB
+2026-07-03 17:58:37,130 - INFO - [inat_context] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:58:37,977 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 17:58:37,979 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 17:58:37,980 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 17:58:37,980 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:58:37,985 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:58:38,839 - INFO - [lila_scoring] Loading progress from DB table 'lila_image_quality'
+2026-07-03 17:58:38,840 - INFO - [lila_scoring] No prior entries found in DB — starting fresh
+2026-07-03 17:58:38,841 - INFO - [lila_scoring] Total completed (DB + WAL): 0
+2026-07-03 17:58:38,841 - INFO - [lila_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:58:38,847 - INFO - [lila_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:58:39,717 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 17:58:39,718 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 17:58:39,719 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 17:58:39,719 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:58:39,723 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:58:40,572 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 17:58:40,574 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 17:58:40,575 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 17:58:40,575 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:58:40,580 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:58:41,437 - INFO - [inat_scoring] Loading progress from DB table 'inat_image_quality'
+2026-07-03 17:58:41,438 - INFO - [inat_scoring] No prior entries found in DB — starting fresh
+2026-07-03 17:58:41,439 - INFO - [inat_scoring] Total completed (DB + WAL): 0
+2026-07-03 17:58:41,439 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:58:41,445 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:58:41,445 - INFO - [inat_scoring] Compacting 1 WAL entries to DB
+2026-07-03 17:58:41,449 - INFO - [inat_scoring] Compact complete — 1 entries flushed, WAL truncated, total scored: 1
+2026-07-03 17:58:42,318 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-07-03 17:58:42,318 - INFO - [ContextRunner/inat] 2 uploaded | 1 already done | 1 to score
+2026-07-03 17:58:42,318 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 17:58:42,318 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 17:58:42,319 - INFO - [ContextRunner/inat] Batch 1/1 complete — compacted
+2026-07-03 17:58:42,319 - INFO - [ContextRunner/inat] All context scoring batches complete
+2026-07-03 17:58:42,321 - INFO - [ContextRunner/inat] Starting context scoring run
+2026-07-03 17:58:42,322 - INFO - [ContextRunner/inat] 1 uploaded | 0 already done | 1 to score
+2026-07-03 17:58:42,322 - INFO - [ContextRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 17:58:42,322 - INFO - [ContextRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 17:58:42,327 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-07-03 17:58:42,327 - INFO - [ScoreRunner/inat] 2 uploaded | 1 already scored | 1 to score
+2026-07-03 17:58:42,327 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 17:58:42,327 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows
+2026-07-03 17:58:42,328 - INFO - [ScoreRunner/inat] Batch 1/1 complete — compacted
+2026-07-03 17:58:42,328 - INFO - [ScoreRunner/inat] All UIQM scoring batches complete
+2026-07-03 17:58:42,330 - INFO - [ScoreRunner/inat] Starting UIQM scoring run
+2026-07-03 17:58:42,330 - INFO - [ScoreRunner/inat] 1 uploaded | 0 already scored | 1 to score
+2026-07-03 17:58:42,330 - INFO - [ScoreRunner/inat] 1 rows → 1 batches of 10,000
+2026-07-03 17:58:42,330 - INFO - [ScoreRunner/inat] Batch 1/1 — 1 rows

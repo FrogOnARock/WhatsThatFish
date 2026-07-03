@@ -38,7 +38,10 @@ class _FakeBoxes:
 
 @pytest.fixture
 def inferrer():
-    with patch("whatsthatfish.inference.bbox_inference.Detector"):
+    # Detector is a lazy import inside BoundingBoxInference.__init__ (keeps the
+    # torch-free serving image slim), so it isn't an attribute of the inference
+    # module — patch it at its definition site, where the local import resolves.
+    with patch("whatsthatfish.models.detection.Detector"):
         obj = BoundingBoxInference(model=Dataset.LC1, conf=0.25)
     return obj
 

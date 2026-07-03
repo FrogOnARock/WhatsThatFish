@@ -661,3 +661,66 @@
 2026-07-01 18:26:08,817 - INFO - Running LILA detection pipeline
 2026-07-01 18:26:08,817 - INFO - Running photo transfer pipeline
 2026-07-01 18:26:08,817 - INFO - Data pipeline complete
+2026-07-03 14:06:18,024 - INFO - Starting etl pipeline: classification
+2026-07-03 14:06:18,025 - INFO - Running iNaturalist classification pipeline
+2026-07-03 14:06:18,025 - INFO - Running photo transfer pipeline
+2026-07-03 14:06:18,026 - INFO - Data pipeline complete
+2026-07-03 14:06:18,030 - INFO - Starting etl pipeline: detection
+2026-07-03 14:06:18,030 - INFO - Running LILA detection pipeline
+2026-07-03 14:06:18,030 - INFO - Data pipeline complete
+2026-07-03 14:06:18,033 - INFO - Starting etl pipeline: all
+2026-07-03 14:06:18,033 - INFO - Running iNaturalist classification pipeline
+2026-07-03 14:06:18,033 - INFO - Running LILA detection pipeline
+2026-07-03 14:06:18,033 - INFO - Running photo transfer pipeline
+2026-07-03 14:06:18,033 - INFO - Data pipeline complete
+2026-07-03 14:06:18,035 - INFO - Starting etl pipeline: classification
+2026-07-03 14:06:18,035 - INFO - Running iNaturalist classification pipeline
+2026-07-03 14:06:18,035 - INFO - Running photo transfer pipeline
+2026-07-03 14:06:18,035 - INFO - Data pipeline complete
+2026-07-03 14:06:18,037 - INFO - Starting etl pipeline: all
+2026-07-03 14:06:18,037 - INFO - Running iNaturalist classification pipeline
+2026-07-03 14:06:18,037 - INFO - Running LILA detection pipeline
+2026-07-03 14:06:18,037 - INFO - Running photo transfer pipeline
+2026-07-03 14:06:18,038 - INFO - Data pipeline complete
+2026-07-03 17:54:01,751 - INFO - Starting etl pipeline: classification
+2026-07-03 17:54:01,752 - INFO - Running iNaturalist classification pipeline
+2026-07-03 17:54:01,753 - INFO - Running photo transfer pipeline
+2026-07-03 17:54:01,754 - INFO - Data pipeline complete
+2026-07-03 17:54:01,759 - INFO - Starting etl pipeline: detection
+2026-07-03 17:54:01,759 - INFO - Running LILA detection pipeline
+2026-07-03 17:54:01,760 - INFO - Data pipeline complete
+2026-07-03 17:54:01,763 - INFO - Starting etl pipeline: all
+2026-07-03 17:54:01,763 - INFO - Running iNaturalist classification pipeline
+2026-07-03 17:54:01,763 - INFO - Running LILA detection pipeline
+2026-07-03 17:54:01,764 - INFO - Running photo transfer pipeline
+2026-07-03 17:54:01,764 - INFO - Data pipeline complete
+2026-07-03 17:54:01,766 - INFO - Starting etl pipeline: classification
+2026-07-03 17:54:01,766 - INFO - Running iNaturalist classification pipeline
+2026-07-03 17:54:01,766 - INFO - Running photo transfer pipeline
+2026-07-03 17:54:01,766 - INFO - Data pipeline complete
+2026-07-03 17:54:01,768 - INFO - Starting etl pipeline: all
+2026-07-03 17:54:01,768 - INFO - Running iNaturalist classification pipeline
+2026-07-03 17:54:01,768 - INFO - Running LILA detection pipeline
+2026-07-03 17:54:01,768 - INFO - Running photo transfer pipeline
+2026-07-03 17:54:01,768 - INFO - Data pipeline complete
+2026-07-03 17:57:51,510 - INFO - Starting etl pipeline: classification
+2026-07-03 17:57:51,510 - INFO - Running iNaturalist classification pipeline
+2026-07-03 17:57:51,510 - INFO - Running photo transfer pipeline
+2026-07-03 17:57:51,511 - INFO - Data pipeline complete
+2026-07-03 17:57:51,515 - INFO - Starting etl pipeline: detection
+2026-07-03 17:57:51,515 - INFO - Running LILA detection pipeline
+2026-07-03 17:57:51,515 - INFO - Data pipeline complete
+2026-07-03 17:57:51,518 - INFO - Starting etl pipeline: all
+2026-07-03 17:57:51,518 - INFO - Running iNaturalist classification pipeline
+2026-07-03 17:57:51,518 - INFO - Running LILA detection pipeline
+2026-07-03 17:57:51,519 - INFO - Running photo transfer pipeline
+2026-07-03 17:57:51,519 - INFO - Data pipeline complete
+2026-07-03 17:57:51,521 - INFO - Starting etl pipeline: classification
+2026-07-03 17:57:51,521 - INFO - Running iNaturalist classification pipeline
+2026-07-03 17:57:51,521 - INFO - Running photo transfer pipeline
+2026-07-03 17:57:51,521 - INFO - Data pipeline complete
+2026-07-03 17:57:51,523 - INFO - Starting etl pipeline: all
+2026-07-03 17:57:51,523 - INFO - Running iNaturalist classification pipeline
+2026-07-03 17:57:51,523 - INFO - Running LILA detection pipeline
+2026-07-03 17:57:51,523 - INFO - Running photo transfer pipeline
+2026-07-03 17:57:51,524 - INFO - Data pipeline complete
