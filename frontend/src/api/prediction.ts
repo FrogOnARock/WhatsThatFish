@@ -1,23 +1,32 @@
 import type { Prediction } from "./types";
 import { API_BASE } from "./config";
+import { apiFetch, raiseForStatus, TIMEOUT } from "./http";
 // Override at build/deploy time with VITE_API_BASE (e.g. the Cloud Run URL).
 // Defaults to the local uvicorn dev server.
+//
+// Inference gets the long PREDICT timeout (a cold instance loading ONNX + a real
+// forward pass is slow) and one retry — the FormData body is reusable across the
+// retry since it's not a consumed stream.
 
 export async function getPrediction(file: File): Promise<Prediction> {
       const body = new FormData();
       body.append("img", file);
-      const res = await fetch(`${API_BASE}/predict`, { method: "POST", body });
-      if (!res.ok) {
-        throw new Error(`POST /prediction failed: ${res.status} ${res.statusText}`);
-      }
+      const res = await apiFetch(
+        `${API_BASE}/predict`,
+        { method: "POST", body },
+        { timeoutMs: TIMEOUT.PREDICT, retries: 1 },
+      );
+      await raiseForStatus(res, "Inference failed");
       return await res.json();
 }
 
 export async function getPredictionSample(file: string): Promise<Prediction> {
-    const res = await fetch(`${API_BASE}/predict/sample/${file}`);
-    if (!res.ok) {
-        throw new Error(`GET /prediction failed: ${res.status} ${res.statusText}`);
-    }
+    const res = await apiFetch(
+        `${API_BASE}/predict/sample/${file}`,
+        {},
+        { timeoutMs: TIMEOUT.PREDICT, retries: 1 },
+    );
+    await raiseForStatus(res, "Inference failed");
     return await res.json();
 }
 

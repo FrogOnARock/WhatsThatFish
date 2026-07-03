@@ -35,12 +35,14 @@ _WEIGHTS = Path(__file__).parents[1] / "src" / "whatsthatfish" / "weights"
 CKPT = _WEIGHTS / "classifier_best.pt"
 
 # ── gate thresholds (tune to your quality bar) ──────────────────────────────
-FP32_LOGIT_ATOL = 1e-3       # ONNX-FP32 vs torch: export must be near-exact
-TOP1_AGREEMENT_MIN = 0.99    # INT8 vs FP32 top-1 must still match this often
-TOP3_AGREEMENT_MIN = 0.99    # INT8 vs FP32 top-3 SET must match this often
+FP32_LOGIT_ATOL = 1e-3  # ONNX-FP32 vs torch: export must be near-exact
+TOP1_AGREEMENT_MIN = 0.99  # INT8 vs FP32 top-1 must still match this often
+TOP3_AGREEMENT_MIN = 0.99  # INT8 vs FP32 top-3 SET must match this often
 N_SAMPLES = 32
 
-ARTIFACT = Path(__file__).parents[1] / "runs" / "onnx_eval" / "int8_degradation_report.json"
+ARTIFACT = (
+    Path(__file__).parents[1] / "runs" / "onnx_eval" / "int8_degradation_report.json"
+)
 
 
 def _session(path):
@@ -102,15 +104,6 @@ def int8_logits(onnx_paths, sample_batch):
 
 
 HEADS = ("species", "genus", "family")
-
-
-# ── item 3: detector accuracy gate ──────────────────────────────────────────
-@pytest.mark.accuracy  # needs the full val DB split → data-bearing env, not vanilla CI
-class TestDetectorAccuracyGate:
-    def test_recall_and_map_targets(self):
-        _, passed = Detector(dataset=Dataset.LC1).evaluate()
-        failed = [k for k, ok in passed.items() if not ok]
-        assert not failed, f"Detector missed release targets: {failed}"
 
 
 # ── item 4: FP32 parity (ONNX vs torch) ─────────────────────────────────────

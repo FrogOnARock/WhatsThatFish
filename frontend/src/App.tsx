@@ -1,6 +1,7 @@
 /* Root — routes between the workspace pages by sidebar selection. */
 import { useState } from "react";
 import Sidebar, { type PageId } from "./components/Sidebar";
+import ColdStartBanner from "./components/ColdStartBanner";
 import MainPage from "./pages/MainPage";
 import HistoryPage from "./pages/HistoryPage";
 import DivesPage from "./pages/DivesPage";
@@ -23,6 +24,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <ColdStartBanner />
       <Sidebar active={page} onNavigate={setPage} />
       {body}
     </div>

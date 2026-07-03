@@ -16,7 +16,6 @@ Why patch `_session_factory`?
     factory so endpoints read from the throwaway test DB.
 """
 
-import pytest
 
 from whatsthatfish.database.models import AppTaxa
 
@@ -120,10 +119,16 @@ class TestSpeciesCatalogue:
     def test_unenriched_species_contract(self, client, session_factory):
         _seed_app_taxa(
             session_factory,
-            [_row(
-                common_name=None, description=None, location=None,
-                depth=None, filename=None, img_count=None,
-            )],
+            [
+                _row(
+                    common_name=None,
+                    description=None,
+                    location=None,
+                    depth=None,
+                    filename=None,
+                    img_count=None,
+                )
+            ],
         )
         resp = client.get("/species")
         assert resp.status_code == 200  # not a 500

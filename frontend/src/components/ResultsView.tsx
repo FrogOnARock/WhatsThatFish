@@ -1,5 +1,5 @@
 /* Results: image (with toggleable bbox) + 3 stacked top-3 cards + meta + actions. */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import ClassificationCard from "./ClassificationCard";
 import type {TaxonKey} from "../api/types";
@@ -7,6 +7,34 @@ import type { RequestState } from "../pages/MainPage";
 import ImageCard from "./ImageCard";
 import SaveObservationModal from "./SaveObservationModal";
 import { useAuth } from "../auth/AuthContext";
+import { useBackendStatus } from "../api/backendStatus";
+
+/** Analyzing overlay with an elapsed timer. For the first few seconds it reads as
+    a normal inference; once it's clearly slow (or the backend is warming) it
+    explains the cold start so a 30s wait doesn't look like a hang. Its own
+    component so the interval hook lives outside ResultsView's early-return
+    branches. */
+const COLD_HINT_AFTER = 5; // seconds
+
+function AnalyzingOverlay() {
+  const [elapsed, setElapsed] = useState(0);
+  const status = useBackendStatus();
+
+  useEffect(() => {
+    const id = setInterval(() => setElapsed((s) => s + 1), 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const cold = elapsed >= COLD_HINT_AFTER || status === "warming" || status === "down";
+  return (
+    <div className="analyzing">
+      <span className="analyzing__pulse" />
+      {cold
+        ? `Waking the model — first inference after idle can take ~30s · ${elapsed}s`
+        : "Running YOLOv11 · classifying"}
+    </div>
+  );
+}
 
 /** A taxonomy head as presented in the results column. */
 export interface Taxon {
@@ -72,12 +100,7 @@ export default function ResultsView({ image, request, onReset, onRetry }: Result
     return (
         <div className="results">
           <div className="results__left">
-            <ImageCard image={image} overlay={
-              <div className="analyzing">
-                <span className="analyzing__pulse"/>
-                Running YOLOv11 · classifying
-              </div>
-            }/>
+            <ImageCard image={image} overlay={<AnalyzingOverlay />}/>
           </div>
         </div>
     );

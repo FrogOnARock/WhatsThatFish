@@ -6696,3 +6696,96 @@ Exception
 2026-07-01 18:24:57,892 - INFO - Started server process [566940]
 2026-07-01 18:24:57,893 - INFO - Waiting for application startup.
 2026-07-01 18:24:57,950 - INFO - Application startup complete.
+2026-07-02 15:04:12,380 - INFO - Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-07-02 15:04:12,380 - INFO - Started reloader process [52077] using WatchFiles
+2026-07-02 15:04:13,532 - INFO - Started server process [52129]
+2026-07-02 15:04:13,532 - INFO - Waiting for application startup.
+2026-07-02 15:04:13,815 - INFO - Application startup complete.
+2026-07-02 15:13:19,545 - WARNING - WatchFiles detected changes in 'whatsthatfish/retry.py', 'whatsthatfish/.claude/backups/retry_block_line14_20260702_151319.py'. Reloading...
+2026-07-02 15:13:19,559 - INFO - Shutting down
+2026-07-02 15:13:19,660 - INFO - Waiting for application shutdown.
+2026-07-02 15:13:19,660 - INFO - Application shutdown complete.
+2026-07-02 15:13:19,660 - INFO - Finished server process [52129]
+2026-07-02 15:13:20,868 - INFO - Started server process [54919]
+2026-07-02 15:13:20,868 - INFO - Waiting for application startup.
+2026-07-02 15:13:21,160 - INFO - Application startup complete.
+2026-07-02 15:13:41,074 - WARNING - WatchFiles detected changes in 'whatsthatfish/retry.py', 'whatsthatfish/.claude/backups/retry_region_line76_20260702_151340.py'. Reloading...
+2026-07-02 15:13:41,100 - INFO - Shutting down
+2026-07-02 15:13:41,200 - INFO - Waiting for application shutdown.
+2026-07-02 15:13:41,200 - INFO - Application shutdown complete.
+2026-07-02 15:13:41,200 - INFO - Finished server process [54919]
+2026-07-02 15:13:42,385 - INFO - Started server process [55120]
+2026-07-02 15:13:42,386 - INFO - Waiting for application startup.
+2026-07-02 15:13:42,643 - INFO - Application startup complete.
+2026-07-02 15:15:19,022 - WARNING - WatchFiles detected changes in 'whatsthatfish/.claude/backups/retry_block_line14_20260702_151319.py'. Reloading...
+2026-07-02 15:15:19,034 - INFO - Shutting down
+2026-07-02 15:15:19,135 - INFO - Waiting for application shutdown.
+2026-07-02 15:15:19,135 - INFO - Application shutdown complete.
+2026-07-02 15:15:19,135 - INFO - Finished server process [55120]
+2026-07-02 15:15:20,357 - INFO - Started server process [55574]
+2026-07-02 15:15:20,357 - INFO - Waiting for application startup.
+2026-07-02 15:15:20,616 - INFO - Application startup complete.
+2026-07-02 16:56:47,062 - WARNING - WatchFiles detected changes in 'whatsthatfish/config.py'. Reloading...
+2026-07-02 16:56:47,134 - INFO - Shutting down
+2026-07-02 16:56:47,252 - INFO - Waiting for application shutdown.
+2026-07-02 16:56:47,267 - INFO - Application shutdown complete.
+2026-07-02 16:56:47,267 - INFO - Finished server process [55574]
+2026-07-02 16:56:48,745 - INFO - Started server process [72750]
+2026-07-02 16:56:48,746 - INFO - Waiting for application startup.
+2026-07-02 16:56:49,055 - INFO - Application startup complete.
+2026-07-02 18:34:04,821 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/utils.py'. Reloading...
+2026-07-02 18:34:04,906 - INFO - Shutting down
+2026-07-02 18:34:05,006 - INFO - Waiting for application shutdown.
+2026-07-02 18:34:05,007 - INFO - Application shutdown complete.
+2026-07-02 18:34:05,007 - INFO - Finished server process [72750]
+2026-07-02 18:34:06,347 - INFO - Started server process [97206]
+2026-07-02 18:34:06,347 - INFO - Waiting for application startup.
+2026-07-02 18:34:06,642 - INFO - Application startup complete.
+2026-07-02 18:34:09,195 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/utils.py'. Reloading...
+2026-07-02 18:34:09,246 - INFO - Shutting down
+2026-07-02 18:34:09,346 - INFO - Waiting for application shutdown.
+2026-07-02 18:34:09,346 - INFO - Application shutdown complete.
+2026-07-02 18:34:09,346 - INFO - Finished server process [97206]
+2026-07-02 18:34:10,539 - INFO - Started server process [97352]
+2026-07-02 18:34:10,539 - INFO - Waiting for application startup.
+2026-07-02 18:34:10,830 - INFO - Application startup complete.
+2026-07-02 18:43:56,898 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/utils.py'. Reloading...
+2026-07-02 18:43:56,930 - INFO - Shutting down
+2026-07-02 18:43:57,030 - INFO - Waiting for application shutdown.
+2026-07-02 18:43:57,031 - INFO - Application shutdown complete.
+2026-07-02 18:43:57,031 - INFO - Finished server process [97352]
+2026-07-02 18:43:58,204 - INFO - Started server process [99778]
+2026-07-02 18:43:58,204 - INFO - Waiting for application startup.
+2026-07-02 18:43:58,457 - INFO - Application startup complete.
+2026-07-02 18:44:03,169 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/utils.py'. Reloading...
+2026-07-02 18:44:03,264 - INFO - Shutting down
+2026-07-02 18:44:03,364 - INFO - Waiting for application shutdown.
+2026-07-02 18:44:03,365 - INFO - Application shutdown complete.
+2026-07-02 18:44:03,365 - INFO - Finished server process [99778]
+2026-07-02 18:44:04,547 - INFO - Started server process [99905]
+2026-07-02 18:44:04,547 - INFO - Waiting for application startup.
+2026-07-02 18:44:04,835 - INFO - Application startup complete.
+2026-07-02 18:44:07,551 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/utils.py'. Reloading...
+2026-07-02 18:44:07,643 - INFO - Shutting down
+2026-07-02 18:44:07,744 - INFO - Waiting for application shutdown.
+2026-07-02 18:44:07,744 - INFO - Application shutdown complete.
+2026-07-02 18:44:07,744 - INFO - Finished server process [99905]
+2026-07-02 18:44:08,922 - INFO - Started server process [99995]
+2026-07-02 18:44:08,922 - INFO - Waiting for application startup.
+2026-07-02 18:44:09,214 - INFO - Application startup complete.
+2026-07-02 20:38:09,699 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/utils.py'. Reloading...
+2026-07-02 20:38:09,721 - INFO - Shutting down
+2026-07-02 20:38:09,822 - INFO - Waiting for application shutdown.
+2026-07-02 20:38:09,822 - INFO - Application shutdown complete.
+2026-07-02 20:38:09,822 - INFO - Finished server process [99995]
+2026-07-02 20:38:11,029 - INFO - Started server process [115644]
+2026-07-02 20:38:11,029 - INFO - Waiting for application startup.
+2026-07-02 20:38:11,319 - INFO - Application startup complete.
+2026-07-02 20:38:17,607 - WARNING - WatchFiles detected changes in 'whatsthatfish/serving/utils.py'. Reloading...
+2026-07-02 20:38:17,632 - INFO - Shutting down
+2026-07-02 20:38:17,732 - INFO - Waiting for application shutdown.
+2026-07-02 20:38:17,732 - INFO - Application shutdown complete.
+2026-07-02 20:38:17,733 - INFO - Finished server process [115644]
+2026-07-02 20:38:18,949 - INFO - Started server process [115774]
+2026-07-02 20:38:18,949 - INFO - Waiting for application startup.
+2026-07-02 20:38:19,272 - INFO - Application startup complete.

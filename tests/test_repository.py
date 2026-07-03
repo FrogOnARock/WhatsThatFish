@@ -5,7 +5,6 @@ auth), so they're fast and exercise the SQL that actually guards user data:
 ownership filters, site dedup, taxon translation, and the summary counts.
 """
 
-import pytest
 
 from whatsthatfish.serving.db.repository import (
     TaxaRepository,
@@ -17,14 +16,34 @@ USER_A = {"sub": "user-a", "email": "a@test.dev", "name": "Diver A", "picture": 
 USER_B = {"sub": "user-b", "email": "b@test.dev", "name": "Diver B", "picture": None}
 
 TAXA = [
-    {"taxon_id": 1001, "zero_index": 0, "species": "Amphiprion ocellaris",
-     "genus": "Amphiprion", "family": "Pomacentridae", "common_name": "Clown anemonefish"},
-    {"taxon_id": 1002, "zero_index": 1, "zero_genus": 0, "zero_family": 0,
-     "species": "Amphiprion clarkii", "genus": "Amphiprion", "family": "Pomacentridae",
-     "common_name": "Clark's anemonefish"},
-    {"taxon_id": 2001, "zero_index": 2, "zero_genus": 1, "zero_family": 1,
-     "species": "Thalassoma lunare", "genus": "Thalassoma", "family": "Labridae",
-     "common_name": "Moon wrasse"},
+    {
+        "taxon_id": 1001,
+        "zero_index": 0,
+        "species": "Amphiprion ocellaris",
+        "genus": "Amphiprion",
+        "family": "Pomacentridae",
+        "common_name": "Clown anemonefish",
+    },
+    {
+        "taxon_id": 1002,
+        "zero_index": 1,
+        "zero_genus": 0,
+        "zero_family": 0,
+        "species": "Amphiprion clarkii",
+        "genus": "Amphiprion",
+        "family": "Pomacentridae",
+        "common_name": "Clark's anemonefish",
+    },
+    {
+        "taxon_id": 2001,
+        "zero_index": 2,
+        "zero_genus": 1,
+        "zero_family": 1,
+        "species": "Thalassoma lunare",
+        "genus": "Thalassoma",
+        "family": "Labridae",
+        "common_name": "Moon wrasse",
+    },
 ]
 
 
@@ -109,7 +128,9 @@ class TestTaxaRepository:
         with session_factory() as s:
             assert TaxaRepository(s).taxa_display([]) == {}
 
-    def test_search_species_matches_name_and_joins_common(self, session_factory, seed_taxa):
+    def test_search_species_matches_name_and_joins_common(
+        self, session_factory, seed_taxa
+    ):
         seed_taxa(TAXA)
         with session_factory() as s:
             rows = TaxaRepository(s).search_species("amphiprion")
@@ -117,11 +138,22 @@ class TestTaxaRepository:
         assert names == {"Amphiprion ocellaris", "Amphiprion clarkii"}
         assert any(r.common_name == "Clown anemonefish" for r in rows)
 
-    def test_search_species_excludes_non_fish_ancestry(self, session_factory, seed_taxa):
+    def test_search_species_excludes_non_fish_ancestry(
+        self, session_factory, seed_taxa
+    ):
         # A coral taxon (Anthozoa ancestry) must NOT surface in the fish picker.
-        seed_taxa([{"taxon_id": 9001, "zero_index": 9, "species": "Acropora coral",
-                    "genus": "Acropora", "family": "Acroporidae",
-                    "ancestry": "48460/1/2/47534/47533"}])
+        seed_taxa(
+            [
+                {
+                    "taxon_id": 9001,
+                    "zero_index": 9,
+                    "species": "Acropora coral",
+                    "genus": "Acropora",
+                    "family": "Acroporidae",
+                    "ancestry": "48460/1/2/47534/47533",
+                }
+            ]
+        )
         with session_factory() as s:
             rows = TaxaRepository(s).search_species("Acropora")
         assert rows == []
@@ -134,7 +166,9 @@ class TestSiteDedup:
     def test_resolve_creates_proper_cased_site(self, session_factory):
         user = _user(session_factory, USER_A)
         with session_factory() as s:
-            site = ObservationRepository(s).resolve_or_create_site("tulamben bay", user.id)
+            site = ObservationRepository(s).resolve_or_create_site(
+                "tulamben bay", user.id
+            )
             assert site.name == "Tulamben Bay"  # proper-cased
             assert site.name_key == "tulamben bay"  # normalized key
 
@@ -170,8 +204,11 @@ class TestOwnershipScoping:
             repo = ObservationRepository(s)
             dive = repo.create_dive(user.id, dived_at=None)
             obs = repo.create_observation(
-                user.id, dive_id=dive.id, predicted_taxon_id=1001,
-                corrected_taxon_id=1001, label_status="predicted",
+                user.id,
+                dive_id=dive.id,
+                predicted_taxon_id=1001,
+                corrected_taxon_id=1001,
+                label_status="predicted",
             )
             return user, dive.id, obs.id
 
@@ -233,16 +270,23 @@ class TestStatsAndOrdering:
             # 3 observations across 2 distinct effective species (1001 twice, 2001).
             for taxon in (1001, 1001, 2001):
                 repo.create_observation(
-                    user.id, dive_id=dive.id, predicted_taxon_id=taxon,
-                    corrected_taxon_id=taxon, label_status="predicted",
+                    user.id,
+                    dive_id=dive.id,
+                    predicted_taxon_id=taxon,
+                    corrected_taxon_id=taxon,
+                    label_status="predicted",
                 )
             assert repo.user_stats(user.id) == {
-                "dives": 1, "observations": 3, "unique_species": 2,
+                "dives": 1,
+                "observations": 3,
+                "unique_species": 2,
             }
 
     def test_user_stats_zero_for_new_user(self, session_factory):
         user = _user(session_factory, USER_A)
         with session_factory() as s:
             assert ObservationRepository(s).user_stats(user.id) == {
-                "dives": 0, "observations": 0, "unique_species": 0,
+                "dives": 0,
+                "observations": 0,
+                "unique_species": 0,
             }

@@ -310,7 +310,6 @@ class InatPreparation:
         keeps an observation intact (one obs = one lat/lon = one cluster), so after
         this every observation is wholly on one side.
         """
-        from collections import defaultdict
 
         unique_clusters = list({row["cluster"] for row in rows})
         rng = np.random.default_rng(42)

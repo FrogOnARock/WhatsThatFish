@@ -218,7 +218,12 @@ class Detector:
         results, _ = self.evaluate(weights=dest)
         store = PromotionStore(self.weights_path / "promoted")
         gate_and_promote(
-            f"detector_{self.dataset}", results, dest, DETECTOR_FLOOR, DETECTOR_KEYS, store
+            f"detector_{self.dataset}",
+            results,
+            dest,
+            DETECTOR_FLOOR,
+            DETECTOR_KEYS,
+            store,
         )
         return results
 
@@ -234,8 +239,13 @@ class Detector:
         idx = int(np.argmin(np.abs(px - conf)))
         return float(r_curve.mean(0)[idx])
 
-
-    def evaluate(self, weights: Path = None, conf: float = 0.001, img_size: int = 640):
+    def evaluate(
+        self,
+        weights: Path = None,
+        conf: float = 0.001,
+        img_size: int = 640,
+        device: str = None,
+    ):
         """Validate this stage's detector on its DB-driven val split.
 
         Reuses the CustomDetectionValidator (same [0,1]-image handling as training)
@@ -265,14 +275,18 @@ class Detector:
         # validation parses it for metadata only — nc/names (init_metrics) and
         # channels (warmup). The image paths (/dev/null) are never read because
         # self.dataloader is already set, so get_dataloader() is skipped.
-        args = get_cfg(
-            DEFAULT_CFG,
-            overrides={
-                "conf": conf,
-                "imgsz": img_size,
-                "data": str(self.class_config),
-            },
-        )
+        overrides = {
+            "conf": conf,
+            "imgsz": img_size,
+            "data": str(self.class_config),
+        }
+        # `device` is left unset by default (select_device picks the GPU if
+        # present). The INT8 release gate passes device="cpu" so the quantized
+        # graph is certified on the SAME execution provider it serves on — INT8
+        # kernels differ across CPU vs CUDA providers.
+        if device is not None:
+            overrides["device"] = device
+        args = get_cfg(DEFAULT_CFG, overrides=overrides)
         save_dir = self.weights_path.parent / "runs" / "detect" / f"{self.dataset}_eval"
         save_dir.mkdir(parents=True, exist_ok=True)
 
@@ -303,9 +317,8 @@ class Detector:
         """Export the detector to ONNX (FP32, NMS baked in), optionally emitting INT8.
 
         Dumb by design: it only *produces* artifacts. The release gate (Recall/mAP
-        accuracy via `evaluate()`, ONNX parity, INT8 degradation) lives in the test
-        suite, not here — so a failing model can't sneak past by calling export.
-        Returns {"fp32": Path, "int8": Path | None}.
+        accuracy via `evaluate()`, ONNX parity, INT8 degradation) lives in the model
+        retraining, the .pt model is gated based on it exceeding the requisite performance metrics.
         """
         w = Path(weights) if weights else self.weights_path / self.output_weights
         model = YOLO(model=w, task="detect")
@@ -347,7 +360,7 @@ def main(**kwargs):
     if kwargs.get("type") == "tune":
         detector.tune()
     elif kwargs.get("type") == "eval":
-        _, _ = detector.evaluate()
+        _, _ = detector.evaluate(weights=kwargs.get("weights_path", None))
     elif kwargs.get("type") == "export":
         detector.export(int8=kwargs.get("int8", False))
     else:
@@ -401,10 +414,17 @@ if __name__ == "__main__":
         metavar="PATH",
         help="Path to an existing Ray Tune experiment directory to resume (tune mode only)",
     )
+    parser.add_argument(
+        "--weights-path",
+        default=None,
+        metavar="WEIGHTS_PATH",
+        help="Path to a model weights file to load (eval mode only)",
+    )
     args = parser.parse_args()
     main(
         dataset=args.dataset,
         type=args.type,
         restore_path=args.restore_path,
         int8=args.int8,
+        weights_path=args.weights_path,
     )

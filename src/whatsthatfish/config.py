@@ -112,22 +112,25 @@ def _get_logger(name: str):
     if logger.handlers:
         return logger
 
-    if os.path.exists(logging_path):
-        pass
-    else:
-        logging_path.parent.mkdir(parents=True, exist_ok=True)
-
-    # Set file handler for output of logging
-    file_handler = logging.FileHandler(logging_path)
-    file_handler.setLevel(logging.INFO)
-    file_handler.setFormatter(logging.Formatter(formatting))
-
-    # Set console handler for output of logging
+    # Console (stdout) is always attached — Cloud Run / Cloud Logging captures it.
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(logging.Formatter(formatting))
-
-    logger.addHandler(file_handler)
     logger.addHandler(console_handler)
+
+    # File logging is best-effort: valuable locally and on the training VM, but in
+    # a non-root / read-only serving container the logs dir isn't writable — fall
+    # back to stdout-only rather than crashing the app at import time.
+    try:
+        logging_path.parent.mkdir(parents=True, exist_ok=True)
+        file_handler = logging.FileHandler(logging_path)
+        file_handler.setLevel(logging.INFO)
+        file_handler.setFormatter(logging.Formatter(formatting))
+        logger.addHandler(file_handler)
+    except OSError:
+        logger.debug(
+            "File logging disabled (%s not writable) — stdout only",
+            logging_path.parent,
+        )
 
     return logger

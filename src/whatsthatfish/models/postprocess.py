@@ -20,11 +20,13 @@ def top3(logits: np.ndarray) -> tuple[list[int], list[float]]:
     Mirrors `torch.topk(logits, 3).values.softmax(0)`: the probabilities are
     relative to the top-3 logits only, not calibrated over the full class set.
     """
-    idx = np.argpartition(logits, -3)[-3:]           # top-3, unordered  (O(C), cheap)
-    idx = idx[np.argsort(logits[idx])[::-1]]         # sort descending — matches torch.topk order
+    idx = np.argpartition(logits, -3)[-3:]  # top-3, unordered  (O(C), cheap)
+    idx = idx[
+        np.argsort(logits[idx])[::-1]
+    ]  # sort descending — matches torch.topk order
     v = logits[idx]
     e = np.exp(v - v.max())
-    probs = e / e.sum()                              # softmax over the 3 values
+    probs = e / e.sum()  # softmax over the 3 values
     return idx.tolist(), probs.tolist()
 
 

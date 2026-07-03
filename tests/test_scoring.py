@@ -9,15 +9,13 @@ DB compaction tests (TestScoringProgressTrackerDB) require Postgres:
     docker compose -f docker-compose.test.yml up -d
 """
 
-import asyncio
 import csv
-from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import cv2
 import numpy as np
 import pytest
-from sqlalchemy import create_engine, func, select
+from sqlalchemy import create_engine, select
 from sqlalchemy.orm import sessionmaker
 
 from whatsthatfish.config import GCSConfig

@@ -10,19 +10,18 @@ it reuses `get_session_factory()` (sync), so endpoints are plain `def` and
 FastAPI runs them in its threadpool. No new DB wiring.
 """
 
-import os
-from pathlib import Path
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, Depends, UploadFile, File, Request
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from starlette.responses import PlainTextResponse
 from fastapi.encoders import jsonable_encoder
+from pathlib import Path
+import os
 
 from ..config import _get_logger
-from ..inference.class_inference import ClassInference
-from ..inference.bbox_inference import BoundingBoxInference
+from ..inference.class_inference import OnnxClassInference
+from ..inference.bbox_inference import OnnxBoundingBoxInference
 from .routers import library, predictions, auth, history
 from .error import BaseAppException, InvalidPredictionRequest
 
@@ -30,20 +29,39 @@ from .error import BaseAppException, InvalidPredictionRequest
 load_dotenv()
 logger = _get_logger("uvicorn.error")
 
+# ONNX artifacts baked into the image (see Dockerfile COPY). Env overrides let
+# local dev / the release job point elsewhere. Classifier ships INT8 (real
+# Gemm-head speedup); detector ships FP32 (dynamic INT8 is slower on its Conv
+# stack). Both run on CPUExecutionProvider inside the container.
+_WEIGHTS = Path(__file__).parents[1] / "weights"
+CLASSIFIER_ONNX = os.getenv("CLASSIFIER_ONNX", str(_WEIGHTS / "classifier.int8.onnx"))
+DETECTOR_ONNX = os.getenv("DETECTOR_ONNX", str(_WEIGHTS / "lc1_best.onnx"))
+
 
 async def lifespan(app: FastAPI):
-    app.state.bbox_inferrer = BoundingBoxInference(conf=0.15)
-    app.state.class_inferrer = ClassInference()
+    # Torch-free serving: both inferrers are onnxruntime sessions built once at
+    # startup. Same .infer() contracts as the torch classes they replace, so the
+    # PredictionService / router wiring is unchanged.
+    app.state.bbox_inferrer = OnnxBoundingBoxInference(DETECTOR_ONNX, conf=0.15)
+    app.state.class_inferrer = OnnxClassInference(CLASSIFIER_ONNX)
     yield
 
 
 app = FastAPI(title="WhatsThisFish API", version="0.1.0", lifespan=lifespan)
 
-# Vite dev server origin. When we deploy, add the Cloudflare Pages domain here
-# (or front both behind one domain to avoid CORS entirely — see hosting notes).
+# CORS origins. Local dev origins are always allowed; production origins come
+# from ALLOWED_ORIGINS (comma-separated) so adding the Cloudflare Pages domain
+# post-deploy is a `gcloud run --update-env-vars` flag, not a Docker rebuild.
+# ALLOWED_ORIGIN_REGEX additionally covers Pages per-deploy preview subdomains
+# (e.g. https://<hash>.whatsthatfish.pages.dev) which can't be enumerated.
+_DEV_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:5173"]
+_ENV_ORIGINS = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+_ORIGIN_REGEX = os.getenv("ALLOWED_ORIGIN_REGEX") or None
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=_DEV_ORIGINS + _ENV_ORIGINS,
+    allow_origin_regex=_ORIGIN_REGEX,
     allow_methods=["GET", "POST", "PATCH"],
     allow_headers=["*"],
 )

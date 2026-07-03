@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from uuid import UUID
 
-from sqlalchemy.orm import Session, joinedload, selectinload
+from sqlalchemy.orm import joinedload, selectinload
 from sqlalchemy import select, asc, desc, or_, func
 
 from whatsthatfish.database.models import (

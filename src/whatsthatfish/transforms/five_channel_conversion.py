@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import torch
 from PIL import Image
 from .lcn_gradient_map import gradient_map, local_contrast_normalization
 

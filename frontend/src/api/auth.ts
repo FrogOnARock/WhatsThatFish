@@ -1,5 +1,5 @@
 import { API_BASE } from "./config";
-import { authedFetch, raiseForStatus } from "./http";
+import { apiFetch, authedFetch, raiseForStatus, TIMEOUT } from "./http";
 import type { UserProfile, UnitSystem } from "./types";
 
 function mapProfile(raw: any): UserProfile {
@@ -18,12 +18,15 @@ function mapProfile(raw: any): UserProfile {
     treat it as signed-out. Maps the backend's snake_case to camelCase here, at
     the seam, like api/species.ts does for the catalogue. */
 export async function getMe(token: string): Promise<UserProfile> {
-  const res = await fetch(`${API_BASE}/auth/me`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  if (!res.ok) {
-    throw new Error(`GET /auth/me failed: ${res.status} ${res.statusText}`);
-  }
+  // Pass the token explicitly (this runs during hydration, possibly before
+  // authedFetch's authToken() would see it). apiFetch throws AuthExpiredError on
+  // 401 — callers already treat any throw here as signed-out.
+  const res = await apiFetch(
+    `${API_BASE}/auth/me`,
+    { headers: { Authorization: `Bearer ${token}` } },
+    { timeoutMs: TIMEOUT.META, retries: 1 },
+  );
+  await raiseForStatus(res, "Couldn't load your profile");
   return mapProfile(await res.json());
 }
 

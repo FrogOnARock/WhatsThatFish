@@ -1,19 +1,10 @@
 from abc import ABC, abstractmethod
-from google.oauth2 import service_account
 import os
 from pathlib import Path
 from fastapi.responses import FileResponse
-from starlette.responses import RedirectResponse
-from google.api_core.exceptions import (
-    ClientError as GCSClientError,
-    ServerError as GCSServerError,
-    ServiceUnavailable,
-    TooManyRequests,
-    GoogleAPICallError,
-)
+from starlette.responses import Response
 
 
-from ..retry import gcs_retry
 from ..etl.gcs_client import GCSClient
 from ..config import get_config
 from .error import ResourceNotFoundException, BaseAppException
@@ -47,13 +38,25 @@ class GCSImage(ImageStorage):
         )  # Going to have to change this to an environment variable
         self.client = GCSClient(self.config).get_gcs_client()
         self.bucket = self.client.bucket(self.config.bucket)
-        self.prefix = self.config.prefixes["training"]
+        # Key is "gcs_train" (value "training/"). NB: objects were uploaded under a
+        # double slash (training//<file>), so keeping the trailing slash + the
+        # f"{prefix}/{filename}" join below reproduces the stored path. Re-keying
+        # the bucket to single-slash is a separate cleanup.
+        self.prefix = self.config.prefixes["gcs_train"]
 
     def retrieve_image(self, filename: str):
-        """Mint a 15-minute signed URL for the blob and redirect the client to it."""
+        """Stream the blob's bytes back as JPEG. No signed URL: ADC in Cloud Run
+        can't sign a URL (needs a private key or IAM SignBlob), and streaming these
+        small crops straight through the API is fine at this volume."""
         blob = self.bucket.blob(f"{self.prefix}/{filename}")
-        url = blob.generate_signed_url(expiration=900)
-        return RedirectResponse(url)
+        # Training images are immutable at a given filename — let the browser cache
+        # them forever so a re-view is 0 network. `public` (shared caches OK) since
+        # the catalogue is not user-private.
+        return Response(
+            content=blob.download_as_bytes(),
+            media_type="image/jpeg",
+            headers={"Cache-Control": "public, max-age=31536000, immutable"},
+        )
 
     def read_bytes(self, filename):
         blob = self.bucket.blob(f"{self.prefix}/{filename}")
@@ -126,7 +129,7 @@ class GCSContribution(ContributionStorage):
         self.config = get_config().gcs
         self.client = GCSClient(self.config).get_gcs_client()
         self.bucket = self.client.bucket(self.config.bucket)
-        self.prefix = self.config.prefixes["contributions"]
+        self.prefix = self.config.prefixes["gcs_contributions"]
 
     def upload(self, key: str, data: bytes) -> str:
         blob = self.bucket.blob(f"{self.prefix}/{key}")
@@ -135,7 +138,13 @@ class GCSContribution(ContributionStorage):
 
     def retrieve_image(self, key: str):
         blob = self.bucket.blob(f"{self.prefix}/{key}")
-        return RedirectResponse(blob.generate_signed_url(expiration=900))
+        # Same immutability, but `private`: these are user-submitted photos, so keep
+        # them out of shared/proxy caches — only the owner's browser should cache.
+        return Response(
+            content=blob.download_as_bytes(),
+            media_type="image/jpeg",
+            headers={"Cache-Control": "private, max-age=31536000, immutable"},
+        )
 
 
 class LocalContribution(ContributionStorage):

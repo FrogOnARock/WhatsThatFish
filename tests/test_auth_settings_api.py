@@ -19,8 +19,9 @@ class TestProfile:
 
 class TestSettingsPatch:
     def test_set_preferred_name_and_units(self, authed_client):
-        r = authed_client.patch("/auth/me", json={
-            "preferred_name": "Reef Diver", "unit_system": "imperial"})
+        r = authed_client.patch(
+            "/auth/me", json={"preferred_name": "Reef Diver", "unit_system": "imperial"}
+        )
         assert r.status_code == 200, r.text
         assert r.json()["preferred_name"] == "Reef Diver"
         assert r.json()["unit_system"] == "imperial"

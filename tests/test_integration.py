@@ -23,7 +23,6 @@ from whatsthatfish.etl.gcs_client import GCSClient
 from whatsthatfish.database import LilaAnnotations
 from whatsthatfish.etl.inaturalist_dataset import INaturalistDataset
 from whatsthatfish.etl.photo_transfer import (
-    TransferProgressTracker,
     PhotoTransferPipeline,
 )
 from whatsthatfish.database.models import (
@@ -33,7 +32,6 @@ from whatsthatfish.database.models import (
     LilaCollectedImages,
 )
 
-from tests.test_pipeline import tracker_dir
 
 
 # ─── Helper ───────────────────────────────────────────────────────────

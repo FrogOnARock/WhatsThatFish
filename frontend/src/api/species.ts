@@ -4,6 +4,7 @@
    boundary: backend field renames are absorbed here, not in components. */
 import type { SpeciesEntry } from "./types";
 import { API_BASE } from "./config";
+import { apiFetch, raiseForStatus, TIMEOUT } from "./http";
 // Override at build/deploy time with VITE_API_BASE (e.g. the Cloud Run URL).
 // Defaults to the local uvicorn dev server.
 
@@ -28,10 +29,8 @@ interface SpeciesCatalogueWire {
 }
 
 export async function getSpeciesLibrary(): Promise<SpeciesEntry[]> {
-  const res = await fetch(`${API_BASE}/species`);
-  if (!res.ok) {
-    throw new Error(`GET /species failed: ${res.status} ${res.statusText}`);
-  }
+  const res = await apiFetch(`${API_BASE}/species`, {}, { timeoutMs: TIMEOUT.META, retries: 1 });
+  await raiseForStatus(res, "Couldn't load the species library");
   const data: SpeciesCatalogueWire = await res.json();
   return data.species.map((s) => ({
     speciesId: s.species_id,

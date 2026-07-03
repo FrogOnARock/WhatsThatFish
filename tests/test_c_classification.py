@@ -140,8 +140,11 @@ class TestCustomResnet:
         (__init__ does NOT download weights; load_pretrained() does.)"""
         with pytest.warns(UserWarning):
             m = CustomResnet(
-                block=BasicBlock, layers=[8, 8, 12, 6], num_class=[50, 10, 5],
-                in_dim=5, pretrained=True,
+                block=BasicBlock,
+                layers=[8, 8, 12, 6],
+                num_class=[50, 10, 5],
+                in_dim=5,
+                pretrained=True,
             )
         assert m.layers == [3, 4, 6, 3]
 

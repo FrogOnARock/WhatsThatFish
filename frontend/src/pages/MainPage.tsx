@@ -1,14 +1,24 @@
 /* Main page — orchestrates idle / analyzing / results states.
    Unlike the prototype (setTimeout), the analyzing state is driven by the
    API promise resolving, so it behaves identically with the real backend. */
-import { useCallback, useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useMemo, useState, useRef } from "react";
 import DropZone from "../components/DropZone";
 import ResultsView, { type ImageState } from "../components/ResultsView";
 import { getPrediction, getPredictionSample } from "../api/client";
 import type { Prediction } from "../api/types";
 import { SAMPLE_FISH } from "../api/prediction";
 import { API_BASE } from "../api/config";
+import { prefetchImages, imagesReady } from "../api/imagePrefetch";
 import { getStats, type ModelStats } from "../api/stats";
+import { useBackendStatus } from "../api/backendStatus";
+
+// Model pill label reflects real reachability instead of a hardcoded "online".
+const PILL_LABEL: Record<string, string> = {
+  online: "model online",
+  warming: "waking model…",
+  down: "model offline",
+  unknown: "model online",
+};
 
 export type RequestState =
     { status: "analyzing" } |
@@ -22,10 +32,36 @@ export default function MainPage() {
   const [image, setImage] = useState<ImageState | null>(null);
   const [request, setRequest] = useState<RequestState | null>(null);
   const [stats, setStats] = useState<ModelStats | null>(null);
+  const backendStatus = useBackendStatus();
+  // The prefetch cache (imagePrefetch's `settled` set) is module-level, not
+  // reactive — bump this once a batch finishes so `samplesReady` re-evaluates.
+  const [readyTick, setReadyTick] = useState(0);
 
   useEffect(() => {
-    getStats().then(setStats).catch(() => {});
+    // apiFetch already retries a transient cold-start 5xx; a hard failure leaves
+    // the subtitle on its "loading classes…" fallback. Log rather than swallow.
+    getStats().then(setStats).catch((err) => console.error("stats load failed", err));
   }, []);
+
+  // Stable identity so the prefetch effect and the readiness check share one array.
+  const sampleUrls = useMemo(
+    () => SAMPLE_FISH.map((s) => `${API_BASE}/image/${s.filename}`),
+    [],
+  );
+
+  useEffect(() => {
+    // Warm the sample thumbnails up front so the landing strip appears together
+    // rather than trickling in. On a cold Cloud Run start these requests are held
+    // open until the instance wakes, so we GATE the samples strip on this batch
+    // (skeleton until warm) — but only the strip: the upload CTA stays instant
+    // because it needs no backend. Immutable Cache-Control keeps them warm after.
+    prefetchImages(sampleUrls).then(() => setReadyTick((t) => t + 1));
+  }, [sampleUrls]);
+
+  const samplesReady = useMemo(
+    () => imagesReady(sampleUrls),
+    [sampleUrls, readyTick],
+  );
 
   const  runInference = useCallback(async (task: () => Promise<Prediction | null>) => {
     lastTask.current = task;
@@ -95,7 +131,7 @@ export default function MainPage() {
             </p>
           </div>
           <div className="page-header__model">
-            <span className="page-header__model-pill">model online · YOLO11 + CustomResnet</span>
+            <span className="page-header__model-pill">{PILL_LABEL[backendStatus]} · YOLO11 + CustomResnet</span>
             <span>
               {stats
                 ? `${stats.species.toLocaleString()} species · ${stats.genera} genera · ${stats.families} families`
@@ -104,7 +140,7 @@ export default function MainPage() {
           </div>
         </header>
 
-        {!image && <DropZone onUpload={handleUpload} onSample={handleSample} speciesCount={stats?.species} />}
+        {!image && <DropZone onUpload={handleUpload} onSample={handleSample} speciesCount={stats?.species} samplesReady={samplesReady} />}
         {image && (
           <ResultsView
             image={image}

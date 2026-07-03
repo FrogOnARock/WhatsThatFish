@@ -10,11 +10,24 @@ import io
 import pytest
 
 TAXA = [
-    {"taxon_id": 1001, "zero_index": 0, "species": "Amphiprion ocellaris",
-     "genus": "Amphiprion", "family": "Pomacentridae", "common_name": "Clown anemonefish"},
-    {"taxon_id": 2001, "zero_index": 2, "zero_genus": 1, "zero_family": 1,
-     "species": "Thalassoma lunare", "genus": "Thalassoma", "family": "Labridae",
-     "common_name": "Moon wrasse"},
+    {
+        "taxon_id": 1001,
+        "zero_index": 0,
+        "species": "Amphiprion ocellaris",
+        "genus": "Amphiprion",
+        "family": "Pomacentridae",
+        "common_name": "Clown anemonefish",
+    },
+    {
+        "taxon_id": 2001,
+        "zero_index": 2,
+        "zero_genus": 1,
+        "zero_family": 1,
+        "species": "Thalassoma lunare",
+        "genus": "Thalassoma",
+        "family": "Labridae",
+        "common_name": "Moon wrasse",
+    },
 ]
 
 
@@ -72,13 +85,16 @@ class TestDives:
 
     def test_patch_dive(self, authed_client, taxa):
         dive = _make_dive(authed_client)
-        r = authed_client.patch(f"/dives/{dive['id']}", json={"notes": "viz 25m", "site_name": "New Site"})
+        r = authed_client.patch(
+            f"/dives/{dive['id']}", json={"notes": "viz 25m", "site_name": "New Site"}
+        )
         assert r.status_code == 200, r.text
         assert r.json()["notes"] == "viz 25m"
         assert r.json()["site_name"] == "New Site"
 
     def test_patch_unknown_dive_404(self, authed_client):
         import uuid
+
         r = authed_client.patch(f"/dives/{uuid.uuid4()}", json={"notes": "x"})
         assert r.status_code == 404
 
@@ -96,15 +112,24 @@ class TestObservations:
 
     def test_create_unknown_dive_404(self, authed_client, taxa):
         import uuid
-        r = authed_client.post("/observations", json={
-            "dive_id": str(uuid.uuid4()), "predicted_species_index": 0})
+
+        r = authed_client.post(
+            "/observations",
+            json={"dive_id": str(uuid.uuid4()), "predicted_species_index": 0},
+        )
         assert r.status_code == 404
 
     def test_patch_observation_relabel(self, authed_client, taxa):
         dive = _make_dive(authed_client)
         obs = _make_obs(authed_client, dive["id"], depth_m=5)
-        r = authed_client.patch(f"/observations/{obs['id']}", json={
-            "corrected_taxon_id": 2001, "label_status": "corrected", "depth_m": 18})
+        r = authed_client.patch(
+            f"/observations/{obs['id']}",
+            json={
+                "corrected_taxon_id": 2001,
+                "label_status": "corrected",
+                "depth_m": 18,
+            },
+        )
         assert r.status_code == 200, r.text
         body = r.json()
         assert body["corrected_taxon_id"] == 2001
@@ -113,6 +138,7 @@ class TestObservations:
 
     def test_patch_observation_404(self, authed_client):
         import uuid
+
         r = authed_client.patch(f"/observations/{uuid.uuid4()}", json={"depth_m": 1})
         assert r.status_code == 404
 
@@ -126,7 +152,11 @@ class TestPhotos:
         obs = _make_obs(authed_client, dive["id"])
 
         files = {"img": ("photo.jpg", io.BytesIO(b"\xff\xd8jpegbytes"), "image/jpeg")}
-        data = {"observation_id": obs["id"], "predicted_species_index": "0", "confidence": "0.9"}
+        data = {
+            "observation_id": obs["id"],
+            "predicted_species_index": "0",
+            "confidence": "0.9",
+        }
         up = authed_client.post("/observation_photos", files=files, data=data)
         assert up.status_code == 200, up.text
         photo_id = up.json()["id"]
@@ -138,6 +168,7 @@ class TestPhotos:
 
     def test_fetch_unknown_photo_404(self, authed_client):
         import uuid
+
         r = authed_client.get(f"/observation_photos/{uuid.uuid4()}/image")
         assert r.status_code == 404
 
@@ -159,7 +190,10 @@ class TestHistoryAndStats:
         dive = _make_dive(authed_client)
         _make_obs(authed_client, dive["id"])
         assert authed_client.get("/me/stats").json() == {
-            "dives": 1, "observations": 1, "unique_species": 1}
+            "dives": 1,
+            "observations": 1,
+            "unique_species": 1,
+        }
 
     def test_dive_sites_search(self, authed_client, taxa):
         _make_dive(authed_client, site_name="Coral Garden")

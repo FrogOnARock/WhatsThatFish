@@ -87,3 +87,5 @@ RuntimeError: Error(s) in loading state_dict for CustomResnet:
 2026-06-30 14:08:44,543 - INFO - inference top1=Orectolobus maculatus top1_conf=0.9961 entropy=0.0280 n_candidates=3 detected=False
 2026-06-30 14:08:53,717 - INFO - inference top1=Orectolobus maculatus top1_conf=0.9944 entropy=0.0383 n_candidates=3 detected=True
 2026-07-01 14:33:39,199 - INFO - inference top1=Plectorhinchus lineatus top1_conf=0.9853 entropy=0.0830 n_candidates=3 detected=True
+2026-07-02 15:04:52,302 - INFO - inference top1=Chaetodon trifasciatus top1_conf=0.9929 entropy=0.0470 n_candidates=3 detected=True
+2026-07-02 15:05:15,622 - INFO - inference top1=Plectorhinchus lineatus top1_conf=0.9777 entropy=0.1156 n_candidates=3 detected=True

@@ -326,10 +326,10 @@ def main():
     # Fish taxa: 47178, 1000, 2000, 3001, 3002, 3003, 196614, 4000, 4001 (9 active)
     # Research fish observations: obs-001 through obs-006 (6 rows)
     # Photos joining those observations: 7 photos
-    print(f"\nExpected after pipeline:")
-    print(f"  Active fish taxa:     9")
-    print(f"  Research-grade obs:   6")
-    print(f"  Final photo records:  7")
+    print("\nExpected after pipeline:")
+    print("  Active fish taxa:     9")
+    print("  Research-grade obs:   6")
+    print("  Final photo records:  7")
 
 
 if __name__ == "__main__":

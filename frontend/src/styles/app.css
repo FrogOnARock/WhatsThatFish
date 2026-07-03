@@ -20,6 +20,34 @@
   padding: 36px 48px 64px;
 }
 
+/* Cold-start strip — fixed overlay so it never reflows the .app grid. Only
+   mounts while warming/down (see ColdStartBanner), so no warm-path cost. */
+.cold-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 9px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: var(--navy);
+  background: var(--foam);
+  border-bottom: 1px solid var(--foam-deep);
+  box-shadow: 0 4px 16px -8px oklch(0.55 0.105 195 / 0.5);
+}
+.cold-banner--down {
+  color: var(--bg);
+  background: var(--coral);
+  border-bottom-color: oklch(0.58 0.16 35);
+  box-shadow: 0 4px 16px -8px oklch(0.70 0.160 35 / 0.5);
+}
+
 /* ------------------------------------------------------------------ */
 /* Sidebar                                                             */
 /* ------------------------------------------------------------------ */
@@ -495,6 +523,42 @@ img.pdx-gallery__img, div.pdx-gallery__img { background: var(--bg-2); }
 .sample__chev {
   font-family: var(--font-mono);
   font-size: 11px;
+  color: var(--ink-3);
+}
+
+/* Cold-start skeleton: non-interactive tiles that hold the grid's shape while
+   the sample thumbnails warm. The thumb shimmers; the name is dimmed. */
+.sample--skeleton {
+  cursor: default;
+  pointer-events: none;
+}
+.sample--skeleton:hover {
+  transform: none;
+  border-color: var(--line);
+  box-shadow: none;
+}
+.sample--skeleton .sample__thumb {
+  background: linear-gradient(
+    100deg,
+    oklch(0.90 0.02 200) 30%,
+    oklch(0.95 0.015 200) 50%,
+    oklch(0.90 0.02 200) 70%
+  );
+  background-size: 220% 100%;
+  animation: sample-shimmer 1400ms ease-in-out infinite;
+}
+.sample--skeleton .sample__name { color: var(--ink-3); }
+@keyframes sample-shimmer {
+  0%   { background-position: 180% 0; }
+  100% { background-position: -80% 0; }
+}
+.samples__warming {
+  display: flex;
+  align-items: center;
+  margin: 14px 0 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
   color: var(--ink-3);
 }
 

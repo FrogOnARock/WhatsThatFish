@@ -81,7 +81,9 @@ def class_dataloader(
             v2.RandomAdjustSharpness(sharpness_factor=2, p=0.5),
         ]
         transforms = (
-            [LetterboxResize(320)] + add_transforms + [AddMultiChannel(), NumpyToTensor()]
+            [LetterboxResize(320)]
+            + add_transforms
+            + [AddMultiChannel(), NumpyToTensor()]
         )
         transforms_composed = v2.Compose(transforms)
         class_dataset = ClassificationDataset(

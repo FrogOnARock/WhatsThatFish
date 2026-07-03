@@ -1,18 +1,24 @@
 from pathlib import Path
 from io import BytesIO
+import numpy as np
 from PIL import Image
 from ..transforms.five_channel_conversion import AddMultiChannel
 from ..transforms.letterbox_resize import LetterboxResize
 
-from ..models.classifier import Classifier
 from ..models.postprocess import build_predictions
 
 
 def preprocess_numpy(imgs):
+    """PIL crops → a single (N, 5, 320, 320) float32 batch, ready for an onnx feed.
+
+    AddMultiChannel already returns a (5, 320, 320) float32 ndarray, so we
+    letterbox + channel-stack each crop, then stack the batch dim on top.
+    onnxruntime needs one contiguous ndarray, not a Python list of arrays.
+    """
     seq = imgs if isinstance(imgs, (list, tuple)) else [imgs]
     letterbox = LetterboxResize(320)
     to_channels = AddMultiChannel()
-    return [to_channels(letterbox(img)) for img in seq]
+    return np.stack([to_channels(letterbox(img)) for img in seq]).astype(np.float32)
 
 
 class BaseClassInference:
@@ -59,25 +65,38 @@ class BaseClassInference:
         ]
         return self._run(prepared_images)
 
-    def _run(self, prepared_images):
-        ...
+    def _run(self, prepared_images): ...
+
 
 class ClassInference(BaseClassInference):
-
     def __init__(self, model: Path = None):
         super().__init__()
+        # Lazy import: Classifier pulls torch. Keeping it out of module scope lets
+        # the slim torch-free serving container import OnnxClassInference (below)
+        # without the training stack. This torch path is the parity oracle now.
+        from ..models.classifier import Classifier
+
         self.weights = model
         self.model = Classifier()
 
     def _run(self, prepared_images):
         return self.model.predict(images=prepared_images, weights=self.weights)
 
+
 class OnnxClassInference(BaseClassInference):
-    def __init__(self, onnx_path):
+    """Torch-free classifier inference: an onnxruntime session over the exported
+    (INT8) classifier ONNX. Built once at app startup; `_run` feeds a stacked
+    numpy batch and hands the three raw logit heads to the numpy postprocess."""
+
+    def __init__(self, onnx_path, providers=("CPUExecutionProvider",)):
         super().__init__()
-        self.session = onnx_path
+        # Lazy import so this module (and the torch ClassInference above) don't
+        # pay for onnxruntime unless the ONNX path is actually constructed.
+        import onnxruntime as ort
+
+        self.session = ort.InferenceSession(str(onnx_path), providers=list(providers))
 
     def _run(self, prepared_images):
-        batch = preprocess_numpy(prepared_images)
+        batch = preprocess_numpy(prepared_images)  # (N, 5, 320, 320) float32
         species, genus, family = self.session.run(None, {"input": batch})
         return build_predictions(species, genus, family)

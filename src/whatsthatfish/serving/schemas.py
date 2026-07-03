@@ -6,7 +6,7 @@ exactly these shapes.
 """
 
 from datetime import datetime
-from typing import Annotated, Literal
+from typing import Literal
 from uuid import UUID
 
 from pydantic import BaseModel, Field

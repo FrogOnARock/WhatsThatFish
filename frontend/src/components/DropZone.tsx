@@ -4,13 +4,44 @@ import FishPlaceholder from "./FishPlaceholder";
 import { SAMPLE_FISH, SAMPLE, DEFAULT_PREDICTION_KEY } from "../api/prediction";
 import {API_BASE} from "../api/config";
 
+/** One sample thumbnail. Owns a `broken` flag so a failed load (e.g. the fast
+    cold-start 503 tail) falls back to the striped placeholder instead of the
+    browser's broken-image glyph — the inline `onError` here previously no-op'd. */
+function SampleTile({ sample, onSelect }: { sample: SAMPLE; onSelect: (id: string) => void }) {
+  const [broken, setBroken] = useState(false);
+  return (
+    <button className="sample" onClick={() => onSelect(sample.id)}>
+      <div className="sample__thumb">
+        {broken ? (
+          <FishPlaceholder caption={sample.label} />
+        ) : (
+          <img
+            src={`${API_BASE}/image/${sample.filename}`}
+            alt={sample.label}
+            loading="lazy"
+            onError={() => setBroken(true)}
+          />
+        )}
+      </div>
+      <div className="sample__meta">
+        <span className="sample__name">{sample.label}</span>
+        <span className="sample__chev">→</span>
+      </div>
+    </button>
+  );
+}
+
 interface DropZoneProps {
   onUpload: (file: File) => void;
   onSample: (id: string) => void;
   speciesCount?: number;
+  // False while the sample thumbnails are still warming (notably during a Cloud
+  // Run cold start). We show skeleton tiles instead of blank/broken <img>s until
+  // the whole strip can paint at once. The upload CTA above is unaffected.
+  samplesReady?: boolean;
 }
 
-export default function DropZone({ onUpload, onSample, speciesCount }: DropZoneProps) {
+export default function DropZone({ onUpload, onSample, speciesCount, samplesReady = true }: DropZoneProps) {
   const [hot, setHot] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -85,21 +116,32 @@ export default function DropZone({ onUpload, onSample, speciesCount }: DropZoneP
             {SAMPLE_FISH.length} of {speciesCount ? speciesCount.toLocaleString() : "…"} known species
           </span>
         </header>
-        <div className="samples">
-          {SAMPLE_FISH.map((s: SAMPLE) => (
-            <button key={s.id} className="sample" onClick={() => onSample(s.id)}>
-              <div className="sample__thumb">
-               <img src={ `${API_BASE}/image/${s.filename}` } alt={s.label}
-                loading="lazy" onError={() => FishPlaceholder}>
-                </img>
-              </div>
-              <div className="sample__meta">
-                <span className="sample__name">{s.label}</span>
-                <span className="sample__chev">→</span>
-              </div>
-            </button>
-          ))}
-        </div>
+        {samplesReady ? (
+          <div className="samples">
+            {SAMPLE_FISH.map((s: SAMPLE) => (
+              <SampleTile key={s.id} sample={s} onSelect={onSample} />
+            ))}
+          </div>
+        ) : (
+          <>
+            {/* Cold-start stop-gap: one skeleton tile per known sample so the grid
+                keeps its shape (no layout shift when the real strip swaps in). */}
+            <div className="samples samples--loading">
+              {SAMPLE_FISH.map((s: SAMPLE) => (
+                <div key={s.id} className="sample sample--skeleton" aria-hidden>
+                  <div className="sample__thumb" />
+                  <div className="sample__meta">
+                    <span className="sample__name">{s.label}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="samples__warming">
+              <span className="analyzing__pulse" />
+              waking the model — the first load after a period of inactivity can take ~30s
+            </p>
+          </>
+        )}
       </section>
     </div>
   );

@@ -5,7 +5,6 @@ from ..dependencies import get_session
 from whatsthatfish.serving.services.service import TaxaService
 from ..utils import StorageConstructor
 from ..schemas import SpeciesCatalogue, TaxonOption, ModelStats
-from ..error import ResourceNotFoundException, ValidationException
 
 router = APIRouter()
 

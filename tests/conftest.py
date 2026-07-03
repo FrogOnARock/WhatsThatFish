@@ -8,7 +8,6 @@ The session_factory fixture creates all tables fresh for each test,
 then rolls back via truncation after each test for isolation.
 """
 
-import os
 from pathlib import Path
 
 import pytest

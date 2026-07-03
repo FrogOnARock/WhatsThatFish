@@ -3,7 +3,6 @@ the local contribution round-trip. GCS is mocked; we only assert the SWITCH
 picks the right backend, not real cloud calls.
 """
 
-import pytest
 from fastapi.responses import FileResponse
 
 from whatsthatfish.serving import utils

@@ -49,7 +49,9 @@ class TestNoRegression:
     def test_lateral_within_epsilon_still_promotes(self):
         # one metric dips by less than epsilon (0.005) → not a regression
         new = {**GOOD, "geo_top3_family": GOOD["geo_top3_family"] - 0.004}
-        ok, _ = should_promote(new, GOOD, CLASSIFIER_FLOOR, CLASSIFIER_KEYS, epsilon=0.005)
+        ok, _ = should_promote(
+            new, GOOD, CLASSIFIER_FLOOR, CLASSIFIER_KEYS, epsilon=0.005
+        )
         assert ok
 
     def test_regression_beyond_epsilon_blocks(self):
@@ -97,4 +99,7 @@ class TestStoreRoundtrip:
             "classifier", worse, weights, CLASSIFIER_FLOOR, CLASSIFIER_KEYS, store
         )
         # incumbent unchanged after a blocked promotion
-        assert store.load_metrics("classifier")["geo_top1_species"] == GOOD["geo_top1_species"]
+        assert (
+            store.load_metrics("classifier")["geo_top1_species"]
+            == GOOD["geo_top1_species"]
+        )

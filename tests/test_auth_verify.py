@@ -14,7 +14,8 @@ class TestVerifyGoogleToken:
     def test_valid_token_returns_claims(self, monkeypatch):
         monkeypatch.setattr(auth_mod, "_GOOGLE_CLIENT_ID", "client-123")
         monkeypatch.setattr(
-            auth_mod.id_token, "verify_oauth2_token",
+            auth_mod.id_token,
+            "verify_oauth2_token",
             lambda token, req, aud: {"sub": "s1", "email": "x@y.z"},
         )
         claims = auth_mod.verify_google_token("tok")
@@ -33,7 +34,8 @@ class TestVerifyGoogleToken:
     def test_missing_sub_raises_401(self, monkeypatch):
         monkeypatch.setattr(auth_mod, "_GOOGLE_CLIENT_ID", "client-123")
         monkeypatch.setattr(
-            auth_mod.id_token, "verify_oauth2_token",
+            auth_mod.id_token,
+            "verify_oauth2_token",
             lambda *a, **k: {"email": "no-subject@y.z"},
         )
         with pytest.raises(AuthenticationException):
@@ -58,8 +60,14 @@ class TestGetCurrentUserParsing:
 
     def test_valid_bearer_resolves_user(self, session_factory, monkeypatch):
         monkeypatch.setattr(
-            deps, "verify_google_token",
-            lambda tok: {"sub": "u1", "email": "u1@test.dev", "name": "U1", "picture": None},
+            deps,
+            "verify_google_token",
+            lambda tok: {
+                "sub": "u1",
+                "email": "u1@test.dev",
+                "name": "U1",
+                "picture": None,
+            },
         )
         with session_factory() as s:
             user = deps.get_current_user(authorization="Bearer abc", session=s)

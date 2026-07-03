@@ -827,7 +827,9 @@ class Classifier:
         letterbox = LetterboxResize(320)
         to_channels = AddMultiChannel()
         seq = images if isinstance(images, (list, tuple)) else [images]
-        return torch.stack([torch.from_numpy(to_channels(letterbox(img))).float() for img in seq])
+        return torch.stack(
+            [torch.from_numpy(to_channels(letterbox(img))).float() for img in seq]
+        )
 
     def export(self, weights=None, out=_WEIGHTS_DIR / "classifier.onnx", int8=False):
         """Export the classifier to ONNX (FP32), optionally emitting an INT8 variant.
@@ -840,9 +842,19 @@ class Classifier:
         model = self._load_for_predict(weights)
         dummy_5ch = torch.randn(1, 5, 320, 320, device=self.device)
         torch.onnx.export(
-            model, dummy_5ch, str(out),
-            input_names=["input"], output_names=["species", "genus", "family"],
-            dynamic_axes={"input": {0: "batch"}, "species": {0: "batch"}, "genus": {0: "batch"}, "family": {0: "batch"}}, opset_version=17,
+            model,
+            dummy_5ch,
+            str(out),
+            input_names=["input"],
+            output_names=["species", "genus", "family"],
+            dynamic_axes={
+                "input": {0: "batch"},
+                "species": {0: "batch"},
+                "genus": {0: "batch"},
+                "family": {0: "batch"},
+            },
+            opset_version=17,
+            dynamo=False,
         )
         int8_path = None
         if int8:
@@ -850,6 +862,7 @@ class Classifier:
 
             int8_path = quantize_dynamic_int8(out)
         return {"fp32": out, "int8": int8_path}
+
 
 def load_param_space(path: Path, dataset: str) -> dict:
     """Load a ray.tune param space from the structured YAML config.

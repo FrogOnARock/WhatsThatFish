@@ -1,0 +1,43 @@
+# Keep the build context tiny — everything here is either huge, secret, or
+# training-only, and none of it belongs in a slim serving image.
+
+# Virtualenvs / caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Data + training artifacts (gigabytes — never in the image).
+# NOTE: patterns are matched relative to the CONTEXT ROOT, so a bare `data/`
+# only excludes ./data — it MISSES the real 155 GB at src/whatsthatfish/data/.
+# The `**/` prefix matches at ANY depth (root AND nested), which is what we need.
+**/data/
+**/runs/
+**/logs/
+**/*.parquet
+
+# Model weights. Exclude the heavy .pt checkpoints AND every ONNX except the two
+# the server actually loads — so a bulk `COPY src/` bakes in exactly the served
+# artifacts (INT8 classifier + FP32 detector, ~119 MB) and drops the 86 MB FP32
+# classifier + any rejected INT8 detector. Negation (!) re-includes after the
+# broad exclude; order matters (last match wins).
+src/whatsthatfish/weights/*.pt
+src/whatsthatfish/weights/*.onnx
+!src/whatsthatfish/weights/classifier.int8.onnx
+!src/whatsthatfish/weights/lc1_best.onnx
+
+# Secrets / local env
+.env
+*.log
+
+# Frontend — a separate static-host artifact, never in the backend image
+frontend/
+**/node_modules/
+
+# VCS / editor
+.git/
+.github/
+.idea/
+.vscode/

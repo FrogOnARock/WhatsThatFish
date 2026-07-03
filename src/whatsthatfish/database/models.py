@@ -29,6 +29,7 @@ class InatTaxa(Base):
     rank_level: Mapped[float | None] = mapped_column(Float)
     rank: Mapped[str | None] = mapped_column(String(50))
     name: Mapped[str] = mapped_column(String(255))
+    common_name: Mapped[str | None] = mapped_column(String(255))
     active: Mapped[bool] = mapped_column(Boolean, default=True)
 
     filtered_observations: Mapped[list["InatFilteredObservations"]] = relationship(
