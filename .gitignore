@@ -17,6 +17,7 @@ uv.lock
 /logs
 /src/notebooks
 *.json
+!tests/fixtures/**/*.json
 .claude/
 /src/preprocessing/images/
 /src/preprocessing/notebooks/images.txt

@@ -43,8 +43,9 @@ CKPT = _WEIGHTS / "classifier_best.pt"
 # fish crops — not random noise — is what makes INT8 top-k agreement meaningful:
 # noise produces near-tied logits whose ranks are maximally fragile to INT8.
 _CROPS_DIR = Path(__file__).parent / "fixtures" / "int8_crops"
-_BBOXES = json.loads((_CROPS_DIR / "bboxes.json").read_text())
-N_SAMPLES = len(_BBOXES)
+# NB: the bbox manifest is read inside the sample_batch fixture, NOT here — file
+# I/O at module scope would break pytest *collection* (which imports every test
+# module) if the fixtures were ever absent.
 
 # ── gate thresholds (tune to your quality bar) ──────────────────────────────
 FP32_LOGIT_ATOL = 1e-3  # ONNX-FP32 vs torch: export must be near-exact
@@ -105,8 +106,9 @@ def sample_batch() -> np.ndarray:
     """Real val crops: open each committed frame, crop to its proposed bbox
     (clamped to image bounds), run the val transform, stack to (N, 5, 320, 320)."""
     tf = _val_transform()
+    bboxes = json.loads((_CROPS_DIR / "bboxes.json").read_text())
     crops = []
-    for name, b in _BBOXES.items():
+    for name, b in bboxes.items():
         img = Image.open(_CROPS_DIR / name).convert("RGB")
         w, h = img.size
         box = (
@@ -189,7 +191,7 @@ class TestInt8Degradation:
                 "top1_agreement_min": TOP1_AGREEMENT_MIN,
                 "top3_recall_min": TOP3_RECALL_MIN,
             },
-            "n_samples": N_SAMPLES,
+            "n_samples": int(fp32_logits[0].shape[0]),
             "heads": {},
         }
         ok = True
