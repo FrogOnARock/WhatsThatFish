@@ -9,11 +9,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    # Ephemeral Postgres for the integration tests. conftest.py connects to a
-    # HARD-CODED postgresql://test:test@localhost:5433/wtf_test and drop/create's
-    # every table per test — safe here because this instance is spun up and torn
-    # down with the job. The Cloud SQL DB is NEVER referenced in this workflow;
-    # its only CI contact is `alembic upgrade head` in release.yml (a DDL write).
     services:
       postgres:
         image: postgres:16
@@ -22,10 +17,7 @@ jobs:
           POSTGRES_PASSWORD: test
           POSTGRES_DB: wtf_test
         ports:
-          # host 5433 → container 5432, matching conftest's TEST_DATABASE_URL.
           - 5433:5432
-        # Gate the job's steps on the DB actually accepting connections; without
-        # this, the first test can race container startup and fail on connect.
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -41,17 +33,9 @@ jobs:
           python-version: '3.12'
 
       - name: install-dependencies
-        # Core deps are serving-only now; the test suite imports the torch models,
-        # so it needs the training extras (+ pytest via the test extra).
         run: pip install -e ".[train,test]"
 
       - name: run-tests
-        # DATABASE_URL points at the ephemeral service Postgres — the SAME
-        # throwaway DB conftest uses (drop/create per test). NEVER Cloud SQL:
-        # dependencies.py builds a session factory at import, so this must be set,
-        # and it must be the disposable local DB or the fixtures would wipe prod.
         env:
           DATABASE_URL: postgresql://test:test@localhost:5433/wtf_test
-        # Skip the heavy release gate (ONNX export/parity/INT8/accuracy) — that
-        # runs in release.yml on a v* tag, not on every push.
         run: python -m pytest tests/ -m "not release" -q

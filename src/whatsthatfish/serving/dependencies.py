@@ -13,11 +13,20 @@ from .error import AuthenticationException
 from .utils import ContributionConstructor
 
 
-_session_factory = get_session_factory()
+_session_factory = None
+
+
+def _get_factory():
+    # Built lazily on first request rather than at import, so importing this
+    # module (e.g. during pytest collection) never requires DATABASE_URL.
+    global _session_factory
+    if _session_factory is None:
+        _session_factory = get_session_factory()
+    return _session_factory
 
 
 def get_session():
-    with _session_factory() as session:
+    with _get_factory()() as session:
         yield session
 
 

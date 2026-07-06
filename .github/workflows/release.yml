@@ -21,14 +21,13 @@ on:
 
 permissions:
   contents: read
-  id-token: write   # for GCP Workload Identity Federation (keyless auth)
+  id-token: write
 
 jobs:
   release-gate:
     runs-on: ubuntu-latest
     env:
       # Tag the image with the git tag that triggered the release (e.g. v0.1.4),
-      # so every deployed revision is traceable to an immutable, signed tag.
       IMAGE: us-east1-docker.pkg.dev/whats-that-fish/whatsthatfish/backend:${{ github.ref_name }}
       MODELS_BUCKET: gs://whatsthatfish-models
     steps:
@@ -40,15 +39,9 @@ jobs:
           python-version: '3.12'
 
       - name: install-dependencies
-        # Needs the training extras: the export step runs torch/ultralytics ONNX
-        # export, and the release gate runs pytest (test extra). Core alone is
-        # serving-only. NOTE: torch here is the CUDA wheel; for faster CI consider
-        # a CPU index (--extra-index-url https://download.pytorch.org/whl/cpu).
         run: pip install -e ".[train,test]"
 
       # ── pull trained weights (not committed to git) from GCS ───────────────
-      # TODO: configure GCP auth. Weights (classifier_best.pt, lc1_best.pt) live
-      # in GCS, not the repo. Uses Workload Identity Federation (no key file).
       - name: gcp-auth
         uses: google-github-actions/auth@v2
         with:
@@ -65,18 +58,15 @@ jobs:
 
       # ── export the artifacts (dumb export) ─────────────────────────────────
       - name: export-onnx
-        # Classifier ships INT8 (Gemm heads → real ~4x size win, fused INT8
-        # kernels keep it fast). Detector ships FP32: dynamic INT8 on its Conv
-        # stack inserts per-layer Dequant→FP32Conv→Quant, so the quantized graph
-        # is 4x smaller but materially SLOWER on CPU — the wrong trade for the
-        # latency a diver waits on. (Static/calibrated quant is the real detector
-        # lever if ever needed.)
         run: |
           python -m whatsthatfish.models.classifier --type export --int8
           python -m whatsthatfish.models.detection --dataset lc1 --type export
 
       # ── the gate: weights-only tier ────────────────────────────────────────
       - name: release-gate
+        # Dummy URL only to satisfy the import-time DATABASE_URL check during
+        # pytest collection — the "release and not accuracy" tier is weights-only
+        # and never opens a connection. NOT the Cloud SQL secret (tests never hit prod).
         run: python -m pytest -m "release and not accuracy" -q
 
       # ── publish the INT8 degradation report ──────────────────────
@@ -89,53 +79,21 @@ jobs:
           if-no-files-found: warn
 
       # ── DB schema migration (Cloud SQL) ────────────────────────────────────
-      # Reached only if the release gate above passed (the report upload is
-      # if:always, but this step is not — a failed gate aborts the job before it).
-      # Cloud SQL is reachable ONLY through the Auth Proxy, which auto-discovers
-      # the ADC creds the gcp-auth (WIF) step wrote — no interactive login. The
-      # service account needs roles/cloudsql.client (separate from its registry/
-      # objectViewer roles).
-      #
-      # Ordering: migrate BEFORE build/deploy. Additive migrations are forward-
-      # safe (old code ignores a new nullable column), so a later build failure
-      # can't leave prod broken. Destructive changes (drop/rename) are NOT safe
-      # under this ordering — ship those across two releases, never here.
       - name: start-cloud-sql-proxy
         run: |
           curl -sSfL -o cloud-sql-proxy \
             https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.14.1/cloud-sql-proxy.linux.amd64
           chmod +x cloud-sql-proxy
-          # Unix-socket mode: reproduce the exact /cloudsql/<INSTANCE> path the
-          # Cloud Run serving container mounts, so the SAME socket-form
-          # DATABASE_URL works here verbatim (no second, TCP-shaped secret). The
-          # runner user must own /cloudsql to bind the socket under it.
           sudo mkdir -p /cloudsql && sudo chown "$(id -un)" /cloudsql
-          # Redirect the proxy's stdout/stderr to a file. A backgrounded process
-          # that keeps the step's stdout pipe open never sends EOF, so GitHub
-          # hangs the step until the job times out — redirecting releases the pipe.
           ./cloud-sql-proxy "${{ vars.CLOUD_SQL_INSTANCE }}" --unix-socket /cloudsql > /tmp/csp.log 2>&1 &
-          # Block until the instance socket file exists, else alembic races the proxy.
           timeout 30 sh -c 'until [ -S "/cloudsql/${{ vars.CLOUD_SQL_INSTANCE }}/.s.PGSQL.5432" ]; do sleep 0.5; done'
 
       - name: db-migrate
-        # Reuses the serving DATABASE_URL VERBATIM — socket form:
-        #   postgresql://user:pass@/whatsthatfish?host=/cloudsql/PROJECT:REGION:INSTANCE
-        # env.py reads it and overrides alembic.ini's dummy url. `upgrade head`
-        # is a no-op when Cloud SQL is already at head, so it's safe every
-        # release — it only does work when a new versions/*.py landed in this tag.
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: alembic upgrade head
 
       # ── promotion — only runs if every prior step succeeded ────────────────
-      # Reached only if the gate + migration passed. The export-onnx step above
-      # wrote classifier.int8.onnx + lc1_best.onnx into src/whatsthatfish/weights/,
-      # and .dockerignore whitelists exactly those two (everything else in weights/
-      # is excluded), so `docker build .` bundles them with no extra COPY.
-
-      # Archive the exported artifacts under the release tag BEFORE building, so a
-      # failed build still leaves the models recoverable in GCS (versioned, so a
-      # rollback can pull an older tag's weights). WIF SA needs objectAdmin on the bucket.
       - name: upload-onnx-to-gcs
         run: |
           gcloud storage cp \
@@ -145,8 +103,6 @@ jobs:
             "$MODELS_BUCKET/${{ github.ref_name }}/"
 
       # Auth docker to Artifact Registry using the ADC creds the gcp-auth (WIF)
-      # step wrote — the cred helper reads them, no docker login/password. WIF SA
-      # needs roles/artifactregistry.writer.
       - name: build-and-push-image
         run: |
           gcloud auth configure-docker us-east1-docker.pkg.dev --quiet
@@ -154,6 +110,5 @@ jobs:
           docker push "$IMAGE"
 
       # Deploy is left manual for MVP: auto-deploy-on-tag is a deliberate decision
-      # (it makes a git tag a production push). Enable when you're ready:
       # - name: deploy-cloud-run
       #   run: gcloud run deploy whatsthatfish-backend --region us-east1 --image "$IMAGE"
