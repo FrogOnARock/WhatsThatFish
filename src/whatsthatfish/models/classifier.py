@@ -718,7 +718,7 @@ class Classifier:
         override, on a fresh model — no state bleeds between trials. Deliberately
         avoids ray.Tuner's per-trial workers (a second CUDA process OOM'd this
         single-GPU box); ray.tune is used only for its search-space samplers.
-        Tracks the lowest-val-loss trial and writes it as a runnable tuned YAML.
+        Tracks the lowest-val-loss trialA and writes it as a runnable tuned YAML.
         """
         self._prepare_data(tuning=True)
         space = load_param_space(self.param_space_path, "classification")
