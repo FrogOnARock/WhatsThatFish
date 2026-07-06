@@ -3829,3 +3829,411 @@ Time gate: 0.2000 | Performance gate: 0.9500
 Time gate: 0.2500 | Performance gate: 0.9500
 2026-07-03 17:57:47,799 - INFO - Current gate values: 
 Time gate: 0.3000 | Performance gate: 0.9500
+2026-07-06 10:54:59,455 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_writes_file0/run/last.pt
+2026-07-06 10:54:59,483 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_checkpoint_contains_full_0/run/best.pt
+2026-07-06 10:54:59,514 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_model_state_loads_into_fr0/run/best.pt
+2026-07-06 10:54:59,559 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-07-06 10:54:59,559 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 10:54:59,568 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-07-06 10:54:59,575 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-07-06 10:54:59,576 - INFO - Epoch 0 finished in 0.0s
+2026-07-06 10:54:59,576 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-07-06 10:54:59,576 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 10:54:59,584 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-07-06 10:54:59,592 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-07-06 10:54:59,592 - INFO - Epoch 1 finished in 0.0s
+2026-07-06 10:54:59,592 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-07-06 10:54:59,592 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 10:54:59,600 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-07-06 10:54:59,601 - INFO - Epoch 2 finished in 0.0s
+2026-07-06 10:54:59,601 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-4/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-07-06 10:54:59,601 - INFO - Training complete — 3 epochs in 0.0s
+2026-07-06 10:54:59,628 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-07-06 10:54:59,628 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 10:54:59,635 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/run/last.pt
+2026-07-06 10:54:59,641 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/run/best.pt
+2026-07-06 10:54:59,642 - INFO - Epoch 0 finished in 0.0s
+2026-07-06 10:54:59,642 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-07-06 10:54:59,642 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 10:54:59,650 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/run/last.pt
+2026-07-06 10:54:59,657 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/run/best.pt
+2026-07-06 10:54:59,657 - INFO - Epoch 1 finished in 0.0s
+2026-07-06 10:54:59,658 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-07-06 10:54:59,658 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 10:54:59,665 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/run/last.pt
+2026-07-06 10:54:59,665 - INFO - Epoch 2 finished in 0.0s
+2026-07-06 10:54:59,665 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-4/test_registered_metrics_come_f0/experiments.csv
+2026-07-06 10:54:59,665 - INFO - Training complete — 3 epochs in 0.0s
+2026-07-06 10:54:59,686 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-07-06 10:54:59,686 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 10:54:59,693 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-07-06 10:54:59,700 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-07-06 10:54:59,700 - INFO - Epoch 0 finished in 0.0s
+2026-07-06 10:54:59,700 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-07-06 10:54:59,700 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 10:54:59,708 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-07-06 10:54:59,716 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-07-06 10:54:59,716 - INFO - Epoch 1 finished in 0.0s
+2026-07-06 10:54:59,716 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-07-06 10:54:59,716 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 10:54:59,723 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-07-06 10:54:59,723 - INFO - Epoch 2 finished in 0.0s
+2026-07-06 10:54:59,724 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-4/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-07-06 10:54:59,724 - INFO - Training complete — 3 epochs in 0.0s
+2026-07-06 10:54:59,764 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-4/test_register_experiment_appen0/experiments.csv
+2026-07-06 10:54:59,765 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-4/test_register_experiment_appen0/experiments.csv
+2026-07-06 10:54:59,785 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-4/test_register_experiment_logs_0/experiments.csv
+2026-07-06 10:54:59,805 - INFO - Registry schema changed; archived old CSV → /tmp/pytest-of-frogonarock/pytest-4/test_register_experiment_archi0/experiments_legacy_20260706_105459.csv
+2026-07-06 10:54:59,805 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-4/test_register_experiment_archi0/experiments.csv
+2026-07-06 10:54:59,806 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.0000
+2026-07-06 10:54:59,806 - INFO - Current gate values: 
+Time gate: 0.5000 | Performance gate: 0.0000
+2026-07-06 10:54:59,806 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.0200 | Performance gate: 0.5000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.0400 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.0600 | Performance gate: 0.5000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.0800 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.5000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.1200 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.1400 | Performance gate: 0.5000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.1600 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.1800 | Performance gate: 0.5000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.2200 | Performance gate: 0.5000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.2400 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.2600 | Performance gate: 0.5000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.2800 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.5000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.3200 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.3400 | Performance gate: 0.5000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.3600 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.3800 | Performance gate: 0.5000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.0000
+2026-07-06 10:54:59,807 - INFO - Current gate values: 
+Time gate: 0.4000 | Performance gate: 0.0000
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.5000 | Performance gate: 0.0000
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.6000 | Performance gate: 0.0000
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.7000 | Performance gate: 0.0000
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.8000 | Performance gate: 0.0000
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.9000 | Performance gate: 0.0000
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 1.0000 | Performance gate: 0.0000
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.9500
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.0500 | Performance gate: 0.9500
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.9500
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.1500 | Performance gate: 0.9500
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.2500 | Performance gate: 0.9500
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.9500
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.9500
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.0200 | Performance gate: 0.0000
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.0400 | Performance gate: 0.9500
+2026-07-06 10:54:59,808 - INFO - Current gate values: 
+Time gate: 0.0600 | Performance gate: 0.0000
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.0800 | Performance gate: 0.9500
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.0000
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.1200 | Performance gate: 0.9500
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.1400 | Performance gate: 0.0000
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.1600 | Performance gate: 0.9500
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.1800 | Performance gate: 0.0000
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.2200 | Performance gate: 0.0000
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.2400 | Performance gate: 0.9500
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.2600 | Performance gate: 0.0000
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.2800 | Performance gate: 0.9500
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.0000
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.3200 | Performance gate: 0.9500
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.3400 | Performance gate: 0.0000
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.3600 | Performance gate: 0.9500
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.3800 | Performance gate: 0.0000
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 1.0000
+2026-07-06 10:54:59,809 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.0500 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.1500 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.2500 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.0500 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.1500 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.2500 | Performance gate: 0.9500
+2026-07-06 10:54:59,810 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.9500
+2026-07-06 11:00:50,624 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_writes_file0/run/last.pt
+2026-07-06 11:00:50,653 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_checkpoint_contains_full_0/run/best.pt
+2026-07-06 11:00:50,683 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_model_state_loads_into_fr0/run/best.pt
+2026-07-06 11:00:50,731 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-07-06 11:00:50,731 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 11:00:50,738 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-07-06 11:00:50,746 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-07-06 11:00:50,746 - INFO - Epoch 0 finished in 0.0s
+2026-07-06 11:00:50,746 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-07-06 11:00:50,746 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 11:00:50,754 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-07-06 11:00:50,762 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/run/best.pt
+2026-07-06 11:00:50,762 - INFO - Epoch 1 finished in 0.0s
+2026-07-06 11:00:50,762 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-07-06 11:00:50,762 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 11:00:50,770 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/run/last.pt
+2026-07-06 11:00:50,770 - INFO - Epoch 2 finished in 0.0s
+2026-07-06 11:00:50,770 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-5/test_best_pt_keeps_lowest_val_0/experiments.csv
+2026-07-06 11:00:50,770 - INFO - Training complete — 3 epochs in 0.0s
+2026-07-06 11:00:50,797 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-07-06 11:00:50,797 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 11:00:50,806 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/run/last.pt
+2026-07-06 11:00:50,818 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/run/best.pt
+2026-07-06 11:00:50,818 - INFO - Epoch 0 finished in 0.0s
+2026-07-06 11:00:50,818 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-07-06 11:00:50,818 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 11:00:50,828 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/run/last.pt
+2026-07-06 11:00:50,836 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/run/best.pt
+2026-07-06 11:00:50,836 - INFO - Epoch 1 finished in 0.0s
+2026-07-06 11:00:50,836 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-07-06 11:00:50,836 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 11:00:50,844 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/run/last.pt
+2026-07-06 11:00:50,844 - INFO - Epoch 2 finished in 0.0s
+2026-07-06 11:00:50,845 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-5/test_registered_metrics_come_f0/experiments.csv
+2026-07-06 11:00:50,845 - INFO - Training complete — 3 epochs in 0.0s
+2026-07-06 11:00:50,865 - INFO - Beginning epoch 0. Total elapsed: 0.0s
+2026-07-06 11:00:50,865 - INFO - Epoch 0 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 11:00:50,874 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-07-06 11:00:50,883 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-07-06 11:00:50,883 - INFO - Epoch 0 finished in 0.0s
+2026-07-06 11:00:50,883 - INFO - Beginning epoch 1. Total elapsed: 0.0s
+2026-07-06 11:00:50,883 - INFO - Epoch 1 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 11:00:50,891 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-07-06 11:00:50,899 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/run/best.pt
+2026-07-06 11:00:50,899 - INFO - Epoch 1 finished in 0.0s
+2026-07-06 11:00:50,899 - INFO - Beginning epoch 2. Total elapsed: 0.0s
+2026-07-06 11:00:50,899 - INFO - Epoch 2 train — species=0.1000, genus=0.1000, family=0.1000, total=0.3000
+2026-07-06 11:00:50,907 - INFO - Checkpoint saved → /tmp/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/run/last.pt
+2026-07-06 11:00:50,908 - INFO - Epoch 2 finished in 0.0s
+2026-07-06 11:00:50,908 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-5/test_loss_csv_has_one_row_per_0/experiments.csv
+2026-07-06 11:00:50,908 - INFO - Training complete — 3 epochs in 0.0s
+2026-07-06 11:00:50,948 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-5/test_register_experiment_appen0/experiments.csv
+2026-07-06 11:00:50,949 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-5/test_register_experiment_appen0/experiments.csv
+2026-07-06 11:00:50,969 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-5/test_register_experiment_logs_0/experiments.csv
+2026-07-06 11:00:50,989 - INFO - Registry schema changed; archived old CSV → /tmp/pytest-of-frogonarock/pytest-5/test_register_experiment_archi0/experiments_legacy_20260706_110050.csv
+2026-07-06 11:00:50,989 - INFO - Experiment registered → /tmp/pytest-of-frogonarock/pytest-5/test_register_experiment_archi0/experiments.csv
+2026-07-06 11:00:50,990 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.0000
+2026-07-06 11:00:50,990 - INFO - Current gate values: 
+Time gate: 0.5000 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.0200 | Performance gate: 0.5000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.0400 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.0600 | Performance gate: 0.5000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.0800 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.5000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.1200 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.1400 | Performance gate: 0.5000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.1600 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.1800 | Performance gate: 0.5000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.2200 | Performance gate: 0.5000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.2400 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.2600 | Performance gate: 0.5000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.2800 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.5000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.3200 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.3400 | Performance gate: 0.5000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.3600 | Performance gate: 0.0000
+2026-07-06 11:00:50,991 - INFO - Current gate values: 
+Time gate: 0.3800 | Performance gate: 0.5000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.4000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.5000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.6000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.7000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.8000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.9000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 1.0000 | Performance gate: 0.0000
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.9500
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.0500 | Performance gate: 0.9500
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.9500
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.1500 | Performance gate: 0.9500
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.2500 | Performance gate: 0.9500
+2026-07-06 11:00:50,992 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.0200 | Performance gate: 0.0000
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.0400 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.0600 | Performance gate: 0.0000
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.0800 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.0000
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.1200 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.1400 | Performance gate: 0.0000
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.1600 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.1800 | Performance gate: 0.0000
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.2200 | Performance gate: 0.0000
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.2400 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.2600 | Performance gate: 0.0000
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.2800 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.0000
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.3200 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.3400 | Performance gate: 0.0000
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.3600 | Performance gate: 0.9500
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.3800 | Performance gate: 0.0000
+2026-07-06 11:00:50,993 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 1.0000
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.0000 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.0500 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.1500 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.2500 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.0500 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.1000 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.1500 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.2000 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.2500 | Performance gate: 0.9500
+2026-07-06 11:00:50,994 - INFO - Current gate values: 
+Time gate: 0.3000 | Performance gate: 0.9500

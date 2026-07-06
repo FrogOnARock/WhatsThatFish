@@ -16,6 +16,7 @@ import polars as pl
 import pytest
 from sqlalchemy import select, func
 from sqlalchemy.exc import IntegrityError
+from unittest.mock import MagicMock
 import os
 
 from whatsthatfish.etl.download_lila import LilaDataset
@@ -60,8 +61,15 @@ def _build_lila_dataset(session_factory, fixtures_dir: Path) -> LilaDataset:
         bucket = "unused"
         prefixes = {}
 
+    # LilaDataset.__init__ eagerly calls gcs.get_gcs_client(), which builds a
+    # REAL authenticated GCS client — fine locally (creds via .env GCS_SECRET),
+    # but a DefaultCredentialsError in vanilla CI (no creds). These tests only
+    # exercise DB/FK behaviour and never touch GCS, so stub the client out.
+    gcs = GCSClient(FakeGCSConfig())
+    gcs.get_gcs_client = MagicMock()
+
     lila_ds = LilaDataset(
-        gcs=GCSClient(FakeGCSConfig()),
+        gcs=gcs,
         data_path=str(fixtures_dir),
         gcs_config=FakeGCSConfig(),
         session_factory=session_factory,
