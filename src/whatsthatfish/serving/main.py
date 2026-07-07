@@ -48,12 +48,16 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="WhatsThisFish API", version="0.1.0", lifespan=lifespan)
 
-# CORS origins. Local dev origins are always allowed; production origins come
-# from ALLOWED_ORIGINS (comma-separated) so adding the Cloudflare Pages domain
+# CORS origins. Local dev origins are allowed only off Cloud Run; production
+# origins come from ALLOWED_ORIGINS (comma-separated) so adding the Cloudflare Pages domain
 # post-deploy is a `gcloud run --update-env-vars` flag, not a Docker rebuild.
 # ALLOWED_ORIGIN_REGEX additionally covers Pages per-deploy preview subdomains
 # (e.g. https://<hash>.whatsthatfish.pages.dev) which can't be enumerated.
-_DEV_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:5173"]
+# Local dev origins are only allowed off Cloud Run (K_SERVICE is set there), so
+# production never trusts localhost. Prod origins come entirely from ALLOWED_ORIGINS.
+_DEV_ORIGINS = (
+    [] if os.getenv("K_SERVICE") else ["http://localhost:5173", "http://127.0.0.1:5173"]
+)
 _ENV_ORIGINS = [
     o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()
 ]

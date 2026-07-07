@@ -10,7 +10,9 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, UploadFile, File, Form
 
 from ..dependencies import get_current_user, get_observation_service
+from ..error import ValidationException
 from ..services.service import ObservationService
+from ..utils import MAX_UPLOAD_BYTES
 from ..schemas import (
     DiveCreate,
     DiveUpdate,
@@ -102,8 +104,13 @@ async def add_photo(
     user: User = Depends(get_current_user),
     svc: ObservationService = Depends(get_observation_service),
 ) -> PhotoOut:
+    if img.size is not None and img.size > MAX_UPLOAD_BYTES:
+        raise ValidationException("Image exceeds the 15 MB upload limit")
     image_bytes = await img.read()
-    parsed_bbox = json.loads(bbox) if bbox else None
+    try:
+        parsed_bbox = json.loads(bbox) if bbox else None
+    except (json.JSONDecodeError, ValueError) as exc:
+        raise ValidationException("Malformed bbox: expected a JSON object") from exc
     return svc.add_photo(
         user,
         observation_id,

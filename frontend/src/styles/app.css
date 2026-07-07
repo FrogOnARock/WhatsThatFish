@@ -73,14 +73,6 @@
 .sidebar__brand {
   padding: 28px 24px 24px;
 }
-.sidebar__brand-mark {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.18em;
-  color: var(--foam);
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
 .sidebar__brand-word {
   font-family: var(--font-display);
   font-size: 30px;

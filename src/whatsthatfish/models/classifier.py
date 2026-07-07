@@ -791,7 +791,10 @@ class Classifier:
 
     def _load_for_predict(self, weights=None):
         weights = Path(weights) if weights else _WEIGHTS_DIR / "classifier_best.pt"
-        ckpt = torch.load(weights, map_location=self.device, weights_only=False)
+        # weights_only=True: the checkpoint is only tensors + plain metadata
+        # (arch dict, num_labels, state_dict), so the safe unpickler suffices and
+        # a tampered checkpoint can't execute arbitrary code on load.
+        ckpt = torch.load(weights, map_location=self.device, weights_only=True)
 
         # The checkpoint's own `arch` is authoritative — it cannot drift from the
         # weights it was saved with. Fall back to the config YAML only for legacy

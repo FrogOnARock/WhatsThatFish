@@ -9,6 +9,11 @@ from ..etl.gcs_client import GCSClient
 from ..config import get_config
 from .error import ResourceNotFoundException, BaseAppException
 
+# Cap uploads well under Cloud Run's 32 MB request limit. Bounds the memory /
+# disk-spool / inference cost of a single request — matters most on /predict,
+# which is unauthenticated, but applied to every upload path.
+MAX_UPLOAD_BYTES = 15 * 1024 * 1024  # 15 MB
+
 
 class ImageStorage(ABC):
     """Abstract image source — hides whether a frame lives on disk or in GCS.
@@ -68,15 +73,21 @@ class LocalImage(ImageStorage):
     """Dev backend: serves images straight off the local classification-images folder."""
 
     def __init__(self, folder: str):
-        self.folder_path = folder
+        self.folder_path = Path(folder)
+
+    def _resolve(self, filename: str) -> Path:
+        """Collapse `filename` to its base name before joining, so a crafted
+        `../` can't escape the images folder. Catalogue filenames are flat, so
+        this never loses legitimate structure. Defense-in-depth: routing already
+        blocks encoded slashes and prod serves GCS object keys, not files."""
+        return self.folder_path / Path(filename).name
 
     def retrieve_image(self, filename):
         """Stream the requested image file back as a JPEG response."""
-        return FileResponse(f"{self.folder_path}/{filename}", media_type="image/jpeg")
+        return FileResponse(str(self._resolve(filename)), media_type="image/jpeg")
 
     def read_bytes(self, filename):
-        img_bytes = Path(f"{self.folder_path}/{filename}").read_bytes()
-        return img_bytes
+        return self._resolve(filename).read_bytes()
 
 
 class StorageConstructor:

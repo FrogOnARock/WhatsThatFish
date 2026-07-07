@@ -57,7 +57,6 @@ export default function Sidebar({ active, onNavigate }: SidebarProps) {
   return (
     <aside className="sidebar">
       <div className="sidebar__brand">
-        <div className="sidebar__brand-mark">WTF · v0.1</div>
         <div className="sidebar__brand-word">
           What's <em>that</em>
           <br />
