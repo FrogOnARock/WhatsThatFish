@@ -17,6 +17,7 @@ data/
 /src/notebooks
 *.json
 !tests/fixtures/**/*.json
+!frontend/**/*.json
 .claude/
 /src/preprocessing/images/
 /src/preprocessing/notebooks/images.txt
