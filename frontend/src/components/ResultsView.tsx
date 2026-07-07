@@ -6,7 +6,6 @@ import type {TaxonKey} from "../api/types";
 import type { RequestState } from "../pages/MainPage";
 import ImageCard from "./ImageCard";
 import SaveObservationModal from "./SaveObservationModal";
-import { useAuth } from "../auth/AuthContext";
 import { useBackendStatus } from "../api/backendStatus";
 
 /** Analyzing overlay with an elapsed timer. For the first few seconds it reads as
@@ -84,9 +83,6 @@ interface ResultsViewProps {
 
 export default function ResultsView({ image, request, onReset, onRetry }: ResultsViewProps) {
   const [showBox, setShowBox] = useState(true);
-  const [location, setLocation] = useState("");
-  const { user } = useAuth();
-  const depthExample = (user?.unitSystem ?? "metric") === "imperial" ? "40 ft" : "12 m";
   const [saved, setSaved] = useState(false);
   const [reported, setReported] = useState(false);
   const [active, setActive] = useState<string | null>(null);
@@ -210,19 +206,6 @@ export default function ResultsView({ image, request, onReset, onRetry }: Result
               <p className="meta-card__chips">{speciesActive.habitat.map((loc) => (
                 <span key={loc} className="meta-card__chip">{loc}</span>
               ))}</p>
-            </div>
-            <div className="meta-card">
-              <div className="meta-card__label">Where did you see it?</div>
-              <input
-                  type="text"
-                  placeholder={`e.g. Tulamben, Bali · ${depthExample} · house reef`}
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-              />
-              <div className="meta-card__actions">
-                <button className="btn btn--ghost btn--sm">Use GPS</button>
-                <button className="btn btn--ghost btn--sm">Drop pin</button>
-              </div>
             </div>
           </div>
 

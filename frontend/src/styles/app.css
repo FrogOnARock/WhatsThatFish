@@ -677,7 +677,7 @@ img.pdx-gallery__img, div.pdx-gallery__img { background: var(--bg-2); }
 /* meta strip below image */
 .meta-strip {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 14px;
 }
 .meta-card {
