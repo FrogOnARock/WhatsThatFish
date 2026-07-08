@@ -16,10 +16,68 @@ Why patch `_session_factory`?
     factory so endpoints read from the throwaway test DB.
 """
 
-
 from whatsthatfish.database.models import AppTaxa
 
 # `client` + `session_factory` come from conftest (the patched-app TestClient).
+
+
+# ─── /predict upload size cap (DoS guard) ─────────────────────────────────────
+
+
+class TestPredictUploadLimit:
+    """`/predict` is unauthenticated, so the 15 MB upload cap is the guard against
+    a single request amplifying memory / disk-spool / CPU-inference cost. The cap
+    must reject an oversized upload BEFORE inference runs."""
+
+    def _stub_service(self, serving_app, service):
+        # Bypass the real ONNX-backed service (never built — the `client` fixture
+        # skips the model-loading lifespan) and inject a stub whose behaviour lets
+        # us prove whether inference was reached.
+        from whatsthatfish.serving.dependencies import get_prediction_service
+
+        serving_app.dependency_overrides[get_prediction_service] = lambda: service
+
+    def test_oversized_upload_rejected_before_inference(
+        self, client, serving_app, monkeypatch
+    ):
+        from whatsthatfish.serving.routers import predictions
+
+        # Shrink the cap so the test needn't allocate 15 MB of payload.
+        monkeypatch.setattr(predictions, "MAX_UPLOAD_BYTES", 10)
+
+        class _NoRunService:
+            def get_prediction(self, *_a, **_k):
+                raise AssertionError("inference ran despite an oversized upload")
+
+        self._stub_service(serving_app, _NoRunService())
+
+        resp = client.post(
+            "/predict",
+            files={"img": ("big.jpg", b"12345678901234567890", "image/jpeg")},  # 20 B
+        )
+
+        assert resp.status_code == 422
+        assert "limit" in resp.text.lower()
+        # The rejection body echoes the offending size, computed from the part.
+        assert resp.json()["body"]["size"] == 20
+
+    def test_within_limit_reaches_inference(self, client, serving_app):
+        from whatsthatfish.serving.schemas import Prediction
+
+        sentinel = Prediction(bbox=[], species=[], genus=[], family=[], detected=False)
+
+        class _OkService:
+            def get_prediction(self, *_a, **_k):
+                return sentinel
+
+        self._stub_service(serving_app, _OkService())
+
+        resp = client.post(
+            "/predict",
+            files={"img": ("small.jpg", b"tiny-bytes", "image/jpeg")},
+        )
+        assert resp.status_code == 200
+        assert resp.json()["detected"] is False
 
 
 def _seed_app_taxa(session_factory, rows: list[dict]):

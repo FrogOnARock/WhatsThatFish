@@ -5,7 +5,6 @@ auth), so they're fast and exercise the SQL that actually guards user data:
 ownership filters, site dedup, taxon translation, and the summary counts.
 """
 
-
 from whatsthatfish.serving.db.repository import (
     TaxaRepository,
     UserRepository,

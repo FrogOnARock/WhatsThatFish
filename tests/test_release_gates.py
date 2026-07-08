@@ -30,7 +30,6 @@ from PIL import Image
 from torchvision.transforms import v2
 
 from whatsthatfish.models.classifier import Classifier
-from whatsthatfish.models.detection import Detector, Dataset
 from whatsthatfish.transforms.letterbox_resize import LetterboxResize
 from whatsthatfish.transforms.five_channel_conversion import AddMultiChannel
 

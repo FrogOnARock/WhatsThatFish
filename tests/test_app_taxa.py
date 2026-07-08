@@ -7,7 +7,6 @@ so we exercise only the run-loop logic: the null-guard, failure resilience, and
 batched upsert. _get_descriptions is tested against a faked anthropic client.
 """
 
-
 from whatsthatfish.preprocessing.app_taxa import BuildAppTaxa
 
 

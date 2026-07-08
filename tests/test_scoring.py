@@ -859,8 +859,15 @@ class TestPreProcessingFactoryRouting:
     @patch("whatsthatfish.preprocessing.factory.ScoreRunner")
     @patch("whatsthatfish.preprocessing.factory.ClipModel")
     async def test_all_type_runs_every_pipeline(
-        self, mock_clip, mock_score, mock_tracker, mock_ann,
-        mock_prep, mock_zero, mock_app, factory_mocks
+        self,
+        mock_clip,
+        mock_score,
+        mock_tracker,
+        mock_ann,
+        mock_prep,
+        mock_zero,
+        mock_app,
+        factory_mocks,
     ):
         # ALL runs 7 steps: 1–4 are async runners, 5–7 (InatPreparation,
         # ZeroIndexClassification, BuildAppTaxa) are sync. Mock every one so this

@@ -14,6 +14,13 @@ wheels/
 /src/config
 data/
 /logs
+# Runtime logs are written under src/logs/ too (anchored /logs only covers root).
+src/logs/
+# prepare_inat.py regenerates kmeans plots here; the curated decision-record
+# snapshot lives (tracked) in docs/artifacts/kmeans_search/.
+src/kmeans_search/
+# Jupyter checkpoint dirs — never useful in VCS.
+**/.ipynb_checkpoints/
 /src/notebooks
 *.json
 !tests/fixtures/**/*.json
