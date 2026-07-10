@@ -225,6 +225,17 @@
   width: 100%; padding: 9px 11px; border: 1px solid var(--line-strong);
   border-radius: 9px; background: var(--bg); font-size: 14px; color: var(--ink);
 }
+/* Date inputs: WebKit (iOS Safari especially) centers the value and ignores
+   text-align unless the native appearance is cleared. Normalize to a left-
+   aligned value so it lines up with the text/select fields beside it. */
+.modal__input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 40px;
+  text-align: left;
+}
+.modal__input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+.modal__input[type="date"]::-webkit-datetime-edit { text-align: left; padding: 0; }
 .modal__grid { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
 .modal__species { display: flex; align-items: baseline; gap: 10px; }
 .modal__species-name { font-family: var(--font-display); font-style: italic; font-size: 18px; }
@@ -1084,7 +1095,9 @@ button.cls-row[aria-pressed="true"] .cls-row__conf { color: var(--foam-deep); }
   line-height: 1;
 }
 .pdx-card__body {
-  padding: 12px 14px 10px;
+  /* Right padding reserves room for the absolutely-positioned "seen" count so a
+     long scientific name wraps/clears it instead of running underneath. */
+  padding: 12px 58px 10px 14px;
   flex: 1;
 }
 .pdx-card__common {
@@ -1519,6 +1532,10 @@ button.cls-row[aria-pressed="true"] .cls-row__conf { color: var(--foam-deep); }
     position: absolute;
     top: 16px; right: 14px;
     width: 34px; height: 34px;
+    /* `.sidebar > *` gives every child z-index:1; the brand block follows this
+       button in the DOM and its full-width box would otherwise paint over the
+       × and swallow the tap. Lift the button above it. */
+    z-index: 2;
     border: 0;
     border-radius: 9px;
     background: oklch(1 0 0 / 0.08);
@@ -1527,7 +1544,10 @@ button.cls-row[aria-pressed="true"] .cls-row__conf { color: var(--foam-deep); }
     line-height: 1;
   }
 
-  /* Content breathing room + header stacking. */
+  /* Content breathing room + header stacking. Clip any stray horizontal
+     overflow (e.g. the bbox overlay / long mono meta on inference) so the page
+     stays pinned to the device width. */
+  .main { overflow-x: clip; }
   .main__inner { padding: 22px 18px 56px; }
 
   .page-header {
@@ -1543,11 +1563,16 @@ button.cls-row[aria-pressed="true"] .cls-row__conf { color: var(--foam-deep); }
   /* Main page: keep sample tiles but reduce columns. */
   .samples { grid-template-columns: repeat(3, 1fr); }
 
-  /* Results / library / history: unstack the two-column splits. */
+  /* Results / library / history: unstack the two-column splits. min-width:0 lets
+     the tracks shrink below their content's intrinsic width (long mono strings,
+     scientific names) instead of forcing the page wider. */
   .results { grid-template-columns: 1fr; gap: 20px; }
+  .results__left, .results__right { min-width: 0; }
   .results__right { position: static; }
   .pdx-layout { grid-template-columns: 1fr; gap: 20px; }
   .pdx-detail { position: static; }
+  /* Dense sightings table scrolls within its section rather than widening the page. */
+  .pdx-detail__section { overflow-x: auto; }
   .pdx-grid { grid-template-columns: repeat(2, 1fr); }
   .log-stats { grid-template-columns: repeat(2, 1fr); }
 
@@ -1571,7 +1596,4 @@ button.cls-row[aria-pressed="true"] .cls-row__conf { color: var(--foam-deep); }
 
   .actions-row { flex-direction: column; align-items: stretch; }
   .actions-row__buttons { justify-content: stretch; }
-
-  /* Let dense tables scroll rather than crush their columns. */
-  .pdx-detail__section { overflow-x: auto; }
 }
