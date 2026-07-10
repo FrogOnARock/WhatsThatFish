@@ -1429,3 +1429,149 @@ button.cls-row[aria-pressed="true"] .cls-row__conf { color: var(--foam-deep); }
 .cls-card:nth-child(2) { animation-delay: 60ms; }
 .cls-card:nth-child(3) { animation-delay: 120ms; }
 .cls-card:nth-child(4) { animation-delay: 180ms; }
+
+/* ================================================================== */
+/* Responsive — mobile top bar + off-canvas sidebar drawer             */
+/* ================================================================== */
+/* Desktop defaults: the mobile chrome is hidden and the sidebar sits in
+   the .app grid as column 1. These elements only come alive < 860px. */
+.mobile-topbar { display: none; }
+.sidebar-backdrop { display: none; }
+.sidebar__close { display: none; }
+
+@media (max-width: 860px) {
+  /* Grid → single column; sidebar leaves the flow (fixed drawer below). */
+  .app {
+    display: block;
+    height: auto;
+    min-height: 0;
+  }
+
+  /* Cold-start strip joins the flow here (it's the first .app child) so it
+     pushes the top bar down instead of overlaying it. It still renders only
+     while warming/down, so there's no empty space on the warm path. */
+  .cold-banner { position: static; }
+
+  /* Sticky top bar carrying the hamburger + brand. */
+  .mobile-topbar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    padding: 11px 16px;
+    background: var(--navy);
+    color: var(--navy-ink);
+    border-bottom: 1px solid oklch(1 0 0 / 0.08);
+  }
+  .mobile-topbar__brand {
+    font-family: var(--font-display);
+    font-size: 21px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .mobile-topbar__brand em { font-style: italic; color: var(--foam); }
+  .mobile-topbar__burger {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 40px; height: 40px;
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: 10px;
+    background: oklch(1 0 0 / 0.08);
+  }
+  .mobile-topbar__burger span {
+    display: block;
+    width: 18px; height: 2px;
+    border-radius: 2px;
+    background: var(--navy-ink);
+  }
+
+  /* Sidebar becomes an off-canvas drawer, revealed by .sidebar--open. */
+  .sidebar {
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    width: 270px;
+    max-width: 82vw;
+    z-index: 60;
+    transform: translateX(-100%);
+    transition: transform 220ms ease;
+    box-shadow: 0 0 46px oklch(0 0 0 / 0.45);
+  }
+  .sidebar--open { transform: translateX(0); }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: oklch(0.16 0.03 250 / 0.5);
+    animation: fade-up 160ms ease;
+  }
+
+  .sidebar__close {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 16px; right: 14px;
+    width: 34px; height: 34px;
+    border: 0;
+    border-radius: 9px;
+    background: oklch(1 0 0 / 0.08);
+    color: var(--navy-ink);
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  /* Content breathing room + header stacking. */
+  .main__inner { padding: 22px 18px 56px; }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+  }
+  .page-header__title { font-size: 34px; }
+  .page-header__model { align-items: flex-start; }
+
+  /* Main page: keep sample tiles but reduce columns. */
+  .samples { grid-template-columns: repeat(3, 1fr); }
+
+  /* Results / library / history: unstack the two-column splits. */
+  .results { grid-template-columns: 1fr; gap: 20px; }
+  .results__right { position: static; }
+  .pdx-layout { grid-template-columns: 1fr; gap: 20px; }
+  .pdx-detail { position: static; }
+  .pdx-grid { grid-template-columns: repeat(2, 1fr); }
+  .log-stats { grid-template-columns: repeat(2, 1fr); }
+
+  .dropzone { padding: 48px 20px 44px; }
+  .dropzone__title { font-size: 28px; }
+}
+
+@media (max-width: 560px) {
+  .main__inner { padding: 18px 14px 48px; }
+  .page-header__title { font-size: 27px; }
+
+  .samples { grid-template-columns: repeat(2, 1fr); }
+  .pdx-detail__stats { grid-template-columns: 1fr 1fr; }
+  .dive-detail__meta { grid-template-columns: 1fr 1fr; }
+
+  /* Full-width, stacked CTAs are easier to tap. */
+  .dropzone { padding: 40px 16px 34px; }
+  .dropzone__title { font-size: 24px; }
+  .dropzone__actions { flex-direction: column; width: 100%; }
+  .dropzone__actions .btn { width: 100%; justify-content: center; }
+
+  .actions-row { flex-direction: column; align-items: stretch; }
+  .actions-row__buttons { justify-content: stretch; }
+
+  /* Let dense tables scroll rather than crush their columns. */
+  .pdx-detail__section { overflow-x: auto; }
+}

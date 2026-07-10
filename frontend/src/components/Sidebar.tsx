@@ -35,9 +35,12 @@ const NAV: NavItem[] = [
 interface SidebarProps {
   active: PageId;
   onNavigate: (id: PageId) => void;
+  /** Mobile drawer state — ignored by the always-visible desktop layout. */
+  open?: boolean;
+  onClose?: () => void;
 }
 
-export default function Sidebar({ active, onNavigate }: SidebarProps) {
+export default function Sidebar({ active, onNavigate, open = false, onClose }: SidebarProps) {
   const main = NAV.filter((n) => n.group === "main");
   const secondary = NAV.filter((n) => n.group === "secondary");
   const { user, status } = useAuth();
@@ -55,7 +58,14 @@ export default function Sidebar({ active, onNavigate }: SidebarProps) {
   );
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${open ? "sidebar--open" : ""}`}>
+      <button
+        className="sidebar__close"
+        onClick={onClose}
+        aria-label="Close navigation"
+      >
+        ×
+      </button>
       <div className="sidebar__brand">
         <div className="sidebar__brand-word">
           What's <em>that</em>
