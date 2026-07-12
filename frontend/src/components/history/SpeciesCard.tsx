@@ -2,9 +2,11 @@ import FishPlaceholder from "../FishPlaceholder";
 import AuthedImage from "../AuthedImage";
 import type { FieldSpecies } from "../../api/history";
 
-function firstPhotoId(sp: FieldSpecies): string | null {
-  for (const s of sp.sightings) if (s.photos.length) return s.photos[0].id;
-  return null;
+/** The species' card image: the user-chosen hero across any sighting, else the
+    first available photo. */
+function cardPhotoId(sp: FieldSpecies): string | null {
+  const all = sp.sightings.flatMap((s) => s.photos);
+  return (all.find((p) => p.isHero) ?? all[0])?.id ?? null;
 }
 
 interface SpeciesCardProps {
@@ -15,7 +17,7 @@ interface SpeciesCardProps {
 }
 
 export function SpeciesCard({ sp, no, active, onSelect }: SpeciesCardProps) {
-  const photo = firstPhotoId(sp);
+  const photo = cardPhotoId(sp);
   return (
     <button
       className={`pdx-card ${active ? "pdx-card--active" : ""}`}

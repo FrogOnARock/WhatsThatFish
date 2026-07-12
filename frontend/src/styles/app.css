@@ -110,6 +110,8 @@
   letter-spacing: -0.005em;
   position: relative;
   transition: background 120ms ease, color 120ms ease;
+  /* NavLink renders an <a>; strip the default anchor underline. */
+  text-decoration: none;
 }
 .nav__item:hover { background: oklch(1 0 0 / 0.05); color: #fff; }
 .nav__item--active {
@@ -210,6 +212,7 @@
   border-radius: var(--radius-lg); padding: 24px 26px;
   box-shadow: 0 24px 60px oklch(0.2 0.03 250 / 0.25);
 }
+.modal--sm { width: min(420px, 100%); }
 .modal__title { font-family: var(--font-display); font-size: 24px; margin: 0 0 8px; }
 .modal__disclaimer {
   font-size: 13px; line-height: 1.5; color: var(--ink-2);
@@ -287,6 +290,46 @@
   padding: 2px 6px; border-radius: 5px;
 }
 .pdx-table__edit:hover { background: oklch(0.78 0.090 185 / 0.14); }
+.pdx-table__edit--danger { color: var(--coral); }
+.pdx-table__edit--danger:hover { background: oklch(0.70 0.160 35 / 0.12); }
+.pdx-table__actions { display: inline-flex; gap: 2px; justify-content: flex-end; }
+
+/* Field-log photo gallery: photos are selectable cards; the selected one's
+   actions (View / Set Display / Re-run / Delete) surface in the section head. */
+.pdx-gallery__cell { cursor: pointer; }
+.pdx-gallery__cell--hero { outline: 2px solid var(--foam-deep); outline-offset: -2px; }
+.pdx-gallery__cell--selected {
+  outline: 2px solid var(--ink); outline-offset: -2px;
+  box-shadow: 0 0 0 3px oklch(0.78 0.090 185 / 0.28);
+}
+.pdx-gallery__badge {
+  position: absolute; left: 4px; bottom: 4px;
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.04em;
+  text-transform: uppercase; padding: 2px 5px; border-radius: 4px;
+  background: var(--foam-deep); color: oklch(0.99 0.005 200);
+}
+.pdx-photo-actions { display: inline-flex; gap: 4px; align-items: center; }
+.pdx-photo-actions__btn {
+  background: transparent; border: 1px solid var(--line-strong);
+  cursor: pointer; font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.03em; color: var(--ink-2); padding: 4px 8px; border-radius: 6px;
+}
+.pdx-photo-actions__btn:hover:not(:disabled) { background: var(--bg-2); color: var(--ink); }
+.pdx-photo-actions__btn:disabled { opacity: 0.5; cursor: default; }
+.pdx-photo-actions__btn--danger { color: var(--coral); border-color: oklch(0.70 0.160 35 / 0.4); }
+.pdx-photo-actions__btn--danger:hover:not(:disabled) { background: oklch(0.70 0.160 35 / 0.10); color: var(--coral); }
+
+/* Shared Wikipedia link-out (library panel + inference description card). */
+.wiki-btn { text-decoration: none; }
+.meta-card__wiki { margin-top: 12px; }
+
+/* Species-library tabular listing (images dropped in favour of the table). */
+.pdx-layout__list { min-width: 0; }
+.library-table__row { cursor: pointer; }
+.library-table__row:hover td { background: oklch(0.78 0.090 185 / 0.06); }
+.library-table__row--active td { background: oklch(0.78 0.090 185 / 0.12); }
+.library-table__sci { font-style: italic; color: var(--ink); }
+.pdx-detail__wiki { margin-top: 14px; text-decoration: none; }
 
 /* Real photos filling the pdx placeholders + auth-image busy state */
 .pdx-card__img, .pdx-detail__hero-img, .pdx-gallery__img {
@@ -471,7 +514,10 @@ img.pdx-gallery__img, div.pdx-gallery__img { background: var(--bg-2); }
 .btn--foam { background: var(--foam-deep); color: oklch(0.99 0.005 200); }
 .btn--coral-ghost { background: transparent; color: var(--coral); border-color: oklch(0.7 0.16 35 / 0.4); }
 .btn--coral-ghost:hover { background: oklch(0.7 0.16 35 / 0.06); border-color: var(--coral); }
+.btn--coral { background: var(--coral); color: oklch(0.99 0.005 40); }
+.btn--coral:hover { background: oklch(0.64 0.17 35); }
 .btn--sm { padding: 7px 12px; font-size: 12.5px; }
+.btn:disabled { opacity: 0.55; pointer-events: none; }
 
 /* ------------------------------------------------------------------ */
 /* Sample fish row                                                     */
@@ -764,6 +810,18 @@ img.pdx-gallery__img, div.pdx-gallery__img { background: var(--bg-2); }
   display: flex; flex-direction: column; gap: 14px;
   position: sticky; top: 32px;
 }
+
+.results__notice {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  background: color-mix(in oklch, var(--foam) 14%, transparent);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--foam-deep);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.results__notice strong { color: var(--ink); }
 
 .results__hed {
   display: flex; align-items: baseline; justify-content: space-between;

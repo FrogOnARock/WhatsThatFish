@@ -1,16 +1,18 @@
 /* Login page — branding + the Google sign-in button. On successful sign-in
    (status flips to signed-in via AuthContext) we route to the account page. */
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import GoogleSignInButton from "../components/GoogleSignInButton";
 import { useAuth } from "../auth/AuthContext";
-import type { PageId } from "../components/Sidebar";
+import { ROUTES } from "../routes";
 
-export default function LoginPage({ onNavigate }: { onNavigate: (id: PageId) => void }) {
+export default function LoginPage() {
   const { status } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (status === "signed-in") onNavigate("account");
-  }, [status, onNavigate]);
+    if (status === "signed-in") navigate(ROUTES.account, { replace: true });
+  }, [status, navigate]);
 
   return (
     <main className="main">

@@ -494,6 +494,13 @@ class ObservationPhoto(Base):
     confidence: Mapped[float | None] = mapped_column(Float)
     width: Mapped[int | None] = mapped_column(Integer)
     height: Mapped[int | None] = mapped_column(Integer)
+    # The user's chosen "card image" for this photo's effective species. At most
+    # one photo per (user, corrected_taxon_id) is the hero; the service clears any
+    # prior hero for that taxon when a new one is set. Fallback (none set) is the
+    # first photo, so this is purely an override.
+    is_hero: Mapped[bool] = mapped_column(
+        Boolean, server_default="false", nullable=False
+    )
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
     observation: Mapped["Observation"] = relationship(back_populates="photos")

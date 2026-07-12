@@ -22,9 +22,12 @@ interface Props {
   dive: Dive;
   onClose: () => void;
   onEdit: () => void;
+  /** Optional — when provided, a "Delete dive" action is shown (the parent owns
+      the confirm + delete). Omitted in contexts that don't allow deletion. */
+  onDelete?: () => void;
 }
 
-export default function DiveDetailModal({ dive, onClose, onEdit }: Props) {
+export default function DiveDetailModal({ dive, onClose, onEdit, onDelete }: Props) {
   const hasGps = dive.gpsLat != null && dive.gpsLng != null;
   return (
     <div className="modal__backdrop" onClick={onClose}>
@@ -78,6 +81,11 @@ export default function DiveDetailModal({ dive, onClose, onEdit }: Props) {
           <button className="btn btn--ghost btn--sm" onClick={onClose}>
             Close
           </button>
+          {onDelete && (
+            <button className="btn btn--coral-ghost btn--sm" onClick={onDelete}>
+              Delete dive
+            </button>
+          )}
           <button className="btn btn--foam btn--sm" onClick={onEdit}>
             Edit dive
           </button>

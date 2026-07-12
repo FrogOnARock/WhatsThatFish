@@ -7,7 +7,7 @@ filters by user.id, so a user can only touch their own rows.
 import json
 from uuid import UUID
 
-from fastapi import APIRouter, Depends, UploadFile, File, Form
+from fastapi import APIRouter, Depends, UploadFile, File, Form, Response, status
 
 from ..dependencies import get_current_user, get_observation_service
 from ..error import ValidationException
@@ -59,6 +59,18 @@ def list_dives(
     return svc.list_dives(user)
 
 
+@router.delete("/dives/{dive_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_dive(
+    dive_id: UUID,
+    user: User = Depends(get_current_user),
+    svc: ObservationService = Depends(get_observation_service),
+) -> Response:
+    """Delete a dive and everything under it — its observations, their photos
+    (rows + storage blobs). Irreversible; ownership-scoped."""
+    svc.delete_dive(user, dive_id)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
 @router.get("/dive_sites", response_model=list[SiteOption])
 def search_dive_sites(
     q: str = "",
@@ -89,6 +101,17 @@ def update_observation(
 ) -> ObservationOut:
     """Edit a sighting's label / status / depth."""
     return svc.update_observation(user, observation_id, data)
+
+
+@router.delete("/observations/{observation_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_observation(
+    observation_id: UUID,
+    user: User = Depends(get_current_user),
+    svc: ObservationService = Depends(get_observation_service),
+) -> Response:
+    """Delete a sighting and its photos (rows + storage blobs). Irreversible."""
+    svc.delete_observation(user, observation_id)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 # ── photos (multipart: the image plus its metadata) ──────────────────────────
@@ -131,6 +154,29 @@ def photo_image(
 ):
     """Serve a user's contribution photo (local file or signed-URL redirect)."""
     return svc.get_photo_image(user, photo_id)
+
+
+@router.post("/observation_photos/{photo_id}/hero", status_code=status.HTTP_204_NO_CONTENT)
+def set_hero_photo(
+    photo_id: UUID,
+    user: User = Depends(get_current_user),
+    svc: ObservationService = Depends(get_observation_service),
+) -> Response:
+    """Make this photo the card/hero image for its effective species — clears any
+    prior hero for that species. Ownership-scoped."""
+    svc.set_hero_photo(user, photo_id)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+@router.delete("/observation_photos/{photo_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_photo(
+    photo_id: UUID,
+    user: User = Depends(get_current_user),
+    svc: ObservationService = Depends(get_observation_service),
+) -> Response:
+    """Delete one photo (row + storage blob). Irreversible; ownership-scoped."""
+    svc.delete_photo(user, photo_id)
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 # ── history / field log ───────────────────────────────────────────────────────

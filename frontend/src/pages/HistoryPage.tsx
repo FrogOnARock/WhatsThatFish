@@ -1,12 +1,14 @@
 /* History page — "Field Log". Species the signed-in user has logged, grouped by
    effective taxon (corrected_taxon_id) on the server, with a detail panel. */
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import StatPill from "../components/history/StatPill";
 import { SpeciesCard } from "../components/history/SpeciesCard";
 import DetailPanel from "../components/history/DetailPanel";
 import { getFieldLog, type FieldSpecies } from "../api/history";
 import { prefetchPhotos } from "../api/photoCache";
 import { useAuth } from "../auth/AuthContext";
+import { ROUTES } from "../routes";
 
 /** Every photo id across the whole field log — used to warm the cache before render. */
 function allPhotoIds(species: FieldSpecies[]): string[] {
@@ -17,9 +19,17 @@ function allPhotoIds(species: FieldSpecies[]): string[] {
 
 export default function HistoryPage() {
   const { status } = useAuth();
+  const navigate = useNavigate();
+  // The selected species is in the URL (/field-log/:taxonId) so browser
+  // back/forward walk the selections and a card is deep-linkable.
+  const { taxonId } = useParams();
+  const activeId = taxonId != null ? Number(taxonId) : null;
+  const selectSpecies = useCallback(
+    (id: number) => navigate(`${ROUTES.fieldLog}/${id}`),
+    [navigate],
+  );
   const [species, setSpecies] = useState<FieldSpecies[] | null>(null);
   const [query, setQuery] = useState("");
-  const [activeId, setActiveId] = useState<number | null>(null);
 
   useEffect(() => {
     if (status !== "signed-in") {
@@ -138,7 +148,7 @@ export default function HistoryPage() {
                 sp={sp}
                 no={i + 1}
                 active={sp.taxonId === active?.taxonId}
-                onSelect={setActiveId}
+                onSelect={selectSpecies}
               />
             ))}
             {filtered.length === 0 && (

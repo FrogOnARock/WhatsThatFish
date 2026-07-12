@@ -173,6 +173,107 @@ class TestPhotos:
         assert r.status_code == 404
 
 
+def _upload_photo(client, obs_id, blob=b"\xff\xd8jpeg", idx="0"):
+    files = {"img": ("photo.jpg", io.BytesIO(blob), "image/jpeg")}
+    r = client.post(
+        "/observation_photos",
+        files=files,
+        data={"observation_id": obs_id, "predicted_species_index": idx},
+    )
+    assert r.status_code == 200, r.text
+    return r.json()
+
+
+# ─── deletion (blobs + rows, cascade) ─────────────────────────────────────────
+
+
+class TestDeletion:
+    def test_delete_photo_removes_row_and_blob(self, authed_client, taxa, tmp_path):
+        dive = _make_dive(authed_client)
+        obs = _make_obs(authed_client, dive["id"])
+        photo = _upload_photo(authed_client, obs["id"])
+        blob = tmp_path / photo["image_path"]
+        assert blob.exists()
+
+        r = authed_client.delete(f"/observation_photos/{photo['id']}")
+        assert r.status_code == 204, r.text
+        # Row gone (image 404) and the storage blob is cleaned up.
+        assert authed_client.get(f"/observation_photos/{photo['id']}/image").status_code == 404
+        assert not blob.exists()
+
+    def test_delete_observation_cascades_photos(self, authed_client, taxa, tmp_path):
+        dive = _make_dive(authed_client)
+        obs = _make_obs(authed_client, dive["id"])
+        p1 = _upload_photo(authed_client, obs["id"], blob=b"\xff\xd8a")
+        p2 = _upload_photo(authed_client, obs["id"], blob=b"\xff\xd8b")
+
+        r = authed_client.delete(f"/observations/{obs['id']}")
+        assert r.status_code == 204, r.text
+        # Observation gone → its photos' rows + blobs gone; field log empty.
+        assert authed_client.patch(f"/observations/{obs['id']}", json={"depth_m": 1}).status_code == 404
+        for p in (p1, p2):
+            assert not (tmp_path / p["image_path"]).exists()
+        assert authed_client.get("/history").json()["total_species"] == 0
+
+    def test_delete_dive_cascades_everything(self, authed_client, taxa, tmp_path):
+        dive = _make_dive(authed_client)
+        obs = _make_obs(authed_client, dive["id"])
+        photo = _upload_photo(authed_client, obs["id"])
+        assert (tmp_path / photo["image_path"]).exists()
+
+        r = authed_client.delete(f"/dives/{dive['id']}")
+        assert r.status_code == 204, r.text
+        assert authed_client.get("/dives").json() == []
+        assert not (tmp_path / photo["image_path"]).exists()
+
+    def test_delete_unknown_404(self, authed_client):
+        import uuid
+
+        rid = uuid.uuid4()
+        assert authed_client.delete(f"/dives/{rid}").status_code == 404
+        assert authed_client.delete(f"/observations/{rid}").status_code == 404
+        assert authed_client.delete(f"/observation_photos/{rid}").status_code == 404
+
+
+# ─── hero / card image ────────────────────────────────────────────────────────
+
+
+def _photo_hero_map(client):
+    """photo_id → is_hero across the whole field log."""
+    log = client.get("/history").json()
+    return {
+        p["id"]: p["is_hero"]
+        for sp in log["species"]
+        for s in sp["sightings"]
+        for p in s["photos"]
+    }
+
+
+class TestHeroPhoto:
+    def test_set_hero_is_exclusive_per_species(self, authed_client, taxa):
+        # Two sightings of the SAME species, one photo each.
+        dive = _make_dive(authed_client)
+        o1 = _make_obs(authed_client, dive["id"], predicted_species_index=0)
+        o2 = _make_obs(authed_client, dive["id"], predicted_species_index=0)
+        p1 = _upload_photo(authed_client, o1["id"])
+        p2 = _upload_photo(authed_client, o2["id"])
+
+        # Default: nothing is hero.
+        assert _photo_hero_map(authed_client) == {p1["id"]: False, p2["id"]: False}
+
+        assert authed_client.post(f"/observation_photos/{p1['id']}/hero").status_code == 204
+        assert _photo_hero_map(authed_client) == {p1["id"]: True, p2["id"]: False}
+
+        # Setting the other flips the hero exclusively (only one per species).
+        assert authed_client.post(f"/observation_photos/{p2['id']}/hero").status_code == 204
+        assert _photo_hero_map(authed_client) == {p1["id"]: False, p2["id"]: True}
+
+    def test_set_hero_unknown_404(self, authed_client):
+        import uuid
+
+        assert authed_client.post(f"/observation_photos/{uuid.uuid4()}/hero").status_code == 404
+
+
 # ─── field log / stats / site search ──────────────────────────────────────────
 
 

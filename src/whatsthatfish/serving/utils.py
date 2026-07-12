@@ -132,6 +132,16 @@ class ContributionStorage(ABC):
     @abstractmethod
     def retrieve_image(self, key: str): ...
 
+    @abstractmethod
+    def read_bytes(self, key: str) -> bytes: ...
+
+    @abstractmethod
+    def delete(self, key: str) -> None:
+        """Remove the blob. Best-effort: an already-missing object is NOT an
+        error (the DB row is the source of truth for what should exist, so a
+        delete must still succeed if the blob was cleaned up out-of-band)."""
+        ...
+
 
 class GCSContribution(ContributionStorage):
     """Cloud backend: writes to / signs URLs for the `contributions/` prefix."""
@@ -157,6 +167,20 @@ class GCSContribution(ContributionStorage):
             headers={"Cache-Control": "private, max-age=31536000, immutable"},
         )
 
+    def read_bytes(self, key: str) -> bytes:
+        """Raw JPEG bytes for server-side re-inference (no HTTP round-trip)."""
+        return self.bucket.blob(f"{self.prefix}/{key}").download_as_bytes()
+
+    def delete(self, key: str) -> None:
+        # `if_generation_match` unset → unconditional delete. Swallow a missing
+        # object so deleting a row whose blob is already gone still succeeds.
+        from google.cloud.exceptions import NotFound
+
+        try:
+            self.bucket.blob(f"{self.prefix}/{key}").delete()
+        except NotFound:
+            pass
+
 
 class LocalContribution(ContributionStorage):
     """Dev backend: writes user photos under data/test-history/ for testing."""
@@ -172,6 +196,13 @@ class LocalContribution(ContributionStorage):
 
     def retrieve_image(self, key: str):
         return FileResponse(str(self.folder_path / key), media_type="image/jpeg")
+
+    def read_bytes(self, key: str) -> bytes:
+        return (self.folder_path / key).read_bytes()
+
+    def delete(self, key: str) -> None:
+        # missing_ok: an already-absent file is not an error (see abstract doc).
+        (self.folder_path / key).unlink(missing_ok=True)
 
 
 class ContributionConstructor:

@@ -1,6 +1,9 @@
-/* Root — routes between the workspace pages by sidebar selection. */
-import { useState } from "react";
-import Sidebar, { type PageId } from "./components/Sidebar";
+/* Root shell — persistent chrome (cold-start banner, mobile topbar, sidebar)
+   around the routed page body. Pages are real routes now, so browser back/forward
+   and deep links work; the sidebar drawer state is the only local UI state left. */
+import { useEffect, useState } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
 import ColdStartBanner from "./components/ColdStartBanner";
 import MainPage from "./pages/MainPage";
 import HistoryPage from "./pages/HistoryPage";
@@ -9,27 +12,19 @@ import SettingsPage from "./pages/SettingsPage";
 import SpeciesLibrary from "./pages/LibraryPage";
 import LoginPage from "./pages/LoginPage";
 import AccountPage from "./pages/AccountPage";
+import { ROUTES } from "./routes";
 
 export default function App() {
-  const [page, setPage] = useState<PageId>("whats-that-fish");
   // Mobile-only drawer state. On desktop the sidebar is always in-flow and this
   // flag is inert; on narrow screens it slides the off-canvas drawer in/out.
   const [navOpen, setNavOpen] = useState(false);
+  const location = useLocation();
 
-  // Navigating always closes the drawer so the chosen page is visible on mobile.
-  const navigate = (id: PageId) => {
-    setPage(id);
+  // Any navigation (sidebar tap, back/forward, deep link) closes the drawer so
+  // the chosen page is visible on mobile.
+  useEffect(() => {
     setNavOpen(false);
-  };
-
-  let body;
-  if (page === "whats-that-fish") body = <MainPage />;
-  else if (page === "library")    body = <SpeciesLibrary />;
-  else if (page === "history")    body = <HistoryPage />;
-  else if (page === "dives")      body = <DivesPage />;
-  else if (page === "settings")   body = <SettingsPage />;
-  else if (page === "login")      body = <LoginPage onNavigate={navigate} />;
-  else                            body = <AccountPage onNavigate={navigate} />;
+  }, [location.pathname]);
 
   return (
     <div className="app">
@@ -47,12 +42,7 @@ export default function App() {
           What's <em>that</em> Fish?
         </div>
       </div>
-      <Sidebar
-        active={page}
-        onNavigate={navigate}
-        open={navOpen}
-        onClose={() => setNavOpen(false)}
-      />
+      <Sidebar open={navOpen} onClose={() => setNavOpen(false)} />
       {navOpen && (
         <div
           className="sidebar-backdrop"
@@ -60,7 +50,19 @@ export default function App() {
           aria-hidden="true"
         />
       )}
-      {body}
+      <Routes>
+        <Route path={ROUTES.identify} element={<MainPage />} />
+        <Route path={ROUTES.fieldLog} element={<HistoryPage />} />
+        <Route path={`${ROUTES.fieldLog}/:taxonId`} element={<HistoryPage />} />
+        <Route path={ROUTES.dives} element={<DivesPage />} />
+        <Route path={ROUTES.library} element={<SpeciesLibrary />} />
+        <Route path={`${ROUTES.library}/:speciesId`} element={<SpeciesLibrary />} />
+        <Route path={ROUTES.settings} element={<SettingsPage />} />
+        <Route path={ROUTES.login} element={<LoginPage />} />
+        <Route path={ROUTES.account} element={<AccountPage />} />
+        {/* Unknown paths fall back to the identify page. */}
+        <Route path="*" element={<Navigate to={ROUTES.identify} replace />} />
+      </Routes>
     </div>
   );
 }

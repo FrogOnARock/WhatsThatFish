@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import ClassificationCard from "./ClassificationCard";
 import type {TaxonKey} from "../api/types";
-import type { RequestState } from "../pages/MainPage";
+import type { RequestState } from "../pages/IdentifyContext";
 import ImageCard from "./ImageCard";
 import SaveObservationModal from "./SaveObservationModal";
+import WikipediaButton from "./WikipediaButton";
 import { useBackendStatus } from "../api/backendStatus";
 
 /** Analyzing overlay with an elapsed timer. For the first few seconds it reads as
@@ -206,12 +207,20 @@ export default function ResultsView({ image, request, onReset, onRetry }: Result
               <p className="meta-card__chips">{speciesActive.habitat.map((loc) => (
                 <span key={loc} className="meta-card__chip">{loc}</span>
               ))}</p>
+              <WikipediaButton name={speciesActive.name} className="meta-card__wiki" />
             </div>
           </div>
 
         </div>
 
           <div className="results__right">
+            {/* The model only proposes — the diver decides. Make the
+                responsibility explicit before the cards. */}
+            <div className="results__notice" role="note">
+              <strong>Your call:</strong> pick the species you're confident in from the
+              cards below. If none is right, use <em>Report wrong ID</em> to search the
+              full list and set the correct species yourself.
+            </div>
             <div className="results__hed">
               <h3 className="results__hed-title">Three best guesses</h3>
               <span className="results__hed-sub">multi-head · 3 taxa</span>

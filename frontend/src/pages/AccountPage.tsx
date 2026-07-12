@@ -1,8 +1,9 @@
 /* Account page — the signed-in user's profile + sign out. Falls back to a
    sign-in prompt when signed out (e.g. after a token expiry). */
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import GoogleSignInButton from "../components/GoogleSignInButton";
-import type { PageId } from "../components/Sidebar";
+import { ROUTES } from "../routes";
 
 function initials(name: string | null): string {
   if (!name) return "··";
@@ -14,8 +15,9 @@ function initials(name: string | null): string {
     .toUpperCase();
 }
 
-export default function AccountPage({ onNavigate }: { onNavigate: (id: PageId) => void }) {
+export default function AccountPage() {
   const { user, status, signOut } = useAuth();
+  const navigate = useNavigate();
 
   if (status !== "signed-in" || !user) {
     return (
@@ -60,7 +62,7 @@ export default function AccountPage({ onNavigate }: { onNavigate: (id: PageId) =
               className="btn btn--ghost btn--sm"
               onClick={() => {
                 signOut();
-                onNavigate("whats-that-fish");
+                navigate(ROUTES.identify);
               }}
             >
               Sign out

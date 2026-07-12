@@ -1,16 +1,8 @@
-/* Sidebar: brand + nav + account footer. Active page lifted up to App. */
+/* Sidebar: brand + nav + account footer. Routing is real now — nav items are
+   NavLinks (active state driven by the URL), the footer uses useNavigate. */
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
-
-/** Every page the sidebar can route to (matches App's page state). `login` and
-    `account` aren't nav items — they're reached from the footer. */
-export type PageId =
-  | "whats-that-fish"
-  | "history"
-  | "dives"
-  | "library"
-  | "settings"
-  | "login"
-  | "account";
+import { ROUTES } from "../routes";
 
 function initials(name: string | null): string {
   if (!name) return "··";
@@ -18,44 +10,54 @@ function initials(name: string | null): string {
 }
 
 interface NavItem {
-  id: PageId;
+  to: string;
   label: string;
   group: "main" | "secondary";
-  count?: number;
+  /** `end` matches the path exactly — needed for "/" so it isn't active everywhere. */
+  end?: boolean;
 }
 
 const NAV: NavItem[] = [
-  { id: "whats-that-fish", label: "What's That Fish?", group: "main" },
-  { id: "history",         label: "Field Log",         group: "main" },
-  { id: "dives",           label: "Dive Log",          group: "main" },
-  { id: "library",         label: "Species Library",   group: "main" },
-  { id: "settings",        label: "Settings",          group: "secondary" },
+  { to: ROUTES.identify, label: "What's That Fish?", group: "main", end: true },
+  { to: ROUTES.fieldLog, label: "Field Log",         group: "main" },
+  { to: ROUTES.dives,    label: "Dive Log",          group: "main" },
+  { to: ROUTES.library,  label: "Species Library",   group: "main" },
+  { to: ROUTES.settings, label: "Settings",          group: "secondary" },
 ];
 
 interface SidebarProps {
-  active: PageId;
-  onNavigate: (id: PageId) => void;
   /** Mobile drawer state — ignored by the always-visible desktop layout. */
   open?: boolean;
   onClose?: () => void;
 }
 
-export default function Sidebar({ active, onNavigate, open = false, onClose }: SidebarProps) {
+export default function Sidebar({ open = false, onClose }: SidebarProps) {
   const main = NAV.filter((n) => n.group === "main");
   const secondary = NAV.filter((n) => n.group === "secondary");
   const { user, status } = useAuth();
+  const navigate = useNavigate();
 
   const renderItem = (item: NavItem) => (
-    <button
-      key={item.id}
-      className={`nav__item ${active === item.id ? "nav__item--active" : ""}`}
-      onClick={() => onNavigate(item.id)}
+    <NavLink
+      key={item.to}
+      to={item.to}
+      end={item.end}
+      className={({ isActive }) => `nav__item ${isActive ? "nav__item--active" : ""}`}
+      onClick={onClose}
     >
       <span className="nav__dot" />
       <span>{item.label}</span>
-      {item.count != null && <span className="nav__count">{item.count}</span>}
-    </button>
+    </NavLink>
   );
+
+  const goAccount = () => {
+    onClose?.();
+    navigate(ROUTES.account);
+  };
+  const goLogin = () => {
+    onClose?.();
+    navigate(ROUTES.login);
+  };
 
   return (
     <aside className={`sidebar ${open ? "sidebar--open" : ""}`}>
@@ -82,8 +84,8 @@ export default function Sidebar({ active, onNavigate, open = false, onClose }: S
 
       {status === "signed-in" && user ? (
         <button
-          className={`sidebar__footer sidebar__footer--button ${active === "account" ? "sidebar__footer--active" : ""}`}
-          onClick={() => onNavigate("account")}
+          className="sidebar__footer sidebar__footer--button"
+          onClick={goAccount}
         >
           <div className="sidebar__avatar">
             {user.avatarUrl ? (
@@ -103,7 +105,7 @@ export default function Sidebar({ active, onNavigate, open = false, onClose }: S
         <div className="sidebar__footer">
           <button
             className="sidebar__signin"
-            onClick={() => onNavigate("login")}
+            onClick={goLogin}
             disabled={status === "loading"}
           >
             {status === "loading" ? "…" : "Sign in with Google"}

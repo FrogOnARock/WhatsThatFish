@@ -67,7 +67,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=_DEV_ORIGINS + _ENV_ORIGINS,
     allow_origin_regex=_ORIGIN_REGEX,
-    allow_methods=["GET", "POST", "PATCH"],
+    allow_methods=["GET", "POST", "PATCH", "DELETE"],
     allow_headers=["*"],
 )
 app.include_router(predictions.router)

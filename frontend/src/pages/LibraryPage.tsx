@@ -1,11 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { getSpeciesLibrary } from "../api/client";
 import type { SpeciesEntry } from "../api/types";
-import { API_BASE } from "../api/config";
-import { prefetchImages, imagesReady } from "../api/imagePrefetch";
 import StatPill from "../components/history/StatPill";
-import {LibraryCard} from "../components/library/LibraryCard";
 import LibraryPanel from "../components/library/LibraryPanel";
+import { ROUTES } from "../routes";
 
 
 interface SortOption {
@@ -24,24 +23,18 @@ const SORT_COMPARATORS: Record<string, (a: SpeciesEntry, b: SpeciesEntry) => num
   "species": (a, b) => a.name.localeCompare(b.name),
   "genus": (a, b) => a.genus.localeCompare(b.genus),
   "family": (a, b) => a.family.localeCompare(b.family),
-  "imgcount": (a, b) => a.imageCount - b.imageCount
+  "imgcount": (a, b) => b.imageCount - a.imageCount
 };
 
-// Stable empty reference. `entries ?? []` mints a new array every render while
-// loading, which cascades filtered → urlsForPage → the prefetch effect into a
-// setState loop (React "max update depth"). A module-level constant keeps the
-// identity stable so the memo/effect chain settles.
-const EMPTY_ENTRIES: SpeciesEntry[] = [];
-
 export default function SpeciesLibrary() {
+  const navigate = useNavigate();
+  const { speciesId } = useParams();
   const [entries, setEntries] = useState<SpeciesEntry[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState("species");
-  const [activeId, setActiveId] = useState<string | null>(null);
-  const PAGE_SIZE = 12;
+  const PAGE_SIZE = 20;
   const [page, setPage] = useState(0);
-
 
   useEffect(() => {
     let cancelled = false;
@@ -53,7 +46,7 @@ export default function SpeciesLibrary() {
 
   useEffect(() => setPage(0), [query, sort]);
 
-  const all = entries ?? EMPTY_ENTRIES;
+  const all = entries ?? [];
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -68,33 +61,6 @@ export default function SpeciesLibrary() {
     return list.slice().sort(SORT_COMPARATORS[sort]);
   }, [query, sort, all]);
 
-  // Image URLs for a given page of the current filtered/sorted list.
-  const urlsForPage = useCallback(
-    (p: number) =>
-      filtered
-        .slice(p * PAGE_SIZE, (p + 1) * PAGE_SIZE)
-        .map((sp) => `${API_BASE}/image/${sp.filename}`),
-    [filtered],
-  );
-
-  // The module-level prefetch cache isn't reactive; bump this to re-evaluate
-  // pageReady once a batch settles.
-  const [readyTick, setReadyTick] = useState(0);
-
-  useEffect(() => {
-    // Gate the VISIBLE page on its own images (so it appears all at once, no
-    // trickle), then warm the next TWO pages in the background so a "Next" click
-    // renders instantly — the GCS image fetch is the slow part, not the one-shot
-    // metadata query, so paying it ahead of the click is the whole win.
-    prefetchImages(urlsForPage(page)).then(() => setReadyTick((t) => t + 1));
-    prefetchImages([...urlsForPage(page + 1), ...urlsForPage(page + 2)]);
-  }, [page, urlsForPage]);
-
-  const pageReady = useMemo(
-    () => imagesReady(urlsForPage(page)),
-    [urlsForPage, page, readyTick],
-  );
-
   if (error) return (
       <main className="main">
         <div className="main__inner">
@@ -107,10 +73,6 @@ export default function SpeciesLibrary() {
               <p className="page-header__subtitle">
                 All species available in the library and the associated image counts trained on.
               </p>
-            </div>
-            <div className="page-header__model">
-              <span className="page-header__model-pill">synced · 2 min ago</span>
-              <span>local-first · ~62 KB on device</span>
             </div>
           </header>
           <div className="error">
@@ -131,14 +93,13 @@ export default function SpeciesLibrary() {
       </main>
     );
 
-  const pageCount = (Math.max(1, Math.ceil(filtered.length / PAGE_SIZE)));
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const paged = filtered.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
-
 
   const totalSpecies = entries.length;
   const totalGenus = new Set(entries.map(entry => entry.genus)).size;
   const totalFamily = new Set(entries.map(entry => entry.family)).size;
-  const active = all.find((sp) => `${sp.speciesId}` === activeId) || filtered[0] || all[0];
+  const active = all.find((sp) => `${sp.speciesId}` === speciesId) || filtered[0] || all[0];
 
   return (
     <main className="main">
@@ -152,10 +113,6 @@ export default function SpeciesLibrary() {
             <p className="page-header__subtitle">
               All species available in the library and the associated image counts trained on.
             </p>
-          </div>
-          <div className="page-header__model">
-            <span className="page-header__model-pill">synced · 2 min ago</span>
-            <span>local-first · ~62 KB on device</span>
           </div>
         </header>
 
@@ -189,32 +146,49 @@ export default function SpeciesLibrary() {
         </div>
 
         <div className="pdx-layout">
-          <div className="pdx-grid">
+          <div className="pdx-layout__list">
             {filtered.length === 0 ? (
               <div className="pdx-empty">No matches in the library for “{query}”.</div>
-            ) : !pageReady ? (
-              // Only shows on a page whose images AREN'T already prefetched — i.e.
-              // the very first view or a jumped page. Sequential Next/Prev lands on
-              // a pre-warmed page and skips this entirely.
-              <div className="pdx-empty">
-                <span className="analyzing__pulse" /> Loading images…
-              </div>
             ) : (
-              paged.map((sp) => (
-                <LibraryCard key={sp.speciesId} sp={sp} onSelect={setActiveId} />
-              ))
+              <table className="pdx-table library-table">
+                <thead>
+                  <tr>
+                    <th>Species</th>
+                    <th>Common</th>
+                    <th>Genus</th>
+                    <th>Family</th>
+                    <th className="pdx-table__num">Images</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {paged.map((sp) => (
+                    <tr
+                      key={sp.speciesId}
+                      className={`library-table__row ${
+                        sp.speciesId === active?.speciesId ? "library-table__row--active" : ""
+                      }`}
+                      onClick={() => navigate(`${ROUTES.library}/${sp.speciesId}`)}
+                    >
+                      <td className="library-table__sci">{sp.name}</td>
+                      <td>{sp.common || "—"}</td>
+                      <td>{sp.genus}</td>
+                      <td>{sp.family}</td>
+                      <td className="pdx-table__num">{sp.imageCount}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             )}
+
+            <div className="pdx-pager">
+              <button disabled={page === 0} onClick={() => setPage(page - 1)}>← Prev</button>
+              <span>Page {page + 1} of {pageCount}</span>
+              <button disabled={page >= pageCount - 1} onClick={() => setPage(page + 1)}>Next →</button>
+            </div>
           </div>
 
           {active && <LibraryPanel sp={active} />}
         </div>
-
-        <div className="pdx-pager">
-          <button disabled={page === 0} onClick={() => setPage(page - 1)}>← Prev</button>
-          <span>Page {page + 1} of {pageCount}</span>
-          <button disabled={page >= pageCount - 1} onClick={() => setPage(page + 1)}>Next →</button>
-        </div>
-
       </div>
     </main>
   );

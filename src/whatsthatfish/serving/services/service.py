@@ -502,6 +502,49 @@ class ObservationService:
             raise ResourceNotFoundException("Photo not found")
         return self.storage.retrieve_image(photo.image_path)
 
+    # ── deletion (blobs first, then the cascade row delete) ──────────────────
+    def _delete_blobs(self, keys: list[str]) -> None:
+        """Best-effort blob cleanup. A single failed delete must not abort the
+        whole request (the row delete is what the user asked for); the orphaned
+        blob is logged for out-of-band cleanup rather than surfaced as a 500."""
+        for key in keys:
+            try:
+                self.storage.delete(key)
+            except Exception:
+                logger.exception("failed to delete contribution blob %s", key)
+
+    def delete_photo(self, user, photo_id) -> None:
+        """Remove one photo (its blob + row). Ownership-scoped."""
+        photo = self.repo.get_photo(user.id, photo_id)
+        if photo is None:
+            raise ResourceNotFoundException("Photo not found")
+        self._delete_blobs([photo.image_path])
+        self.repo.delete(photo)
+
+    def delete_observation(self, user, observation_id) -> None:
+        """Remove a whole sighting: every photo blob, then the observation row
+        (photo rows go via delete-orphan cascade)."""
+        obs = self.repo.get_observation(user.id, observation_id)
+        if obs is None:
+            raise ResourceNotFoundException("Observation not found")
+        self._delete_blobs([p.image_path for p in obs.photos])
+        self.repo.delete(obs)
+
+    def delete_dive(self, user, dive_id) -> None:
+        """Remove a dive and everything under it: all photo blobs across all its
+        observations, then the dive row (observations + photos cascade)."""
+        dive = self.repo.get_dive(user.id, dive_id)
+        if dive is None:
+            raise ResourceNotFoundException("Dive not found")
+        self._delete_blobs(self.repo.dive_image_paths(user.id, dive_id))
+        self.repo.delete(dive)
+
+    def set_hero_photo(self, user, photo_id) -> None:
+        """Mark a photo as the card image for its effective species (clears any
+        prior hero for that species). Ownership-scoped."""
+        if not self.repo.set_hero(user.id, photo_id):
+            raise ResourceNotFoundException("Photo not found")
+
     # ── history (field log) ──────────────────────────────────────────────────
     def get_field_log(self, user) -> FieldLog:
         """Group all of the user's observations by the EFFECTIVE taxon
@@ -585,6 +628,7 @@ class ObservationService:
             confidence=photo.confidence,
             width=photo.width,
             height=photo.height,
+            is_hero=photo.is_hero,
         )
 
     def _sighting(self, obs) -> HistorySighting:

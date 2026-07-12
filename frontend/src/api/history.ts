@@ -8,6 +8,8 @@ export interface LogPhoto {
   bbox: { x: number; y: number; w: number; h: number } | null;
   width: number | null;
   height: number | null;
+  /** User-chosen card image for the species; UI falls back to the first photo. */
+  isHero: boolean;
 }
 
 export interface FieldSighting {
@@ -53,6 +55,7 @@ export async function getFieldLog(): Promise<FieldSpecies[]> {
         bbox: p.bbox,
         width: p.width,
         height: p.height,
+        isHero: p.is_hero ?? false,
       })),
     })),
   }));

@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from uuid import UUID
 
 from sqlalchemy.orm import joinedload, selectinload
-from sqlalchemy import select, asc, desc, or_, func
+from sqlalchemy import select, asc, desc, or_, func, update
 
 from whatsthatfish.database.models import (
     AppTaxa,
@@ -202,6 +202,26 @@ class ObservationRepository:
         """Commit pending changes (e.g. after a dive PATCH)."""
         self.session.commit()
 
+    def delete(self, obj) -> None:
+        """Delete an ORM row and commit. Child rows (observations → photos) are
+        removed by the ON DELETE CASCADE / delete-orphan cascade on the mapper;
+        the caller is responsible for removing the corresponding storage blobs
+        BEFORE calling this (the image_path is gone once the row is)."""
+        self.session.delete(obj)
+        self.session.commit()
+
+    def dive_image_paths(self, user_id: UUID, dive_id: UUID) -> list[str]:
+        """Every contribution-photo storage key under a dive (all its
+        observations' photos), so the blobs can be removed before the cascade
+        delete drops the rows. Ownership-scoped via the join to the dive."""
+        rows = self.session.execute(
+            select(ObservationPhoto.image_path)
+            .join(Observation, ObservationPhoto.observation_id == Observation.id)
+            .join(Dive, Observation.dive_id == Dive.id)
+            .where(Dive.id == dive_id, Dive.user_id == user_id)
+        ).all()
+        return [r[0] for r in rows]
+
     # ── observations ─────────────────────────────────────────────────────────
     def create_observation(self, user_id: UUID, **fields) -> Observation:
         obs = Observation(user_id=user_id, **fields)
@@ -239,6 +259,37 @@ class ObservationRepository:
             .join(Observation, ObservationPhoto.observation_id == Observation.id)
             .where(ObservationPhoto.id == photo_id, Observation.user_id == user_id)
         ).scalar_one_or_none()
+
+    def set_hero(self, user_id: UUID, photo_id: UUID) -> bool:
+        """Make `photo_id` the hero (card image) for its effective species,
+        clearing any prior hero among that user's photos of the same
+        corrected_taxon_id. Returns False if the photo isn't found/owned."""
+        photo = self.get_photo(user_id, photo_id)
+        if photo is None:
+            return False
+        taxon_id = self.session.scalar(
+            select(Observation.corrected_taxon_id).where(
+                Observation.id == photo.observation_id
+            )
+        )
+        # Ids of every photo this user has under the same effective taxon.
+        sibling_ids = (
+            select(ObservationPhoto.id)
+            .join(Observation, ObservationPhoto.observation_id == Observation.id)
+            .where(
+                Observation.user_id == user_id,
+                Observation.corrected_taxon_id == taxon_id,
+            )
+        )
+        self.session.execute(
+            update(ObservationPhoto)
+            .where(ObservationPhoto.id.in_(sibling_ids))
+            .values(is_hero=False)
+            .execution_options(synchronize_session=False)
+        )
+        photo.is_hero = True
+        self.session.commit()
+        return True
 
     def user_stats(self, user_id: UUID) -> dict[str, int]:
         """Summary counts for the Settings page: dives, observations, and

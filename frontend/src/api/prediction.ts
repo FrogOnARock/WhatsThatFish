@@ -20,6 +20,21 @@ export async function getPrediction(file: File): Promise<Prediction> {
       return await res.json();
 }
 
+/** Re-run inference on already-stored image bytes (a field-log photo fetched
+    back from storage). Reuses /predict — the backend needs an image content-type,
+    so we pass the blob with an explicit jpeg filename. */
+export async function getPredictionBlob(blob: Blob): Promise<Prediction> {
+  const body = new FormData();
+  body.append("img", blob, "photo.jpg");
+  const res = await apiFetch(
+    `${API_BASE}/predict`,
+    { method: "POST", body },
+    { timeoutMs: TIMEOUT.PREDICT, retries: 1 },
+  );
+  await raiseForStatus(res, "Inference failed");
+  return await res.json();
+}
+
 export async function getPredictionSample(file: string): Promise<Prediction> {
     const res = await apiFetch(
         `${API_BASE}/predict/sample/${file}`,

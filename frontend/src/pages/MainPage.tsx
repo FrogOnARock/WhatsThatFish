@@ -1,16 +1,16 @@
 /* Main page — orchestrates idle / analyzing / results states.
    Unlike the prototype (setTimeout), the analyzing state is driven by the
    API promise resolving, so it behaves identically with the real backend. */
-import { useCallback, useEffect, useMemo, useState, useRef } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import DropZone from "../components/DropZone";
-import ResultsView, { type ImageState } from "../components/ResultsView";
+import ResultsView from "../components/ResultsView";
 import { getPrediction, getPredictionSample } from "../api/client";
-import type { Prediction } from "../api/types";
 import { SAMPLE_FISH } from "../api/prediction";
 import { API_BASE } from "../api/config";
 import { prefetchImages, imagesReady } from "../api/imagePrefetch";
 import { getStats, type ModelStats } from "../api/stats";
 import { useBackendStatus } from "../api/backendStatus";
+import { useIdentifySession } from "./IdentifyContext";
 
 // Model pill label reflects real reachability instead of a hardcoded "online".
 const PILL_LABEL: Record<string, string> = {
@@ -20,17 +20,11 @@ const PILL_LABEL: Record<string, string> = {
   unknown: "model online",
 };
 
-export type RequestState =
-    { status: "analyzing" } |
-    { status: "success"; prediction: Prediction } |
-    { status: "no-fish" } |
-    { status: "error"; message: string }
-
-
 export default function MainPage() {
-  const lastTask = useRef<(() => Promise<Prediction | null>) | null>(null);
-  const [image, setImage] = useState<ImageState | null>(null);
-  const [request, setRequest] = useState<RequestState | null>(null);
+  // The current identification lives in a provider ABOVE the router, so it
+  // survives navigating away to the field log / dive log and back.
+  const { image, request, lastTask, setImage, runInference, reset } =
+    useIdentifySession();
   const [stats, setStats] = useState<ModelStats | null>(null);
   const backendStatus = useBackendStatus();
   // The prefetch cache (imagePrefetch's `settled` set) is module-level, not
@@ -63,26 +57,11 @@ export default function MainPage() {
     [sampleUrls, readyTick],
   );
 
-  const  runInference = useCallback(async (task: () => Promise<Prediction | null>) => {
-    lastTask.current = task;
-    setRequest({ status: "analyzing" });
-    try {
-      const result = await task();
-      // A result with no detection still carries whole-frame guesses (detected=false),
-      // so it's a success — ResultsView warns. Only a null result is a true no-op.
-      if (result === null) {
-        setRequest({status: "no-fish"})
-      } else setRequest({status: "success", prediction: result});
-    }
-    catch (err) {
-      console.error("inference failed", err);
-      setRequest({ status: "error", message: `Inference failed: ${err}` });
-    }
-  }, []);
-
   const handleSample = useCallback((id: string) => {
     const sample = SAMPLE_FISH.find((s) => s.id === id);
     if (!sample) return;
+    // Replacing whatever was there — clear a live file URL first.
+    reset();
     setImage({
       kind: "sample",
       filename: sample.filename,
@@ -93,9 +72,10 @@ export default function MainPage() {
       url: `${API_BASE}/image/${sample.filename}`,
     });
     runInference(() => getPredictionSample(sample.filename));
-  }, [runInference]);
+  }, [reset, setImage, runInference]);
 
   const handleUpload = useCallback((file: File) => {
+    reset();
     const url = URL.createObjectURL(file);
     setImage({
       kind: "file",
@@ -104,17 +84,15 @@ export default function MainPage() {
       url,
     });
     runInference(() => getPrediction(file));
-  }, [runInference]);
+  }, [reset, setImage, runInference]);
 
   const handleRetry = useCallback(() => {
-    if (lastTask.current) runInference(lastTask.current);},
-    [runInference]);
+    if (lastTask) runInference(lastTask);
+  }, [lastTask, runInference]);
 
   const handleReset = useCallback(() => {
-    if (image?.kind === "file" && image.url) URL.revokeObjectURL(image.url);
-    setImage(null);
-    setRequest(null);
-  }, [image]);
+    reset();
+  }, [reset]);
 
   return (
     <main className="main">

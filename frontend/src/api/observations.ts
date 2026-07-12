@@ -157,6 +157,32 @@ export async function createObservation(body: {
   return await res.json();
 }
 
+export async function deleteObservation(id: string): Promise<void> {
+  const res = await authedFetch(`${API_BASE}/observations/${id}`, { method: "DELETE" });
+  await raiseForStatus(res, "Couldn't delete the sighting");
+}
+
+export async function deleteDive(id: string): Promise<void> {
+  const res = await authedFetch(`${API_BASE}/dives/${id}`, { method: "DELETE" });
+  await raiseForStatus(res, "Couldn't delete the dive");
+}
+
+export async function deletePhoto(id: string): Promise<void> {
+  const res = await authedFetch(`${API_BASE}/observation_photos/${id}`, {
+    method: "DELETE",
+  });
+  await raiseForStatus(res, "Couldn't delete the photo");
+}
+
+/** Mark a photo as the card/hero image for its effective species (clears any
+    prior hero for that species). */
+export async function setHeroPhoto(id: string): Promise<void> {
+  const res = await authedFetch(`${API_BASE}/observation_photos/${id}/hero`, {
+    method: "POST",
+  });
+  await raiseForStatus(res, "Couldn't set the card image");
+}
+
 export async function uploadPhoto(body: {
   observationId: string;
   image: Blob;

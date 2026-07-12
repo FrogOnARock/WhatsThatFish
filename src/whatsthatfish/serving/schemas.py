@@ -247,6 +247,9 @@ class PhotoOut(BaseModel):
     confidence: float | None
     width: int | None
     height: int | None
+    # The user-chosen card image for this photo's effective species. At most one
+    # photo per species is hero; the UI falls back to the first photo when none is.
+    is_hero: bool = False
 
 
 class HistorySighting(BaseModel):

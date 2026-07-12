@@ -2,9 +2,10 @@
    site, or sighting count. Each row opens an expanded detail popup; from there
    (or the row's Edit button) the dive's details can be PATCHed. */
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { listDives, type Dive } from "../api/observations";
+import { listDives, deleteDive, type Dive } from "../api/observations";
 import DiveDetailModal from "../components/DiveDetailModal";
 import DiveEditModal from "../components/DiveEditModal";
+import ConfirmModal from "../components/ConfirmModal";
 import StatPill from "../components/history/StatPill";
 import { useAuth } from "../auth/AuthContext";
 
@@ -27,6 +28,7 @@ export default function DivesPage() {
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [detail, setDetail] = useState<Dive | null>(null);
   const [editing, setEditing] = useState<Dive | null>(null);
+  const [deleting, setDeleting] = useState<Dive | null>(null);
 
   useEffect(() => {
     if (status !== "signed-in") {
@@ -192,6 +194,10 @@ export default function DivesPage() {
             setEditing(detail);
             setDetail(null);
           }}
+          onDelete={() => {
+            setDeleting(detail);
+            setDetail(null);
+          }}
         />
       )}
 
@@ -200,6 +206,18 @@ export default function DivesPage() {
           dive={editing}
           onClose={() => setEditing(null)}
           onSaved={reload}
+        />
+      )}
+
+      {deleting && (
+        <ConfirmModal
+          title="Delete dive?"
+          body="This permanently removes the dive and every sighting and photo logged on it, including the image files. This can't be undone."
+          onConfirm={async () => {
+            await deleteDive(deleting.id);
+            reload();
+          }}
+          onClose={() => setDeleting(null)}
         />
       )}
     </main>
