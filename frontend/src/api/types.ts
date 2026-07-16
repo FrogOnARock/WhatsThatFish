@@ -111,7 +111,17 @@ export interface SpeciesEntry {
   common: string;
   description: string;
   location: string[];
+  regions: Region[];
   filename: string;
   depth: string;
+}
+
+/** A geographic region (continent / country / dive-area) — a species range or a
+    dive site's location. `parentId` links up the hierarchy. */
+export interface Region {
+  id: string;
+  name: string;
+  kind: "continent" | "country" | "area";
+  parentId: string | null;
 }
 

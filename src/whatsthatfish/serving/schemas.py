@@ -13,6 +13,17 @@ from pydantic import BaseModel, Field
 
 LabelStatus = Literal["predicted", "confirmed", "corrected"]
 UnitSystem = Literal["metric", "imperial"]
+RegionKind = Literal["continent", "country", "area"]
+
+
+class RegionOut(BaseModel):
+    """One geographic region (continent / country / dive-area) a species is found
+    in or a dive site belongs to. `parent_id` links up the hierarchy."""
+
+    id: UUID
+    name: str
+    kind: RegionKind
+    parent_id: UUID | None = None
 
 
 class UserProfile(BaseModel):
@@ -59,7 +70,8 @@ class SpeciesEntry(BaseModel):
     image_count: int
     common_name: str
     description: str
-    location: list[str]
+    location: list[str]  # legacy flat blurb; kept during the regions transition
+    regions: list[RegionOut] = []  # structured ranges from species_regions
     filename: str
     depth: str
 
@@ -130,21 +142,44 @@ class Prediction(BaseModel):
 # ── History / observation tracking ──────────────────────────────────────────
 
 
-class DiveCreate(BaseModel):
+class DiveLogFields(BaseModel):
+    """The extended dive-log fields, shared by create/update/out. All METRIC-
+    canonical (m, °C, kg, bar); the frontend converts to the user's unit_system.
+    'Notable Nature' = the dive's observations; 'Photos Taken' = observation
+    photos — neither is a field here."""
+
+    visibility_m: float | None = None
+    air_temp_c: float | None = None
+    water_temp_c: float | None = None
+    weight_kg: float | None = None
+    exposure_suit: str | None = None
+    depth_avg_m: float | None = None
+    depth_max_m: float | None = None
+    started_at: datetime | None = None
+    bottom_time_min: int | None = None
+    total_time_min: int | None = None
+    end_pressure_bar: float | None = None
+    dive_shop: str | None = None
+
+
+class DiveCreate(DiveLogFields):
     """Create a dive. `site_name` resolves-or-creates a deduplicated dive_site;
+    `google_place_id` (from Places Autocomplete) is stored on the site.
     location/time live on the dive (depth is per-observation)."""
 
     site_name: str | None = None
+    google_place_id: str | None = None
     gps_lat: float | None = None
     gps_lng: float | None = None
     dived_at: datetime | None = None
     notes: str | None = None
 
 
-class DiveUpdate(BaseModel):
+class DiveUpdate(DiveLogFields):
     """PATCH a dive — every field optional; only provided keys are changed."""
 
     site_name: str | None = None
+    google_place_id: str | None = None
     gps_lat: float | None = None
     gps_lng: float | None = None
     dived_at: datetime | None = None
@@ -168,7 +203,7 @@ class SiteOption(BaseModel):
     name: str
 
 
-class DiveOut(BaseModel):
+class DiveOut(DiveLogFields):
     id: UUID
     site_id: UUID | None
     site_name: str | None
@@ -176,6 +211,8 @@ class DiveOut(BaseModel):
     gps_lng: float | None
     dived_at: datetime | None
     notes: str | None
+    verified: bool = False
+    verified_source: str | None = None
     created_at: datetime
     # Summary fields for the Dive Log table + detail popup.
     observation_count: int = 0

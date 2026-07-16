@@ -17,6 +17,7 @@ from whatsthatfish.serving.error import (
 )
 from whatsthatfish.serving.schemas import (
     SpeciesEntry,
+    RegionOut,
     Prediction,
     Bbox,
     Candidate,
@@ -42,6 +43,23 @@ from whatsthatfish.serving.schemas import (
 # Dedicated logger: one structured line per inference for drift monitoring
 # (top-1 confidence + entropy). On Cloud Run, stdout → Cloud Logging.
 logger = _get_logger("whatsthatfish.serving.inference")
+
+# Extended dive-log columns shared 1:1 between the DiveCreate/Update/Out schemas
+# and the Dive model, so create/update/serialize can iterate rather than repeat.
+_DIVE_LOG_FIELDS = (
+    "visibility_m",
+    "air_temp_c",
+    "water_temp_c",
+    "weight_kg",
+    "exposure_suit",
+    "depth_avg_m",
+    "depth_max_m",
+    "started_at",
+    "bottom_time_min",
+    "total_time_min",
+    "end_pressure_bar",
+    "dive_shop",
+)
 
 
 class UserService:
@@ -101,6 +119,10 @@ class TaxaService:
         # non-null, so nothing downstream changes.
         rows = self.repo.query_species()
 
+        # Structured ranges from species_regions (one query for the whole
+        # catalogue); the flat `location` blurb stays until the UI cuts over.
+        regions_by_taxon = self.repo.regions_for_taxa([r.taxon_id for r in rows])
+
         return [
             SpeciesEntry(
                 species_id=row.zero_indexed_species,
@@ -112,6 +134,12 @@ class TaxaService:
                 filename=row.filename or "",
                 common_name=row.common_name or "",
                 location=row.location or [],
+                regions=[
+                    RegionOut(
+                        id=r.id, name=r.name, kind=r.kind, parent_id=r.parent_id
+                    )
+                    for r in regions_by_taxon.get(row.taxon_id, [])
+                ],
                 depth=row.depth or "",
             )
             for row in rows
@@ -350,7 +378,13 @@ class ObservationService:
     # ── dives ────────────────────────────────────────────────────────────────
     def create_dive(self, user, data: DiveCreate) -> DiveOut:
         site = (
-            self.repo.resolve_or_create_site(data.site_name, user.id)
+            self.repo.resolve_or_create_site(
+                data.site_name,
+                user.id,
+                google_place_id=data.google_place_id,
+                lat=data.gps_lat,
+                lng=data.gps_lng,
+            )
             if data.site_name
             else None
         )
@@ -361,6 +395,7 @@ class ObservationService:
             gps_lng=data.gps_lng,
             dived_at=data.dived_at,
             notes=data.notes,
+            **{f: getattr(data, f) for f in _DIVE_LOG_FIELDS},
         )
         return self._dive_out(dive, site)
 
@@ -370,9 +405,15 @@ class ObservationService:
             raise ResourceNotFoundException("Dive not found")
         site = dive.site
         if data.site_name is not None:
-            site = self.repo.resolve_or_create_site(data.site_name, user.id)
+            site = self.repo.resolve_or_create_site(
+                data.site_name,
+                user.id,
+                google_place_id=data.google_place_id,
+                lat=data.gps_lat,
+                lng=data.gps_lng,
+            )
             dive.site_id = site.id
-        for field in ("gps_lat", "gps_lng", "dived_at", "notes"):
+        for field in ("gps_lat", "gps_lng", "dived_at", "notes", *_DIVE_LOG_FIELDS):
             value = getattr(data, field)
             if value is not None:
                 setattr(dive, field, value)
@@ -602,9 +643,12 @@ class ObservationService:
             gps_lng=dive.gps_lng,
             dived_at=dive.dived_at,
             notes=dive.notes,
+            verified=dive.verified,
+            verified_source=dive.verified_source,
             created_at=dive.created_at,
             observation_count=len(observations),
             species=species,
+            **{f: getattr(dive, f) for f in _DIVE_LOG_FIELDS},
         )
 
     def _obs_out(self, obs) -> ObservationOut:

@@ -5,6 +5,15 @@ import { useState } from "react";
 import SiteAutocomplete from "./SiteAutocomplete";
 import * as api from "../api/observations";
 
+// Force the backend-suggestion path regardless of .env.local — this test
+// exercises the no-Maps-key branch (the Google Places path needs the real JS
+// API, which jsdom can't load).
+vi.mock("../api/config", () => ({
+  GOOGLE_MAPS_API_KEY: "",
+  API_BASE: "",
+  GOOGLE_CLIENT_ID: "",
+}));
+
 // Mock the network call; the component logic (debounced search → dropdown →
 // pick) is what's under test.
 vi.mock("../api/observations", () => ({

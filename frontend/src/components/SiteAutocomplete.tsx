@@ -1,50 +1,163 @@
-/* Free-text dive-site input with existing-site suggestions. The user can type a
-   brand-new site name, but matching sites surface as a dropdown so they reuse
-   one instead of creating a near-duplicate. Backend match is substring on the
-   normalized name_key (case/spacing-insensitive). */
+/* Free-text dive-site input with suggestions from two sources:
+   1. Google Places (when VITE_GOOGLE_MAPS_API_KEY is set) via the NEW
+      AutocompleteSuggestion data API — available to new Maps customers, unlike
+      the deprecated Autocomplete widget. Picking a place captures place_id +
+      lat/lng via place.fetchFields (surfaced through onPlace).
+   2. Backend existing-site suggestions (when no key, or Google errors) — so
+      users reuse a logged site instead of a near-duplicate.
+   The input stays fully controlled (value/onChange), so pre-filled edit values
+   work; suggestions render in our own dropdown either way. */
 import { useEffect, useRef, useState } from "react";
-import { searchSites, type SiteOption } from "../api/observations";
+import { searchSites } from "../api/observations";
+import { GOOGLE_MAPS_API_KEY } from "../api/config";
+
+export interface PlacePick {
+  placeId: string | null;
+  lat: number | null;
+  lng: number | null;
+}
 
 interface Props {
   value: string;
   onChange: (v: string) => void;
+  onPlace?: (p: PlacePick) => void;
   placeholder?: string;
   className?: string;
+}
+
+// One Google suggestion (carries the prediction so we can fetch coords on pick)
+// or a plain backend site (prediction undefined).
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Suggestion = { id: string; name: string; prediction?: any };
+
+// Load the Maps JS API once (async, per Google's loading best practice) and
+// resolve the Places library. Shared across every SiteAutocomplete instance.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let placesPromise: Promise<any> | null = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function loadPlaces(): Promise<any> {
+  if (!GOOGLE_MAPS_API_KEY) return Promise.reject(new Error("no maps key"));
+  if (placesPromise) return placesPromise;
+  placesPromise = (async () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const g = () => (window as any).google;
+    if (!g()?.maps?.importLibrary) {
+      await new Promise<void>((resolve, reject) => {
+        const s = document.createElement("script");
+        // loading=async silences the perf warning and enables importLibrary.
+        s.src =
+          `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}` +
+          `&v=weekly&loading=async&libraries=places`;
+        s.async = true;
+        s.onload = () => resolve();
+        s.onerror = () => reject(new Error("maps script failed"));
+        document.head.appendChild(s);
+      });
+    }
+    return g().maps.importLibrary("places");
+  })();
+  return placesPromise;
 }
 
 export default function SiteAutocomplete({
   value,
   onChange,
+  onPlace,
   placeholder,
   className,
 }: Props) {
-  const [results, setResults] = useState<SiteOption[]>([]);
+  const [results, setResults] = useState<Suggestion[]>([]);
   const [open, setOpen] = useState(false);
-  // True only right after a suggestion click, so we don't immediately re-search
-  // (and re-open the dropdown) for the value we just set.
+  // True right after a pick, so we don't immediately re-search (and re-open)
+  // for the value we just set.
   const justPicked = useRef(false);
+  // Google Autocomplete session token — one session spans the keystrokes up to
+  // a details fetch, which bills as a single session. Cleared after a pick.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const tokenRef = useRef<any>(null);
 
   useEffect(() => {
     if (justPicked.current) {
       justPicked.current = false;
       return;
     }
-    if (value.trim().length < 1) {
+    const q = value.trim();
+    if (q.length < 1) {
       setResults([]);
+      setOpen(false);
       return;
     }
     let cancelled = false;
-    searchSites(value)
-      .then((r) => {
+
+    (async () => {
+      // ── Google Places (new data API) ─────────────────────────────────────
+      if (GOOGLE_MAPS_API_KEY) {
+        try {
+          const places = await loadPlaces();
+          if (cancelled) return;
+          if (!tokenRef.current) {
+            tokenRef.current = new places.AutocompleteSessionToken();
+          }
+          const { suggestions } =
+            await places.AutocompleteSuggestion.fetchAutocompleteSuggestions({
+              input: q,
+              sessionToken: tokenRef.current,
+            });
+          if (cancelled) return;
+          const opts: Suggestion[] = suggestions
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .filter((s: any) => s.placePrediction)
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .map((s: any) => ({
+              id: s.placePrediction.placeId,
+              name: s.placePrediction.text.text,
+              prediction: s.placePrediction,
+            }));
+          setResults(opts);
+          setOpen(opts.length > 0);
+          return;
+        } catch {
+          /* no key / load / quota failure → fall through to backend */
+        }
+      }
+
+      // ── backend existing-site suggestions ────────────────────────────────
+      try {
+        const r = await searchSites(q);
         if (cancelled) return;
-        setResults(r);
+        setResults(r.map((s) => ({ id: s.id, name: s.name })));
         setOpen(r.length > 0);
-      })
-      .catch(() => {});
+      } catch {
+        /* ignore */
+      }
+    })();
+
     return () => {
       cancelled = true;
     };
   }, [value]);
+
+  async function pick(opt: Suggestion) {
+    justPicked.current = true;
+    onChange(opt.name);
+    setOpen(false);
+    if (opt.prediction) {
+      try {
+        const place = opt.prediction.toPlace();
+        await place.fetchFields({ fields: ["location", "id", "displayName"] });
+        onPlace?.({
+          placeId: place.id ?? null,
+          lat: place.location?.lat() ?? null,
+          lng: place.location?.lng() ?? null,
+        });
+      } catch {
+        onPlace?.({ placeId: opt.id ?? null, lat: null, lng: null });
+      }
+      tokenRef.current = null; // session consumed by the details fetch
+    } else {
+      onPlace?.({ placeId: null, lat: null, lng: null });
+    }
+  }
 
   // Hide an exact-name match: no point suggesting the value already typed.
   const suggestions = results.filter(
@@ -57,7 +170,11 @@ export default function SiteAutocomplete({
         className="modal__input"
         placeholder={placeholder ?? "Dive site"}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+          // Manual typing invalidates any previously-picked place coords.
+          onPlace?.({ placeId: null, lat: null, lng: null });
+          onChange(e.target.value);
+        }}
         onFocus={() => suggestions.length > 0 && setOpen(true)}
         // Delay so a suggestion's onClick fires before the list unmounts.
         onBlur={() => setTimeout(() => setOpen(false), 120)}
@@ -70,11 +187,7 @@ export default function SiteAutocomplete({
                 type="button"
                 className="site-ac__item"
                 onMouseDown={(e) => e.preventDefault()}
-                onClick={() => {
-                  justPicked.current = true;
-                  onChange(s.name);
-                  setOpen(false);
-                }}
+                onClick={() => pick(s)}
               >
                 {s.name}
               </button>

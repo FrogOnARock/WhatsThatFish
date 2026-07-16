@@ -137,6 +137,40 @@ class TestTaxaRepository:
         assert names == {"Amphiprion ocellaris", "Amphiprion clarkii"}
         assert any(r.common_name == "Clown anemonefish" for r in rows)
 
+    def test_search_species_matches_common_name(self, session_factory, seed_taxa):
+        # A common-name query must surface species by their curated app_taxa name,
+        # not just the scientific name (the reported wrong-id-picker bug).
+        seed_taxa(TAXA)
+        with session_factory() as s:
+            rows = TaxaRepository(s).search_species("anemonefish")
+        names = {r.name for r in rows}
+        assert names == {"Amphiprion ocellaris", "Amphiprion clarkii"}
+
+    def test_search_species_matches_inat_common_name_for_untrained(
+        self, session_factory
+    ):
+        # An untrained species (no app_taxa row) with a seeded inat_taxa.common_name
+        # must be searchable and return that name via COALESCE — the post-seeding path.
+        from whatsthatfish.database.models import InatTaxa
+
+        with session_factory() as s:
+            s.add(
+                InatTaxa(
+                    taxon_id=3001,
+                    name="Chaetodon lunula",
+                    rank="species",
+                    active=True,
+                    ancestry="48460/1/2/355675/47178/85497",
+                    common_name="Raccoon butterflyfish",
+                )
+            )
+            s.commit()
+        with session_factory() as s:
+            rows = TaxaRepository(s).search_species("raccoon")
+        assert len(rows) == 1
+        assert rows[0].name == "Chaetodon lunula"
+        assert rows[0].common_name == "Raccoon butterflyfish"
+
     def test_search_species_excludes_non_fish_ancestry(
         self, session_factory, seed_taxa
     ):

@@ -27,6 +27,8 @@ jobs:
   release-gate:
     runs-on: ubuntu-latest
     env:
+      # Artifact Registry repo (no tag) — the base for every image tag below.
+      IMAGE_REPO: us-east1-docker.pkg.dev/whats-that-fish/whatsthatfish/backend
       # Tag the image with the git tag that triggered the release (e.g. v0.1.4),
       IMAGE: us-east1-docker.pkg.dev/whats-that-fish/whatsthatfish/backend:${{ github.ref_name }}
       MODELS_BUCKET: gs://whats-that-fish-models
@@ -103,12 +105,38 @@ jobs:
             "$MODELS_BUCKET/${{ github.ref_name }}/"
 
       # Auth docker to Artifact Registry using the ADC creds the gcp-auth (WIF)
+      # provides, then build once and push three tags to Google Cloud:
+      #   :<git-tag>   the release version (e.g. v0.1.4)
+      #   :sha-<rev>   the immutable commit revision (traceability)
+      #   :latest      the most-recent release
       - name: build-and-push-image
         run: |
+          REVISION="$(git rev-parse --short HEAD)"
           gcloud auth configure-docker us-east1-docker.pkg.dev --quiet
-          docker build -t "$IMAGE" .
+          docker build \
+            -t "$IMAGE" \
+            -t "$IMAGE_REPO:sha-$REVISION" \
+            -t "$IMAGE_REPO:latest" \
+            .
           docker push "$IMAGE"
+          docker push "$IMAGE_REPO:sha-$REVISION"
+          docker push "$IMAGE_REPO:latest"
 
-      # Deploy is left manual for MVP: auto-deploy-on-tag is a deliberate decision
-      # - name: deploy-cloud-run
-      #   run: gcloud run deploy whatsthatfish-backend --region us-east1 --image "$IMAGE"
+      # ── deploy — roll the released version onto Cloud Run ──────────────────
+      # Runs last, so it only fires if the gate, migration, and image push all
+      # passed. Image-only for the rest of the service config (DATABASE_URL,
+      # --add-cloudsql-instances, min-instances, concurrency are preserved from
+      # the current revision), but we RE-ASSERT the CORS origins every deploy so
+      # they can't drift out of a revision and silently break the live frontend.
+      # ALLOWED_ORIGINS is comma-joined and itself contains commas, so use the
+      # ^##^ delimiter form (## separates the two KEY=VALUE pairs).
+      - name: deploy-cloud-run
+        env:
+          ALLOWED_ORIGINS: ${{ vars.ALLOWED_ORIGINS }}
+          ALLOWED_ORIGIN_REGEX: ${{ vars.ALLOWED_ORIGIN_REGEX }}
+        run: |
+          gcloud run deploy whatsthatfish-backend \
+            --region us-east1 \
+            --image "$IMAGE" \
+            --update-env-vars "^##^ALLOWED_ORIGINS=${ALLOWED_ORIGINS}##ALLOWED_ORIGIN_REGEX=${ALLOWED_ORIGIN_REGEX}" \
+            --quiet

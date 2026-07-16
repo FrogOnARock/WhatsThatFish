@@ -18,6 +18,7 @@ interface SpeciesEntryWire {
   common_name: string;
   description: string;
   location: string[];
+  regions: { id: string; name: string; kind: string; parent_id: string | null }[];
   filename: string;
   depth: string;
 
@@ -41,6 +42,12 @@ export async function getSpeciesLibrary(): Promise<SpeciesEntry[]> {
     common: s.common_name,
     description: s.description,
     location: s.location,
+    regions: (s.regions ?? []).map((r) => ({
+      id: r.id,
+      name: r.name,
+      kind: r.kind as "continent" | "country" | "area",
+      parentId: r.parent_id,
+    })),
     filename: s.filename,
     depth: s.depth
   }));

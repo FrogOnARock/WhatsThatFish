@@ -359,6 +359,71 @@ class User(Base):
     )
 
 
+class DiveRegion(Base):
+    """A place in the geographic/political dive-location hierarchy
+    (continent → country → dive area). Preseeded and globally shared; the anchor
+    for species ranges (species_regions), user dive sites, and future quests.
+    Self-referential via `parent_id` (the enclosing region).
+
+    Dedup is scoped to the parent (uq parent_id + name_key), not global, so a
+    country and a like-named dive area don't collide. Continents have a NULL
+    parent — Postgres treats NULLs as distinct, so the seed script must dedup
+    continents by explicit existence check rather than lean on the constraint."""
+
+    __tablename__ = "dive_regions"
+
+    id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), primary_key=True, default=uuid.uuid4
+    )
+    kind: Mapped[str] = mapped_column(String(20))  # 'continent' | 'country' | 'area'
+    parent_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("dive_regions.id", ondelete="SET NULL")
+    )
+    name: Mapped[str] = mapped_column(String(255))
+    name_key: Mapped[str] = mapped_column(String(255))
+    iso_country: Mapped[str | None] = mapped_column(String(2))  # ISO 3166-1 alpha-2
+    lat: Mapped[float | None] = mapped_column(Float)  # centroid
+    lng: Mapped[float | None] = mapped_column(Float)
+
+    parent: Mapped["DiveRegion | None"] = relationship(
+        "DiveRegion", remote_side=[id], backref="children"
+    )
+    sites: Mapped[list["DiveSite"]] = relationship(back_populates="region")
+
+    __table_args__ = (
+        UniqueConstraint("parent_id", "name_key", name="uq_dive_regions_parent_name"),
+        Index("ix_dive_regions_kind", "kind"),
+        Index("ix_dive_regions_iso_country", "iso_country"),
+    )
+
+
+class SpeciesRegion(Base):
+    """Many-to-many: which regions a species is found in. Backfilled from
+    observation coordinates (point-in-polygon over country polygons); later
+    augmentable from LLM/manual sources. Replaces the flat app_taxa.location
+    array as the structured source of species ranges.
+
+    Composite PK gives the taxon-leading index; the explicit region_id index
+    powers the reverse lookup (species-in-region — quests, discovery)."""
+
+    __tablename__ = "species_regions"
+
+    taxon_id: Mapped[int] = mapped_column(
+        BigInteger,
+        ForeignKey("inat_taxa.taxon_id", ondelete="CASCADE"),
+        primary_key=True,
+    )
+    region_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True),
+        ForeignKey("dive_regions.id", ondelete="CASCADE"),
+        primary_key=True,
+    )
+    source: Mapped[str | None] = mapped_column(String(20))  # observation|llm|manual
+    obs_count: Mapped[int | None] = mapped_column(Integer)
+
+    __table_args__ = (Index("ix_species_regions_region_id", "region_id"),)
+
+
 class DiveSite(Base):
     """A deduplicated named location. `name` is the proper-cased display form;
     `name_key` is the normalized (lower/trimmed) dedup key carrying the UNIQUE
@@ -373,12 +438,19 @@ class DiveSite(Base):
     name_key: Mapped[str] = mapped_column(String(255), unique=True)
     lat: Mapped[float | None] = mapped_column(Float)
     lng: Mapped[float | None] = mapped_column(Float)
+    # Region the site sits in (many sites per region); Google Places id captured
+    # when the site is resolved through Places Autocomplete.
+    region_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("dive_regions.id", ondelete="SET NULL")
+    )
+    google_place_id: Mapped[str | None] = mapped_column(String(255))
     created_by_user_id: Mapped[uuid.UUID | None] = mapped_column(
         UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL")
     )
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
     created_by: Mapped["User | None"] = relationship()
+    region: Mapped["DiveRegion | None"] = relationship(back_populates="sites")
     dives: Mapped[list["Dive"]] = relationship(back_populates="site")
 
 
@@ -400,7 +472,29 @@ class Dive(Base):
     gps_lat: Mapped[float | None] = mapped_column(Float)
     gps_lng: Mapped[float | None] = mapped_column(Float)
     dived_at: Mapped[datetime | None] = mapped_column(DateTime)
-    notes: Mapped[str | None] = mapped_column(Text)
+    notes: Mapped[str | None] = mapped_column(Text)  # "Dive Comments"
+    # Extended dive-log fields — stored METRIC-CANONICAL; the frontend converts
+    # to the user's unit_system (m↔ft, °C↔°F, kg↔lb, bar↔psi) for display/input.
+    # "Notable Nature" is the dive's linked observations; "Photos Taken" are the
+    # observation_photos (GCS) — neither needs a column here.
+    visibility_m: Mapped[float | None] = mapped_column(Float)
+    air_temp_c: Mapped[float | None] = mapped_column(Float)
+    water_temp_c: Mapped[float | None] = mapped_column(Float)
+    weight_kg: Mapped[float | None] = mapped_column(Float)
+    exposure_suit: Mapped[str | None] = mapped_column(String(100))
+    depth_avg_m: Mapped[float | None] = mapped_column(Float)
+    depth_max_m: Mapped[float | None] = mapped_column(Float)
+    started_at: Mapped[datetime | None] = mapped_column(DateTime)  # in-water start
+    bottom_time_min: Mapped[int | None] = mapped_column(Integer)  # "Time on Dive"
+    total_time_min: Mapped[int | None] = mapped_column(Integer)  # "Total Dive Time"
+    end_pressure_bar: Mapped[float | None] = mapped_column(Float)  # ending PSI/Bar
+    dive_shop: Mapped[str | None] = mapped_column(String(255))
+    # PADI-verification seam (Phase 2 investigation). Non-null so history queries
+    # don't COALESCE; verified_source names the origin once verification exists.
+    verified: Mapped[bool] = mapped_column(
+        Boolean, server_default="false", nullable=False
+    )
+    verified_source: Mapped[str | None] = mapped_column(String(50))
     created_at: Mapped[datetime] = mapped_column(DateTime, server_default=func.now())
 
     user: Mapped["User"] = relationship(back_populates="dives")

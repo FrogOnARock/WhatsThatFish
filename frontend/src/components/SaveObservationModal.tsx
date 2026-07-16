@@ -9,7 +9,7 @@ import type { Prediction, Candidate } from "../api/types";
 import { useAuth } from "../auth/AuthContext";
 import { createDive, createObservation, listDives, uploadPhoto, type Dive } from "../api/observations";
 import { searchSpecies, type TaxonOption } from "../api/taxa";
-import SiteAutocomplete from "./SiteAutocomplete";
+import SiteAutocomplete, { type PlacePick } from "./SiteAutocomplete";
 import { toMeters, unitLabel } from "../lib/units";
 
 interface Props {
@@ -44,6 +44,7 @@ export default function SaveObservationModal({
   const [diveId, setDiveId] = useState("");
   const [siteName, setSiteName] = useState("");
   const [divedAt, setDivedAt] = useState("");
+  const [place, setPlace] = useState<PlacePick>({ placeId: null, lat: null, lng: null });
   const [depth, setDepth] = useState("");
   const [validated, setValidated] = useState(false);
 
@@ -106,6 +107,9 @@ export default function SaveObservationModal({
         const dive = await createDive({
           siteName: siteName || undefined,
           divedAt: divedAt || undefined,
+          googlePlaceId: place.placeId ?? undefined,
+          gpsLat: place.lat ?? undefined,
+          gpsLng: place.lng ?? undefined,
         });
         targetDiveId = dive.id;
       }
@@ -247,6 +251,7 @@ export default function SaveObservationModal({
             <SiteAutocomplete
               value={siteName}
               onChange={setSiteName}
+              onPlace={setPlace}
               placeholder="Dive site (e.g. Tulamben, Bali)"
             />
             <input className="modal__input" type="date" value={divedAt} onChange={(e) => setDivedAt(e.target.value)} />

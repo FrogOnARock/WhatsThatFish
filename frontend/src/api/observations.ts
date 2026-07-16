@@ -10,7 +10,24 @@ export interface DiveSpecies {
   commonName: string | null;
 }
 
-export interface Dive {
+/** Extended dive-log fields. Stored METRIC-canonical (m, °C, kg, bar); the UI
+    converts to the user's unit_system at the edge (lib/units.ts). */
+export interface DiveLogFields {
+  visibilityM: number | null;
+  airTempC: number | null;
+  waterTempC: number | null;
+  weightKg: number | null;
+  exposureSuit: string | null;
+  depthAvgM: number | null;
+  depthMaxM: number | null;
+  startedAt: string | null;
+  bottomTimeMin: number | null;
+  totalTimeMin: number | null;
+  endPressureBar: number | null;
+  diveShop: string | null;
+}
+
+export interface Dive extends DiveLogFields {
   id: string;
   siteId: string | null;
   siteName: string | null;
@@ -18,6 +35,8 @@ export interface Dive {
   gpsLng: number | null;
   divedAt: string | null;
   notes: string | null;
+  verified: boolean;
+  verifiedSource: string | null;
   createdAt: string;
   observationCount: number;
   species: DiveSpecies[];
@@ -31,6 +50,20 @@ interface DiveWire {
   gps_lng: number | null;
   dived_at: string | null;
   notes: string | null;
+  visibility_m: number | null;
+  air_temp_c: number | null;
+  water_temp_c: number | null;
+  weight_kg: number | null;
+  exposure_suit: string | null;
+  depth_avg_m: number | null;
+  depth_max_m: number | null;
+  started_at: string | null;
+  bottom_time_min: number | null;
+  total_time_min: number | null;
+  end_pressure_bar: number | null;
+  dive_shop: string | null;
+  verified: boolean;
+  verified_source: string | null;
   created_at: string;
   observation_count: number;
   species: { taxon_id: number; name: string | null; common_name: string | null }[];
@@ -44,6 +77,20 @@ const mapDive = (d: DiveWire): Dive => ({
   gpsLng: d.gps_lng,
   divedAt: d.dived_at,
   notes: d.notes,
+  visibilityM: d.visibility_m,
+  airTempC: d.air_temp_c,
+  waterTempC: d.water_temp_c,
+  weightKg: d.weight_kg,
+  exposureSuit: d.exposure_suit,
+  depthAvgM: d.depth_avg_m,
+  depthMaxM: d.depth_max_m,
+  startedAt: d.started_at,
+  bottomTimeMin: d.bottom_time_min,
+  totalTimeMin: d.total_time_min,
+  endPressureBar: d.end_pressure_bar,
+  diveShop: d.dive_shop,
+  verified: d.verified ?? false,
+  verifiedSource: d.verified_source,
   createdAt: d.created_at,
   observationCount: d.observation_count ?? 0,
   species: (d.species ?? []).map((s) => ({
@@ -52,6 +99,23 @@ const mapDive = (d: DiveWire): Dive => ({
     commonName: s.common_name,
   })),
 });
+
+/** camelCase dive-log fields → the snake_case wire keys the backend expects.
+    Used by create (send all) and update (send only provided). */
+const DIVE_LOG_WIRE: Record<keyof DiveLogFields, string> = {
+  visibilityM: "visibility_m",
+  airTempC: "air_temp_c",
+  waterTempC: "water_temp_c",
+  weightKg: "weight_kg",
+  exposureSuit: "exposure_suit",
+  depthAvgM: "depth_avg_m",
+  depthMaxM: "depth_max_m",
+  startedAt: "started_at",
+  bottomTimeMin: "bottom_time_min",
+  totalTimeMin: "total_time_min",
+  endPressureBar: "end_pressure_bar",
+  diveShop: "dive_shop",
+};
 
 export interface SiteOption {
   id: string;
@@ -73,23 +137,32 @@ export async function listDives(): Promise<Dive[]> {
   return (await res.json()).map(mapDive);
 }
 
-export async function createDive(body: {
-  siteName?: string;
-  divedAt?: string;
-  gpsLat?: number | null;
-  gpsLng?: number | null;
-  notes?: string;
-}): Promise<Dive> {
+export async function createDive(
+  body: {
+    siteName?: string;
+    googlePlaceId?: string | null;
+    divedAt?: string;
+    gpsLat?: number | null;
+    gpsLng?: number | null;
+    notes?: string;
+  } & Partial<DiveLogFields>,
+): Promise<Dive> {
+  const payload: Record<string, unknown> = {
+    site_name: body.siteName ?? null,
+    google_place_id: body.googlePlaceId ?? null,
+    dived_at: body.divedAt ?? null,
+    gps_lat: body.gpsLat ?? null,
+    gps_lng: body.gpsLng ?? null,
+    notes: body.notes ?? null,
+  };
+  for (const [cam, snake] of Object.entries(DIVE_LOG_WIRE)) {
+    const v = (body as Record<string, unknown>)[cam];
+    if (v !== undefined) payload[snake] = v ?? null;
+  }
   const res = await authedFetch(`${API_BASE}/dives`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      site_name: body.siteName ?? null,
-      dived_at: body.divedAt ?? null,
-      gps_lat: body.gpsLat ?? null,
-      gps_lng: body.gpsLng ?? null,
-      notes: body.notes ?? null,
-    }),
+    body: JSON.stringify(payload),
   });
   await raiseForStatus(res, "Couldn't create the dive");
   return mapDive(await res.json());
@@ -97,12 +170,26 @@ export async function createDive(body: {
 
 export async function updateDive(
   id: string,
-  body: { siteName?: string; divedAt?: string; notes?: string },
+  body: {
+    siteName?: string;
+    googlePlaceId?: string | null;
+    gpsLat?: number | null;
+    gpsLng?: number | null;
+    divedAt?: string;
+    notes?: string;
+  } & Partial<DiveLogFields>,
 ): Promise<Dive> {
   const payload: Record<string, unknown> = {};
   if (body.siteName !== undefined) payload.site_name = body.siteName;
+  if (body.googlePlaceId !== undefined) payload.google_place_id = body.googlePlaceId;
+  if (body.gpsLat !== undefined) payload.gps_lat = body.gpsLat;
+  if (body.gpsLng !== undefined) payload.gps_lng = body.gpsLng;
   if (body.divedAt !== undefined) payload.dived_at = body.divedAt || null;
   if (body.notes !== undefined) payload.notes = body.notes;
+  for (const [cam, snake] of Object.entries(DIVE_LOG_WIRE)) {
+    const v = (body as Record<string, unknown>)[cam];
+    if (v !== undefined) payload[snake] = v;
+  }
   const res = await authedFetch(`${API_BASE}/dives/${id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },

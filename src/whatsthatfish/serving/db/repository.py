@@ -10,6 +10,8 @@ from whatsthatfish.database.models import (
     User,
     Dive,
     DiveSite,
+    DiveRegion,
+    SpeciesRegion,
     Observation,
     ObservationPhoto,
 )
@@ -118,10 +120,17 @@ class TaxaRepository:
     _FISH_ANCESTORS = ("%/47178/%", "%/196614/%")  # Actinopterygii, Chondrichthyes
 
     def search_species(self, q: str, limit: int = 25):
-        """Search rank='species' taxa (fish + sharks) by scientific name, joined
-        to app_taxa for a common name where the species was in the trained set."""
+        """Search rank='species' taxa (fish + sharks) by scientific OR common name.
+
+        Common name is COALESCE(app_taxa, inat_taxa): app_taxa carries the trained
+        set's curated names today, inat_taxa is the seeded superset — coalescing
+        both the selected value and the filter means common-name search widens to
+        the full taxonomy automatically once inat_taxa.common_name is seeded."""
+        common_name = func.coalesce(AppTaxa.common_name, InatTaxa.common_name).label(
+            "common_name"
+        )
         stmt = (
-            select(InatTaxa.taxon_id, InatTaxa.name, AppTaxa.common_name)
+            select(InatTaxa.taxon_id, InatTaxa.name, common_name)
             .outerjoin(AppTaxa, AppTaxa.taxon_id == InatTaxa.taxon_id)
             .where(
                 InatTaxa.rank == "species",
@@ -132,8 +141,39 @@ class TaxaRepository:
             .limit(limit)
         )
         if q.strip():
-            stmt = stmt.where(InatTaxa.name.ilike(f"%{q.strip()}%"))
+            term = f"%{q.strip()}%"
+            stmt = stmt.where(
+                or_(
+                    InatTaxa.name.ilike(term),
+                    AppTaxa.common_name.ilike(term),
+                    InatTaxa.common_name.ilike(term),
+                )
+            )
         return self.session.execute(stmt).all()
+
+    def regions_for_taxa(self, taxon_ids: list[int]) -> dict[int, list]:
+        """Map taxon_id → its regions (species_regions ⨝ dive_regions), for the
+        species library's structured 'where to find it'. Ordered continent →
+        country → area (alpha within kind — 'area'<'continent'<'country' isn't
+        semantic, so callers that need strict hierarchy sort by kind rank)."""
+        if not taxon_ids:
+            return {}
+        rows = self.session.execute(
+            select(
+                SpeciesRegion.taxon_id,
+                DiveRegion.id,
+                DiveRegion.name,
+                DiveRegion.kind,
+                DiveRegion.parent_id,
+            )
+            .join(DiveRegion, DiveRegion.id == SpeciesRegion.region_id)
+            .where(SpeciesRegion.taxon_id.in_(taxon_ids))
+            .order_by(DiveRegion.name)
+        ).all()
+        out: dict[int, list] = {}
+        for r in rows:
+            out.setdefault(r.taxon_id, []).append(r)
+        return out
 
 
 class ObservationRepository:
@@ -145,17 +185,38 @@ class ObservationRepository:
         self.session = session
 
     # ── dive sites (deduplicated named locations) ──────────────────────────
-    def resolve_or_create_site(self, name: str, user_id: UUID) -> DiveSite:
+    def resolve_or_create_site(
+        self,
+        name: str,
+        user_id: UUID,
+        google_place_id: str | None = None,
+        lat: float | None = None,
+        lng: float | None = None,
+    ) -> DiveSite:
         key = _site_key(name)
         site = self.session.execute(
             select(DiveSite).where(DiveSite.name_key == key)
         ).scalar_one_or_none()
         if site is None:
             site = DiveSite(
-                name=_proper_case(name), name_key=key, created_by_user_id=user_id
+                name=_proper_case(name),
+                name_key=key,
+                created_by_user_id=user_id,
+                google_place_id=google_place_id,
+                lat=lat,
+                lng=lng,
             )
             self.session.add(site)
             self.session.flush()
+        else:
+            # Backfill place id / coords when a later visit resolves the same site
+            # through Places Autocomplete and we didn't have them before.
+            if google_place_id and not site.google_place_id:
+                site.google_place_id = google_place_id
+            if lat is not None and site.lat is None:
+                site.lat = lat
+            if lng is not None and site.lng is None:
+                site.lng = lng
         return site
 
     def search_sites(self, q: str, limit: int = 10):
