@@ -29,6 +29,7 @@ dependencies = [
     # config
     "python-dotenv>=1.2.2",
     "pyyaml>=6.0",
+    "geopandas>=1.1.4",
 ]
 
 [tool.setuptools.packages.find]
@@ -64,7 +65,6 @@ train = [
     "clip",
     "ray[tune]>=2.55.1",
     "wandb>=0.26.1",
-    "cuml-cu13==26.4",
     "hdbscan>=0.8.43",
     "albumentations>=1.4.0",
     "pycocotools>=2.0.7",
@@ -86,7 +86,16 @@ train = [
     "plotly>=6.7.0",
     "tqdm>=4.66.0",
 ]
-# Test tooling — used by CI and the release gate (`pip install -e ".[train,test]"`).
+# GPU-only training deps: the RAPIDS/CUDA clustering stack (~10 GB). Pulls a full
+# cu13 toolchain that cannot run on CPU, so it's excluded from CI and serving and
+# installed only on the training VM: `pip install -e ".[train,gpu]"`. The lone
+# consumer (`prepare_inat.cu_fit`) imports cuml lazily, so `[train]` alone stays
+# importable on CPU-only runners.
+gpu = [
+    "cuml-cu13==26.4",
+]
+# Test tooling — used by CI and the release gate. CI installs CPU torch first
+# (see ci_tests.yml), then `pip install -e ".[train,test]"` — WITHOUT `gpu`.
 test = [
     "pytest>=8.0",
     "pytest-asyncio>=1.3.0",

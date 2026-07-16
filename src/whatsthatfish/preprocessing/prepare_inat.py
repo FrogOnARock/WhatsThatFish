@@ -17,7 +17,6 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from sklearn.cluster import MiniBatchKMeans
 from sklearn.metrics import silhouette_score
-from cuml.cluster import KMeans as cuKMeans
 from scipy.spatial import ConvexHull
 from matplotlib.patches import Polygon
 from matplotlib.collections import PatchCollection
@@ -190,7 +189,13 @@ class InatPreparation:
         return best_k
 
     def cu_fit(self, data, k: int) -> Any:
-        """GPU KMeans for the final full-dataset fit."""
+        """GPU KMeans for the final full-dataset fit.
+
+        cuml is imported lazily so this module stays importable on CPU-only
+        environments (CI / serving) where the RAPIDS/CUDA stack isn't installed.
+        """
+        from cuml.cluster import KMeans as cuKMeans
+
         km = cuKMeans(n_clusters=k, n_init=10, random_state=42)
         km.fit_predict(data)
         return km.labels_

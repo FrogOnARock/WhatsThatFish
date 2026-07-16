@@ -381,7 +381,10 @@ class DiveRegion(Base):
     )
     name: Mapped[str] = mapped_column(String(255))
     name_key: Mapped[str] = mapped_column(String(255))
-    iso_country: Mapped[str | None] = mapped_column(String(2))  # ISO 3166-1 alpha-2
+    # Natural Earth ISO_A2 — mostly ISO 3166-1 alpha-2, but some rows carry
+    # variants ('CN-TW', '-99', …), so no length cap. seed_regions and
+    # derive_species_regions read the same field, so the join stays consistent.
+    iso_country: Mapped[str | None] = mapped_column(String)
     lat: Mapped[float | None] = mapped_column(Float)  # centroid
     lng: Mapped[float | None] = mapped_column(Float)
 

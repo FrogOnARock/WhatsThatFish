@@ -33,7 +33,13 @@ jobs:
           python-version: '3.12'
 
       - name: install-dependencies
-        run: pip install -e ".[train,test]"
+        # CPU-only torch first so the training extras don't pull the ~5 GB
+        # nvidia-*-cu12 GPU stack. The `gpu` extra (RAPIDS/cuml-cu13) is
+        # deliberately omitted — it can't run on a CPU runner. --no-cache-dir
+        # avoids keeping downloaded wheels alongside the unpacked install.
+        run: |
+          pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu
+          pip install --no-cache-dir -e ".[train,test]"
 
       - name: run-tests
         env:
