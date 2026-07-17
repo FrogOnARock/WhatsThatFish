@@ -30,33 +30,62 @@ interface Props {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Suggestion = { id: string; name: string; prediction?: any };
 
-// Load the Maps JS API once (async, per Google's loading best practice) and
-// resolve the Places library. Shared across every SiteAutocomplete instance.
+/* Bootstrap the Maps JS API the official (dynamic-import) way: this DEFINES
+   google.maps.importLibrary itself rather than assuming it already exists. That
+   makes it robust to a stale/legacy `google.maps` left in the page by Vite HMR
+   (which hot-swaps this module but keeps the old <script> + globals). A raw
+   <script> append can't add importLibrary to an already-present google.maps —
+   that's the "importLibrary is not a function" failure. Idempotent; runs once. */
+function bootstrapMaps(key: string): void {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const w = window as any;
+  const google = (w.google ??= {});
+  const maps = (google.maps ??= {});
+  if (maps.importLibrary) return; // real loader (or a prior bootstrap) present
+  const CB = "__ib__";
+  let loadPromise: Promise<void> | null = null;
+  const libs = new Set<string>();
+  const load = (): Promise<void> => {
+    if (loadPromise) return loadPromise;
+    loadPromise = new Promise<void>((resolve, reject) => {
+      const params = new URLSearchParams({
+        key,
+        v: "weekly",
+        loading: "async",
+        libraries: [...libs].join(","),
+        callback: "google.maps." + CB,
+      });
+      const s = document.createElement("script");
+      s.src = "https://maps.googleapis.com/maps/api/js?" + params.toString();
+      s.async = true;
+      maps[CB] = () => resolve();
+      s.onerror = () => reject(new Error("Google Maps failed to load"));
+      document.head.append(s);
+    });
+    return loadPromise;
+  };
+  // Shim: once the script loads it REPLACES this with the real importLibrary,
+  // so the .then() calls the real one (no recursion).
+  maps.importLibrary = (name: string, ...rest: unknown[]) => {
+    libs.add(name);
+    return load().then(() =>
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (w.google.maps.importLibrary as any)(name, ...rest),
+    );
+  };
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let placesPromise: Promise<any> | null = null;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function loadPlaces(): Promise<any> {
   if (!GOOGLE_MAPS_API_KEY) return Promise.reject(new Error("no maps key"));
   if (placesPromise) return placesPromise;
-  placesPromise = (async () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const g = () => (window as any).google;
-    if (!g()?.maps?.importLibrary) {
-      await new Promise<void>((resolve, reject) => {
-        const s = document.createElement("script");
-        // loading=async silences the perf warning and enables importLibrary.
-        s.src =
-          `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}` +
-          `&v=weekly&loading=async&libraries=places`;
-        s.async = true;
-        s.onload = () => resolve();
-        s.onerror = () => reject(new Error("maps script failed"));
-        document.head.appendChild(s);
-      });
-    }
-    return g().maps.importLibrary("places");
-  })();
-  return placesPromise;
+  bootstrapMaps(GOOGLE_MAPS_API_KEY);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const p = (window as any).google.maps.importLibrary("places");
+  placesPromise = p;
+  return p;
 }
 
 export default function SiteAutocomplete({
