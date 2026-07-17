@@ -116,8 +116,16 @@ export default function SiteAutocomplete({
           setResults(opts);
           setOpen(opts.length > 0);
           return;
-        } catch {
-          /* no key / load / quota failure → fall through to backend */
+        } catch (e) {
+          // Surface WHY Google failed (API-not-enabled, referer/key restriction,
+          // billing, quota) instead of silently degrading — then fall through to
+          // backend suggestions so the field still works.
+          console.warn(
+            "[SiteAutocomplete] Google Places lookup failed; using backend " +
+              "suggestions. Check that 'Places API (New)' is enabled, the key " +
+              "allows this referrer, and billing is on. Error:",
+            e,
+          );
         }
       }
 
@@ -150,7 +158,8 @@ export default function SiteAutocomplete({
           lat: place.location?.lat() ?? null,
           lng: place.location?.lng() ?? null,
         });
-      } catch {
+      } catch (e) {
+        console.warn("[SiteAutocomplete] place details (coords) fetch failed:", e);
         onPlace?.({ placeId: opt.id ?? null, lat: null, lng: null });
       }
       tokenRef.current = null; // session consumed by the details fetch
