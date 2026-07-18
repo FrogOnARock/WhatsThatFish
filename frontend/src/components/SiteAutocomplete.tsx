@@ -30,12 +30,10 @@ interface Props {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Suggestion = { id: string; name: string; prediction?: any };
 
-/* Bootstrap the Maps JS API the official (dynamic-import) way: this DEFINES
-   google.maps.importLibrary itself rather than assuming it already exists. That
-   makes it robust to a stale/legacy `google.maps` left in the page by Vite HMR
-   (which hot-swaps this module but keeps the old <script> + globals). A raw
-   <script> append can't add importLibrary to an already-present google.maps —
-   that's the "importLibrary is not a function" failure. Idempotent; runs once. */
+/* Defines google.maps.importLibrary itself (Google's official bootstrap),
+   rather than assuming it exists — a raw <script> append can't add it to a
+   stale `google.maps` left by Vite HMR, which is what "importLibrary is not a
+   function" means. Idempotent. */
 function bootstrapMaps(key: string): void {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const w = window as any;

@@ -25,15 +25,8 @@ import cv2
 import numpy as np
 from typing import Any
 
-# Please review image_rgb.ipynb for experimentation to understand the threshold set for standard deviation
-# of the red, green, blue chromaticity
-# There was not a clear linear boundary between under water and above water images that could be attained
-# through just red chromaticity nor a combination of red/blue chromaticity. The standard deviation
-# of channel chromaticity was determined to be a good determinant in what WAS an above water image
-# Choosing to proceed with filtering what we know is an above water image helps us retain some of the images from
-# shallower depths while removing the large portion of images we know is not valuable.
-# Anything under 0.015 has been denoted above water, while between 0.15 and 0.25 considered ambiguous, while anything
-# above 0.25 is considered underwater
+# RGB chromaticity std-dev separates above/underwater better than red or
+# red/blue chromaticity alone (see image_rgb.ipynb). std < 0.015 → above-water.
 
 
 class ContextScorer:

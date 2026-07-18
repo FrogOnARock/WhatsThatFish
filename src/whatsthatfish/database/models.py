@@ -476,10 +476,8 @@ class Dive(Base):
     gps_lng: Mapped[float | None] = mapped_column(Float)
     dived_at: Mapped[datetime | None] = mapped_column(DateTime)
     notes: Mapped[str | None] = mapped_column(Text)  # "Dive Comments"
-    # Extended dive-log fields — stored METRIC-CANONICAL; the frontend converts
-    # to the user's unit_system (m↔ft, °C↔°F, kg↔lb, bar↔psi) for display/input.
-    # "Notable Nature" is the dive's linked observations; "Photos Taken" are the
-    # observation_photos (GCS) — neither needs a column here.
+    # Extended dive-log fields, stored METRIC-CANONICAL (frontend converts per
+    # unit_system). "Notable Nature"/"Photos Taken" are the observations/photos below.
     visibility_m: Mapped[float | None] = mapped_column(Float)
     air_temp_c: Mapped[float | None] = mapped_column(Float)
     water_temp_c: Mapped[float | None] = mapped_column(Float)

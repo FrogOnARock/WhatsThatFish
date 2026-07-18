@@ -48,13 +48,9 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="WhatsThisFish API", version="0.1.0", lifespan=lifespan)
 
-# CORS origins. Local dev origins are allowed only off Cloud Run; production
-# origins come from ALLOWED_ORIGINS (comma-separated) so adding the Cloudflare Pages domain
-# post-deploy is a `gcloud run --update-env-vars` flag, not a Docker rebuild.
-# ALLOWED_ORIGIN_REGEX additionally covers Pages per-deploy preview subdomains
-# (e.g. https://<hash>.whatsthatfish.pages.dev) which can't be enumerated.
-# Local dev origins are only allowed off Cloud Run (K_SERVICE is set there), so
-# production never trusts localhost. Prod origins come entirely from ALLOWED_ORIGINS.
+# Localhost is trusted only when K_SERVICE is unset (i.e. never on Cloud Run).
+# Prod origins come from ALLOWED_ORIGINS (comma-separated, no rebuild to add a
+# domain); ALLOWED_ORIGIN_REGEX covers Pages preview subdomains, which can't be enumerated.
 _DEV_ORIGINS = (
     [] if os.getenv("K_SERVICE") else ["http://localhost:5173", "http://127.0.0.1:5173"]
 )
@@ -78,11 +74,8 @@ app.include_router(history.router)
 
 @app.exception_handler(BaseAppException)
 async def base_exception_handler(request: Request, exc: BaseAppException):
-    # One handler covers EVERY BaseAppException subclass — FastAPI matches by the
-    # exception's MRO, so ResourceNotFound (404), Validation (400),
-    # Authentication (401), InvalidPredictionResponse (500) all land here and
-    # return their own status_code. (Was reading exc.detail, which doesn't exist
-    # on BaseAppException — it's exc.message — so the handler itself 500'd.)
+    # Covers every BaseAppException subclass (FastAPI matches by MRO); each
+    # returns its own status_code. Field is exc.message, not exc.detail.
     return JSONResponse(status_code=exc.status_code, content={"detail": exc.message})
 
 
